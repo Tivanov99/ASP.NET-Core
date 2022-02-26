@@ -27,7 +27,6 @@ namespace MobileWorld.Controllers
 
                 return View("Error", new { ErrorMessage = error });
             }
-
             return RedirectToAction("Index");
         }
         [HttpPost]
@@ -42,6 +41,12 @@ namespace MobileWorld.Controllers
 
                 return View("Error", new { ErrorMessage = error });
             }
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Logout()
+        {
+            this.SignOut();
             return RedirectToAction("Index");
         }
     }
