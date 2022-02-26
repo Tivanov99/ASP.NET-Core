@@ -20,11 +20,12 @@ namespace MobileWorld.Controllers
         {
             if (!ModelState.IsValid)
             {
-                List<string> errors = ModelState.Values
+                string error = String.Join(" ", ModelState.Values
                     .SelectMany(e => e.Errors)
                     .Select(e => e.ErrorMessage)
-                    .ToList();
+                    .ToList());
 
+                return View("Error", new { ErrorMessage = error });
             }
             return View(model);
         }
