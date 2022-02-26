@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MobileWorld.Models;
 
 namespace MobileWorld.Controllers
 {
@@ -12,6 +13,12 @@ namespace MobileWorld.Controllers
         public IActionResult Register()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Register(RegisterModel model)
+        {
+            return View(model);
         }
     }
 }
