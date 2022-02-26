@@ -27,7 +27,22 @@ namespace MobileWorld.Controllers
 
                 return View("Error", new { ErrorMessage = error });
             }
-            return View(model);
+
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public IActionResult Login(LoginModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                string error = String.Join(" ", ModelState.Values
+                    .SelectMany(e => e.Errors)
+                    .Select(e => e.ErrorMessage)
+                    .ToList());
+
+                return View("Error", new { ErrorMessage = error });
+            }
+            return RedirectToAction("Index");
         }
     }
 }
