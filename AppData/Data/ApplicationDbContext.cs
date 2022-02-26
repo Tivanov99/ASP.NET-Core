@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AppData.Data.Common;
+using Microsoft.EntityFrameworkCore;
 
 namespace AppData.Data
 {
@@ -11,8 +12,9 @@ namespace AppData.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=.;Database=MobileWorld;Integrated Security=True;");
+            optionsBuilder.UseSqlServer(GlobalConstants.sqlConnection);
             base.OnConfiguring(optionsBuilder);
         }
+
     }
 }
