@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MobileWorld.Models;
 
 namespace MobileWorld.Controllers
@@ -27,8 +28,9 @@ namespace MobileWorld.Controllers
 
                 return View("Error", new { ErrorMessage = error });
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Login");
         }
+
         [HttpPost]
         public IActionResult Login(LoginModel model)
         {
@@ -44,6 +46,7 @@ namespace MobileWorld.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize]
         public IActionResult Logout()
         {
             this.SignOut();
