@@ -18,6 +18,10 @@ namespace MobileWorld.Controllers
         [HttpPost]
         public IActionResult Register(RegisterModel model)
         {
+            if (ModelState.IsValid)
+            {
+
+            }
             return View(model);
         }
     }
