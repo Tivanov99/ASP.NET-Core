@@ -18,8 +18,12 @@ namespace MobileWorld.Controllers
         [HttpPost]
         public IActionResult Register(RegisterModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
+                List<string> errors = ModelState.Values
+                    .SelectMany(e => e.Errors)
+                    .Select(e => e.ErrorMessage)
+                    .ToList();
 
             }
             return View(model);
