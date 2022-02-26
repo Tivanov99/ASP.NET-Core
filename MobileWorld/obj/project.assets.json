@@ -2270,11 +2270,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Trifon\\source\\repos\\MobileWorld\\MobileWorld.csproj",
+      "projectUniqueName": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld\\MobileWorld.csproj",
       "projectName": "MobileWorld",
-      "projectPath": "C:\\Users\\Trifon\\source\\repos\\MobileWorld\\MobileWorld.csproj",
+      "projectPath": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld\\MobileWorld.csproj",
       "packagesPath": "C:\\Users\\Trifon\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Trifon\\source\\repos\\MobileWorld\\obj\\",
+      "outputPath": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Trifon\\AppData\\Roaming\\NuGet\\NuGet.Config",
