@@ -1,11 +1,18 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MobileWorld.Contracts;
 using MobileWorld.Models;
 
 namespace MobileWorld.Controllers
 {
     public class UserController : Controller
     {
+        private readonly IUserService userService;
+        public UserController(IUserService _userService)
+        {
+            this.userService = _userService;
+        }
+
         public IActionResult Login()
         {
             return View();
@@ -28,6 +35,7 @@ namespace MobileWorld.Controllers
 
                 return View("Error", new { ErrorMessage = error });
             }
+
             return RedirectToAction("Login");
         }
 
@@ -43,7 +51,7 @@ namespace MobileWorld.Controllers
 
                 return View("Error", new { ErrorMessage = error });
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Login");
         }
 
         [Authorize]
