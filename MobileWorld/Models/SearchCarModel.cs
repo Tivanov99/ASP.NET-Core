@@ -11,5 +11,7 @@
         public int AfterYear { get; set; }
 
         public string Transmission { get; set; }
+
+        public string EngineType { get; set; }
     }
 }
