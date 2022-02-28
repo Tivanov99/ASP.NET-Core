@@ -5,5 +5,9 @@
         public string Make { get; set; }
 
         public string Location { get; set; }
+
+        public Decimal MaxPrice { get; set; }
+
+        public int AfterYear { get; set; }
     }
 }
