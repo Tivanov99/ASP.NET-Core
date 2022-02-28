@@ -1,0 +1,12 @@
+﻿select {
+    width: 100%;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+}
+html {
+    background-repeat: no-repeat;
+    background-size: 10px;
+    font-size: 25px;
+}

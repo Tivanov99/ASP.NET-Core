@@ -2,10 +2,15 @@
     ViewData["Title"] = "Home Page";
 }
 
-<form asp-controller="Cars" asp-action="AllCars" class="col-6 col-lg-9" method="get">
-    <div class="form-group">
-        <label for="make-input">Марка</label>
-        <select name="make" class="form-control" id="make-input" style="font-size:12px;" onchange="AlertName()">
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/Index.css">
+</head>
+    <form asp-controller="Cars" asp-action="AllCars" class="col-6 col-lg-9" method="get">
+        <div class="form-group">
+            <label for="make-input">Марка</label>
+            <select name="make" class="form-control" id="make-input" style="font-size:12px;" onchange="AlertName()">
             <option value="">
                 всички
             </option>
@@ -453,13 +458,13 @@
             <option value="Чайка">
                 Чайка
             </option>
-        </select>
-    </div>
-
-
-    <div class="form-group">
-        <label for="make-input">Локация</label>
-        <select name="location" class="form-control" id="location-input" style="font-size:12px;">
+            </select>
+        </div>
+    
+    
+        <div class="form-group">
+            <label for="make-input">Локация</label>
+            <select name="location" class="form-control" id="location-input" style="font-size:12px;">
             <option value="">
                 всички
             </option>
@@ -550,18 +555,18 @@
             <option value="Извън страната">
                 Извън страната
             </option>
-        </select>
-    </div>
-
-
-    <div class="form-group">
-        <td style="width:155px; padding:14px 0 0 10px; font-weight:bold;">Максимална цена</td>
-        <input type="text" name="maxPrice" value="" class="w145 selectHeight24" size="4" maxlength="7">
-    </div>
-
-    <div class="form-group">
-        <td style="width:155px; padding:14px 0 0 0; font-weight:bold;" id="cat9">Година</td>
-        <select name="afterYear" class="form-control" style="font-size:12px;">
+            </select>
+        </div>
+    
+    
+        <div class="form-group">
+            <td style="width:155px; padding:14px 0 0 10px; font-weight:bold;">Максимална цена</td>
+            <input type="text" name="maxPrice" value="" class="w145 selectHeight24" size="4" maxlength="7">
+        </div>
+    
+        <div class="form-group">
+            <td style="width:155px; padding:14px 0 0 0; font-weight:bold;" id="cat9">Година</td>
+            <select name="afterYear" class="form-control" style="font-size:12px;">
             <option value="">
                 всички
             </option>
@@ -844,12 +849,12 @@
             <option value="1930">
                 след 1930
             </option>
-        </select>
-    </div>
-
-    <div class="form-group">
-        <td style="width:145px; font-weight:bold;">Скоростна кутия</td>
-        <select name="transmission" class="form-control" style="font-size:12px;">
+            </select>
+        </div>
+    
+        <div class="form-group">
+            <td style="width:145px; font-weight:bold;">Скоростна кутия</td>
+            <select name="transmission" class="form-control" style="font-size:12px;">
             <option value="">
                 всички
             </option>
@@ -862,12 +867,12 @@
             <option value="Полуавтоматична">
                 Полуавтоматична
             </option>
-        </select>
-    </div>
-
-    <div class="form-group">
-        <td style="width:145px; font-weight:bold;">Двигател</td>
-        <select name="engineType" class="form-control" style="font-size:12px;">
+            </select>
+        </div>
+    
+        <div class="form-group">
+            <td style="width:145px; font-weight:bold;">Двигател</td>
+            <select name="engineType" class="form-control" style="font-size:12px;">
             <option value="">
                 всички
             </option>
@@ -883,12 +888,12 @@
             <option value="Хибриден">
                 Хибриден
             </option>
-        </select>
-    </div>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-block btn-primary">Т Ъ Р С И</button>
+    </form>
+</html>
 
-
-    <button type="submit" class="btn btn-block btn-primary">Т Ъ Р С И</button>
-</form>
 
 
 <script type="text/javascript">
