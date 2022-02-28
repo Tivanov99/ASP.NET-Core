@@ -9,5 +9,7 @@
         public Decimal MaxPrice { get; set; }
 
         public int AfterYear { get; set; }
+
+        public string Transmission { get; set; }
     }
 }
