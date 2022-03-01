@@ -37,3 +37,7 @@ button, input, optgroup, select, textarea {
 .div-labels {
     display: inline-flex;
 }
+
+.selects {
+    padding-left: 70px;
+}
