@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "s27S166upjgP5uFXJ47KlJ8bOdKL2v+yx5j8lY+4L6s=",
+  "Hash": "Gdg3HPkxpBbMWe3DIEq1qFMJ3txy3rEVkwv2LBqhN5Q=",
   "Source": "MobileWorld",
   "BasePath": "_content/MobileWorld",
   "Mode": "Default",
@@ -1069,6 +1069,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\MobileWorld.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld\\wwwroot\\css\\CarView.css",
+      "SourceId": "MobileWorld",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld\\wwwroot\\",
+      "BasePath": "_content/MobileWorld",
+      "RelativePath": "css/CarView.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\CarView.css"
     },
     {
       "Identity": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld\\wwwroot\\css\\Index.css",

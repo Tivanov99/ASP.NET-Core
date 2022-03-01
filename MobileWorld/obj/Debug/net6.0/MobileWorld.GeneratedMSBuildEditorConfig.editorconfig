@@ -19,6 +19,14 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Car/CarLeftView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyXENhckxlZnRWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Car/CarRightView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyXENhclJpZ2h0Vmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
