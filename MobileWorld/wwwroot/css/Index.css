@@ -14,8 +14,7 @@ html {
 }
 
 .form-control {
-    display: block;
-    width: 21%;
+    width: 190px;
 }
 
 button, input, optgroup, select, textarea {
@@ -29,16 +28,12 @@ button, input, optgroup, select, textarea {
 .da {
     padding-left: 200px
 }
-.selectors {
-    margin-left: 250px;
-    margin-top: -50px;
-}
 
 .labels {
-    float:left;
-    width:40%;
+    /*float:left;*/
+    padding-left: 200px;
 }
 
 .div-labels {
-    display: inline
+    display: inline-flex;
 }
