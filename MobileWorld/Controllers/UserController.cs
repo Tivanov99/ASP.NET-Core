@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MobileWorld.Controllers
 {
-    public class UserController : Controller
+    public class UserController : MyBaseController
     {
         private readonly IUserService userService;
         public UserController(IUserService _userService)
@@ -28,10 +28,7 @@ namespace MobileWorld.Controllers
         {
             if (!ModelState.IsValid)
             {
-                string error = String.Join(" ", ModelState.Values
-                    .SelectMany(e => e.Errors)
-                    .Select(e => e.ErrorMessage)
-                    .ToList());
+                string error = this.GetErrors(model);
 
                 return View("Error", new { ErrorMessage = error });
             }
@@ -44,13 +41,11 @@ namespace MobileWorld.Controllers
         {
             if (!ModelState.IsValid)
             {
-                string error = String.Join(" ", ModelState.Values
-                    .SelectMany(e => e.Errors)
-                    .Select(e => e.ErrorMessage)
-                    .ToList());
+                string error = this.GetErrors(model);
 
                 return View("Error", new { ErrorMessage = error });
             }
+
             return RedirectToAction("Login");
         }
 
