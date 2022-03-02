@@ -16,7 +16,7 @@
     <link asp-append-version="true" rel="stylesheet" href="~/css/CarCard.css">
 </head>
 <body>
-    <form asp-controller="Cars" asp-action="AllCars" method="get">
+    <form asp-controller="Cars" asp-action="AllCarsByCriteria" method="get">
 
         <div class="div-labels">
             <div>
@@ -584,8 +584,8 @@
 
             <div class="selects">
                 <input name="maxPrice"
-                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                type="number" maxlength="6" class="form-control selectors" value="">
+                       oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                       type="number" maxlength="6" class="form-control selectors" value="">
             </div>
         </div>
 

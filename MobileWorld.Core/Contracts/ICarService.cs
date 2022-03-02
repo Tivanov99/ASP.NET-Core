@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MobileWorld.Core.Contracts
+﻿namespace MobileWorld.Core.Contracts
 {
+    using MobileWorld.Core.ViewModels;
+
     public interface ICarService
     {
+        List<CarCardViewModel> GetIndexCars();
 
+        List<CarCardViewModel> GetAllCarsByCriteria(SearchCarModel model);
     }
 }

@@ -3,6 +3,7 @@
     public class CarCardViewModel
     {
         public string CarId { get; set; }
+
         public string Title { get; set; }
 
         public string Url { get; set; }
