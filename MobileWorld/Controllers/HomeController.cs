@@ -27,7 +27,7 @@ namespace MobileWorld.Controllers
                 new AddViewModel()
                 {
                     Title = "BMW 330 DCI",
-                   Url="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.auto-data.net%2Fbg%2Fbmw-m3-coupe-e46-3.2i-24v-343hp-9872&psig=AOvVaw2AyRFv3h8t-Df5QXneV-39&ust=1646257956358000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCLiVoffypfYCFQAAAAAdAAAAABAJ",
+                   Url="https://automedia.investor.bg/media/files/resized/uploadedfiles/640x0/228/32fc3c87da2834657647bab5753ff228-03-1.jpg",
                    Description="The BMW M3 is a high-performance version of the BMW 3 Series, developed by BMW's in-house motorsport division, BMW M GmbH. M3 models have been produced for every generation of 3 Series since the E30 M3 was introduced in 1986.",
                    Price=7000
                 }
