@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-
-namespace AppData.Data.Common
+namespace MobileWorld.Infrastructure.Data.Common
 {
     public class Repository : IRepository
     {

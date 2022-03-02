@@ -1,7 +1,7 @@
-﻿using AppData.Data.Common;
+﻿using MobileWorld.Infrastructure.Data.Common;
 using Microsoft.EntityFrameworkCore;
 
-namespace AppData.Data
+namespace MobileWorld.Infrastructure.Data
 {
     public class ApplicationDbContext : DbContext
     {

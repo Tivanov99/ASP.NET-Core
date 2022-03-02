@@ -1,4 +1,4 @@
-﻿namespace AppData.Data.Common
+﻿namespace MobileWorld.Infrastructure.Data.Common
 {
     public static class GlobalConstants
     {
