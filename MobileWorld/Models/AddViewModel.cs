@@ -2,6 +2,7 @@
 {
     public class AddViewModel
     {
+        public string CarId { get; set; }
         public string Title { get; set; }
 
         public string Url { get; set; }
