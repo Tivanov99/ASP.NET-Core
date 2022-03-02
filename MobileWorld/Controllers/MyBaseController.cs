@@ -4,13 +4,14 @@ namespace MobileWorld.Controllers
 {
     public class MyBaseController : Controller
     {
-        public string GetErrors(object model)
+        public IActionResult GetErrors(object model)
         {
             string errors = String.Join(" ", ModelState.Values
                     .SelectMany(e => e.Errors)
                     .Select(e => e.ErrorMessage)
                     .ToList());
-            return errors;
+
+            return View("Error", new { ErrorMessage = errors });
         }
     }
 }

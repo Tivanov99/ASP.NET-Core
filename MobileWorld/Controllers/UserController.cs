@@ -28,9 +28,7 @@ namespace MobileWorld.Controllers
         {
             if (!ModelState.IsValid)
             {
-                string error = this.GetErrors(model);
-
-                return View("Error", new { ErrorMessage = error });
+                return this.GetErrors(model);
             }
 
             return RedirectToAction("Login");
@@ -41,9 +39,7 @@ namespace MobileWorld.Controllers
         {
             if (!ModelState.IsValid)
             {
-                string error = this.GetErrors(model);
-
-                return View("Error", new { ErrorMessage = error });
+                return this.GetErrors(model);
             }
 
             return RedirectToAction("Login");
