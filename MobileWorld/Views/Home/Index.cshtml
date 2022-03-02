@@ -583,7 +583,9 @@
 
 
             <div class="selects">
-                <input type="text" class="form-control selectors" name="maxPrice" value="" size="4" maxlength="7">
+                <input name="maxPrice"
+                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                type="number" maxlength="6" class="form-control selectors" value="">
             </div>
         </div>
 

@@ -15,6 +15,8 @@ namespace MobileWorld.Controllers
 
         public IActionResult AllCars(SearchCarModel model)
         {
+
+
             //TODO: make request to db using model 
             return View();
         }
