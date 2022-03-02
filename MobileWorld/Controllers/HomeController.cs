@@ -15,9 +15,9 @@ namespace MobileWorld.Controllers
 
         public IActionResult Index()
         {
-            List<AddViewModel> adds = new List<AddViewModel>()
+            List<CarCardViewModel> adds = new List<CarCardViewModel>()
             {
-                new AddViewModel()
+                new CarCardViewModel()
                 {
                     CarId ="1",
                     Title = "BMW 330 CI",
@@ -25,7 +25,7 @@ namespace MobileWorld.Controllers
                     Description="The BMW M3 is a high-performance version of the BMW 3 Series, developed by BMW's in-house motorsport division, BMW M GmbH. M3 models have been produced for every generation of 3 Series since the E30 M3 was introduced in 1986.",
                    Price=6999
                 },
-                new AddViewModel()
+                new CarCardViewModel()
                 {
                    CarId ="2",
                    Title = "BMW 330 DCI",

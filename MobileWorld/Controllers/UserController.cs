@@ -30,7 +30,6 @@ namespace MobileWorld.Controllers
             {
                 return this.GetErrors(model);
             }
-
             return RedirectToAction("Login");
         }
 
@@ -41,15 +40,14 @@ namespace MobileWorld.Controllers
             {
                 return this.GetErrors(model);
             }
-
-            return RedirectToAction("Login");
+            return RedirectToAction("Index", "Home");
         }
 
         [Authorize]
         public IActionResult Logout()
         {
             this.SignOut();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
