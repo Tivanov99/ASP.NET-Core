@@ -1,4 +1,4 @@
-﻿namespace MobileWorldBL.Core.ViewModels
+﻿namespace MobileWorld.Core.ViewModels
 {
     public class AddViewModel
     {

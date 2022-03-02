@@ -1,4 +1,4 @@
-﻿using MobileWorldBL.Core.ViewModels;
+﻿using MobileWorld.Core.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MobileWorld.Controllers

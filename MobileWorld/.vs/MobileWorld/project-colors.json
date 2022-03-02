@@ -13,14 +13,29 @@
     },
     "2bf43d5f-ffde-412b-83c4-bf6c84cd4b88": {
       "ProjectGuid": "2bf43d5f-ffde-412b-83c4-bf6c84cd4b88",
-      "DisplayName": "AppData",
+      "DisplayName": "MobileWorld.Infrastructure",
       "ColorIndex": 1
     },
     "43200bf0-40db-405e-a39e-f3926d34bf94": {
       "ProjectGuid": "43200bf0-40db-405e-a39e-f3926d34bf94",
-      "DisplayName": "MobileWorldBL",
+      "DisplayName": "MobileWorld.Core",
       "ColorIndex": 2
+    },
+    "e4bca221-5e96-4240-814c-37fa50f5e6c5": {
+      "ProjectGuid": "e4bca221-5e96-4240-814c-37fa50f5e6c5",
+      "DisplayName": "test",
+      "ColorIndex": 3
+    },
+    "19afc3e5-b09e-4973-9e36-c272c8135e50": {
+      "ProjectGuid": "19afc3e5-b09e-4973-9e36-c272c8135e50",
+      "DisplayName": "MobileWorld.Core",
+      "ColorIndex": 4
+    },
+    "ca8074ea-2880-49a1-9df3-9214865050ff": {
+      "ProjectGuid": "ca8074ea-2880-49a1-9df3-9214865050ff",
+      "DisplayName": "MobileWorld.Infrastructure",
+      "ColorIndex": 5
     }
   },
-  "NextColorIndex": 3
+  "NextColorIndex": 6
 }

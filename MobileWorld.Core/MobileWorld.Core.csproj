@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AppData\MobileWorld.Infrastructure.csproj" />
+    <ProjectReference Include="..\MobileWorld.Infrastructure\MobileWorld.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

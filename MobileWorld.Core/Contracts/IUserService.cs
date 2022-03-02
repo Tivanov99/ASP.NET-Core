@@ -1,6 +1,6 @@
-﻿using MobileWorldBL.Core.ViewModels;
+﻿using MobileWorld.Core.ViewModels;
 
-namespace MobileWorldBL.Core.Contracts
+namespace MobileWorld.Core.Contracts
 {
     public interface IUserService
     {

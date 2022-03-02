@@ -1,7 +1,7 @@
-﻿using MobileWorldBL.Core.ViewModels;
+﻿using MobileWorld.Core.ViewModels;
+using MobileWorld.Core.Contracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MobileWorldBL.Core.Contracts;
 
 namespace MobileWorld.Controllers
 {

@@ -137,5 +137,7 @@ C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\obj\Debug\net6.0\MobileWorld.ge
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\MobileWorld.Core.dll
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\MobileWorld.Core.pdb
+C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\Humanizer.dll
+C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\MobileWorld.Infrastructure.dll
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\MobileWorld.Infrastructure.pdb

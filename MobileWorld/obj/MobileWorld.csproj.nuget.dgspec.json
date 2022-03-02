@@ -4,14 +4,72 @@
     "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld\\MobileWorld.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\AppData\\MobileWorld.Infrastructure.csproj": {
+    "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld.Core\\MobileWorld.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\AppData\\MobileWorld.Infrastructure.csproj",
-        "projectName": "MobileWorld.Infrastructure",
-        "projectPath": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\AppData\\MobileWorld.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld.Core\\MobileWorld.Core.csproj",
+        "projectName": "MobileWorld.Core",
+        "projectPath": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld.Core\\MobileWorld.Core.csproj",
         "packagesPath": "C:\\Users\\Trifon\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\AppData\\obj\\",
+        "outputPath": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Trifon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages": {},
+          "https://www.nuget.org/api/v2/": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld.Infrastructure\\MobileWorld.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld.Infrastructure\\MobileWorld.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld.Infrastructure\\MobileWorld.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld.Infrastructure\\MobileWorld.Infrastructure.csproj",
+        "projectName": "MobileWorld.Infrastructure",
+        "projectPath": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld.Infrastructure\\MobileWorld.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Trifon\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Trifon\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,15 +98,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[6.0.2, )"
-            },
-            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[6.0.2, )"
-            },
-            "Microsoft.AspNetCore.Identity.UI": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.2, )"
             },
@@ -63,64 +115,6 @@
               "version": "[6.0.2, )"
             }
           },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorldBL\\MobileWorld.Core.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorldBL\\MobileWorld.Core.csproj",
-        "projectName": "MobileWorld.Core",
-        "projectPath": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorldBL\\MobileWorld.Core.csproj",
-        "packagesPath": "C:\\Users\\Trifon\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorldBL\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\Trifon\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net6.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages": {},
-          "https://www.nuget.org/api/v2/": {}
-        },
-        "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
-            "projectReferences": {
-              "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\AppData\\MobileWorld.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\AppData\\MobileWorld.Infrastructure.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
           "imports": [
             "net461",
             "net462",
@@ -164,8 +158,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorldBL\\MobileWorld.Core.csproj": {
-                "projectPath": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorldBL\\MobileWorld.Core.csproj"
+              "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld.Core\\MobileWorld.Core.csproj": {
+                "projectPath": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld.Core\\MobileWorld.Core.csproj"
               }
             }
           }
@@ -179,6 +173,30 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

@@ -1,7 +1,7 @@
-﻿using MobileWorldBL.Core.ViewModels;
-using MobileWorldBL.Core.Contracts;
+﻿using MobileWorld.Core.ViewModels;
+using MobileWorld.Core.Contracts;
 
-namespace MobileWorldBL.Core.Services
+namespace MobileWorld.Core.Services
 {
     public class UserService : IUserService
     {

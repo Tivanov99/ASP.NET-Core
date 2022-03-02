@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\AppData\\MobileWorld.Infrastructure.csproj": {}
+    "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld.Infrastructure\\MobileWorld.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\AppData\\MobileWorld.Infrastructure.csproj": {
+    "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld.Infrastructure\\MobileWorld.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\AppData\\MobileWorld.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld.Infrastructure\\MobileWorld.Infrastructure.csproj",
         "projectName": "MobileWorld.Infrastructure",
-        "projectPath": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\AppData\\MobileWorld.Infrastructure.csproj",
+        "projectPath": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld.Infrastructure\\MobileWorld.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\Trifon\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\AppData\\obj\\",
+        "outputPath": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Trifon\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,15 +40,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[6.0.2, )"
-            },
-            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[6.0.2, )"
-            },
-            "Microsoft.AspNetCore.Identity.UI": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.2, )"
             },
