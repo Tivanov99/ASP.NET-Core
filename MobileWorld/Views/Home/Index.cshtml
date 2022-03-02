@@ -6,7 +6,7 @@
 
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Page Title</title>
 
@@ -16,7 +16,6 @@
     <link asp-append-version="true" rel="stylesheet" href="~/css/CarCard.css">
 </head>
 <body>
-
     <form asp-controller="Cars" asp-action="AllCars" method="get">
 
         <div class="div-labels">
@@ -595,18 +594,15 @@
             </div>
 
 
-
             <div class="labels">
                 <label for="gear-type">Двигател</label>
             </div>
-
 
             <div class="labels">
                 <label for="gear-type">Скоростна кутия</label>
             </div>
 
         </div>
-
 
         <br />   <div class="div-labels">
 
@@ -938,38 +934,27 @@
         <br />  <button type="submit" class="btn btn-block btn-primary">Т Ъ Р С И</button>
     </form>
 
-    <html lang="en">
 
-    <head>
-        <title>Harvest vase</title>
-        <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
-    </head>
-
-    <body>
-
-        @foreach (var car in Model)
-        {
-            <div class="wrapper">
-                <div class="product-img">
-                    <img src="@car.Url" class="car-img">
-                </div>
-                <div class="product-info">
-                    <div class="product-text">
-                        <h1>@car.Title</h1>
-                        <h2>@car.Description</h2>
-                        <h2 style="margin-top: -24px; margin-right: 160px; margin-bottom: 8px;">Price : @car.Price</h2>
-                        <div class="button-holder info-button">
-                            <a href="/Cars/Details?carId=@car.CarId" class="btn btn-info text-uppercase">Разгледай</a>
-                        </div>
+    @foreach (var car in Model)
+    {
+        <div class="wrapper">
+            <div class="product-img">
+                <img src="@car.Url" class="car-img">
+            </div>
+            <div class="product-info">
+                <div class="product-text">
+                    <h1>@car.Title</h1>
+                    <h2>@car.Description</h2>
+                    <h2 style="margin-top: -24px; margin-right: 160px; margin-bottom: 8px;">Price : @car.Price</h2>
+                    <div class="button-holder info-button">
+                        <a href="/Cars/Details?carId=@car.CarId" class="btn btn-info text-uppercase">Разгледай</a>
                     </div>
                 </div>
             </div>
-        }
-
-    </body>
-
-</html>
+        </div>
+    }
 </body>
+</html>
 
 <script type="text/javascript">
            function AlertName() {
