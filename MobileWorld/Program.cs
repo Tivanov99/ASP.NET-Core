@@ -19,6 +19,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 
 builder.Services.AddScoped<IUserService, UserService>()
+.AddScoped<ICarService, CarService>()
 .AddScoped<IRepository, Repository>()
 .AddScoped<DbContext, ApplicationDbContext>();
 
