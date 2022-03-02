@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using MobileWorld.Models;
+﻿using MobileWorldBL.Core.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MobileWorld.Controllers
 {

@@ -15,7 +15,12 @@
       "ProjectGuid": "2bf43d5f-ffde-412b-83c4-bf6c84cd4b88",
       "DisplayName": "AppData",
       "ColorIndex": 1
+    },
+    "43200bf0-40db-405e-a39e-f3926d34bf94": {
+      "ProjectGuid": "43200bf0-40db-405e-a39e-f3926d34bf94",
+      "DisplayName": "MobileWorldBL",
+      "ColorIndex": 2
     }
   },
-  "NextColorIndex": 2
+  "NextColorIndex": 3
 }

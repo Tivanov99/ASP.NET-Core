@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
-using MobileWorld.Contracts;
 using MobileWorld.Data;
-using MobileWorld.Services;
+using MobileWorldBL.Core.Contracts;
+using MobileWorldBL.Core.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

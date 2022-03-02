@@ -5,7 +5,9 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileWorld", "MobileWorld.csproj", "{E035A033-3050-4BBC-A642-4D32AA0A901D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppData", "..\AppData\AppData.csproj", "{2BF43D5F-FFDE-412B-83C4-BF6C84CD4B88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileWorld.Infrastructure", "..\AppData\MobileWorld.Infrastructure.csproj", "{2BF43D5F-FFDE-412B-83C4-BF6C84CD4B88}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileWorld.Core", "..\MobileWorldBL\MobileWorld.Core.csproj", "{43200BF0-40DB-405E-A39E-F3926D34BF94}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{2BF43D5F-FFDE-412B-83C4-BF6C84CD4B88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BF43D5F-FFDE-412B-83C4-BF6C84CD4B88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BF43D5F-FFDE-412B-83C4-BF6C84CD4B88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43200BF0-40DB-405E-A39E-F3926D34BF94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43200BF0-40DB-405E-A39E-F3926D34BF94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43200BF0-40DB-405E-A39E-F3926D34BF94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43200BF0-40DB-405E-A39E-F3926D34BF94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

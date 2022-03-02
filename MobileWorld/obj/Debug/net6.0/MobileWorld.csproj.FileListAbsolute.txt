@@ -76,7 +76,6 @@ C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\MobileWorld.ru
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\MobileWorld.dll
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\ref\MobileWorld.dll
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\MobileWorld.pdb
-C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\Humanizer.dll
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
@@ -85,7 +84,6 @@ C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\Microsoft.AspN
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Embedded.dll
@@ -136,3 +134,8 @@ C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\obj\Debug\net6.0\MobileWorld.dl
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\obj\Debug\net6.0\ref\MobileWorld.dll
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\obj\Debug\net6.0\MobileWorld.pdb
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\obj\Debug\net6.0\MobileWorld.genruntimeconfig.cache
+C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\MobileWorld.Core.dll
+C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\MobileWorld.Core.pdb
+C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\MobileWorld.Infrastructure.dll
+C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\MobileWorld.Infrastructure.pdb
