@@ -4,9 +4,9 @@ namespace MobileWorld.Infrastructure.Data.Common
 {
     public class Repository : IRepository
     {
-        private readonly ApplicationDbContext dbContext;
+        private readonly MobileWorldDbContext dbContext;
 
-        public Repository(ApplicationDbContext _context)
+        public Repository(MobileWorldDbContext _context)
         {
             this.dbContext = _context;
         }

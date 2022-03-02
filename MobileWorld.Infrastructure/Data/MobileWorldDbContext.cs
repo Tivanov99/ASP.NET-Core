@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MobileWorld.Infrastructure.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class MobileWorldDbContext : DbContext
     {
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

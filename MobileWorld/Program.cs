@@ -4,16 +4,23 @@ using Microsoft.EntityFrameworkCore;
 using MobileWorld.Data;
 using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Services;
+using MobileWorld.Infrastructure.Data.Common;
+using MobileWorld.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseSqlServer(connectionString))
+    //check here 
+    .AddDbContext<MobileWorldDbContext>();
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddScoped<IUserService, UserService>();
+
+builder.Services.AddScoped<IUserService, UserService>()
+.AddScoped<IRepository, Repository>()
+.AddScoped<DbContext, ApplicationDbContext>();
 
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
