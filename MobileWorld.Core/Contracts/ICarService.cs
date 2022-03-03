@@ -8,6 +8,6 @@
 
         List<CarCardViewModel> GetAllCarsByCriteria(SearchCarModel model);
 
-
+        CarDetailsViewModel GetCarById(int carId);
     }
 }
