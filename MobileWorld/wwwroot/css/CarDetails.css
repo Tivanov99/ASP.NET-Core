@@ -41,9 +41,15 @@
 }
 .owner-info {
     width : 265px;
-    align: top;
+    /*align: top;*/
     padding:10px;
 }
 .owner-phone {
     font-size:14px;
+}
+.owner-name {
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+    padding-bottom: 20px;
 }
