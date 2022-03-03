@@ -31,11 +31,13 @@
                     <span class="owner-phone">Телефон: 893668829</span><br><br>
                     <span class="owner-name">Име - @Model.Owner.Name</span>
                     <span class="owner-addres">Адрес :</span>
-                    if(Model.Neighborhood!=null)
-                    {
-                        КВ.@Model.Neighborhood<br>
-                    }
                     Регион: @Model.Region<br>гр. @Model.Town<br>
+                    @if (Model.Neighborhood != null)
+                    {
+                        <span>КВ.@Model.Neighborhood</span>
+
+                        <br>
+                    }
                     <br>
                 </td>
             </tr>

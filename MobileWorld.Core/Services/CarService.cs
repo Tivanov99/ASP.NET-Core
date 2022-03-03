@@ -47,7 +47,15 @@
         public CarAdViewModel GetCarById(int carId)
         {
             //TODO: Make request to db with car Id
-            return new CarAdViewModel();
+            CarAdViewModel carAd = new CarAdViewModel();
+            carAd.Car.Description = "ВЪЗМОЖЕН ЛИЗИНГ БЕЗ ДОКАЗВАНЕ НА ДОХОДИ, ПРИ МИНИМАЛНА ПЪРВОНАЧАЛНА ВНОСКА СТАРТИРАЩА ОТ 10% ОДОБРЕНИЕ И РЕГИСТРАЦИЯ В РАМКИТЕ НА ДЕНЯ. Автомобила е от шоурум на BMW в Южна Швейцария (Мендризо). Само един собственик който го връща в представителството и взима нов. Пълна подръжка и документация за всяко обслужване на 15 хиляди километра изцяло, и единствено в сервиз на BMW.";
+            carAd.Owner.PhoneNumber = 0893668829;
+            carAd.Owner.Name = "АУТО КЛАСИК - ДИРЕКТЕН";
+            carAd.Region = "Бургас";
+            carAd.Town = "Сарафово";
+            carAd.Neighborhood = "Сарафово";
+
+            return carAd;
         }
 
         public List<CarCardViewModel> GetIndexCars()
