@@ -2,6 +2,9 @@
 {
     public class CarAdViewModel
     {
+        public string Title { get; set; }
+
+
         public string Town { get; set; }
 
         public string Region { get; set; }
