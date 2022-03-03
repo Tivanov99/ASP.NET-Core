@@ -2,8 +2,8 @@
 {
     public class OwnerViewModel
     {
-        public int OwnerPhoneNumber { get; set; }
+        public int PhoneNumber { get; set; }
 
-        public string OwnerName { get; set; }
+        public string Name { get; set; }
     }
 }

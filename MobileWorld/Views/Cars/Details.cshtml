@@ -1,5 +1,5 @@
 ﻿@using MobileWorld.Core.ViewModels
-@model CarDetailsViewModel
+@model CarAdViewModel
 
 
 <!DOCTYPE html>
@@ -13,91 +13,29 @@
     <title>Document</title>
 </head>
 <body>
-    @if (Model.Description != null)
+    @if (Model.Car.Description != null)
     {
         <div class="more-info">Допълнителна информация:</div>
         <table class="table-more-info">
             <tbody>
-                <tr><td class="more-info-text">@Model.Description </td></tr>
+                <tr><td class="more-info-text">@Model.Car.Description </td></tr>
             </tbody>
         </table>
     }
 
     <div class="contacts">За контакти:</div>
-    <table style="width:660px;" cellspacing="0" cellpadding="0" border="0" bgcolor="#EFEFEF">
+    <table style="width:360px;" cellspacing="0" cellpadding="0" border="0" bgcolor="#EFEFEF">
         <tbody>
             <tr>
                 <td class="owner-info">
-                    <span class= "owner-phone">Телефон: @Model.OwnerPhoneNumber</span><br><br>
-                    <span class="owner-name">АУТО КЛАСИК - ДИРЕКТЕН ВНОСИТЕЛ НА АВТОМОБИЛИ ОТ ИТАЛИЯ И ГЕРМАНИЯ</span>
-                    кв.Враждебна ул.30 N'10<br>
-                    тел.: 0879186772<br>
-                    Регион: София, гр. София<br><a href="http://autoclassic.mobile.bg" target="_blank" class="advact">autoclassic.mobile.bg</a><br>
-                    <br><a href="//autoclassic.mobile.bg" target="_blank" class="logoLink" style="margin-top:5px;margin-bottom:5px;"><img src="//cdn2.focus.bg/mobile/images/housespicts/h10819671707441623.pic?16463296947" border="0" alt="АУТО КЛАСИК -  ДИРЕКТЕН ВНОСИТЕЛ НА АВТОМОБИЛИ ОТ ИТАЛИЯ И ГЕРМАНИЯ"></a>
+                    <span class="owner-phone">Телефон: 893668829</span><br><br>
+                    <span class="owner-name">Име - @Model.Owner.Name</span>
+                    <span class="owner-addres">Адрес :</span>
+                    кв.Враждебна ул.30 №10
+                    <br>Регион: София, гр. София<br>
+                    <br>
                 </td>
-                <td width="395" valign="top" style="padding-top:10px; padding-bottom:10px; padding-right:10px;">
-                    <table width="385" cellspacing="0" cellpadding="0" border="0">
-                        <tbody>
-                            <tr>
-                                <td background="//www.mobile.bg/images/picturess/menu_map_bg.gif">
-                                    <a href="javascript:emswap(1,'')"><img id="imgmap1" src="//www.mobile.bg/images/picturess/menu_map1.gif" width="125" height="25" border="0"></a><a href="javascript:emswap(2,'//www.mobile.bg/pcgi/mapgs.cgi?lat=42.7169724&amp;lng=23.4053976')"><img id="imgmap2" src="//www.mobile.bg/images/picturess/menu_map2a.gif" width="125" height="25" border="0"></a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table width="385" cellspacing="0" cellpadding="0" border="0" style="border:#CCC 1px solid; border-top:none;">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div id="blkmap1" style="display:block">
-                                        <table width="385" cellspacing="0" cellpadding="0" border="0">
-                                            <tbody>
-                                                <tr><td width="385" colspan="3" style="padding-top:10px; padding-left:10px; padding-right:10px;">Запитване към продавача:</td></tr>
-                                                <tr><td width="385" colspan="3" style="padding-top:5px; padding-left:10px; padding-right:10px;"><textarea cols="36" name="s3" rows="3" wrap="virtual" maxlength="500" class="w365"></textarea></td></tr>
-                                                <tr>
-                                                    <td width="185" style="padding-top:10px; padding-left:10px;">Вашето име:</td>
-                                                    <td width="15" rowspan="2"><img src="//www.mobile.bg/images/picturess/no.gif" width="15" height="1" border="0"></td>
-                                                    <td width="185" rowspan="2" align="right" valign="bottom" style="padding-top:10px; padding-right:10px;"><img src="//www.mobile.bg/pcgi/captcha.cgi?pkey=fb8c276039118560403b8cdaea7ed4d4" style="width:175px; height:35px; border:none;"><input type="hidden" name="s5" value="fb8c276039118560403b8cdaea7ed4d4"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="185" style="padding-top:5px; padding-left:10px;"><input type="text" name="s0" value="" class="w175" size="14" maxlength="25"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="185" style="padding-top:10px; padding-left:10px;">Вашия E-mail:</td>
-                                                    <td width="15"><img src="//www.mobile.bg/images/picturess/no.gif" width="15" height="1" border="0"></td>
-                                                    <td width="185" style="padding-top:10px; padding-right:10px;">Въведете анти-спам кода:</td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="185" style="padding-top:5px; padding-left:10px;"><input type="text" name="s1" value="" class="w175" size="14" maxlength="40"></td>
-                                                    <td width="15"><img src="//www.mobile.bg/images/picturess/no.gif" width="15" height="1" border="0"></td>
-                                                    <td width="185" style="padding-top:5px; padding-right:10px;"><input type="text" name="s4" value="" class="w175" size="14" maxlength="40"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="185" style="padding-top:10px; padding-left:10px;">Вашия Телефон:</td>
-                                                    <td width="15"><img src="//www.mobile.bg/images/picturess/no.gif" width="15" height="1" border="0"></td>
-                                                    <td width="185" style="padding-top:10px; padding-right:10px;">&nbsp;</td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="185" style="padding-top:5px; padding-bottom:10px; padding-left:10px;"><input type="text" name="s2" value="" class="w175" size="14" maxlength="25"></td>
-                                                    <td width="15"><img src="//www.mobile.bg/images/picturess/no.gif" width="15" height="1" border="0"></td>
-                                                    <td width="185" align="right" style="padding-top:5px; padding-bottom:10px; padding-right:10px;"><input type="button" value="ИЗПРАТИ ЗАПИТВАНЕ" style="width:175px;  height:20px; font-weight:bold;" onclick="javascript:document.search.s6.value='2';document.search.s14.value='0';document.search.submit();"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="3" style="text-align:right; font-size:12px; padding-top:10px;">
-                                                        Съгласявам се с <a href="https://www.mobile.bg/pcgi/mobile.cgi?act=9&amp;mode=4" style="color:#09F" target="_blank">общите условия</a> и <input type="checkbox" name="accept2" value="1"><br>
-                                                        <a href="https://www.mobile.bg/pcgi/mobile.cgi?act=9&amp;mode=6" style="color:#09F" target="_blank">политики за защита на личните данни</a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <input type="hidden" name="s6" value="1">
-                                    </div><div id="blkmap2" style="display:none"><iframe id="map" src="" name="map" width="385" height="300" marginwidth="0" marginheight="0" frameborder="0" scrolling="no">&nbsp;</iframe></div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    Дилър в <img src="//www.mobile.bg/images/picturess/mobile_dil.gif" width="63" heght="16" border="0" align="absmiddle"> от 14.04.2004 г.
-                </td>
+
             </tr>
         </tbody>
     </table>
