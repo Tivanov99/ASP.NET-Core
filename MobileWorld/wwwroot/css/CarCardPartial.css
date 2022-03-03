@@ -125,7 +125,8 @@ span {
 .info-button {
     position: relative;
     bottom: 35px;
-    left: 190px;
+    left: 480px;
+    top: 19px;
 }
 
 .car-img {
@@ -136,7 +137,6 @@ span {
 .product-price {
     margin-top: -24px;
     margin-right: 160px;
-    margin-bottom: 8px;
     position: relative;
     top: 75px;
     left: 15px;
