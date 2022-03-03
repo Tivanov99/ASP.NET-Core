@@ -7,14 +7,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link asp-append-version="true" rel="stylesheet" href="~/css/CarCard.css">
+    @*<link asp-append-version="true" rel="stylesheet" href="~/css/CarCard.css">*@
 
     <title>Document</title>
 </head>
 <body>
     @foreach (var car in Model)
     {
-        @await Html.PartialAsync("_CarCardPartial", car);
+        @await Html.PartialAsync("_CarCardPartial", car)
+        ;
     }
 </body>
 </html>
