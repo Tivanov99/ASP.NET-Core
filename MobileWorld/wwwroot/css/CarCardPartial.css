@@ -132,3 +132,9 @@ span {
     height: 270px;
     width: 327px;
 }
+
+.product-price {
+    margin-top: -24px;
+    margin-right: 160px;
+    margin-bottom: 8px;
+}
