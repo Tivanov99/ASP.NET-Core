@@ -44,11 +44,10 @@
             return adds;
         }
 
-        public CarDetailsViewModel GetCarById(int carId)
+        public CarAdViewModel GetCarById(int carId)
         {
             //TODO: Make request to db with car Id
-            return new CarDetailsViewModel();
-            throw new NotImplementedException();
+            return new CarAdViewModel();
         }
 
         public List<CarCardViewModel> GetIndexCars()
