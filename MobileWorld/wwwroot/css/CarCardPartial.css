@@ -21,7 +21,6 @@
     width: 327px;
 }
 
-}
 
 .product-img img {
     border-radius: 7px 0 0 7px;
@@ -152,4 +151,8 @@ span {
     margin-left: 15px;
     margin-top: 7px;
     margin-bottom: 7px;
+}
+
+hr:not([size]) {
+    height: 2px;
 }
