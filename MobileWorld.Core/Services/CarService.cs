@@ -47,6 +47,7 @@
         public CarDetailsViewModel GetCarById(int carId)
         {
             //TODO: Make request to db with car Id
+            return null;
             throw new NotImplementedException();
         }
 
