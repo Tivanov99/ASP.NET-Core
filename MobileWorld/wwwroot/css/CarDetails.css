@@ -45,16 +45,21 @@
     padding:10px;
 }
 .owner-phone {
-    font-size:14px;
+    padding-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    border-bottom: #CCC 2px solid;
 }
 .owner-name {
+    margin-top: -20px;
     font-size: 14px;
     font-weight: bold;
     display: block;
-    padding-bottom: 20px;
+    padding-bottom: 5px;
+    border-bottom: #CCC 2px solid;
 }
 .owner-addres {
-    
+    margin-top: 5px;
     font-size: 14px;
     font-weight: bold;
     display: block;
