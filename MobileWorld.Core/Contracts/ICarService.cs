@@ -7,5 +7,7 @@
         List<CarCardViewModel> GetIndexCars();
 
         List<CarCardViewModel> GetAllCarsByCriteria(SearchCarModel model);
+
+
     }
 }
