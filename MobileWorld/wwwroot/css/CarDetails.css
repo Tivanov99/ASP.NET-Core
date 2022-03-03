@@ -12,6 +12,7 @@
     width: 660px;
     border: 0px;
 }
+
 .more-info-text {
     line-height: 24px;
     font-size: 15px;
@@ -19,6 +20,7 @@
     border-bottom: #CCC 2px solid;
     padding-bottom: 12px;
 }
+
 .contacts {
     width: 660px;
     font-size: 14px;
@@ -28,4 +30,20 @@
     border-bottom: #CCC 2px solid;
     margin-top: 10px;
     padding-top: 25px;
+}
+
+.div-contacts {
+    width: 660px;
+    cellspacing: 0px;
+    cellpadding: 0px;
+    border: "0";
+    bgcolor: "#EFEFEF";
+}
+.owner-info {
+    width : 265px;
+    align: top;
+    padding:10px;
+}
+.owner-phone {
+    font-size:14px;
 }
