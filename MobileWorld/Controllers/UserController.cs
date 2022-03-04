@@ -49,5 +49,13 @@ namespace MobileWorld.Controllers
             this.SignOut();
             return RedirectToAction("Index", "Home");
         }
+
+        [Authorize]
+        public IActionResult Favourites(string userId)
+        {
+            //TODO: check here
+            return View();
+        }
+
     }
 }
