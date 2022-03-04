@@ -53,7 +53,14 @@ namespace MobileWorld.Controllers
         [Authorize]
         public IActionResult Favourites(string userId)
         {
-            //TODO: check here
+            //TODO: check here , and add view
+            return View();
+        }
+
+        [Authorize]
+        public IActionResult Ads()
+        {
+            //TODO: check here , and add view
             return View();
         }
 
