@@ -36,6 +36,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
+//Configure default login page
 builder.Services.ConfigureApplicationCookie(options =>
 {
     //// Cookie settings

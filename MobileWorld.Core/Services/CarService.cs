@@ -4,6 +4,7 @@
     using MobileWorld.Core.ViewModels;
     using MobileWorld.Infrastructure.Data.Common;
     using System.Collections.Generic;
+    using System.Reflection;
 
     public class CarService : ICarService
     {
@@ -16,6 +17,17 @@
 
         public List<CarCardViewModel> GetAllCarsByCriteria(SearchCarModel model)
         {
+            Type type = model.GetType();
+
+            var searchCriteria = GetAllValidProperties(model);
+
+
+            foreach (var item in searchCriteria)
+            {
+
+            }
+
+
             List<CarCardViewModel> adds = new List<CarCardViewModel>()
             {
                 new CarCardViewModel()
@@ -36,11 +48,7 @@
                 }
             };
 
-            //var car = adds
-            //    .Where(x => model.Transmission != null && x.Price == 6999 ||
-            //        model.EngineType != null && x.Price == 7000)
-            //    .Select(x => x)
-            //    .ToList();
+
             return adds;
         }
 
@@ -82,6 +90,22 @@
             //TODO: make rquest to db and take ONLY LAST 6 CARS !
 
             return adds;
+        }
+
+        private object[] GetAllValidProperties(object model)
+        {
+            Type type = model.GetType();
+
+            var propertyInfos = type.GetProperties()
+                .Where(x => x.GetValue(model) != null)
+                .Select(x => new
+                {
+                    PropertyName = x.Name,
+                    PropertyValue = x.GetValue(model)
+                })
+                .ToArray();
+
+            return propertyInfos;
         }
     }
 }

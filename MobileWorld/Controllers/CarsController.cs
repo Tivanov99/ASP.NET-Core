@@ -20,6 +20,7 @@ namespace MobileWorld.Controllers
 
             return View(cars);
         }
+
         public IActionResult Details(int carId)
         {
             CarAdViewModel carAd = this.carService
