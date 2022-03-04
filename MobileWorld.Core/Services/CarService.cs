@@ -4,7 +4,6 @@
     using MobileWorld.Core.ViewModels;
     using MobileWorld.Infrastructure.Data.Common;
     using System.Collections.Generic;
-    using System.Reflection;
 
     public class CarService : ICarService
     {
@@ -21,6 +20,7 @@
 
             var searchCriteria = GetAllValidProperties(model);
 
+            string sqlCommand = "Select * From ";
 
             foreach (var item in searchCriteria)
             {

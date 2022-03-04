@@ -940,22 +940,9 @@
 
     @foreach (var car in Model)
     {
-        <div class="wrapper">
-            <div class="product-img">
-                <img src="@car.Url" class="car-img">
-            </div>
-            <div class="product-info">
-                <div class="product-text">
-                    <h1>@car.Title</h1>
-                    <h2>@car.Description</h2>
-                    <h2 style="margin-top: -24px; margin-right: 160px; margin-bottom: 8px;">Price : @car.Price</h2>
-                    <div class="button-holder info-button">
-                        <a href="/Cars/Details?carId=@car.CarId" class="btn btn-info text-uppercase">Разгледай</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @await Html.PartialAsync("_CarCardPartial", car)
     }
+
 </body>
 </html>
 

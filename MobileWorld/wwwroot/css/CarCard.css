@@ -1,25 +1,7 @@
-﻿/* 
-* Design by Robert Mayer:https://goo.gl/CJ7yC8
-*
-*I intentionally left out the line that was supposed to be below the subheader simply because I don't like how it looks.
-*
-* Chronicle Display Roman font was substituted for similar fonts from Google Fonts.
-*/
-
-body {
+﻿body {
     background-color: #fdf1ec;
 }
 
-/*.wrapper {
-    height: 250px;
-    width: 670px;
-    margin: 20px 0px;
-    border-radius: 7px 7px 7px 7px;*/
-/* VIA CSS MATIC https://goo.gl/cIbnS */
-/*-webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
-    -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
-    box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
-}*/
 .wrapper {
     height: 250px;
     width: 670px;
@@ -70,8 +52,8 @@ body {
     }
 
     .product-text h2 {
-        margin: 11px 12px 47px 8px;
-        font-size: 13.5px;
+        margin: 8px 9px 6px 10px;
+        font-size: 12.5px;
         font-family: 'Raleway', sans-serif;
         font-weight: 400;
         text-transform: uppercase;
@@ -143,10 +125,30 @@ span {
 .info-button {
     position: relative;
     bottom: 35px;
-    left: 190px;
+    left: 195px;
+    top: 19px;
 }
 
 .car-img {
     height: 270px;
     width: 327px;
+}
+
+.split-line {
+    width: 95%;
+    text-align: left;
+    margin-left: 15px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+.product-price {
+    margin-top: -37px;
+    margin-right: 160px;
+    position: relative;
+    top: 75px;
+    left: 15px;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
 }

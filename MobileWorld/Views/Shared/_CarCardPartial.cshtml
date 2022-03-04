@@ -1,7 +1,6 @@
 ﻿@using MobileWorld.Core.ViewModels
 @model CarCardViewModel
 
-<link asp-append-version="true" rel="stylesheet" href="~/css/CarCardPartial.css">
 
 <div class="wrapper">
     <div class="product-img">
@@ -21,3 +20,19 @@
     </div>
 </div>
 
+
+@*<div class="wrapper">
+    <div class="product-img">
+        <img src="@car.Url" class="car-img">
+    </div>
+    <div class="product-info">
+        <div class="product-text">
+            <h1>@car.Title</h1>
+            <h2>@car.Description</h2>
+            <h3 class="product-price">Price : @car.Price</h3>
+            <div class="button-holder info-button">
+                <a href="/Cars/Details?carId=@car.CarId" class="btn btn-info text-uppercase">Разгледай</a>
+            </div>
+        </div>
+    </div>
+</div>*@
