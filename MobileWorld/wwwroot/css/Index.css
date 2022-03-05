@@ -1,43 +1,5 @@
-﻿select {
-    width: 40%;
-    padding: 16px 20px;
-    border: none;
-    border-radius: 4px;
-    background-color: #f1f1f1;
-    font-size: 15px;
-}
-
-html {
+﻿html {
     background-repeat: no-repeat;
     background-size: 10px;
     font-size: 20px;
-}
-
-.form-control {
-    width: 190px;
-}
-
-button, input, optgroup, select, textarea {
-    margin: 0;
-    margin-top: 10px;
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-}
-
-.da {
-    padding-left: 200px
-}
-
-.labels {
-    /*float:left;*/
-    padding-left: 200px;
-}
-
-.div-labels {
-    display: inline-flex;
-}
-
-.selects {
-    padding-left: 70px;
 }

@@ -1,0 +1,42 @@
+﻿.selects {
+    padding-left: 70px;
+}
+
+.labels {
+    /*float:left;*/
+    padding-left: 200px;
+}
+
+.div-labels {
+    display: inline-flex;
+}
+
+button, input, optgroup, select, textarea {
+    margin: 0;
+    margin-top: 10px;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.da {
+    padding-left: 200px
+}
+
+
+select {
+    width: 40%;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+    font-size: 15px;
+}
+
+.form-control {
+    width: 190px;
+}
+.detailed-search {
+    position: relative;
+    top: 10px;
+    left: 405px;
+}
