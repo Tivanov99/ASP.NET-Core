@@ -1,4 +1,4 @@
-﻿namespace MobileWorld.Core.ViewModels
+﻿namespace MobileWorld.Core.ViewModels.CarViewModels
 {
     public class CarCardViewModel
     {

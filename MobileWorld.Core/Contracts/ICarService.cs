@@ -1,12 +1,12 @@
 ﻿namespace MobileWorld.Core.Contracts
 {
-    using MobileWorld.Core.ViewModels;
+    using MobileWorld.Core.ViewModels.CarViewModels;
 
     public interface ICarService
     {
         List<CarCardViewModel> GetIndexCars();
 
-        List<CarCardViewModel> GetAllCarsByCriteria(SearchCarModel model);
+        List<CarCardViewModel> GetAllCarsByCriteria(SearchCarViewModel model);
 
         CarAdViewModel GetCarById(int carId);
     }

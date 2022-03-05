@@ -1,8 +1,7 @@
-﻿using MobileWorld.Core.ViewModels;
+﻿using MobileWorld.Core.ViewModels.UserModels;
 using MobileWorld.Core.Contracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 
 namespace MobileWorld.Controllers
 {
@@ -35,7 +34,7 @@ namespace MobileWorld.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(LoginModel model)
+        public IActionResult Login(LoginViewModel model)
         {
             if (!ModelState.IsValid)
             {

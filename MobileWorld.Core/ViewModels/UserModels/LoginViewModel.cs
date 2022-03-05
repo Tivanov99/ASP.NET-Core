@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MobileWorld.Core.ViewModels
+namespace MobileWorld.Core.ViewModels.UserModels
 {
-    public class LoginModel
+    public class LoginViewModel
     {
         [StringLength(20, MinimumLength = 5, ErrorMessage = "Invalid {0}.")]
         public string Username { get; set; }

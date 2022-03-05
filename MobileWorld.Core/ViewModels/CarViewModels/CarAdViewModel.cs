@@ -1,4 +1,6 @@
-﻿namespace MobileWorld.Core.ViewModels
+﻿using MobileWorld.Core.ViewModels.UserModels;
+
+namespace MobileWorld.Core.ViewModels.CarViewModels
 {
     public class CarAdViewModel
     {

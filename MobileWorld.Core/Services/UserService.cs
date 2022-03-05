@@ -1,6 +1,6 @@
 ﻿namespace MobileWorld.Core.Services
 {
-    using MobileWorld.Core.ViewModels;
+    using MobileWorld.Core.ViewModels.UserModels;
     using MobileWorld.Core.Contracts;
     using MobileWorld.Infrastructure.Data.Common;
 
@@ -13,7 +13,7 @@
             this.repo = _repo;
         }
 
-        public bool LogInUser(LoginModel model)
+        public bool LogInUser(LoginViewModel model)
         {
             throw new NotImplementedException();
         }

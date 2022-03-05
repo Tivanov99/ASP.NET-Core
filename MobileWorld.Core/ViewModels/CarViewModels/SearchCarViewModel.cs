@@ -1,6 +1,6 @@
-﻿namespace MobileWorld.Core.ViewModels
+﻿namespace MobileWorld.Core.ViewModels.CarViewModels
 {
-    public class SearchCarModel
+    public class SearchCarViewModel
     {
         public string Make { get; set; }
 

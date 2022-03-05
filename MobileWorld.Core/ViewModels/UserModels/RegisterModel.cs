@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MobileWorld.Core.ViewModels
+namespace MobileWorld.Core.ViewModels.UserModels
 {
     public class RegisterModel
     {

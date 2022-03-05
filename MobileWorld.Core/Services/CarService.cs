@@ -1,7 +1,7 @@
 ﻿namespace MobileWorld.Core.Services
 {
     using MobileWorld.Core.Contracts;
-    using MobileWorld.Core.ViewModels;
+    using MobileWorld.Core.ViewModels.CarViewModels;
     using MobileWorld.Infrastructure.Data.Common;
     using System.Collections.Generic;
 
@@ -14,7 +14,7 @@
             this.repo = _repo;
         }
 
-        public List<CarCardViewModel> GetAllCarsByCriteria(SearchCarModel model)
+        public List<CarCardViewModel> GetAllCarsByCriteria(SearchCarViewModel model)
         {
             Type type = model.GetType();
 
