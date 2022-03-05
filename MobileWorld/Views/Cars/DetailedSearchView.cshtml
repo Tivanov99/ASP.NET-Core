@@ -1,14 +1,15 @@
 ﻿<link asp-append-version="true" rel="stylesheet" href="~/css/SearchForm.css">
+<link asp-append-version="true" rel="stylesheet" href="~/css/DetailedSearch.css">
+
 
 @await Html.PartialAsync("_SearchFormPartial")
 @await Html.PartialAsync("_DetailingSearchPartial")
 
 <script>
-    let form = document.querySelector("form");
     let searchLink= document.querySelector(".detailed-search");
     searchLink.className="hide";
+    let form = document.querySelector("form");
     let details = document.querySelector("#details");
     form.appendChild(details)
-
 </script>
 
