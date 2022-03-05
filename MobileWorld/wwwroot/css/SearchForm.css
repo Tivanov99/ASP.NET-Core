@@ -40,3 +40,7 @@ select {
     top: 10px;
     left: 405px;
 }
+
+.hide{
+    display: none
+}

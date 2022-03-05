@@ -5,9 +5,9 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileWorld", "MobileWorld.csproj", "{E035A033-3050-4BBC-A642-4D32AA0A901D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileWorld.Core", "..\MobileWorld.Core\MobileWorld.Core.csproj", "{19AFC3E5-B09E-4973-9E36-C272C8135E50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileWorld.Core", "..\MobileWorld.Core\MobileWorld.Core.csproj", "{19AFC3E5-B09E-4973-9E36-C272C8135E50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileWorld.Infrastructure", "..\MobileWorld.Infrastructure\MobileWorld.Infrastructure.csproj", "{CA8074EA-2880-49A1-9DF3-9214865050FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileWorld.Infrastructure", "..\MobileWorld.Infrastructure\MobileWorld.Infrastructure.csproj", "{CA8074EA-2880-49A1-9DF3-9214865050FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
