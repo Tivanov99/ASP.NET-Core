@@ -6,7 +6,7 @@
 
         public string Location { get; set; }
 
-        public Decimal MaxPrice { get; set; }
+        public decimal MaxPrice { get; set; }
 
         public int AfterYear { get; set; }
 
