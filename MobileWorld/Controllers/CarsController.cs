@@ -21,12 +21,17 @@ namespace MobileWorld.Controllers
             return View(cars);
         }
 
-        public IActionResult Details(int carId)
+        public IActionResult CarDetails(int carId)
         {
             CarAdViewModel carAd = this.carService
                 .GetCarById(carId);
 
             return View(carAd);
+        }
+
+        public IActionResult DetailedSearch()
+        {
+            return View("DetailedSearchView");
         }
     }
 }
