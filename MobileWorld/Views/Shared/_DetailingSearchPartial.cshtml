@@ -1,14 +1,16 @@
-﻿<table id="details">
+﻿@using MobileWorld.Core.ViewModels.CarViewModels
+@model SearchCarViewModel
+<table id="details">
     <tbody>
         <tr>
             <td valign="top">
                 <strong>Безопасност</strong>
                 <div>
-                    <input type="checkbox" data-val="true" name="gps" value="true">
+                    <input asp-for="Features.SafetyDetails.Gps" type="checkbox" data-val="true" value="true">
                     <label for="gps">GPS система за проследяване</label>
                 </div>
                 <div>
-                    <input type="checkbox" data-val="true" name="automatic-stability-control" value="true">
+                    <input asp-for="Features.SafetyDetails.AutomaticStabilityControl" type="checkbox" data-val="true" value="true">
                     <label for="automatic-stability-control">Автоматичен контрол на стабилността</label>
                 </div>
                 <div>

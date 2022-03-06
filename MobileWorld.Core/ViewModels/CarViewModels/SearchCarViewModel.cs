@@ -14,6 +14,6 @@
 
         public string EngineType { get; set; }
 
-        public bool Asc { get; set; }
+        public FeaturesViewModel Features { get; set; }
     }
 }
