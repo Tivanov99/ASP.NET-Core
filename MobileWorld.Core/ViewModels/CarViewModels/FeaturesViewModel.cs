@@ -4,5 +4,6 @@
     {
         public SafetyDetails SafetyDetails { get; set; }
 
+        public ComfortDetails ComfortDetails { get; set; }
     }
 }
