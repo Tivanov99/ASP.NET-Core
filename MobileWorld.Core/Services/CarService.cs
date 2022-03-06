@@ -97,7 +97,7 @@
             Type type = model.GetType();
 
             var propertyInfos = type.GetProperties()
-                .Where(x => x.GetValue(model) != null)
+                .Where(x => x.GetValue(model) != null && x.PropertyType!= typeof(FeaturesViewModel))
                 .Select(x => new
                 {
                     PropertyName = x.Name,
