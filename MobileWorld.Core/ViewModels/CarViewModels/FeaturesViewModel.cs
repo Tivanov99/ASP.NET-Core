@@ -6,6 +6,10 @@
 
         public ComfortDetails ComfortDetails { get; set; }
 
-        public Others Others { get; set; }
+        public OthersDetails Others { get; set; }
+
+        public ExteriorDetails Exterior { get; set; }
+
+        public ProtectionDetails Protection { get; set; }
     }
 }

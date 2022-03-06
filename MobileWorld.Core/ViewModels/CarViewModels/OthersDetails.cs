@@ -1,6 +1,6 @@
 ﻿namespace MobileWorld.Core.ViewModels.CarViewModels
 {
-    public class Others
+    public class OthersDetails
     {
         public bool AllDrive { get; set; }
 
