@@ -3,5 +3,6 @@
     public class FeaturesViewModel
     {
         public SafetyDetails SafetyDetails { get; set; }
+
     }
 }
