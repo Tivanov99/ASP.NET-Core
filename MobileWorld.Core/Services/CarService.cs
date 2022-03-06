@@ -18,7 +18,7 @@
         {
             Type type = model.GetType();
 
-            var searchCriteria = GetAllValidProperties(model);
+            var searchCriteria = GetDefaultProperties(model);
 
             string sqlCommand = "Select * From ";
 
@@ -92,7 +92,7 @@
             return adds;
         }
 
-        private object[] GetAllValidProperties(object model)
+        private object[] GetDefaultProperties(object model)
         {
             Type type = model.GetType();
 
