@@ -8,8 +8,8 @@
                     <label for="gps">GPS система за проследяване</label>
                 </div>
                 <div>
-                    <input type="checkbox" data-val="true" name="asc" value="true">
-                    <label for="asc">Автоматичен контрол на стабилността</label>
+                    <input type="checkbox" data-val="true" name="automatic-stability-control" value="true">
+                    <label for="automatic-stability-control">Автоматичен контрол на стабилността</label>
                 </div>
                 <div>
                     <input type="checkbox" data-val="true" name="adaptive-front-lights" value="true">
@@ -40,12 +40,12 @@
                     <label for="isofix">Система ISOFIX</label>
                 </div>
                 <div>
-                    <input type="checkbox" data-val="true" name="dsa" value="true">
-                    <label for="dsa">Система за динамична устойчивост</label>
+                    <input type="checkbox" data-val="true" name="dynamic-stability-system" value="true">
+                    <label for="dynamic-stability-system">Система за динамична устойчивост</label>
                 </div>
                 <div>
-                    <input type="checkbox" data-val="true" name="asr" value="true">
-                    <label for="asr">Система за защита от пробуксуванет</label>
+                    <input type="checkbox" data-val="true" name="slip-protection-system" value="true">
+                    <label for="slip-protection-system">Система за защита от пробуксуванет</label>
                 </div>
                 <div>
                     <input type="checkbox" data-val="true" name="dry-brakes-system" value="true">
@@ -56,47 +56,140 @@
                     <label for="distronic">Система за контрол на дистанцията</label>
                 </div>
                 <div>
-                    <input type="checkbox" data-val="true" name="hdc" value="true">
-                    <label for="hdc">Система за контрол на спускането</label>
+                    <input type="checkbox" data-val="true" name="hill-descent-controll" value="true">
+                    <label for="hill-descent-controll">Система за контрол на спускането</label>
                 </div>
                 <div>
-                    <input type="checkbox" data-val="true" name="bas" value="true">
-                    <label for="bas">Система за подпомагане на спирането</label>
+                    <input type="checkbox" data-val="true" name="brake-assist" value="true">
+                    <label for="brake-assist">Система за подпомагане на спирането</label>
                 </div>
             </td>
             <td valign="top">
                 <label class="extra_cat">Комфорт</label><br><label onmouseover="javascript:ShowExtriDescription(this,'ASS, ISG');" onmouseout="javascript:HideExtriDescription();"><img id="eimg50" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f50);" align="absmiddle"><input type="hidden" name="f50" value="0~Auto Start Stop function" id="f50"> <span onclick="javascript:extrich(document.getElementById('eimg50'), document.getElementById('f50'));">Auto Start Stop function<img src="//www.mobile.bg/images/picturess/info.jpg" width="16" height="16" style="margin:2px 0 -2px 0;"></span></label><br>
-                <label><img id="eimg51" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f51);" align="absmiddle"><input type="hidden" name="f51" value="0~Bluetooth \ handsfree система" id="f51"> <span onclick="javascript:extrich(document.getElementById('eimg51'), document.getElementById('f51'));">Bluetooth \ handsfree система</span></label><br>
-                <label><img id="eimg52" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f52);" align="absmiddle"><input type="hidden" name="f52" value="0~DVD, TV" id="f52"> <span onclick="javascript:extrich(document.getElementById('eimg52'), document.getElementById('f52'));">DVD, TV</span></label><br>
-                <label><img id="eimg53" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f53);" align="absmiddle"><input type="hidden" name="f53" value="0~Steptronic, Tiptronic" id="f53"> <span onclick="javascript:extrich(document.getElementById('eimg53'), document.getElementById('f53'));">Steptronic, Tiptronic</span></label><br>
-                <label><img id="eimg54" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f54);" align="absmiddle"><input type="hidden" name="f54" value="0~USB, audio\video, IN\AUX изводи" id="f54"> <span onclick="javascript:extrich(document.getElementById('eimg54'), document.getElementById('f54'));">USB, audio\video, IN\AUX изводи</span></label><br>
-                <label onmouseover="javascript:ShowExtriDescription(this,' Airmatic');" onmouseout="javascript:HideExtriDescription();"><img id="eimg55" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f55);" align="absmiddle"><input type="hidden" name="f55" value="0~Адаптивно въздушно окачване" id="f55"> <span onclick="javascript:extrich(document.getElementById('eimg55'), document.getElementById('f55'));">Адаптивно въздушно окачване<img src="//www.mobile.bg/images/picturess/info.jpg" width="16" height="16" style="margin:2px 0 -2px 0;"></span></label><br>
-                <label><img id="eimg56" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f56);" align="absmiddle"><input type="hidden" name="f56" value="0~Безключово палене " id="f56"> <span onclick="javascript:extrich(document.getElementById('eimg56'), document.getElementById('f56'));">Безключово палене </span></label><br>
-                <label><img id="eimg57" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f57);" align="absmiddle"><input type="hidden" name="f57" value="0~Блокаж на диференциала" id="f57"> <span onclick="javascript:extrich(document.getElementById('eimg57'), document.getElementById('f57'));">Блокаж на диференциала</span></label><br>
-                <label><img id="eimg58" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f58);" align="absmiddle"><input type="hidden" name="f58" value="0~Бордкомпютър" id="f58"> <span onclick="javascript:extrich(document.getElementById('eimg58'), document.getElementById('f58'));">Бордкомпютър</span></label><br>
-                <label><img id="eimg59" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f59);" align="absmiddle"><input type="hidden" name="f59" value="0~Бързи \ бавни скорости" id="f59"> <span onclick="javascript:extrich(document.getElementById('eimg59'), document.getElementById('f59'));">Бързи \ бавни скорости</span></label><br>
-                <label><img id="eimg60" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f60);" align="absmiddle"><input type="hidden" name="f60" value="0~Датчик за светлина" id="f60"> <span onclick="javascript:extrich(document.getElementById('eimg60'), document.getElementById('f60'));">Датчик за светлина</span></label><br>
-                <label><img id="eimg61" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f61);" align="absmiddle"><input type="hidden" name="f61" value="0~Ел. Огледала" id="f61"> <span onclick="javascript:extrich(document.getElementById('eimg61'), document.getElementById('f61'));">Ел. Огледала</span></label><br>
-                <label><img id="eimg62" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f62);" align="absmiddle"><input type="hidden" name="f62" value="0~Ел. Стъкла" id="f62"> <span onclick="javascript:extrich(document.getElementById('eimg62'), document.getElementById('f62'));">Ел. Стъкла</span></label><br>
-                <label><img id="eimg63" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f63);" align="absmiddle"><input type="hidden" name="f63" value="0~Ел. регулиране на окачването" id="f63"> <span onclick="javascript:extrich(document.getElementById('eimg63'), document.getElementById('f63'));">Ел. регулиране на окачването</span></label><br>
-                <label><img id="eimg64" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f64);" align="absmiddle"><input type="hidden" name="f64" value="0~Ел. регулиране на седалките" id="f64"> <span onclick="javascript:extrich(document.getElementById('eimg64'), document.getElementById('f64'));">Ел. регулиране на седалките</span></label><br>
-                <label onmouseover="javascript:ShowExtriDescription(this,'EPS (Electric Power Steering)');" onmouseout="javascript:HideExtriDescription();"><img id="eimg65" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f65);" align="absmiddle"><input type="hidden" name="f65" value="0~Ел. усилвател на волана" id="f65"> <span onclick="javascript:extrich(document.getElementById('eimg65'), document.getElementById('f65'));">Ел. усилвател на волана<img src="//www.mobile.bg/images/picturess/info.jpg" width="16" height="16" style="margin:2px 0 -2px 0;"></span></label><br>
-                <label><img id="eimg66" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f66);" align="absmiddle"><input type="hidden" name="f66" value="0~Климатик" id="f66"> <span onclick="javascript:extrich(document.getElementById('eimg66'), document.getElementById('f66'));">Климатик</span></label><br>
-                <label onmouseover="javascript:ShowExtriDescription(this,'ACC, ECC, Climatecontrol, Climatronic');" onmouseout="javascript:HideExtriDescription();"><img id="eimg67" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f67);" align="absmiddle"><input type="hidden" name="f67" value="0~Климатроник" id="f67"> <span onclick="javascript:extrich(document.getElementById('eimg67'), document.getElementById('f67'));">Климатроник<img src="//www.mobile.bg/images/picturess/info.jpg" width="16" height="16" style="margin:2px 0 -2px 0;"></span></label><br>
-                <label><img id="eimg68" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f68);" align="absmiddle"><input type="hidden" name="f68" value="0~Мултифункционален волан" id="f68"> <span onclick="javascript:extrich(document.getElementById('eimg68'), document.getElementById('f68'));">Мултифункционален волан</span></label><br>
-                <label><img id="eimg69" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f69);" align="absmiddle"><input type="hidden" name="f69" value="0~Навигация" id="f69"> <span onclick="javascript:extrich(document.getElementById('eimg69'), document.getElementById('f69'));">Навигация</span></label><br>
-                <label><img id="eimg70" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f70);" align="absmiddle"><input type="hidden" name="f70" value="0~Отопление на волана" id="f70"> <span onclick="javascript:extrich(document.getElementById('eimg70'), document.getElementById('f70'));">Отопление на волана</span></label><br>
-                <label><img id="eimg71" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f71);" align="absmiddle"><input type="hidden" name="f71" value="0~Печка" id="f71"> <span onclick="javascript:extrich(document.getElementById('eimg71'), document.getElementById('f71'));">Печка</span></label><br>
-                <label><img id="eimg72" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f72);" align="absmiddle"><input type="hidden" name="f72" value="0~Подгряване на предното стъкло" id="f72"> <span onclick="javascript:extrich(document.getElementById('eimg72'), document.getElementById('f72'));">Подгряване на предното стъкло</span></label><br>
-                <label><img id="eimg73" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f73);" align="absmiddle"><input type="hidden" name="f73" value="0~Подгряване на седалките" id="f73"> <span onclick="javascript:extrich(document.getElementById('eimg73'), document.getElementById('f73'));">Подгряване на седалките</span></label><br>
-                <label><img id="eimg74" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f74);" align="absmiddle"><input type="hidden" name="f74" value="0~Регулиране на волана" id="f74"> <span onclick="javascript:extrich(document.getElementById('eimg74'), document.getElementById('f74'));">Регулиране на волана</span></label><br>
-                <label><img id="eimg75" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f75);" align="absmiddle"><input type="hidden" name="f75" value="0~Сензор за дъжд" id="f75"> <span onclick="javascript:extrich(document.getElementById('eimg75'), document.getElementById('f75'));">Сензор за дъжд</span></label><br>
-                <label><img id="eimg76" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f76);" align="absmiddle"><input type="hidden" name="f76" value="0~Серво усилвател на волана" id="f76"> <span onclick="javascript:extrich(document.getElementById('eimg76'), document.getElementById('f76'));">Серво усилвател на волана</span></label><br>
-                <label><img id="eimg77" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f77);" align="absmiddle"><input type="hidden" name="f77" value="0~Система за измиване на фаровете" id="f77"> <span onclick="javascript:extrich(document.getElementById('eimg77'), document.getElementById('f77'));">Система за измиване на фаровете</span></label><br>
-                <label onmouseover="javascript:ShowExtriDescription(this,'ACC, Cruise Control, Tempomat');" onmouseout="javascript:HideExtriDescription();"><img id="eimg78" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f78);" align="absmiddle"><input type="hidden" name="f78" value="0~Система за контрол на скоростта (автопилот)" id="f78"> <span onclick="javascript:extrich(document.getElementById('eimg78'), document.getElementById('f78'));">Система за контрол на скоростта<br> (автопилот)<img src="//www.mobile.bg/images/picturess/info.jpg" width="16" height="16" style="margin:2px 0 -2px 0;"></span></label><br>
-                <label><img id="eimg79" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f79);" align="absmiddle"><input type="hidden" name="f79" value="0~Стерео уредба" id="f79"> <span onclick="javascript:extrich(document.getElementById('eimg79'), document.getElementById('f79'));">Стерео уредба</span></label><br>
-                <label><img id="eimg80" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f80);" align="absmiddle"><input type="hidden" name="f80" value="0~Филтър за твърди частици" id="f80"> <span onclick="javascript:extrich(document.getElementById('eimg80'), document.getElementById('f80'));">Филтър за твърди частици</span></label><br>
-                <label><img id="eimg81" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f81);" align="absmiddle"><input type="hidden" name="f81" value="0~Хладилна жабка" id="f81"> <span onclick="javascript:extrich(document.getElementById('eimg81'), document.getElementById('f81'));">Хладилна жабка</span></label><br>
+                 <div>
+                    <input type="checkbox" data-val="true" name="auto-start-stop" value="true">
+                    <label for="auto-start-stop">Auto Start Stop function</label>
+                </div>
+                 <div>
+                    <input type="checkbox" data-val="true" name="dvd-tv" value="true">
+                    <label for="dvd-tv">DVD, TV</label>
+                </div>
+                <div>
+                    <input type="checkbox" data-val="true" name="bluetooth-handsfree" value="true">
+                    <label for="bluetooth-handsfree">Bluetooth \ handsfree система</label>
+                </div>
+                <div>
+                    <input type="checkbox" data-val="true" name="steptronic-tiptronic" value="true">
+                    <label for="steptronic-tiptronic">Steptronic, Tiptronic</label>
+                </div>
+                <div>
+                    <input type="checkbox" data-val="true" name="usb" value="true">
+                    <label for="usb">USB, audio\video, IN\AUX изводи</label>
+                </div>
+                <div>
+                    <input type="checkbox" data-val="true" name="airmatic" value="true">
+                    <label for="airmatic">Адаптивно въздушно окачване</label>
+                </div>
+                <div>
+                    <input type="checkbox" data-val="true" name="keyless" value="true">
+                    <label for="keyless">Безключово палене</label>
+                </div>
+                <div>
+                    <input type="checkbox" data-val="true" name="differential-lock" value="true">
+                    <label for="differential-lock">Блокаж на диференциала</label>
+                </div>
+                <div>
+                    <input type="checkbox" data-val="true" name="bord-pc" value="true">
+                    <label for="bord-pc">Бордкомпютър</label>
+                </div>
+                <div>
+                    <input type="checkbox" data-val="true" name="fast-slow-shifts" value="true">
+                    <label for="fast-slow-shifts">Бързи \ бавни скорости</label>
+                </div>
+                <div>
+                    <input type="checkbox" data-val="true" name="light-detector" value="true">
+                    <label for="light-detector">Датчик за светлина</label>
+                </div>
+                <div>
+                    <input type="checkbox" data-val="true" name="el-mirrors" value="true">
+                    <label for="el-mirrors">Ел. Огледала</label>
+                </div>
+                <div>
+                    <input type="checkbox" data-val="true" name="el-glass" value="true">
+                    <label for="el-glass">Ел. Стъкла</label>
+                </div>
+                <div>
+                    <input type="checkbox" data-val="true" name="el-suspension" value="true">
+                    <label for="el-suspension">Ел. регулиране на окачването</label>
+                </div>
+                <div>
+                    <input type="checkbox" data-val="true" name="el-seats" value="true">
+                    <label for="el-seats">Ел. регулиране на седалките</label>
+                </div>
+                <div>
+                    <input type="checkbox" data-val="true" name="eps" value="true">
+                    <label for="eps">Ел. усилвател на волана</label>
+                </div>
+                <div>
+                    <input type="checkbox" data-val="true" name="ac" value="true">
+                    <label for="ac">Климатик</label>
+                </div>
+                <div>
+                    <input type="checkbox" data-val="true" name="climatecontroll" value="true">
+                    <label for="climatecontroll">Климатроник</label>
+                </div>
+                <div>
+                    <input type="checkbox" data-val="true" name="multi-steering-wheel" value="true">
+                    <label for="multi-steering-wheel">Мултифункционален волан</label>
+                </div>
+                <div>
+                    <input type="checkbox" data-val="true" name="navigation" value="true">
+                    <label for="navigation">Навигация</label>
+                </div>
+                <div>
+                    <input type="checkbox" data-val="true" name="steering-wheel-heating" value="true">
+                    <label for="steering-wheel-heating">Отопление на волана</label>
+                </div>
+                <div>
+                    <input type="checkbox" data-val="true" name="front-glass-heating" value="true">
+                    <label for="front-glass-heating">Подгряване на предното стъкло</label>
+                </div>
+                 <div>
+                    <input type="checkbox" data-val="true" name="seats-heating" value="true">
+                    <label for="seats-heating">Подгряване на седалките</label>
+                </div>
+                <div>
+                    <input type="checkbox" data-val="true" name="steering-wheel-adjustment" value="true">
+                    <label for="steering-wheel-adjustment">Регулиране на волана</label>
+                </div>
+                <div>
+                    <input type="checkbox" data-val="true" name="rain-sensor" value="true">
+                    <label for="rain-sensor">Сензор за дъжд</label>
+                </div>
+                <div>
+                    <input type="checkbox" data-val="true" name="power-steering" value="true">
+                    <label for="power-steering">Серво усилвател на волана</label>
+                </div>
+                <div>
+                    <input type="checkbox" data-val="true" name="headlamp-wash-system" value="true">
+                    <label for="headlamp-wash-system">Система за измиване на фаровете</label>
+                </div>
+                <div>
+                    <input type="checkbox" data-val="true" name="autopilot" value="true">
+                    <label for="autopilot">Система за контрол на скоростта (автопилот)</label>
+                </div>
+                <div>
+                    <input type="checkbox" data-val="true" name="stereo" value="true">
+                    <label for="stereo">Стерео уредба</label>
+                </div>
+                <div>
+                    <input type="checkbox" data-val="true" name="filter" value="true">
+                    <label for="filter">Филтър за твърди частици</label>
+                </div>
+                <div>
+                    <input type="checkbox" data-val="true" name="refrigeration-frog" value="true">
+                    <label for="refrigeration-frog">Хладилна жабка</label>
+                </div>
             </td>
             <td valign="top">
                 <label class="extra_cat">Други</label><br><label><img id="eimg82" src="//www.mobile.bg/images/picturess/chk0.gif" width="19" height="19" border="0" onclick="javascript:extrich(this,document.search.f82);" align="absmiddle"><input type="hidden" name="f82" value="0~4x4" id="f82"> <span onclick="javascript:extrich(document.getElementById('eimg82'), document.getElementById('f82'));">4x4</span></label><br>
