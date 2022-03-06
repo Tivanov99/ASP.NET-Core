@@ -6,10 +6,12 @@
 
         public ComfortDetails ComfortDetails { get; set; }
 
-        public OthersDetails Others { get; set; }
+        public OthersDetails OthersDetails { get; set; }
 
-        public ExteriorDetails Exterior { get; set; }
+        public ExteriorDetails ExteriorDetails { get; set; }
 
-        public ProtectionDetails Protection { get; set; }
+        public ProtectionDetails ProtectionDetails { get; set; }
+
+        public InteriorDetails InteriorDetails { get; set; }
     }
 }
