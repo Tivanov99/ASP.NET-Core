@@ -1,4 +1,6 @@
-﻿namespace MobileWorld.Core.ViewModels.CarViewModels
+﻿using MobileWorld.Core.ViewModels.CarViewModels.Details;
+
+namespace MobileWorld.Core.ViewModels.CarViewModels
 {
     public class FeaturesViewModel
     {
