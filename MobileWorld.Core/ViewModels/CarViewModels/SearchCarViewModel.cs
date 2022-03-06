@@ -13,5 +13,7 @@
         public string Transmission { get; set; }
 
         public string EngineType { get; set; }
+
+        public bool Asc { get; set; }
     }
 }
