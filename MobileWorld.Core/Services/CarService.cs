@@ -1,7 +1,9 @@
 ﻿namespace MobileWorld.Core.Services
 {
     using MobileWorld.Core.Contracts;
+    using MobileWorld.Core.Dto;
     using MobileWorld.Core.ViewModels.CarViewModels;
+    using MobileWorld.Core.ViewModels.CarViewModels.Details;
     using MobileWorld.Infrastructure.Data.Common;
     using System.Collections.Generic;
 
@@ -19,6 +21,9 @@
             Type type = model.GetType();
 
             var searchCriteria = GetDefaultProperties(model);
+
+
+            var details = GetDetailsProperties(model.Features.SafetyDetails);
 
             string sqlCommand = "Select * From ";
 
@@ -92,20 +97,35 @@
             return adds;
         }
 
-        private object[] GetDefaultProperties(object model)
+        private List<PropertyDto> GetDefaultProperties(object model)
         {
             Type type = model.GetType();
 
             var propertyInfos = type.GetProperties()
-                .Where(x => x.GetValue(model) != null && x.PropertyType!= typeof(FeaturesViewModel))
+                .Where(x => x.GetValue(model) != null &&
+                        x.PropertyType != typeof(FeaturesViewModel))
                 .Select(x => new
+                PropertyDto()
                 {
-                    PropertyName = x.Name,
-                    PropertyValue = x.GetValue(model)
+                    Name = x.Name.ToString(),
+                    Value = x.GetValue(model)
                 })
-                .ToArray();
+                .ToList();
 
             return propertyInfos;
+        }
+
+        private List<PropertyDto> GetDetailsProperties(object model)
+        {
+            Type type = model.GetType();
+
+            var features = type
+                .GetProperties()
+                .Where(x => (bool)x.GetValue(model) == true)
+                .Select(x => new PropertyDto { Name = x.Name, Value = x.GetValue(model) })
+                .ToList();
+
+            return features;
         }
     }
 }
