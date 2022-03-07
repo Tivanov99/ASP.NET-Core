@@ -57,7 +57,7 @@
             return adds;
         }
 
-        public CarAdViewModel GetCarById(int carId)
+        public CarAdViewModel GetCarById(string carId)
         {
             //TODO: Make request to db with car Id
             CarAdViewModel carAd = new CarAdViewModel();

@@ -21,7 +21,7 @@ namespace MobileWorld.Controllers
             return View(cars);
         }
 
-        public IActionResult CarDetails(int carId)
+        public IActionResult CarDetails(string carId)
         {
             CarAdViewModel carAd = this.carService
                 .GetCarById(carId);
