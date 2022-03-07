@@ -20,10 +20,14 @@
         {
             Type type = model.GetType();
 
-            var searchCriteria = GetDefaultProperties(model);
+            List<PropertyDto> searchCriteria = GetDefaultProperties(model);
 
-
-            var details = GetDetailsProperties(model.Features.SafetyDetails);
+            GetDetailsProperties(model.Features.SafetyDetails, searchCriteria);
+            GetDetailsProperties(model.Features.ComfortDetails, searchCriteria);
+            GetDetailsProperties(model.Features.OthersDetails, searchCriteria);
+            GetDetailsProperties(model.Features.ExteriorDetails, searchCriteria);
+            GetDetailsProperties(model.Features.ProtectionDetails, searchCriteria);
+            GetDetailsProperties(model.Features.InteriorDetails, searchCriteria);
 
             string sqlCommand = "Select * From ";
 
@@ -115,7 +119,7 @@
             return propertyInfos;
         }
 
-        private List<PropertyDto> GetDetailsProperties(object model)
+        private void GetDetailsProperties(object model, List<PropertyDto> currentCriteria)
         {
             Type type = model.GetType();
 
@@ -125,7 +129,10 @@
                 .Select(x => new PropertyDto { Name = x.Name, Value = x.GetValue(model) })
                 .ToList();
 
-            return features;
+            if (features.Any())
+            {
+                currentCriteria.AddRange(features);
+            }
         }
     }
 }
