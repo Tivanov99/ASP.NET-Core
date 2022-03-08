@@ -12,10 +12,13 @@
 
         public int BeforeYear { get; set; }
 
+        public int MaxHp { get; set; }
+
+        public int MinHp { get; set; }
+
         public string Transmission { get; set; }
 
         public string EngineType { get; set; }
-
 
         public FeaturesViewModel Features { get; set; }
     }
