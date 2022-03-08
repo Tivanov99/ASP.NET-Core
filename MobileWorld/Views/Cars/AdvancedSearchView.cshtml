@@ -1,10 +1,10 @@
 ﻿<link asp-append-version="true" rel="stylesheet" href="~/css/SearchForm.css">
-<link asp-append-version="true" rel="stylesheet" href="~/css/DetailedSearch.css">
+<link asp-append-version="true" rel="stylesheet" href="~/css/AdvancedSearch.css">
     <link asp-append-version="true" rel="stylesheet" href="~/css/site.css">
 
 
 @await Html.PartialAsync("_SearchFormPartial")
-@await Html.PartialAsync("_DetailingSearchPartial")
+@await Html.PartialAsync("_FeaturesPartial")
 
 <script>
     let searchLink= document.querySelector(".detailed-search");

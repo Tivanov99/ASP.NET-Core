@@ -29,9 +29,9 @@ namespace MobileWorld.Controllers
             return View(carAd);
         }
 
-        public IActionResult DetailedSearch()
+        public IActionResult AdvancedSearch()
         {
-            return View("DetailedSearchView");
+            return View("AdvancedSearchView");
         }
     }
 }
