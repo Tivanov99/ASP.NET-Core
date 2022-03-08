@@ -10,9 +10,12 @@
 
         public int AfterYear { get; set; }
 
+        public int BeforeYear { get; set; }
+
         public string Transmission { get; set; }
 
         public string EngineType { get; set; }
+
 
         public FeaturesViewModel Features { get; set; }
     }
