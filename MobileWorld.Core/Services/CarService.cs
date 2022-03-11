@@ -109,9 +109,9 @@
                 .Where(x => x.GetValue(model) != null)
                 .Select(x => new PropertyDto(x.Name, x.GetValue(model)))
                 .ToList();
-           
 
-            return null;
+
+            return propertyInfos;
         }
 
 
@@ -122,7 +122,7 @@
             var features = type
                 .GetProperties()
                 .Where(x => (bool)x.GetValue(model) == true)
-                .Select(x => new PropertyDto { Name = x.Name, Value = x.GetValue(model) })
+                .Select(x => new PropertyDto(x.Name, x.GetValue(model)))
                 .ToList();
 
             if (features.Any())
