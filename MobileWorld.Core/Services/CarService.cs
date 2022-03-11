@@ -29,12 +29,8 @@
             GetDetailsProperties(model.Features.ProtectionDetails, searchCriteria);
             GetDetailsProperties(model.Features.InteriorDetails, searchCriteria);
 
-            string sqlCommand = "Select * From ";
+            string sqlCommand = "Select * From";
 
-            foreach (var item in searchCriteria)
-            {
-
-            }
 
 
             List<CarCardViewModel> adds = new List<CarCardViewModel>()
@@ -106,10 +102,10 @@
             Type type = model.GetType();
 
             var propertyInfos = type.GetProperties()
-                .Where(x => x.GetValue(model) != null)
+                .Where(x => x.GetValue(model) != null &&
+                        x.PropertyType.Name != typeof(FeaturesViewModel).Name)
                 .Select(x => new PropertyDto(x.Name, x.GetValue(model)))
                 .ToList();
-
 
             return propertyInfos;
         }
