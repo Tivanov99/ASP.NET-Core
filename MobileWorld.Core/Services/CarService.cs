@@ -3,9 +3,9 @@
     using MobileWorld.Core.Contracts;
     using MobileWorld.Core.Dto;
     using MobileWorld.Core.ViewModels.CarViewModels;
-    using MobileWorld.Core.ViewModels.CarViewModels.Details;
     using MobileWorld.Infrastructure.Data.Common;
     using System.Collections.Generic;
+    using System.Reflection;
 
     public class CarService : ICarService
     {
@@ -106,18 +106,14 @@
             Type type = model.GetType();
 
             var propertyInfos = type.GetProperties()
-                .Where(x => x.GetValue(model) != null &&
-                        x.PropertyType != typeof(FeaturesViewModel))
-                .Select(x => new
-                PropertyDto()
-                {
-                    Name = x.Name.ToString(),
-                    Value = x.GetValue(model)
-                })
+                .Where(x => x.GetValue(model) != null)
+                .Select(x => new PropertyDto(x.Name, x.GetValue(model)))
                 .ToList();
+           
 
-            return propertyInfos;
+            return null;
         }
+
 
         private void GetDetailsProperties(object model, List<PropertyDto> currentCriteria)
         {

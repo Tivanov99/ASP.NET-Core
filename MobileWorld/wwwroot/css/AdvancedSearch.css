@@ -13,3 +13,9 @@ td{
 strong{
     padding-top :10px;
 }
+
+.searchBtn {
+    position: absolute;
+    left: 850px;
+    top: 190px;
+}
