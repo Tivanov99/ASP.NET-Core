@@ -1,52 +1,26 @@
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
-using MobileWorld.Data;
 using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Services;
-using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data;
-using Microsoft.AspNetCore.Authentication.Cookies;
+using MobileWorld.Infrastructure.Data.Common;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString))
-    //check here 
-    .AddDbContext<MobileWorldDbContext>();
+    options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
-
-builder.Services.Configure<CookieAuthenticationOptions>(options =>
-{
-    options.LoginPath = new PathString("/Home/Index");
-});
-
-
-
-builder.Services.AddScoped<IUserService, UserService>()
-.AddScoped<ICarService, CarService>()
-.AddScoped<IRepository, Repository>()
-.AddScoped<DbContext, ApplicationDbContext>();
-
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
-//Configure default login page
-builder.Services.ConfigureApplicationCookie(options =>
-{
-    //// Cookie settings
-    //options.Cookie.HttpOnly = true;
-    //options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
-
-    options.LoginPath = "/User/Login";
-    //options.AccessDeniedPath = "/Identity/Account/AccessDenied";
-    //options.SlidingExpiration = true;
-});
+builder.Services.AddScoped<IUserService, UserService>()
+.AddScoped<ICarService, CarService>()
+.AddScoped<IRepository, Repository>()
+.AddScoped<DbContext, ApplicationDbContext>();
 
 var app = builder.Build();
 
@@ -76,5 +50,3 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 app.Run();
-
-
