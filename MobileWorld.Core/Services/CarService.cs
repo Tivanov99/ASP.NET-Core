@@ -22,12 +22,12 @@
 
             List<PropertyDto> searchCriteria = GetDefaultProperties(model);
 
-            GetDetailsProperties(model.Features.SafetyDetails, searchCriteria);
-            GetDetailsProperties(model.Features.ComfortDetails, searchCriteria);
-            GetDetailsProperties(model.Features.OthersDetails, searchCriteria);
-            GetDetailsProperties(model.Features.ExteriorDetails, searchCriteria);
-            GetDetailsProperties(model.Features.ProtectionDetails, searchCriteria);
-            GetDetailsProperties(model.Features.InteriorDetails, searchCriteria);
+            GetFeaturesProperties(model.Features.SafetyDetails, searchCriteria);
+            GetFeaturesProperties(model.Features.ComfortDetails, searchCriteria);
+            GetFeaturesProperties(model.Features.OthersDetails, searchCriteria);
+            GetFeaturesProperties(model.Features.ExteriorDetails, searchCriteria);
+            GetFeaturesProperties(model.Features.ProtectionDetails, searchCriteria);
+            GetFeaturesProperties(model.Features.InteriorDetails, searchCriteria);
 
             string sqlCommand = "Select * From";
 
@@ -111,7 +111,7 @@
         }
 
 
-        private void GetDetailsProperties(object model, List<PropertyDto> currentCriteria)
+        private void GetFeaturesProperties(object model, List<PropertyDto> currentCriteria)
         {
             Type type = model.GetType();
 
