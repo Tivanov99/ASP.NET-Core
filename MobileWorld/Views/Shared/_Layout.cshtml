@@ -26,12 +26,13 @@
 
                         @if (SignInManager.IsSignedIn(User))
                         {
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="User" asp-action="Favourites">Любими</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="User" asp-action="Ads">Обяви</a>
-                        </li>
+                            @UserManager.GetUserId(User);
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="User" asp-action="Favourites">Любими</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="User" asp-action="Ads" >Обяви</a>
+                            </li>
                         }
 
                         <li class="nav-item">

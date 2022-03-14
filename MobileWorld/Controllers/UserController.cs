@@ -2,6 +2,7 @@
 using MobileWorld.Core.Contracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
 
 namespace MobileWorld.Controllers
 {
@@ -13,43 +14,6 @@ namespace MobileWorld.Controllers
             this.userService = _userService;
         }
 
-        public IActionResult Login()
-        {
-            return View();
-        }
-
-        public IActionResult Register()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Register(RegisterModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return this.GetErrors(model);
-            }
-            return RedirectToAction("Login");
-        }
-
-        [HttpPost]
-        public IActionResult Login(LoginViewModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return this.GetErrors(model);
-            }
-            return RedirectToAction("Index", "Home");
-        }
-
-        [Authorize]
-        public IActionResult Logout()
-        {
-            this.SignOut();
-            return RedirectToAction("Index", "Home");
-        }
-
         [Authorize]
         public IActionResult Favourites(string userId)
         {
@@ -58,7 +22,7 @@ namespace MobileWorld.Controllers
         }
 
         [Authorize]
-        public IActionResult Ads()
+        public IActionResult Ads(string userId)
         {
             //TODO: check here , and add view
             return View();
