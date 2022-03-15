@@ -1,8 +1,6 @@
-﻿using MobileWorld.Core.ViewModels.UserModels;
-using MobileWorld.Core.Contracts;
+﻿using MobileWorld.Core.Contracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Identity;
 
 namespace MobileWorld.Controllers
 {
@@ -27,6 +25,5 @@ namespace MobileWorld.Controllers
             //TODO: check here , and add view
             return View();
         }
-
     }
 }
