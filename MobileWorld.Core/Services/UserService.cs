@@ -1,6 +1,5 @@
 ﻿namespace MobileWorld.Core.Services
 {
-    using MobileWorld.Core.ViewModels.UserModels;
     using MobileWorld.Core.Contracts;
     using MobileWorld.Infrastructure.Data.Common;
     using System.Collections.Generic;
