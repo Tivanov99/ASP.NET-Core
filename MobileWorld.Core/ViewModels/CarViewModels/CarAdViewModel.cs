@@ -16,5 +16,7 @@ namespace MobileWorld.Core.ViewModels.CarViewModels
         public CarDetailsViewModel Car { get; set; } = new();
 
         public OwnerViewModel Owner { get; set; } = new();
+
+
     }
 }

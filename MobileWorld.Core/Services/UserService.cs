@@ -3,6 +3,8 @@
     using MobileWorld.Core.ViewModels.UserModels;
     using MobileWorld.Core.Contracts;
     using MobileWorld.Infrastructure.Data.Common;
+    using System.Collections.Generic;
+    using MobileWorld.Core.ViewModels.CarViewModels;
 
     public class UserService : IUserService
     {
@@ -13,12 +15,13 @@
             this.repo = _repo;
         }
 
-        public bool LogInUser(LoginViewModel model)
+        public List<CarCardViewModel> UserAnnouncements(string userId)
         {
+            //user adds
             throw new NotImplementedException();
         }
 
-        public (bool, string) RegisterUser(RegisterModel model)
+        public List<CarCardViewModel> UserFavourites(string userId)
         {
             throw new NotImplementedException();
         }

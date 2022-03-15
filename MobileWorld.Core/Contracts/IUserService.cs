@@ -1,11 +1,12 @@
-﻿using MobileWorld.Core.ViewModels.UserModels;
+﻿using MobileWorld.Core.ViewModels.CarViewModels;
+using MobileWorld.Core.ViewModels.UserModels;
 
 namespace MobileWorld.Core.Contracts
 {
     public interface IUserService
     {
-        bool LogInUser(LoginViewModel model);
+        List<CarCardViewModel> UserFavourites(string userId);
 
-        (bool, string) RegisterUser(RegisterModel model);
+        List<CarCardViewModel> UserAnnouncements(string userId);
     }
 }
