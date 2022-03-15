@@ -23,4 +23,8 @@
     <ProjectReference Include="..\MobileWorld.Core\MobileWorld.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\User\" />
+  </ItemGroup>
+
 </Project>

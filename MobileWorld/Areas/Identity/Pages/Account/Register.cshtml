@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
     <!--Stylesheet-->
-
 </head>
 
 
@@ -22,11 +21,10 @@
         <div class="shape"></div>
     </div>
 </body>
-
 <div >
     <div >
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Регистрирай се тук.</h2>
+            <h2>Регистрирай се тук</h2>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div >
@@ -39,8 +37,12 @@
                 <input asp-for="Input.Password" autocomplete="new-password" aria-required="true" />
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
+            <div >
+                <label asp-for="Input.ConfirmPassword">Повтори паролата</label>
+                <input asp-for="Input.ConfirmPassword" autocomplete="confirm-password" aria-required="true" />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
            
-            
             <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Регистривай се</button>
         </form>
     </div>
