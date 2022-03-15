@@ -67,8 +67,8 @@ namespace MobileWorld.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
-            [EmailAddress]
+            [Required(ErrorMessage = "Полето Имейл е задължително.")]
+            [EmailAddress(ErrorMessage = "Не валиден имейл адрес.")]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
@@ -76,8 +76,8 @@ namespace MobileWorld.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [Required(ErrorMessage = "Полето Парола е задължително.")]
+            [StringLength(100, ErrorMessage = "{0} трябва да бъде най-малко {2} и най-много {1} знака.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
             public string Password { get; set; }
@@ -88,7 +88,7 @@ namespace MobileWorld.Areas.Identity.Pages.Account
             /// </summary>
             [DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Compare("Password", ErrorMessage = "Паролата и паролата за потвърждение не съвпадат.")]
             public string ConfirmPassword { get; set; }
         }
 
@@ -113,7 +113,7 @@ namespace MobileWorld.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User created a new account with password.");
+                    _logger.LogInformation("Потребителят създаде нов акаунт с парола.");
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -125,7 +125,7 @@ namespace MobileWorld.Areas.Identity.Pages.Account
                         protocol: Request.Scheme);
 
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                        $"Моля, потвърдете акаунта си <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>щракване тук </a>.");
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
