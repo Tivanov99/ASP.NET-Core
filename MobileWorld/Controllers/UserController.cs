@@ -15,13 +15,15 @@ namespace MobileWorld.Controllers
         [Authorize]
         public IActionResult Favourites(string userId)
         {
-            //TODO: check here , and add view
+            var result = this.userService.UserFavourites(userId);
             return View();
         }
 
         [Authorize]
         public IActionResult Ads(string userId)
         {
+            var result = this.userService.UserAnnouncements(userId);
+
             //TODO: check here , and add view
             return View();
         }

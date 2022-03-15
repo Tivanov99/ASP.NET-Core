@@ -17,6 +17,5 @@ namespace MobileWorld.Core.ViewModels.CarViewModels
 
         public OwnerViewModel Owner { get; set; } = new();
 
-
     }
 }
