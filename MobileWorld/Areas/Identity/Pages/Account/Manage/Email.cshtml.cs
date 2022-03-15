@@ -91,7 +91,7 @@ namespace MobileWorld.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Не може да се зареди потребител с ID '{_userManager.GetUserId(User)}'.");
             }
 
             await LoadAsync(user);
@@ -103,7 +103,7 @@ namespace MobileWorld.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Не може да се зареди потребител с ID '{_userManager.GetUserId(User)}'.");
             }
 
             if (!ModelState.IsValid)
@@ -126,13 +126,13 @@ namespace MobileWorld.Areas.Identity.Pages.Account.Manage
                 await _emailSender.SendEmailAsync(
                     Input.NewEmail,
                     "Confirm your email",
-                    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    $"Моля, потвърдете акаунта си <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>щракване тук</a>.");
 
-                StatusMessage = "Confirmation link to change email sent. Please check your email.";
+                StatusMessage = "Изпратена е връзка за потвърждение за промяна на имейла.Моля, проверете електронната си поща.";
                 return RedirectToPage();
             }
 
-            StatusMessage = "Your email is unchanged.";
+            StatusMessage = "Вашият имейл е непроменен.";
             return RedirectToPage();
         }
 
@@ -141,7 +141,7 @@ namespace MobileWorld.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Не може да се зареди потребител с ID '{_userManager.GetUserId(User)}'.");
             }
 
             if (!ModelState.IsValid)
@@ -162,9 +162,9 @@ namespace MobileWorld.Areas.Identity.Pages.Account.Manage
             await _emailSender.SendEmailAsync(
                 email,
                 "Confirm your email",
-                $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                $"Моля, потвърдете акаунта си < a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>щракване тук</a>.");
 
-            StatusMessage = "Verification email sent. Please check your email.";
+            StatusMessage = "Изпратен имейл за потвърждение. Моля, проверете електронната си поща.";
             return RedirectToPage();
         }
     }
