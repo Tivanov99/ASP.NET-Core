@@ -22,12 +22,14 @@
 
             Dictionary<string, List<string>> searchCriteria = new();
 
-            GetFeaturesProperties(model.Features.SafetyDetails, searchCriteria);
-            GetFeaturesProperties(model.Features.ComfortDetails, searchCriteria);
-            GetFeaturesProperties(model.Features.OthersDetails, searchCriteria);
-            GetFeaturesProperties(model.Features.ExteriorDetails, searchCriteria);
-            GetFeaturesProperties(model.Features.ProtectionDetails, searchCriteria);
-            GetFeaturesProperties(model.Features.InteriorDetails, searchCriteria);
+            List<PropertyDto> defaultProperties = GetDefaultProperties(model);
+
+            GetSelectedFeatures(model.Features.SafetyDetails, searchCriteria);
+            GetSelectedFeatures(model.Features.ComfortDetails, searchCriteria);
+            GetSelectedFeatures(model.Features.OthersDetails, searchCriteria);
+            GetSelectedFeatures(model.Features.ExteriorDetails, searchCriteria);
+            GetSelectedFeatures(model.Features.ProtectionDetails, searchCriteria);
+            GetSelectedFeatures(model.Features.InteriorDetails, searchCriteria);
 
             string sqlCommand = "Select * From";
 
@@ -101,9 +103,11 @@
         {
             Type type = model.GetType();
 
+            string featuresType = typeof(FeaturesViewModel).Name;
+
             var propertyInfos = type.GetProperties()
                 .Where(x => x.GetValue(model) != null &&
-                        x.PropertyType.Name != typeof(FeaturesViewModel).Name)
+                        x.PropertyType.Name != featuresType)
                 .Select(x => new PropertyDto(x.Name, x.GetValue(model)))
                 .ToList();
 
@@ -111,7 +115,7 @@
         }
 
 
-        private void GetFeaturesProperties(object model, Dictionary<string, List<string>> currentCriteria)
+        private void GetSelectedFeatures(object model, Dictionary<string, List<string>> currentCriteria)
         {
             Type type = model
                 .GetType();
