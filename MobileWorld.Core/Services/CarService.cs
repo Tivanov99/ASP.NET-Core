@@ -20,7 +20,7 @@
         {
             Type type = model.GetType();
 
-            List<PropertyDto> searchCriteria = GetDefaultProperties(model);
+            Dictionary<string, List<string>> searchCriteria = new();
 
             GetFeaturesProperties(model.Features.SafetyDetails, searchCriteria);
             GetFeaturesProperties(model.Features.ComfortDetails, searchCriteria);
@@ -111,19 +111,22 @@
         }
 
 
-        private void GetFeaturesProperties(object model, List<PropertyDto> currentCriteria)
+        private void GetFeaturesProperties(object model, Dictionary<string, List<string>> currentCriteria)
         {
-            Type type = model.GetType();
+            Type type = model
+                .GetType();
+
+            string categoryName=model.GetType().Name;
 
             var features = type
                 .GetProperties()
                 .Where(x => (bool)x.GetValue(model) == true)
-                .Select(x => new PropertyDto(x.Name, x.GetValue(model)))
+                .Select(x => x.Name)
                 .ToList();
 
             if (features.Any())
             {
-                currentCriteria.AddRange(features);
+                currentCriteria.Add(categoryName, features);
             }
         }
     }
