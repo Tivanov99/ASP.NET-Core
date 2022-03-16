@@ -16,10 +16,8 @@ namespace MobileWorld.Infrastructure.Data.Models
         [Required]
         public int Year { get; set; }
 
-        public int MyProperty { get; set; }
-
         [Required]
-        public GearType GetType { get; set; }
+        public GearType GearType { get; set; }
 
         public string Color { get; set; }
 
@@ -31,6 +29,7 @@ namespace MobileWorld.Infrastructure.Data.Models
         public Engine Engine { get; set; }
 
         [Required]
+        [Range(2,12)]
         public int SeatsCount { get; set; }
 
         [Required]
