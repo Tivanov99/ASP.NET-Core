@@ -29,7 +29,7 @@ namespace MobileWorld.Infrastructure.Data.Models
         [Required]
         public DateTime CreatedOn { get; set; }
 
-        [Range(0, 999999)]
+        [Column(TypeName = "decimal(6,2)")]
         public decimal Price { get; set; }
 
         [Required]

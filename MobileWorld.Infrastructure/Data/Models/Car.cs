@@ -33,7 +33,7 @@ namespace MobileWorld.Infrastructure.Data.Models
         public int SeatsCount { get; set; }
 
         [Required]
-        [Range(0,(double)decimal.MaxValue)]
+        [Column(TypeName ="decimal(6,3)")]
         public decimal Mileage { get; set; }
     }
 }
