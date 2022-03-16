@@ -30,7 +30,7 @@
             GetSelectedFeatures(model.Features.ProtectionDetails, featuresSearchCriteria);
             GetSelectedFeatures(model.Features.InteriorDetails, featuresSearchCriteria);
 
-            string sqlCommand = ConfigurateSqlCommand
+            string queryString = ConfigurateSqlCommand
                 (defaultSearchCriteria, featuresSearchCriteria);
 
 
@@ -135,10 +135,10 @@
         private string ConfigurateSqlCommand
             (List<PropertyDto> defaultSearchCriteria, Dictionary<string,List<string>> featuresSearchCriteria)
         {
-            string sqlCommand = "Select * From";
+            string queryString = "Select * From";
 
 
-            return sqlCommand;
+            return queryString;
         }
     }
 }
