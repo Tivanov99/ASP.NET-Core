@@ -74,7 +74,6 @@ C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\MobileWorld.ex
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\MobileWorld.deps.json
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\MobileWorld.runtimeconfig.json
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\MobileWorld.dll
-C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\ref\MobileWorld.dll
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\MobileWorld.pdb
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
@@ -343,3 +342,4 @@ C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\zh-Hans\Micros
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\runtimes\win-arm\lib\net6.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\bin\Debug\net6.0\runtimes\win-arm64\lib\net6.0\dotnet-aspnet-codegenerator-design.exe
+C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld\obj\Debug\net6.0\refint\MobileWorld.dll

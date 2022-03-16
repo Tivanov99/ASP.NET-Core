@@ -6,9 +6,9 @@ C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld.Infrastructure\obj\Debug\net6.0
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld.Infrastructure\bin\Debug\net6.0\MobileWorld.Infrastructure.deps.json
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld.Infrastructure\bin\Debug\net6.0\MobileWorld.Infrastructure.runtimeconfig.json
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld.Infrastructure\bin\Debug\net6.0\MobileWorld.Infrastructure.dll
-C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld.Infrastructure\bin\Debug\net6.0\ref\MobileWorld.Infrastructure.dll
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld.Infrastructure\bin\Debug\net6.0\MobileWorld.Infrastructure.pdb
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld.Infrastructure\obj\Debug\net6.0\MobileWorld.Infrastructure.dll
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld.Infrastructure\obj\Debug\net6.0\ref\MobileWorld.Infrastructure.dll
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld.Infrastructure\obj\Debug\net6.0\MobileWorld.Infrastructure.pdb
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld.Infrastructure\obj\Debug\net6.0\MobileWorld.Infrastructure.genruntimeconfig.cache
+C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld.Infrastructure\obj\Debug\net6.0\refint\MobileWorld.Infrastructure.dll

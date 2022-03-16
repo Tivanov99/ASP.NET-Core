@@ -1,6 +1,5 @@
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld.Core\bin\Debug\net6.0\MobileWorld.Core.deps.json
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld.Core\bin\Debug\net6.0\MobileWorld.Core.dll
-C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld.Core\bin\Debug\net6.0\ref\MobileWorld.Core.dll
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld.Core\bin\Debug\net6.0\MobileWorld.Core.pdb
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld.Core\obj\Debug\net6.0\MobileWorld.Core.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld.Core\obj\Debug\net6.0\MobileWorld.Core.AssemblyInfoInputs.cache
@@ -13,3 +12,4 @@ C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld.Core\obj\Debug\net6.0\MobileWor
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld.Core\bin\Debug\net6.0\MobileWorld.Infrastructure.dll
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld.Core\bin\Debug\net6.0\MobileWorld.Infrastructure.pdb
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld.Core\obj\Debug\net6.0\MobileWorld.Core.csproj.CopyComplete
+C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld.Core\obj\Debug\net6.0\refint\MobileWorld.Core.dll

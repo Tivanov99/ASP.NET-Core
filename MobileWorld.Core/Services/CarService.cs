@@ -18,21 +18,20 @@
 
         public List<CarCardViewModel> GetAllCarsByCriteria(SearchCarViewModel model)
         {
-            Type type = model.GetType();
+            List<PropertyDto> defaultSearchCriteria = GetDefaultProperties(model);
 
-            Dictionary<string, List<string>> searchCriteria = new();
+            Dictionary<string, List<string>> featuresSearchCriteria = new();
 
-            List<PropertyDto> defaultProperties = GetDefaultProperties(model);
 
-            GetSelectedFeatures(model.Features.SafetyDetails, searchCriteria);
-            GetSelectedFeatures(model.Features.ComfortDetails, searchCriteria);
-            GetSelectedFeatures(model.Features.OthersDetails, searchCriteria);
-            GetSelectedFeatures(model.Features.ExteriorDetails, searchCriteria);
-            GetSelectedFeatures(model.Features.ProtectionDetails, searchCriteria);
-            GetSelectedFeatures(model.Features.InteriorDetails, searchCriteria);
+            GetSelectedFeatures(model.Features.SafetyDetails, featuresSearchCriteria);
+            GetSelectedFeatures(model.Features.ComfortDetails, featuresSearchCriteria);
+            GetSelectedFeatures(model.Features.OthersDetails, featuresSearchCriteria);
+            GetSelectedFeatures(model.Features.ExteriorDetails, featuresSearchCriteria);
+            GetSelectedFeatures(model.Features.ProtectionDetails, featuresSearchCriteria);
+            GetSelectedFeatures(model.Features.InteriorDetails, featuresSearchCriteria);
 
-            string sqlCommand = "Select * From";
-
+            string sqlCommand = ConfigurateSqlCommand
+                (defaultSearchCriteria, featuresSearchCriteria);
 
 
             List<CarCardViewModel> adds = new List<CarCardViewModel>()
@@ -72,7 +71,7 @@
 
             return carAd;
         }
-
+       
         public List<CarCardViewModel> GetIndexCars()
         {
             List<CarCardViewModel> adds = new List<CarCardViewModel>()
@@ -98,7 +97,7 @@
 
             return adds;
         }
-
+       
         private List<PropertyDto> GetDefaultProperties(object model)
         {
             Type type = model.GetType();
@@ -113,14 +112,13 @@
 
             return propertyInfos;
         }
-
-
+       
         private void GetSelectedFeatures(object model, Dictionary<string, List<string>> currentCriteria)
         {
             Type type = model
                 .GetType();
 
-            string categoryName=model.GetType().Name;
+            string categoryName = model.GetType().Name;
 
             var features = type
                 .GetProperties()
@@ -132,6 +130,15 @@
             {
                 currentCriteria.Add(categoryName, features);
             }
+        }
+      
+        private string ConfigurateSqlCommand
+            (List<PropertyDto> defaultSearchCriteria, Dictionary<string,List<string>> featuresSearchCriteria)
+        {
+            string sqlCommand = "Select * From";
+
+
+            return sqlCommand;
         }
     }
 }
