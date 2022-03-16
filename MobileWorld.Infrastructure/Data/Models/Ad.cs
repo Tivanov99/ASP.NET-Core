@@ -5,6 +5,7 @@ namespace MobileWorld.Infrastructure.Data.Models
 {
     public class Ad
     {
+        [Key]
         public string Id { get; set; }
 
         [Required]
