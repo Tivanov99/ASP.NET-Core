@@ -8,6 +8,7 @@ namespace MobileWorld.Infrastructure.Data.Models
         [Key]
         public int Id { get; set; }
 
+        [Required]
         public FuelType FuelType { get; set; }
 
         [Required]
@@ -30,7 +31,6 @@ namespace MobileWorld.Infrastructure.Data.Models
 
         [Required]
         public bool AutoGas { get; set; }
-
 
         [Required]
         [Range(900,9000)]

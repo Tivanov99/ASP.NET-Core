@@ -35,5 +35,7 @@ namespace MobileWorld.Infrastructure.Data.Models
         [Required]
         [MaxLength(700)]
         public string Description { get; set; }
+        
+        //TODO: Add owner / User
     }
 }

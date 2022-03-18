@@ -10,6 +10,7 @@ namespace MobileWorld.Infrastructure.Data.Models
         public int Id { get; set; }
 
         [Required]
+        [StringLength(20)]
         public string Model { get; set; }
 
         [Range(1886,2022)]
@@ -19,8 +20,12 @@ namespace MobileWorld.Infrastructure.Data.Models
         [Required]
         public GearType GearType { get; set; }
 
+        [Required]
+        [StringLength(35)]
         public string Color { get; set; }
 
+        [Required]
+        [StringLength(30)]
         public string Make { get; set; }
 
         [ForeignKey(nameof(Engine))]
