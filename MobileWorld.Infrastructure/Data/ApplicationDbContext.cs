@@ -12,6 +12,12 @@ namespace MobileWorld.Infrastructure.Data
 
         }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+        }
+
+
         public DbSet<Ad> Ads { get; set; }
 
         public DbSet<Car> Cars { get; set; }

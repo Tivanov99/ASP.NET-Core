@@ -18,6 +18,7 @@
         public List<CarCardViewModel> UserAnnouncements(string userId)
         {
             var users = this.repo.All<IdentityUser>()
+                .Where(u => u.Id == userId)
                 .Select(x => new { x.Id, x.Email, x.UserName })
                 .ToList();
             //user adds
