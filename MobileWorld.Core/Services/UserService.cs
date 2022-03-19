@@ -2,6 +2,7 @@
 using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.Identity;
 using MobileWorld.Core.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace MobileWorld.Core.Services
 {
@@ -16,7 +17,8 @@ namespace MobileWorld.Core.Services
 
         public List<AdCardViewModel> UserAds(string userId)
         {
-            var users = this.repo.All<ApplicationUser>()
+            //TODO: Export car images from car model
+            var userAds = this.repo.All<ApplicationUser>()
                 .Where(u => u.Id == userId)
                 .SelectMany(a => a.Ads
                                 .Select(x => new AdCardViewModel()
@@ -28,9 +30,8 @@ namespace MobileWorld.Core.Services
                                 }))
                 .ToList();
 
-
             //user adds
-            throw new NotImplementedException();
+            return userAds;
         }
 
         public List<AdCardViewModel> UserFavourites(string userId)
