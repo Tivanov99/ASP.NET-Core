@@ -22,7 +22,7 @@ namespace MobileWorld.Controllers
         [Authorize]
         public IActionResult Ads(string userId)
         {
-            var result = this.userService.UserAnnouncements(userId);
+            var result = this.userService.UserAds(userId);
 
             //TODO: check here , and add view
             return View();

@@ -1,6 +1,7 @@
 ﻿using MobileWorld.Core.ViewModels.CarViewModels;
 using Microsoft.AspNetCore.Mvc;
 using MobileWorld.Core.Contracts;
+using MobileWorld.Core.ViewModels;
 
 namespace MobileWorld.Controllers
 {
@@ -15,7 +16,7 @@ namespace MobileWorld.Controllers
 
         public IActionResult CarsByCriteria(SearchCarViewModel model)
         {
-            List<CarCardViewModel> cars = this.carService
+            List<AdCardViewModel> cars = this.carService
                 .GetAllCarsByCriteria(model);
 
             return View(cars);

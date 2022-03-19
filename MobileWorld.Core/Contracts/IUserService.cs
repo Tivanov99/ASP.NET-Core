@@ -1,12 +1,11 @@
-﻿using MobileWorld.Core.ViewModels.CarViewModels;
-using MobileWorld.Core.ViewModels.UserModels;
+﻿using MobileWorld.Core.ViewModels;
 
 namespace MobileWorld.Core.Contracts
 {
     public interface IUserService
     {
-        List<CarCardViewModel> UserFavourites(string userId);
+        List<AdCardViewModel> UserFavourites(string userId);
 
-        List<CarCardViewModel> UserAnnouncements(string userId);
+        List<AdCardViewModel> UserAds(string userId);
     }
 }

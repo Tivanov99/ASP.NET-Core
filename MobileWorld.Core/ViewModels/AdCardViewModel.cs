@@ -1,8 +1,8 @@
-﻿namespace MobileWorld.Core.ViewModels.CarViewModels
+﻿namespace MobileWorld.Core.ViewModels
 {
-    public class CarCardViewModel
+    public class AdCardViewModel
     {
-        public string CarId { get; set; }
+        public int CarId { get; set; }
 
         public string Title { get; set; }
 

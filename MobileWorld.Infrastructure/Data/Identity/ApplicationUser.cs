@@ -14,6 +14,6 @@ namespace MobileWorld.Infrastructure.Data.Identity
         [StringLength(40)]
         public string LastName { get; set; }
 
-        public List<Ad> Ads { get; set; }
+        public List<Ad> Ads { get; set; } = new();
     }
 }

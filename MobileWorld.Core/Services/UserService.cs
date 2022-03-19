@@ -1,12 +1,10 @@
-﻿namespace MobileWorld.Core.Services
-{
-    using MobileWorld.Core.Contracts;
-    using MobileWorld.Infrastructure.Data.Common;
-    using System.Collections.Generic;
-    using MobileWorld.Core.ViewModels.CarViewModels;
-    using Microsoft.AspNetCore.Identity;
-    using MobileWorld.Infrastructure.Data.Identity;
+﻿using MobileWorld.Core.Contracts;
+using MobileWorld.Infrastructure.Data.Common;
+using MobileWorld.Infrastructure.Data.Identity;
+using MobileWorld.Core.ViewModels;
 
+namespace MobileWorld.Core.Services
+{
     public class UserService : IUserService
     {
         private readonly IRepository repo;
@@ -16,17 +14,26 @@
             this.repo = _repo;
         }
 
-        public List<CarCardViewModel> UserAnnouncements(string userId)
+        public List<AdCardViewModel> UserAds(string userId)
         {
             var users = this.repo.All<ApplicationUser>()
                 .Where(u => u.Id == userId)
-                .Select(x => new { x.Id, x.Email, x.UserName })
+                .SelectMany(a => a.Ads
+                                .Select(x => new AdCardViewModel()
+                                {
+                                    CarId = x.CarId,
+                                    Title = x.Title,
+                                    Description = x.Description,
+                                    Price = x.Price,
+                                }))
                 .ToList();
+
+
             //user adds
             throw new NotImplementedException();
         }
 
-        public List<CarCardViewModel> UserFavourites(string userId)
+        public List<AdCardViewModel> UserFavourites(string userId)
         {
             throw new NotImplementedException();
         }
