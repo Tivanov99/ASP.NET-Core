@@ -27,5 +27,11 @@ namespace MobileWorld.Controllers
             //TODO: check here , and add view
             return View();
         }
+
+        //[Authorize]
+        public IActionResult CreateAd()
+        {
+            return View();
+        }
     }
 }
