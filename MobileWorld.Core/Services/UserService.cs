@@ -5,6 +5,7 @@
     using System.Collections.Generic;
     using MobileWorld.Core.ViewModels.CarViewModels;
     using Microsoft.AspNetCore.Identity;
+    using MobileWorld.Infrastructure.Data.Identity;
 
     public class UserService : IUserService
     {
@@ -17,7 +18,7 @@
 
         public List<CarCardViewModel> UserAnnouncements(string userId)
         {
-            var users = this.repo.All<IdentityUser>()
+            var users = this.repo.All<ApplicationUser>()
                 .Where(u => u.Id == userId)
                 .Select(x => new { x.Id, x.Email, x.UserName })
                 .ToList();

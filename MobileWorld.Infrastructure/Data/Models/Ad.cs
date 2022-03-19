@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using MobileWorld.Infrastructure.Data.Identity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -41,6 +42,6 @@ namespace MobileWorld.Infrastructure.Data.Models
         [ForeignKey(nameof(Owner))]
         public string OwnerId { get; set; }
 
-        public IdentityUser  Owner { get; set; }
+        public ApplicationUser  Owner { get; set; }
     }
 }
