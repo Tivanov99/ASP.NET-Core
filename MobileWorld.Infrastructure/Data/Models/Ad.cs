@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MobileWorld.Infrastructure.Data.Models
 {
-    public class Ad
+    public class Ad 
     {
         [Key]
         public string Id { get; set; }
@@ -35,7 +36,11 @@ namespace MobileWorld.Infrastructure.Data.Models
         [Required]
         [MaxLength(700)]
         public string Description { get; set; }
-        
+
         //TODO: Add owner / User
+        [ForeignKey(nameof(Owner))]
+        public string OwnerId { get; set; }
+
+        public IdentityUser  Owner { get; set; }
     }
 }

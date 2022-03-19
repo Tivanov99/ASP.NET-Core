@@ -4,6 +4,7 @@
     using MobileWorld.Infrastructure.Data.Common;
     using System.Collections.Generic;
     using MobileWorld.Core.ViewModels.CarViewModels;
+    using Microsoft.AspNetCore.Identity;
 
     public class UserService : IUserService
     {
@@ -16,6 +17,9 @@
 
         public List<CarCardViewModel> UserAnnouncements(string userId)
         {
+            var users = this.repo.All<IdentityUser>()
+                .Select(x => new { x.Id, x.Email, x.UserName })
+                .ToList();
             //user adds
             throw new NotImplementedException();
         }
