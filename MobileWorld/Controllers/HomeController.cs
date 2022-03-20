@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MobileWorld.Core.Contracts;
 using MobileWorld.Core.ViewModels;
-using MobileWorld.Core.ViewModels.CarViewModels;
 using System.Diagnostics;
 
 namespace MobileWorld.Controllers
@@ -20,7 +19,8 @@ namespace MobileWorld.Controllers
 
         public IActionResult Index()
         {
-            List<AdCardViewModel> cars = this.carService.GetIndexCars();
+            List<AdCardViewModel> cars = this.carService
+                .GetIndexCars();
             return View(cars);
         }
 
