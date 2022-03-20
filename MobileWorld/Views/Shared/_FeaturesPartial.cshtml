@@ -3,15 +3,15 @@
 <div id="details">
      <div class="div-labels" style="margin-top:20px">
         <div>
-            <label for="beforeYear">Година (преди)</label>
+            <label asp-for="BeforeYear">Година (преди)</label>
         </div>
 
         <div style="padding-left :154px">
-            <label>Максимална мощност</label>
+            <label asp-for="MaxHp">Максимална мощност</label>
         </div>
 
         <div style="padding-left :96px">
-            <label>Минимална мощност</label>
+            <label asp-for="MinHp">Минимална мощност</label>
         </div>
 
     </div>
@@ -19,7 +19,7 @@
 
     <br /> <div class="div-labels">
         <div>
-            <select name="beforeYear" class="form-control">
+            <select asp-for="BeforeYear" class="form-control">
                 <option value="">
                     всички
                 </option>
@@ -306,13 +306,13 @@
         </div>
 
         <div class="selects">
-            <input name="maxHp"
+            <input asp-for="MaxHp"
                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                    type="number" maxlength="6" class="form-control selectors" value="">
         </div>
 
         <div class="selects">
-            <input name="minHp"
+            <input asp-for="MinHp"
                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                    type="number" maxlength="6" class="form-control selectors" value="">
         </div>
@@ -329,102 +329,102 @@
                     <strong>Безопасност</strong>
                     <div>
                         <input asp-for="Features.SafetyDetails.Gps" type="checkbox" data-val="true" value="true">
-                        <label for="gps">GPS система за пропредияване</label>
+                        <label asp-for="Features.SafetyDetails.Gps">GPS система за пропредияване</label>
                     </div>
                     <div>
                         <input asp-for="Features.SafetyDetails.AutomaticStabilityControl" type="checkbox" data-val="true" value="true">
-                        <label for="automatic-stability-control">Автоматичен контрол на стабилността</label>
+                        <label asp-for="Features.SafetyDetails.AutomaticStabilityControl">Автоматичен контрол на стабилността</label>
                     </div>
                     <div>
                         <input asp-for="Features.SafetyDetails.AdaptiveFrontLights" type="checkbox" data-val="true" value="true">
-                        <label for="adaptive-front-lights">Адаптивни предни светлини</label>
+                        <label asp-for="Features.SafetyDetails.AdaptiveFrontLights" >Адаптивни предни светлини</label>
                     </div>
                     <div>
                         <input asp-for="Features.SafetyDetails.Abs" type="checkbox" data-val="true" value="true">
-                        <label for="abs">Антиблокираща система</label>
+                        <label asp-for="Features.SafetyDetails.Abs">Антиблокираща система</label>
                     </div>
                     <div>
                         <input asp-for="Features.SafetyDetails.ElBreaks" type="checkbox" data-val="true" value="true">
-                        <label for="el-breaks">Ел. разпределяне на спирачното усилие</label>
+                        <label  asp-for="Features.SafetyDetails.ElBreaks">Ел. разпределяне на спирачното усилие</label>
                     </div>
                     <div>
                         <input asp-for="Features.SafetyDetails.Esp" type="checkbox" data-val="true" value="true">
-                        <label for="esp">Електронна програма за стабилизиране</label>
+                        <label asp-for="Features.SafetyDetails.Esp">Електронна програма за стабилизиране</label>
                     </div>
                     <div>
                         <input asp-for="Features.SafetyDetails.TirePressure" type="checkbox" data-val="true" value="true">
-                        <label for="tire-pressure">Контрол на налягането на гумите</label>
+                        <label  asp-for="Features.SafetyDetails.TirePressure">Контрол на налягането на гумите</label>
                     </div>
                     <div>
                         <input asp-for="Features.SafetyDetails.ParkPilot" type="checkbox" data-val="true" value="true">
-                        <label for="park-pilot">Парктроник</label>
+                        <label asp-for="Features.SafetyDetails.ParkPilot">Парктроник</label>
                     </div>
                     <div>
                         <input asp-for="Features.SafetyDetails.IsoFix" type="checkbox" data-val="true" value="true">
-                        <label for="isofix">Система ISOFIX</label>
+                        <label asp-for="Features.SafetyDetails.IsoFix">Система ISOFIX</label>
                     </div>
                     <div>
                         <input asp-for="Features.SafetyDetails.DynamicStabilitySystem" type="checkbox" data-val="true" value="true">
-                        <label for="dynamic-stability-system">Система за динамична устойчивост</label>
+                        <label asp-for="Features.SafetyDetails.DynamicStabilitySystem">Система за динамична устойчивост</label>
                     </div>
                     <div>
                         <input asp-for="Features.SafetyDetails.SlipProtectionSystem" type="checkbox" data-val="true" value="true">
-                        <label for="slip-protection-system">Система за защита от пробуксуванет</label>
+                        <label asp-for="Features.SafetyDetails.SlipProtectionSystem">Система за защита от пробуксуванет</label>
                     </div>
                     <div>
                         <input asp-for="Features.SafetyDetails.DryBrakesSystem" type="checkbox" data-val="true" value="true">
-                        <label for="dry-brakes-system">Система за изсушаване на накладките</label>
+                        <label asp-for="Features.SafetyDetails.DryBrakesSystem">Система за изсушаване на накладките</label>
                     </div>
                     <div>
                         <input asp-for="Features.SafetyDetails.Distronic" type="checkbox" data-val="true" value="true">
-                        <label for="distronic">Система за контрол на дистанцията</label>
+                        <label asp-for="Features.SafetyDetails.Distronic">Система за контрол на дистанцията</label>
                     </div>
                     <div>
                         <input asp-for="Features.SafetyDetails.HillDescentControll" type="checkbox" data-val="true" value="true">
-                        <label for="hill-descent-controll">Система за контрол на спускането</label>
+                        <label asp-for="Features.SafetyDetails.HillDescentControll">Система за контрол на спускането</label>
                     </div>
                     <div>
                         <input asp-for="Features.SafetyDetails.BrakeAssist" type="checkbox" data-val="true" value="true">
-                        <label for="brake-assist">Система за подпомагане на спирането</label>
+                        <label asp-for="Features.SafetyDetails.BrakeAssist">Система за подпомагане на спирането</label>
                     </div>
                 </td>
                 <td valign="top">
                     <strong>Комфорт</strong>
                     <div>
                         <input asp-for="Features.ComfortDetails.AutoStartStop" type="checkbox" data-val="true" value="true">
-                        <label for="auto-start-stop">Auto Start Stop function</label>
+                        <label asp-for="Features.ComfortDetails.AutoStartStop">Auto Start Stop function</label>
                     </div>
                     <div>
                         <input asp-for="Features.ComfortDetails.DvdTv" type="checkbox" data-val="true" value="true">
-                        <label for="dvd-tv">DVD, TV</label>
+                        <label asp-for="Features.ComfortDetails.DvdTv">DVD, TV</label>
                     </div>
                     <div>
                         <input asp-for="Features.ComfortDetails.BluetoothHandsfree" type="checkbox" data-val="true" value="true">
-                        <label for="bluetooth-handsfree">Bluetooth \ handsfree система</label>
+                        <label asp-for="Features.ComfortDetails.BluetoothHandsfree">Bluetooth \ handsfree система</label>
                     </div>
                     <div>
                         <input asp-for="Features.ComfortDetails.SteptronicTiptronic" type="checkbox" data-val="true" value="true">
-                        <label for="steptronic-tiptronic">Steptronic, Tiptronic</label>
+                        <label asp-for="Features.ComfortDetails.SteptronicTiptronic">Steptronic, Tiptronic</label>
                     </div>
                     <div>
                         <input asp-for="Features.ComfortDetails.Usb" type="checkbox" data-val="true" value="true">
-                        <label for="usb">USB, audio\video, IN\AUX изводи</label>
+                        <label asp-for="Features.ComfortDetails.Usb">USB, audio\video, IN\AUX изводи</label>
                     </div>
                     <div>
                         <input asp-for="Features.ComfortDetails.Airmatic" type="checkbox" data-val="true" value="true">
-                        <label for="airmatic">Адаптивно въздушно окачване</label>
+                        <label asp-for="Features.ComfortDetails.Airmatic">Адаптивно въздушно окачване</label>
                     </div>
                     <div>
                         <input asp-for="Features.ComfortDetails.Keyless" type="checkbox" data-val="true" value="true">
-                        <label for="keyless">Безключово палене</label>
+                        <label asp-for="Features.ComfortDetails.Keyless">Безключово палене</label>
                     </div>
                     <div>
                         <input asp-for="Features.ComfortDetails.DifferentialLock" type="checkbox" data-val="true" value="true">
-                        <label for="differential-lock">Блокаж на диференциала</label>
+                        <label asp-for="Features.ComfortDetails.DifferentialLock">Блокаж на диференциала</label>
                     </div>
                     <div>
                         <input asp-for="Features.ComfortDetails.BordPc" type="checkbox" data-val="true" value="true">
-                        <label for="bord-pc">Бордкомпютър</label>
+                        <label  asp-for="Features.ComfortDetails.BordPc">Бордкомпютър</label>
                     </div>
                     <div>
                         <input asp-for="Features.ComfortDetails.FastSlowShifts" type="checkbox" data-val="true" value="true">
