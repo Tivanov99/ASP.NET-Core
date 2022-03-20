@@ -16,7 +16,7 @@
 
         public int? MinHp { get; set; } 
 
-        public string Transmission { get; set; }
+        public string GearType { get; set; }
 
         public string EngineType { get; set; } 
 

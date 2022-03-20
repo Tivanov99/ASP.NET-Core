@@ -1,21 +1,24 @@
-﻿<form asp-controller="Cars" asp-action="CarsByCriteria" method="get" id="searcgForm">
+﻿@using MobileWorld.Core.ViewModels.CarViewModels
+@model SearchCarViewModel
+
+<form asp-controller="Cars" asp-action="CarsByCriteria" method="get" id="searcgForm">
     <div class="div-labels">
         <div>
-            <label for="make-input">Марка</label>
+            <label asp-for="Make">Марка</label>
         </div>
 
         <div class="labels">
-            <label style="padding-left: 17px">Локация</label>
+            <label asp-for="Location" style="padding-left: 17px">Локация</label>
         </div>
 
         <div class="labels">
-            <label for="max-price">Максимална цена</label>
+            <label asp-for="MaxPrice" >Максимална цена</label>
         </div>
     </div>
 
     <div class="div-labels">
         <div>
-            <select name="make" class="form-control" id="make-input" onchange="AlertName()">
+            <select asp-for="Make" class="form-control">
                 <option value="">
                     всички
                 </option>
@@ -467,7 +470,7 @@
         </div>
 
         <div class="selects">
-            <select name="location" class="form-control selectors" id="location-input">
+            <select asp-for="Location" class="form-control selectors">
                 <option value="">
                     всички
                 </option>
@@ -563,7 +566,7 @@
 
 
         <div class="selects">
-            <input name="maxPrice"
+            <input asp-for="MaxPrice"
                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                    type="number" maxlength="6" class="form-control selectors" value="">
         </div>
@@ -572,22 +575,22 @@
 
     <br />  <div class="div-labels" style="margin-top:20px">
         <div>
-            <label for="max-year">Година</label>
+            <label asp-for="BeforeYear">Година</label>
         </div>
 
 
         <div class="labels">
-            <label>Двигател</label>
+            <label asp-for="EngineType">Двигател</label>
         </div>
 
         <div class="labels">
-            <label for="gear-type">Скоростна кутия</label>
+            <label asp-for="GearType">Скоростна кутия</label>
         </div>
     </div>
 
     <br /> <div class="div-labels">
         <div>
-            <select name="afterYear" class="form-control">
+            <select asp-for="BeforeYear" class="form-control">
                 <option value="">
                     всички
                 </option>
@@ -874,7 +877,7 @@
         </div>
 
         <div class="selects">
-            <select name="engineType" class="form-control">
+            <select asp-for="EngineType" class="form-control">
                 <option value="">
                     всички
                 </option>
@@ -894,7 +897,7 @@
         </div>
 
         <div class="selects">
-            <select name="transmission" class="form-control">
+            <select asp-for="GearType" class="form-control">
                 <option value="">
                     всички
                 </option>
