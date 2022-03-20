@@ -1,16 +1,18 @@
-﻿namespace MobileWorld.Core.ViewModels.CarViewModels.Details
+﻿using MobileWorld.Infrastructure.Data.Enums;
+
+namespace MobileWorld.Core.ViewModels.CarViewModels.Details
 {
     public class CarDetailsViewModel
     {
-        public DateTime Date { get; set; }
+        public DateTime CreatedOn { get; set; }
 
         public string Make { get; set; }
 
         public string Model { get; set; }
 
-        public string Transmission { get; set; }
+        public GearType GearType { get; set; }
 
-        public string EngineType { get; set; }
+        public FuelType FuelType { get; set; }
 
         public string Color { get; set; }
 
@@ -18,6 +20,6 @@
 
         public string Description { get; set; }
 
-        public int Mileage { get; set; }
+        public decimal Mileage { get; set; }
     }
 }

@@ -2,7 +2,10 @@
 using MobileWorld.Core.Dto;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Core.ViewModels.CarViewModels;
+using MobileWorld.Core.ViewModels.CarViewModels.Details;
+using MobileWorld.Core.ViewModels.UserModels;
 using MobileWorld.Infrastructure.Data.Common;
+using MobileWorld.Infrastructure.Data.Models;
 
 namespace MobileWorld.Core.Services
 {
@@ -57,8 +60,36 @@ namespace MobileWorld.Core.Services
             return adds;
         }
 
-        public CarAdViewModel GetCarById(string carId)
+        public CarAdViewModel GetCarById(int carId)
         {
+
+            var car = this.repo.All<Ad>()
+                .Where(a => a.CarId == carId)
+                .Select(a => new CarAdViewModel()
+                {
+                    Title = a.Title,
+                    Town = a.Region.Town.Name,
+                    Region=a.Region.RegionName,
+                    Car = new CarDetailsViewModel()
+                    {
+                        CreatedOn = a.CreatedOn,
+                        Make= a.Car.Make,
+                        Model= a.Car.Model,
+                        GearType= a.Car.GearType,
+                        FuelType=a.Car.Engine.FuelType,
+                        Color=a.Car.Color,
+                        Price=a.Price,
+                        Description=a.Description,
+                        Mileage=a.Car.Mileage
+                    },
+                    Owner = new OwnerViewModel()
+                    {
+                        PhoneNumber=a.PhoneNumber,
+                        Name=$"{a.Owner.FirstName} {a.Owner.LastName}"
+                    }
+                })
+                .FirstOrDefault();
+
             //TODO: Make request to db with car Id
             CarAdViewModel carAd = new CarAdViewModel();
             carAd.Car.Description = "ВЪЗМОЖЕН ЛИЗИНГ БЕЗ ДОКАЗВАНЕ НА ДОХОДИ, ПРИ МИНИМАЛНА ПЪРВОНАЧАЛНА ВНОСКА СТАРТИРАЩА ОТ 10% ОДОБРЕНИЕ И РЕГИСТРАЦИЯ В РАМКИТЕ НА ДЕНЯ. Автомобила е от шоурум на BMW в Южна Швейцария (Мендризо). Само един собственик който го връща в представителството и взима нов. Пълна подръжка и документация за всяко обслужване на 15 хиляди километра изцяло, и единствено в сервиз на BMW.";
@@ -68,9 +99,9 @@ namespace MobileWorld.Core.Services
             carAd.Town = "Сарафово";
             carAd.Neighborhood = "Сарафово";
 
-            return carAd;
+            return car;
         }
-       
+
         public List<AdCardViewModel> GetIndexCars()
         {
             List<AdCardViewModel> adds = new List<AdCardViewModel>()
@@ -96,7 +127,7 @@ namespace MobileWorld.Core.Services
 
             return adds;
         }
-       
+
         private List<PropertyDto> GetDefaultProperties(object model)
         {
             Type type = model.GetType();
@@ -111,7 +142,7 @@ namespace MobileWorld.Core.Services
 
             return propertyInfos;
         }
-       
+
         private void GetSelectedFeatures(object model, Dictionary<string, List<string>> currentCriteria)
         {
             Type type = model
@@ -130,9 +161,9 @@ namespace MobileWorld.Core.Services
                 currentCriteria.Add(categoryName, features);
             }
         }
-      
+
         private string ConfigurateSqlCommand
-            (List<PropertyDto> defaultSearchCriteria, Dictionary<string,List<string>> featuresSearchCriteria)
+            (List<PropertyDto> defaultSearchCriteria, Dictionary<string, List<string>> featuresSearchCriteria)
         {
             string queryString = "Select * From";
 
