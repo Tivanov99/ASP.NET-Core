@@ -9,6 +9,6 @@
 
         List<AdCardViewModel> GetAllCarsByCriteria(SearchCarViewModel model);
 
-        CarAdViewModel GetCarById(string carId);
+        CarViewModel GetCarById(int carId);
     }
 }

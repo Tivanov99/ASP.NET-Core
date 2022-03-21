@@ -3,7 +3,7 @@ using MobileWorld.Core.ViewModels.UserModels;
 
 namespace MobileWorld.Core.ViewModels.CarViewModels
 {
-    public class CarAdViewModel
+    public class CarViewModel
     {
         public string Title { get; set; }
 

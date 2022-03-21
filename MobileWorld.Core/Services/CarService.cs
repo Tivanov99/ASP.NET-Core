@@ -60,12 +60,12 @@ namespace MobileWorld.Core.Services
             return adds;
         }
 
-        public CarAdViewModel GetCarById(int carId)
+        public CarViewModel GetCarById(int carId)
         {
 
             var car = this.repo.All<Ad>()
                 .Where(a => a.CarId == carId)
-                .Select(a => new CarAdViewModel()
+                .Select(a => new CarViewModel()
                 {
                     Title = a.Title,
                     Town = a.Region.Town.Name,
@@ -91,7 +91,7 @@ namespace MobileWorld.Core.Services
                 .FirstOrDefault();
 
             //TODO: Make request to db with car Id
-            CarAdViewModel carAd = new CarAdViewModel();
+            CarViewModel carAd = new CarViewModel();
             carAd.Car.Description = "ВЪЗМОЖЕН ЛИЗИНГ БЕЗ ДОКАЗВАНЕ НА ДОХОДИ, ПРИ МИНИМАЛНА ПЪРВОНАЧАЛНА ВНОСКА СТАРТИРАЩА ОТ 10% ОДОБРЕНИЕ И РЕГИСТРАЦИЯ В РАМКИТЕ НА ДЕНЯ. Автомобила е от шоурум на BMW в Южна Швейцария (Мендризо). Само един собственик който го връща в представителството и взима нов. Пълна подръжка и документация за всяко обслужване на 15 хиляди километра изцяло, и единствено в сервиз на BMW.";
             carAd.Owner.PhoneNumber = 0893668829;
             carAd.Owner.Name = "АУТО КЛАСИК - ДИРЕКТЕН";
