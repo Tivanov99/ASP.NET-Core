@@ -4,8 +4,8 @@ namespace MobileWorld.Core.Contracts
 {
     public interface IUserService
     {
-        List<AdCardViewModel> UserFavourites(string userId);
+        List<CardAdViewModel> UserFavourites(string userId);
 
-        List<AdCardViewModel> UserAds(string userId);
+        List<CardAdViewModel> UserAds(string userId);
     }
 }
