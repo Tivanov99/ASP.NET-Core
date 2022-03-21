@@ -1,6 +1,6 @@
 ﻿namespace MobileWorld.Core.ViewModels.CarViewModels.Details
 {
-    public class ProtectionDetails
+    public class ProtectionDetailsViewModel
     {
         public bool Alarm { get; set; }
 

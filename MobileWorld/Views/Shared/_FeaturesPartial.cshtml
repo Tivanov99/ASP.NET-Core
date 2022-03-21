@@ -7,11 +7,11 @@
         </div>
 
         <div style="padding-left :154px">
-            <label asp-for="MaxHp">Максимална мощност</label>
+            <label asp-for="HorsePower">Максимална мощност</label>
         </div>
 
         <div style="padding-left :96px">
-            <label asp-for="MinHp">Минимална мощност</label>
+            <label asp-for="MinHorsePower">Минимална мощност</label>
         </div>
     </div>
 
@@ -305,13 +305,13 @@
         </div>
 
         <div class="selects">
-            <input asp-for="MaxHp"
+            <input asp-for="HorsePower"
                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                    type="number" maxlength="6" class="form-control selectors" value="">
         </div>
 
         <div class="selects">
-            <input asp-for="MinHp"
+            <input asp-for="MinHorsePower"
                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                    type="number" maxlength="6" class="form-control selectors" value="">
         </div>

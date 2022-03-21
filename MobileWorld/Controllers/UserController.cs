@@ -29,9 +29,17 @@ namespace MobileWorld.Controllers
         }
 
         //[Authorize]
+        [HttpGet]
         public IActionResult CreateAd()
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult CreateAd()
+        {
+            return View();
+        }
+
     }
 }

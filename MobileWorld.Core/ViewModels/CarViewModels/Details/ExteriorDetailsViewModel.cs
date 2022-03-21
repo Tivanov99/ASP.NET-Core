@@ -1,6 +1,6 @@
 ﻿namespace MobileWorld.Core.ViewModels.CarViewModels.Details
 {
-    public class ExteriorDetails
+    public class ExteriorDetailsViewModel
     {
         public bool Coupe { get; set; }
 

@@ -1,25 +1,13 @@
 ﻿namespace MobileWorld.Core.ViewModels.CarViewModels
 {
-    public class SearchCarViewModel
+    public class SearchCarViewModel : CarFullInfoViewModel
     {
-        public string Make { get; set; } 
+        public decimal? MaxPrice { get; set; }
 
-        public string Location { get; set; }
-
-        public decimal? MaxPrice { get; set; } 
-
-        public int? AfterYear { get; set; } 
+        public int? AfterYear { get; set; }
 
         public int? BeforeYear { get; set; }
 
-        public int? MaxHp { get; set; } 
-
-        public int? MinHp { get; set; } 
-
-        public string GearType { get; set; }
-
-        public string EngineType { get; set; } 
-
-        public FeaturesViewModel Features { get; set; } = new();
+        public int? MinHorsePower { get; set; }
     }
 }
