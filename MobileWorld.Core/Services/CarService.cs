@@ -18,7 +18,7 @@ namespace MobileWorld.Core.Services
             this.repo = _repo;
         }
 
-        public List<CardAdViewModel> GetAllCarsByCriteria(SearchCarViewModel model)
+        public List<AdViewModel> GetAllCarsByCriteria(SearchCarViewModel model)
         {
             List<PropertyDto> defaultSearchCriteria = GetDefaultProperties(model);
 
@@ -36,9 +36,9 @@ namespace MobileWorld.Core.Services
                 (defaultSearchCriteria, featuresSearchCriteria);
 
 
-            List<CardAdViewModel> adds = new List<CardAdViewModel>()
+            List<AdViewModel> adds = new List<AdViewModel>()
             {
-                new CardAdViewModel()
+                new AdViewModel()
                 {
                     CarId =1,
                     Title = "BMW 330 CI",
@@ -46,7 +46,7 @@ namespace MobileWorld.Core.Services
                     Description="The BMW M3 is a high-performance version of the BMW 3 Series, developed by BMW's in-house motorsport division, BMW M GmbH. M3 models have been produced for every generation of 3 Series since the E30 M3 was introduced in 1986.",
                    Price=6999
                 },
-                new CardAdViewModel()
+                new AdViewModel()
                 {
                    CarId =2,
                    Title = "BMW 330 DCI",
@@ -69,23 +69,23 @@ namespace MobileWorld.Core.Services
                 {
                     Title = a.Title,
                     Town = a.Region.Town.Name,
-                    Region=a.Region.RegionName,
+                    Region = a.Region.RegionName,
                     Car = new CarDetailsViewModel()
                     {
                         CreatedOn = a.CreatedOn,
-                        Make= a.Car.Make,
-                        Model= a.Car.Model,
-                        GearType= a.Car.GearType,
-                        FuelType=a.Car.Engine.FuelType,
-                        Color=a.Car.Color,
-                        Price=a.Price,
-                        Description=a.Description,
-                        Mileage=a.Car.Mileage
+                        Make = a.Car.Make,
+                        Model = a.Car.Model,
+                        GearType = a.Car.GearType,
+                        FuelType = a.Car.Engine.FuelType,
+                        Color = a.Car.Color,
+                        Price = a.Price,
+                        Description = a.Description,
+                        Mileage = a.Car.Mileage
                     },
                     Owner = new OwnerViewModel()
                     {
-                        PhoneNumber=a.PhoneNumber,
-                        Name=$"{a.Owner.FirstName} {a.Owner.LastName}"
+                        PhoneNumber = a.PhoneNumber,
+                        Name = $"{a.Owner.FirstName} {a.Owner.LastName}"
                     }
                 })
                 .FirstOrDefault();
@@ -102,11 +102,11 @@ namespace MobileWorld.Core.Services
             return car;
         }
 
-        public List<CardAdViewModel> GetIndexCars()
+        public List<AdViewModel> GetIndexCars()
         {
-            List<CardAdViewModel> adds = new List<CardAdViewModel>()
+            List<AdViewModel> adds = new List<AdViewModel>()
             {
-                new CardAdViewModel()
+                new AdViewModel()
                 {
                     CarId =1,
                     Title = "BMW 330 CI",
@@ -114,7 +114,7 @@ namespace MobileWorld.Core.Services
                     Description="The BMW M3 is a high-performance version of the BMW 3 Series, developed by BMW's in-house motorsport division, BMW M GmbH. M3 models have been produced for every generation of 3 Series since the E30 M3 was introduced in 1986.",
                    Price=6999
                 },
-                new CardAdViewModel()
+                new AdViewModel()
                 {
                    CarId =2,
                    Title = "BMW 330 DCI",
@@ -124,6 +124,21 @@ namespace MobileWorld.Core.Services
                 }
             };
             //TODO: make rquest to db and take ONLY LAST 6 CARS !
+
+            var cars = this.repo.All<Ad>()
+                .OrderByDescending(a => a.CreatedOn)
+                .Select(a => new AdViewModel()
+                {
+                    CarId = a.CarId,
+                    Description = a.Description,
+                    Price = a.Price,
+                    Title = a.Title,
+                    //TODO : Get images
+                })
+                .Take(6)
+                .ToList();
+
+
             return adds;
         }
 
