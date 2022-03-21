@@ -1,4 +1,4 @@
-﻿<form asp-controller="Cars" asp-action="CarsByCriteria" method="get" id="searchForm">
+﻿<div id="searchElements">
     <div class="div-labels">
         <div>
             <label name="Make">Марка</label>
@@ -570,7 +570,8 @@
     </div>
 
 
-    <br />  <div class="div-labels" style="margin-top:20px">
+    <br />
+    <div class="div-labels" style="margin-top:20px">
         <div>
             <label name="BeforeYear">Година</label>
         </div>
@@ -585,7 +586,8 @@
         </div>
     </div>
 
-    <br /> <div class="div-labels">
+    <br />
+    <div class="div-labels">
         <div>
             <select name="BeforeYear" class="form-control">
                 <option value="">
@@ -912,9 +914,11 @@
     </div>
 
 
-    <br />  <button id="searchBtn" type="submit" class="btn btn-block btn-primary">Т Ъ Р С И</button>
+    <br />
+    <button id="searchBtn" type="submit" class="btn btn-block btn-primary">Т Ъ Р С И</button>
 
     <td>
         <a href="/Cars/AdvancedSearch" class="detailed-search"><strong>Подробно търсене</strong></a>
     </td>
-</form>
+
+</div>
