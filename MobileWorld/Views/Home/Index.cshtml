@@ -15,8 +15,9 @@
     <link asp-append-version="true" rel="stylesheet" href="~/css/CarCard.css">
 </head>
 <body>
-
-    @await Html.PartialAsync("_SearchFormPartial")
+    <form asp-controller="Home" asp-action="Index" method="get">
+        @await Html.PartialAsync("_SearchFormPartial")
+    </form>
 
     @foreach (var car in Model)
     {
