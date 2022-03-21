@@ -16,7 +16,7 @@
 </head>
 <body>
     <form asp-controller="Home" asp-action="Index" method="get">
-        @await Html.PartialAsync("_SearchFormPartial")
+        @await Html.PartialAsync("_SearchPartial")
     </form>
 
     @foreach (var car in Model)
