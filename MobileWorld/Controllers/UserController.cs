@@ -35,11 +35,11 @@ namespace MobileWorld.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult CreateAd()
-        {
-            return View();
-        }
+        //[HttpPost]
+        //public IActionResult CreateAd()
+        //{
+        //    return View();
+        //}
 
     }
 }
