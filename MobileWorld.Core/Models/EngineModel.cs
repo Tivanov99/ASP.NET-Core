@@ -2,7 +2,7 @@
 
 namespace MobileWorld.Core.Models
 {
-    internal class EngineModel : Engine
+    public class EngineModel : Engine
     {
     }
 }
