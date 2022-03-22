@@ -1,5 +1,5 @@
-﻿@using MobileWorld.Core.ViewModels.CarViewModels
-@model AdvancedSearchModel
+﻿@using MobileWorld.Core.Models;
+@model AdvancedSearchCarModel;
 <div id="details">
     <div class="div-labels" style="margin-top:20px">
         <div>
@@ -7,7 +7,7 @@
         </div>
 
         <div style="padding-left :154px">
-            <label asp-for="@Model.Car.Hp">Максимална мощност</label>
+            <label asp-for="@Model.Car.Engine.HorsePower">Максимална мощност</label>
         </div>
 
         <div style="padding-left :96px">
@@ -305,7 +305,7 @@
         </div>
 
         <div class="selects">
-            <input asp-for="HorsePower"
+            <input asp-for="Car.Engine.HorsePower"
                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                    type="number" maxlength="6" class="form-control selectors" value="">
         </div>

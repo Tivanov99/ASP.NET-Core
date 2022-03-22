@@ -14,10 +14,10 @@ namespace MobileWorld.Controllers
             this.carService = _carService;
         }
 
-        public IActionResult CarsByCriteria(AdvancedSearchCarModel model)
+        public IActionResult CarsByCriteria(AdvancedSearchCarModel searchModel)
         {
             List<AdCardViewModel> cars = this.carService
-                .GetAllCarsWithCriteria(model);
+                .GetAllCarsWithCriteria(searchModel);
 
             return View(cars);
         }

@@ -2,7 +2,7 @@
 
 namespace MobileWorld.Core.ViewModels.CarViewModels
 {
-    public class AdvancedSearchModel
+    public class BaseSearchCarModel
     {
         public CarModel Car { get; set; }
 
