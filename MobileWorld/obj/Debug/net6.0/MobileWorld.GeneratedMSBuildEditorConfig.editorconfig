@@ -175,12 +175,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Cars/AdvancedSearchView.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2Fyc1xBZHZhbmNlZFNlYXJjaFZpZXcuY3NodG1s
+[C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Ads/AdDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRzXEFkRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Cars/CarDetails.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2Fyc1xDYXJEZXRhaWxzLmNzaHRtbA==
+[C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Ads/AdsByCriteria.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRzXEFkc0J5Q3JpdGVyaWEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Cars/AdvancedSearchView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2Fyc1xBZHZhbmNlZFNlYXJjaFZpZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Cars/CarLeftView.cshtml]
@@ -189,10 +193,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Cars/CarRightView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2Fyc1xDYXJSaWdodFZpZXcuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Cars/CarsByCriteria.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2Fyc1xDYXJzQnlDcml0ZXJpYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Home/Index.cshtml]
