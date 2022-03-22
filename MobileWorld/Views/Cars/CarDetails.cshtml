@@ -1,5 +1,5 @@
-﻿@using MobileWorld.Core.ViewModels.CarViewModels
-@model CarViewModel
+﻿@using using MobileWorld.Core.Models;
+@model AdViewModel
 
 
 <!DOCTYPE html>
@@ -15,12 +15,12 @@
     <title>Document</title>
 </head>
 <body>
-    @if (Model.Car.Description != null)
+    @if (Model.Description != null)
     {
         <div class="more-info">Допълнителна информация:</div>
         <table class="table-more-info">
             <tbody>
-                <tr><td class="more-info-text">@Model.Car.Description </td></tr>
+                <tr><td class="more-info-text">@Model.Description </td></tr>
             </tbody>
         </table>
     }
@@ -31,12 +31,12 @@
             <tr>
                 <td class="owner-info">
                     <span class="owner-phone">Телефон: 893668829</span><br><br>
-                    <span class="owner-name">Име - @Model.Owner.Name</span>
+                    <span class="owner-name">Име - @Model.Owner.FirstName @Model.Owner.LastName</span>
                     <span class="owner-addres">Адрес :</span>
-                    Регион: @Model.Region<br>гр. @Model.Town<br>
-                    @if (Model.Neighborhood != null)
+                    Регион: @Model.Region<br>гр. @Model.Region.Town.Name<br>
+                    @if (Model.Region.Neiborhood != null)
                     {
-                        <span>КВ.@Model.Neighborhood</span>
+                        <span>КВ.@Model.Region.Neiborhood</span>
 
                         <br>
                     }
