@@ -1,9 +1,14 @@
-﻿using MobileWorld.Core.ViewModels.CarViewModels;
+﻿using MobileWorld.Core.ViewModels.UserModels;
+using MobileWorld.Infrastructure.Data.Models;
 
-namespace MobileWorld.Core.ViewModels
+namespace MobileWorld.Core.Models
 {
-    public class CreateAdModel : CarViewModel
+    public class CreateAdModel
     {
+        public Car Car { get; set; }
 
+        public RegionModel Region { get; set; }
+
+        public OwnerModel Owner { get; set; } = new();
     }
 }

@@ -82,7 +82,7 @@ namespace MobileWorld.Core.Services
                         Description = a.Description,
                         Mileage = a.Car.Mileage
                     },
-                    Owner = new OwnerViewModel()
+                    Owner = new OwnerModel()
                     {
                         PhoneNumber = a.PhoneNumber,
                         Name = $"{a.Owner.FirstName} {a.Owner.LastName}"
