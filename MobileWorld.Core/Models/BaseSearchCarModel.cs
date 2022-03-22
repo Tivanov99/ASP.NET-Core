@@ -2,7 +2,7 @@
 
 namespace MobileWorld.Core.ViewModels.CarViewModels
 {
-    public class BasicSearchCarModel
+    public class AdvancedSearchModel
     {
         public CarModel Car { get; set; }
 
@@ -17,7 +17,5 @@ namespace MobileWorld.Core.ViewModels.CarViewModels
         //public int? ToYear { get; set; }
 
         public int? MinHorsePower { get; set; }
-
-
     }
 }

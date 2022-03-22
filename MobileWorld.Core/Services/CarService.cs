@@ -1,9 +1,8 @@
 ﻿using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Dto;
+using MobileWorld.Core.Models;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Core.ViewModels.CarViewModels;
-using MobileWorld.Core.ViewModels.CarViewModels.Details;
-using MobileWorld.Core.ViewModels.UserModels;
 using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.Models;
 
@@ -18,7 +17,7 @@ namespace MobileWorld.Core.Services
             this.repo = _repo;
         }
 
-        public List<AdCardViewModel> GetAllCarsByCriteria(BasicSearchCarModel model)
+        public List<AdCardViewModel> GetAllCarsWithCriteria(AdvancedSearchCarModel model)
         {
             List<PropertyDto> defaultSearchCriteria = GetDefaultProperties(model);
 
@@ -60,44 +59,46 @@ namespace MobileWorld.Core.Services
             return adds;
         }
 
-        public CarViewModel GetCarById(int carId)
+        public AdViewModel GetCarById(int carId)
         {
 
             var car = this.repo.All<Ad>()
                 .Where(a => a.CarId == carId)
-                .Select(a => new CarViewModel()
+                .Select(a => new AdViewModel()
                 {
                     Title = a.Title,
-                    Town = a.Region.Town.Name,
-                    Region = a.Region.RegionName,
-                    Car = new CarDetailsViewModel()
+                    Price = a.Price,
+                    Description = a.Description,
+                    //Town = a.Region.Town.Name,
+                    //Region = a.Region.RegionName,
+                    Car = new CarModel()
                     {
-                        CreatedOn = a.CreatedOn,
+                        HorsePower = a.Car.Engine.HorsePower,
+                        SeatsCount = a.Car.SeatsCount,
+                        Year = a.Car.Year,
                         Make = a.Car.Make,
                         Model = a.Car.Model,
                         GearType = a.Car.GearType,
-                        FuelType = a.Car.Engine.FuelType,
                         Color = a.Car.Color,
-                        Price = a.Price,
-                        Description = a.Description,
                         Mileage = a.Car.Mileage
                     },
                     Owner = new OwnerModel()
                     {
-                        PhoneNumber = a.PhoneNumber,
-                        Name = $"{a.Owner.FirstName} {a.Owner.LastName}"
+                        FirstName = a.Owner.FirstName,
+                        LastName = a.Owner.LastName,
+                        PhoneNumber = a.PhoneNumber
                     }
                 })
                 .FirstOrDefault();
 
             //TODO: Make request to db with car Id
-            CarViewModel carAd = new CarViewModel();
-            carAd.Car.Description = "ВЪЗМОЖЕН ЛИЗИНГ БЕЗ ДОКАЗВАНЕ НА ДОХОДИ, ПРИ МИНИМАЛНА ПЪРВОНАЧАЛНА ВНОСКА СТАРТИРАЩА ОТ 10% ОДОБРЕНИЕ И РЕГИСТРАЦИЯ В РАМКИТЕ НА ДЕНЯ. Автомобила е от шоурум на BMW в Южна Швейцария (Мендризо). Само един собственик който го връща в представителството и взима нов. Пълна подръжка и документация за всяко обслужване на 15 хиляди километра изцяло, и единствено в сервиз на BMW.";
-            carAd.Owner.PhoneNumber = 0893668829;
-            carAd.Owner.Name = "АУТО КЛАСИК - ДИРЕКТЕН";
-            carAd.Region = "Бургас";
-            carAd.Town = "Сарафово";
-            carAd.Neighborhood = "Сарафово";
+            //CarViewModel carAd = new CarViewModel();
+            //carAd.Car.Description = "ВЪЗМОЖЕН ЛИЗИНГ БЕЗ ДОКАЗВАНЕ НА ДОХОДИ, ПРИ МИНИМАЛНА ПЪРВОНАЧАЛНА ВНОСКА СТАРТИРАЩА ОТ 10% ОДОБРЕНИЕ И РЕГИСТРАЦИЯ В РАМКИТЕ НА ДЕНЯ. Автомобила е от шоурум на BMW в Южна Швейцария (Мендризо). Само един собственик който го връща в представителството и взима нов. Пълна подръжка и документация за всяко обслужване на 15 хиляди километра изцяло, и единствено в сервиз на BMW.";
+            //carAd.Owner.PhoneNumber = 0893668829;
+            //carAd.Owner.Name = "АУТО КЛАСИК - ДИРЕКТЕН";
+            //carAd.Region = "Бургас";
+            //carAd.Town = "Сарафово";
+            //carAd.Neighborhood = "Сарафово";
 
             return car;
         }

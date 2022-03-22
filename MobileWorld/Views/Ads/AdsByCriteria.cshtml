@@ -1,4 +1,4 @@
-﻿@using MobileWorld.Core.ViewModels.CarViewModels
+﻿@using MobileWorld.Core.ViewModels
 @model List<AdCardViewModel>
 
 <!DOCTYPE html>
@@ -15,8 +15,7 @@
 <body>
     @foreach (var car in Model)
     {
-        @await Html.PartialAsync("_CarCardPartial", car)
-        ;
+        @await Html.PartialAsync("_CarCardPartial", car);
     }
 </body>
 </html>

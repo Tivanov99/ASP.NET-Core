@@ -1,14 +1,14 @@
-﻿namespace MobileWorld.Core.Contracts
-{
-    using MobileWorld.Core.ViewModels;
-    using MobileWorld.Core.ViewModels.CarViewModels;
+﻿using MobileWorld.Core.Models;
+using MobileWorld.Core.ViewModels;
 
+namespace MobileWorld.Core.Contracts
+{
     public interface ICarService
     {
         List<AdCardViewModel> GetIndexCars();
 
-        List<AdCardViewModel> GetAllCarsByCriteria(BasicSearchCarModel model);
+        List<AdCardViewModel> GetAllCarsWithCriteria(AdvancedSearchCarModel model);
 
-        CarViewModel GetCarById(int carId);
+        AdViewModel GetCarById(int carId);
     }
 }

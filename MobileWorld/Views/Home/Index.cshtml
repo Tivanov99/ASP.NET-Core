@@ -1,8 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+
 @using MobileWorld.Core.ViewModels
-@model List<AdCardViewModel>
+@model List<AdCardViewModel>;
 
 
 <!DOCTYPE html>
@@ -15,7 +16,7 @@
     <link asp-append-version="true" rel="stylesheet" href="~/css/CarCard.css">
 </head>
 <body>
-    <form asp-controller="Home" asp-action="Index" method="get">
+    <form asp-controller="Cars" asp-action="CarsByCriteria" method="get">
         @await Html.PartialAsync("_SearchPartial")
     </form>
 
