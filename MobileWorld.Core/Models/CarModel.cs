@@ -1,5 +1,4 @@
 ﻿using MobileWorld.Infrastructure.Data.Enums;
-using MobileWorld.Infrastructure.Data.Models;
 
 namespace MobileWorld.Core.Models
 {

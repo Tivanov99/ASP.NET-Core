@@ -1,4 +1,4 @@
-﻿using MobileWorld.Core.ViewModels.CarViewModels.Details;
+﻿using MobileWorld.Core.Models.Details;
 
 namespace MobileWorld.Core.Models
 {
