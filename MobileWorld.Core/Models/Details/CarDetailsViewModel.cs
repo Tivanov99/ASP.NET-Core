@@ -1,6 +1,6 @@
 ﻿using MobileWorld.Infrastructure.Data.Enums;
 
-namespace MobileWorld.Core.ViewModels.CarViewModels.Details
+namespace MobileWorld.Core.Models.Details
 {
     public class CarDetailsViewModel
     {

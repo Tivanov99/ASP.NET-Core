@@ -1,4 +1,4 @@
-﻿namespace MobileWorld.Core.ViewModels.CarViewModels.Details
+﻿namespace MobileWorld.Core.Models.Details
 {
     public class ExteriorDetailsModel
     {
