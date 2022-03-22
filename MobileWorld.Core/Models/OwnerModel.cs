@@ -1,4 +1,4 @@
-﻿namespace MobileWorld.Core.ViewModels.UserModels
+﻿namespace MobileWorld.Core.Models
 {
     public class OwnerModel
     {

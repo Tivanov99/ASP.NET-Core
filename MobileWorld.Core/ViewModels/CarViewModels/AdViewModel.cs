@@ -1,16 +1,18 @@
-﻿namespace MobileWorld.Core.ViewModels.CarViewModels
+﻿using MobileWorld.Core.Models;
+
+namespace MobileWorld.Core.ViewModels.CarViewModels
 {
     public class AdViewModel
     {
-        public string Make { get; set; }
+        public string Title { get; set; }
 
-        public string Location { get; set; }
+        public decimal Price { get; set; }
 
-        public int? HorsePower { get; set; }
+        public string Description { get; set; }
 
-        public string GearType { get; set; }
+        public CarModel Car { get; set; }
 
-        public string EngineType { get; set; }
+        public OwnerModel Owner { get; set; }
 
         public FeaturesViewModel Features { get; set; } = new();
     }
