@@ -18,7 +18,7 @@ namespace MobileWorld.Core.Services
             this.repo = _repo;
         }
 
-        public List<AdCardViewModel> GetAllCarsByCriteria(SearchCarModel model)
+        public List<AdCardViewModel> GetAllCarsByCriteria(BasicSearchCarModel model)
         {
             List<PropertyDto> defaultSearchCriteria = GetDefaultProperties(model);
 

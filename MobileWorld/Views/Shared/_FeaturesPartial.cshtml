@@ -1,9 +1,9 @@
 ﻿@using MobileWorld.Core.ViewModels.CarViewModels
-@model SearchCarModel
+@model BasicSearchCarModel
 <div id="details">
     <div class="div-labels" style="margin-top:20px">
         <div>
-            <label asp-for="BeforeYear">Година (преди)</label>
+            <label asp-for="ToYear">Година (преди)</label>
         </div>
 
         <div style="padding-left :154px">
@@ -18,7 +18,7 @@
 
     <br /> <div class="div-labels">
         <div>
-            <select asp-for="BeforeYear" class="form-control">
+            <select asp-for="ToYear" class="form-control">
                 <option value="">
                     всички
                 </option>
