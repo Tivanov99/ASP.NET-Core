@@ -11,5 +11,12 @@ namespace MobileWorld.Core.Models
         public int Year { get; set; }
 
         public GearType GearType { get; set; }
+
+        public RegionModel Region { get; set; }
+
+        public decimal MaxPrice { get; set; }
+
+        public EngineModel Engine { get; set; }
+
     }
 }
