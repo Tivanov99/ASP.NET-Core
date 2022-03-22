@@ -1,6 +1,6 @@
 ﻿namespace MobileWorld.Core.ViewModels.CarViewModels.Details
 {
-    public class SafetyDetailsViewModel
+    public class SafetyDetailsModel
     {
         public bool Gps { get; set; }
 

@@ -1,6 +1,6 @@
 ﻿namespace MobileWorld.Core.ViewModels.CarViewModels.Details
 {
-    public class ComfortDetailsViewModel
+    public class ComfortDetailsModel
     {
         public bool AutoStartStop { get; set; }
 

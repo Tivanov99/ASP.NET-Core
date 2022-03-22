@@ -146,7 +146,7 @@ namespace MobileWorld.Core.Services
         {
             Type type = model.GetType();
 
-            string featuresType = typeof(FeaturesViewModel).Name;
+            string featuresType = typeof(FeaturesModel).Name;
 
             var propertyInfos = type.GetProperties()
                 .Where(x => x.GetValue(model) != null &&

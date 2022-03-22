@@ -31,7 +31,7 @@ namespace MobileWorld.Infrastructure.Data.Models
         [ForeignKey(nameof(Engine))]
         public int EngineId { get; set; }
 
-        public Engine Engine { get; set; }
+        public virtual Engine Engine { get; set; }
 
         [Required]
         [Range(2,12)]
