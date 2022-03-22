@@ -7,7 +7,7 @@
     {
         List<AdCardViewModel> GetIndexCars();
 
-        List<AdCardViewModel> GetAllCarsByCriteria(SearchCarViewModel model);
+        List<AdCardViewModel> GetAllCarsByCriteria(SearchCarModel model);
 
         CarViewModel GetCarById(int carId);
     }
