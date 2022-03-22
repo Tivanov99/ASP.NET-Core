@@ -1,6 +1,6 @@
 ﻿namespace MobileWorld.Core.ViewModels.CarViewModels
 {
-    public class SearchCarViewModel : CarFullInfoViewModel
+    public class SearchCarViewModel : AdViewModel
     {
         public decimal? MaxPrice { get; set; }
 

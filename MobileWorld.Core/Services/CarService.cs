@@ -18,7 +18,7 @@ namespace MobileWorld.Core.Services
             this.repo = _repo;
         }
 
-        public List<AdViewModel> GetAllCarsByCriteria(SearchCarViewModel model)
+        public List<AdCardViewModel> GetAllCarsByCriteria(SearchCarViewModel model)
         {
             List<PropertyDto> defaultSearchCriteria = GetDefaultProperties(model);
 
@@ -36,9 +36,9 @@ namespace MobileWorld.Core.Services
                 (defaultSearchCriteria, featuresSearchCriteria);
 
 
-            List<AdViewModel> adds = new List<AdViewModel>()
+            List<AdCardViewModel> adds = new List<AdCardViewModel>()
             {
-                new AdViewModel()
+                new AdCardViewModel()
                 {
                     CarId =1,
                     Title = "BMW 330 CI",
@@ -46,7 +46,7 @@ namespace MobileWorld.Core.Services
                     Description="The BMW M3 is a high-performance version of the BMW 3 Series, developed by BMW's in-house motorsport division, BMW M GmbH. M3 models have been produced for every generation of 3 Series since the E30 M3 was introduced in 1986.",
                    Price=6999
                 },
-                new AdViewModel()
+                new AdCardViewModel()
                 {
                    CarId =2,
                    Title = "BMW 330 DCI",
@@ -102,11 +102,11 @@ namespace MobileWorld.Core.Services
             return car;
         }
 
-        public List<AdViewModel> GetIndexCars()
+        public List<AdCardViewModel> GetIndexCars()
         {
-            List<AdViewModel> adds = new List<AdViewModel>()
+            List<AdCardViewModel> adds = new List<AdCardViewModel>()
             {
-                new AdViewModel()
+                new AdCardViewModel()
                 {
                     CarId =1,
                     Title = "BMW 330 CI",
@@ -114,7 +114,7 @@ namespace MobileWorld.Core.Services
                     Description="The BMW M3 is a high-performance version of the BMW 3 Series, developed by BMW's in-house motorsport division, BMW M GmbH. M3 models have been produced for every generation of 3 Series since the E30 M3 was introduced in 1986.",
                    Price=6999
                 },
-                new AdViewModel()
+                new AdCardViewModel()
                 {
                    CarId =2,
                    Title = "BMW 330 DCI",
@@ -127,7 +127,7 @@ namespace MobileWorld.Core.Services
 
             var cars = this.repo.All<Ad>()
                 .OrderByDescending(a => a.CreatedOn)
-                .Select(a => new AdViewModel()
+                .Select(a => new AdCardViewModel()
                 {
                     CarId = a.CarId,
                     Description = a.Description,

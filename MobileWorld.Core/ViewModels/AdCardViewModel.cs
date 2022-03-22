@@ -1,6 +1,6 @@
 ﻿namespace MobileWorld.Core.ViewModels
 {
-    public class AdViewModel
+    public class AdCardViewModel
     {
         public int CarId { get; set; }
 

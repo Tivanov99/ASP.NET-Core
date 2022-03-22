@@ -15,13 +15,13 @@ namespace MobileWorld.Core.Services
             this.repo = _repo;
         }
 
-        public List<AdViewModel> UserAds(string userId)
+        public List<AdCardViewModel> UserAds(string userId)
         {
             //TODO: Export car images from car model
             var userAds = this.repo.All<ApplicationUser>()
                 .Where(u => u.Id == userId)
                 .SelectMany(a => a.Ads
-                                .Select(x => new AdViewModel()
+                                .Select(x => new AdCardViewModel()
                                 {
                                     CarId = x.CarId,
                                     Title = x.Title,
@@ -34,7 +34,7 @@ namespace MobileWorld.Core.Services
             return userAds;
         }
 
-        public List<AdViewModel> UserFavourites(string userId)
+        public List<AdCardViewModel> UserFavourites(string userId)
         {
             throw new NotImplementedException();
         }

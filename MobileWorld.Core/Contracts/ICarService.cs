@@ -5,9 +5,9 @@
 
     public interface ICarService
     {
-        List<AdViewModel> GetIndexCars();
+        List<AdCardViewModel> GetIndexCars();
 
-        List<AdViewModel> GetAllCarsByCriteria(SearchCarViewModel model);
+        List<AdCardViewModel> GetAllCarsByCriteria(SearchCarViewModel model);
 
         CarViewModel GetCarById(int carId);
     }

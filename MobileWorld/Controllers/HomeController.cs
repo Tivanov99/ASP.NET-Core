@@ -19,7 +19,7 @@ namespace MobileWorld.Controllers
 
         public IActionResult Index()
         {
-            List<AdViewModel> cars = this.carService
+            List<AdCardViewModel> cars = this.carService
                 .GetIndexCars();
             return View(cars);
         }

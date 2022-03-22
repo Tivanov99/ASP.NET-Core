@@ -16,7 +16,7 @@ namespace MobileWorld.Controllers
 
         public IActionResult CarsByCriteria(SearchCarViewModel model)
         {
-            List<AdViewModel> cars = this.carService
+            List<AdCardViewModel> cars = this.carService
                 .GetAllCarsByCriteria(model);
 
             return View(cars);

@@ -1,6 +1,6 @@
 ﻿namespace MobileWorld.Core.ViewModels.CarViewModels
 {
-    public class CarFullInfoViewModel
+    public class AdViewModel
     {
         public string Make { get; set; }
 
