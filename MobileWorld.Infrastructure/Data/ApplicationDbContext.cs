@@ -15,6 +15,19 @@ namespace MobileWorld.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<FavoriteAd>()
+                .HasKey(f => new { f.AdId, f.UserId });
+
+            builder.Entity<FavoriteAd>()
+                .HasOne(f => f.Ad)
+                .WithMany(a => a.Fans)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<FavoriteAd>()
+                .HasOne(f => f.User)
+                .WithMany(x => x.FavoriteAds)
+                .OnDelete(DeleteBehavior.NoAction);
+
             base.OnModelCreating(builder);
         }
 
@@ -28,5 +41,7 @@ namespace MobileWorld.Infrastructure.Data
         public DbSet<Region> Regions { get; set; }
 
         public DbSet<Town> Towns { get; set; }
+
+        public DbSet<FavoriteAd> FavoriteAds { get; set; }
     }
 }

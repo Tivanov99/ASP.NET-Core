@@ -2,7 +2,6 @@
 using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.Identity;
 using MobileWorld.Core.ViewModels;
-using Microsoft.EntityFrameworkCore;
 
 namespace MobileWorld.Core.Services
 {

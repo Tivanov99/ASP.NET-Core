@@ -42,5 +42,7 @@ namespace MobileWorld.Infrastructure.Data.Models
         public string OwnerId { get; set; }
 
         public ApplicationUser  Owner { get; set; }
+
+        public List<FavoriteAd> Fans { get; set; }
     }
 }
