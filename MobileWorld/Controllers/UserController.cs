@@ -1,6 +1,7 @@
 ﻿using MobileWorld.Core.Contracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MobileWorld.Core.Models;
 
 namespace MobileWorld.Controllers
 {
@@ -35,11 +36,11 @@ namespace MobileWorld.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public IActionResult CreateAd()
-        //{
-        //    return View();
-        //}
+        [HttpPost]
+        public IActionResult CreateAd(CreateAdModel model)
+        {
+            return View();
+        }
 
     }
 }

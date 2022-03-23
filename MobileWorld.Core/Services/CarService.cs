@@ -2,7 +2,6 @@
 using MobileWorld.Core.Dto;
 using MobileWorld.Core.Models;
 using MobileWorld.Core.ViewModels;
-using MobileWorld.Core.ViewModels.CarViewModels;
 using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.Models;
 

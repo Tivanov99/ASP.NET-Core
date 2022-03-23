@@ -1,7 +1,10 @@
-﻿<div id="searchElements">
+﻿@*@using MobileWorld.Core.Models;
+@model BaseSearchCarModel;*@
+
+<div id="searchElements">
     <div class="div-labels">
         <div>
-            <label name="Make">Марка</label>
+            <label name="Car.Make">Марка</label>
         </div>
 
         <div class="labels">
@@ -15,7 +18,7 @@
 
     <div class="div-labels">
         <div>
-            <select name="make" class="form-control">
+            <select name="Car.Make" class="form-control">
                 <option value="">
                     всички
                 </option>
@@ -563,7 +566,7 @@
 
 
         <div class="selects">
-            <input name="MaxPrice"
+            <input name="price"
                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                    type="number" maxlength="6" class="form-control selectors" value="">
         </div>

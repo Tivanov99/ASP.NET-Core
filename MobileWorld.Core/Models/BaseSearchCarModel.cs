@@ -1,12 +1,10 @@
-﻿using MobileWorld.Core.Models;
-
-namespace MobileWorld.Core.ViewModels.CarViewModels
+﻿namespace MobileWorld.Core.Models
 {
     public class BaseSearchCarModel
     {
-        public CarModel Car { get; set; }
+        public CarModel Car { get; set; } = new();
 
-        public RegionModel Region { get; set; }
+        public RegionModel Region { get; set; } = new();
 
         public decimal Price { get; set; }
 
