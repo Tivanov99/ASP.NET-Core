@@ -1,10 +1,7 @@
-﻿@*@using MobileWorld.Core.Models;
-@model BaseSearchCarModel;*@
-
-<div id="searchElements">
+﻿<div id="searchElements">
     <div class="div-labels">
         <div>
-            <label name="Car.Make">Марка</label>
+            <label name="Make">Марка</label>
         </div>
 
         <div class="labels">
@@ -18,7 +15,7 @@
 
     <div class="div-labels">
         <div>
-            <select name="Car.Make" class="form-control">
+            <select name="Make" class="form-control">
                 <option value="">
                     всички
                 </option>
@@ -566,7 +563,7 @@
 
 
         <div class="selects">
-            <input name="price"
+            <input name="MaxPrice"
                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                    type="number" maxlength="6" class="form-control selectors" value="">
         </div>
@@ -576,7 +573,7 @@
     <br />
     <div class="div-labels" style="margin-top:20px">
         <div>
-            <label name="AfterYear">Година</label>
+            <label name="FromYear">Година</label>
         </div>
 
 
@@ -592,7 +589,7 @@
     <br />
     <div class="div-labels">
         <div>
-            <select name="AfterYear" class="form-control">
+            <select name="FromYear" class="form-control">
                 <option value="">
                     всички
                 </option>
@@ -916,12 +913,10 @@
         </div>
     </div>
 
-
     <br />
     <button id="searchBtn" type="submit" class="btn btn-block btn-primary">Т Ъ Р С И</button>
 
-    <td>
-        <a href="/Cars/AdvancedSearch" class="detailed-search"><strong>Подробно търсене</strong></a>
-    </td>
-
 </div>
+<td>
+    <a href="/Cars/AdvancedSearch" class="detailed-search"><strong>Подробно търсене</strong></a>
+</td>
