@@ -9,8 +9,6 @@ namespace MobileWorld.Core.Models
         [StringLength(35)]
         public string Color { get; set; }
 
-        public int HorsePower { get; set; }
-
         [Required]
         [Range(2, 12)]
         public int SeatsCount { get; set; }
