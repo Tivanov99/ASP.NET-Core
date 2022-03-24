@@ -27,7 +27,6 @@ namespace MobileWorld.Controllers
             var result = this.userService
                 .UserAds(userId);
 
-
             var cars = new AdCardViewModel()
             {
                 CarId = 33,
@@ -35,7 +34,6 @@ namespace MobileWorld.Controllers
                 Description = "Mnogo zapazena",
                 Price = 333,
             };
-            //TODO: check here , and add view
             //return View(new List<AdCardViewModel>() { cars});
             return View(result);
 

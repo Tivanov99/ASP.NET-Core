@@ -35,7 +35,18 @@ namespace MobileWorld.Core.Services
 
         public List<AdCardViewModel> UserFavourites(string userId)
         {
-            throw new NotImplementedException();
+            var result = this.repo.All<ApplicationUser>()
+                .Where(u => u.Id == userId)
+                .SelectMany(u => u.FavoriteAds)
+                .Select(fv => new AdCardViewModel()
+                {
+                    CarId = fv.Ad.CarId,
+                    Title = fv.Ad.Title,
+                    Description = fv.Ad.Description,
+                    Price = fv.Ad.Price,
+                })
+                .ToList();
+            return result;
         }
     }
 }
