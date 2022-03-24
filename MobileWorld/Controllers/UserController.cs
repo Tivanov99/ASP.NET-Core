@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MobileWorld.Core.Models;
+using MobileWorld.Core.ViewModels;
 
 namespace MobileWorld.Controllers
 {
@@ -23,10 +24,19 @@ namespace MobileWorld.Controllers
         [Authorize]
         public IActionResult UserAds(string userId)
         {
-            var result = this.userService.UserAds(userId);
+            var result = this.userService
+                .UserAds(userId);
 
+
+            var cars = new AdCardViewModel()
+            {
+                CarId = 33,
+                Title = "Sport Car",
+                Description = "Mnogo zapazena",
+                Price = 333,
+            };
             //TODO: check here , and add view
-            return View();
+            return View(new List<AdCardViewModel>() { cars});
         }
 
         //[Authorize]
