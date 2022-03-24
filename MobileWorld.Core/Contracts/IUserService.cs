@@ -1,4 +1,5 @@
-﻿using MobileWorld.Core.ViewModels;
+﻿using MobileWorld.Core.Models;
+using MobileWorld.Core.ViewModels;
 
 namespace MobileWorld.Core.Contracts
 {
@@ -7,5 +8,7 @@ namespace MobileWorld.Core.Contracts
         List<AdCardViewModel> UserFavourites(string userId);
 
         List<AdCardViewModel> UserAds(string userId);
+
+        bool CreateAd(CreateAdModel model);
     }
 }

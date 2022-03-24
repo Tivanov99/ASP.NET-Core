@@ -37,7 +37,6 @@ namespace MobileWorld.Controllers
             };
             //return View(new List<AdCardViewModel>() { cars});
             return View(result);
-
         }
 
         //[Authorize]
@@ -47,6 +46,7 @@ namespace MobileWorld.Controllers
             return View();
         }
 
+        //[Authorize]
         [HttpPost]
         public IActionResult CreateAd(CreateAdModel model)
         {

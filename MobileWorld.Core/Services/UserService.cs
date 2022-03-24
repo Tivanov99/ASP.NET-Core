@@ -2,6 +2,7 @@
 using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.Identity;
 using MobileWorld.Core.ViewModels;
+using MobileWorld.Core.Models;
 
 namespace MobileWorld.Core.Services
 {
@@ -12,6 +13,11 @@ namespace MobileWorld.Core.Services
         public UserService(IRepository _repo)
         {
             this.repo = _repo;
+        }
+
+        public bool CreateAd(CreateAdModel model)
+        {
+            throw new NotImplementedException();
         }
 
         public List<AdCardViewModel> UserAds(string userId)
