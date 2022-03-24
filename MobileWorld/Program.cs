@@ -21,6 +21,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IUserService, UserService>()
 .AddScoped<ICarService, CarService>()
 .AddScoped<IRepository, Repository>()
+.AddScoped<IAdService, AdService>()
 .AddScoped<DbContext, ApplicationDbContext>();
 
 var app = builder.Build();

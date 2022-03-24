@@ -1,11 +1,12 @@
-﻿using MobileWorld.Core.Models;
+﻿using MobileWorld.Core.Contracts;
+using MobileWorld.Core.Models;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.Models;
 
 namespace MobileWorld.Core.Services
 {
-    public class AdService
+    public class AdService : IAdService
     {
         private readonly IRepository repo;
         public AdService(IRepository _repo)
