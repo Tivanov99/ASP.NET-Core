@@ -1,25 +1,22 @@
-﻿@using MobileWorld.Core.Models;
-@model AdvancedSearchCarModel;
-
-<div id="details">
+﻿<div id="details">
     <div class="div-labels" style="margin-top:20px">
         <div>
-            <label asp-for="ToYear">Година (преди)</label>
+            <label name="ToYear">Година (преди)</label>
         </div>
 
         <div style="padding-left :154px">
-            <label asp-for="@Model.Car.Engine.HorsePower">Максимална мощност</label>
+            <label name="Car.Engine.HorsePower">Максимална мощност</label>
         </div>
 
         <div style="padding-left :96px">
-            <label asp-for="MinHorsePower">Минимална мощност</label>
+            <label name="MinHorsePower">Минимална мощност</label>
         </div>
     </div>
 
 
     <br /> <div class="div-labels">
         <div>
-            <select asp-for="ToYear" class="form-control">
+            <select name="ToYear" class="form-control">
                 <option value="">
                     всички
                 </option>
@@ -306,13 +303,13 @@
         </div>
 
         <div class="selects">
-            <input asp-for="Car.Engine.HorsePower"
+            <input name="Car.Engine.HorsePower"
                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                    type="number" maxlength="6" class="form-control selectors" value="">
         </div>
 
         <div class="selects">
-            <input asp-for="MinHorsePower"
+            <input name="MinHorsePower"
                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                    type="number" maxlength="6" class="form-control selectors" value="">
         </div>
@@ -320,344 +317,344 @@
 </div>
 <div>
     <table id="features">
-    <tbody>
-        <tr>
-            <td valign="top">
-                <strong>Безопасност</strong>
-                <div>
-                    <input asp-for="Features.SafetyDetails.Gps" type="checkbox" data-val="true" value="true">
-                    <label asp-for="Features.SafetyDetails.Gps">GPS система за пропредияване</label>
-                </div>
-                <div>
-                    <input asp-for="Features.SafetyDetails.AutomaticStabilityControl" type="checkbox" data-val="true" value="true">
-                    <label asp-for="Features.SafetyDetails.AutomaticStabilityControl">Автоматичен контрол на стабилността</label>
-                </div>
-                <div>
-                    <input asp-for="Features.SafetyDetails.AdaptiveFrontLights" type="checkbox" data-val="true" value="true">
-                    <label asp-for="Features.SafetyDetails.AdaptiveFrontLights">Адаптивни предни светлини</label>
-                </div>
-                <div>
-                    <input asp-for="Features.SafetyDetails.Abs" type="checkbox" data-val="true" value="true">
-                    <label asp-for="Features.SafetyDetails.Abs">Антиблокираща система</label>
-                </div>
-                <div>
-                    <input asp-for="Features.SafetyDetails.ElBreaks" type="checkbox" data-val="true" value="true">
-                    <label asp-for="Features.SafetyDetails.ElBreaks">Ел. разпределяне на спирачното усилие</label>
-                </div>
-                <div>
-                    <input asp-for="Features.SafetyDetails.Esp" type="checkbox" data-val="true" value="true">
-                    <label asp-for="Features.SafetyDetails.Esp">Електронна програма за стабилизиране</label>
-                </div>
-                <div>
-                    <input asp-for="Features.SafetyDetails.TirePressure" type="checkbox" data-val="true" value="true">
-                    <label asp-for="Features.SafetyDetails.TirePressure">Контрол на налягането на гумите</label>
-                </div>
-                <div>
-                    <input asp-for="Features.SafetyDetails.ParkPilot" type="checkbox" data-val="true" value="true">
-                    <label asp-for="Features.SafetyDetails.ParkPilot">Парктроник</label>
-                </div>
-                <div>
-                    <input asp-for="Features.SafetyDetails.IsoFix" type="checkbox" data-val="true" value="true">
-                    <label asp-for="Features.SafetyDetails.IsoFix">Система ISOFIX</label>
-                </div>
-                <div>
-                    <input asp-for="Features.SafetyDetails.DynamicStabilitySystem" type="checkbox" data-val="true" value="true">
-                    <label asp-for="Features.SafetyDetails.DynamicStabilitySystem">Система за динамична устойчивост</label>
-                </div>
-                <div>
-                    <input asp-for="Features.SafetyDetails.SlipProtectionSystem" type="checkbox" data-val="true" value="true">
-                    <label asp-for="Features.SafetyDetails.SlipProtectionSystem">Система за защита от пробуксуванет</label>
-                </div>
-                <div>
-                    <input asp-for="Features.SafetyDetails.DryBrakesSystem" type="checkbox" data-val="true" value="true">
-                    <label asp-for="Features.SafetyDetails.DryBrakesSystem">Система за изсушаване на накладките</label>
-                </div>
-                <div>
-                    <input asp-for="Features.SafetyDetails.Distronic" type="checkbox" data-val="true" value="true">
-                    <label asp-for="Features.SafetyDetails.Distronic">Система за контрол на дистанцията</label>
-                </div>
-                <div>
-                    <input asp-for="Features.SafetyDetails.HillDescentControll" type="checkbox" data-val="true" value="true">
-                    <label asp-for="Features.SafetyDetails.HillDescentControll">Система за контрол на спускането</label>
-                </div>
-                <div>
-                    <input asp-for="Features.SafetyDetails.BrakeAssist" type="checkbox" data-val="true" value="true">
-                    <label asp-for="Features.SafetyDetails.BrakeAssist">Система за подпомагане на спирането</label>
-                </div>
-            </td>
-            <td valign="top">
-                <strong>Комфорт</strong>
-                <div>
-                    <input asp-for="Features.ComfortDetails.AutoStartStop" type="checkbox" data-val="true" value="true">
-                    <label asp-for="Features.ComfortDetails.AutoStartStop">Auto Start Stop function</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.DvdTv" type="checkbox" data-val="true" value="true">
-                    <label asp-for="Features.ComfortDetails.DvdTv">DVD, TV</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.BluetoothHandsfree" type="checkbox" data-val="true" value="true">
-                    <label asp-for="Features.ComfortDetails.BluetoothHandsfree">Bluetooth \ handsfree система</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.SteptronicTiptronic" type="checkbox" data-val="true" value="true">
-                    <label asp-for="Features.ComfortDetails.SteptronicTiptronic">Steptronic, Tiptronic</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.Usb" type="checkbox" data-val="true" value="true">
-                    <label asp-for="Features.ComfortDetails.Usb">USB, audio\video, IN\AUX изводи</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.Airmatic" type="checkbox" data-val="true" value="true">
-                    <label asp-for="Features.ComfortDetails.Airmatic">Адаптивно въздушно окачване</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.Keyless" type="checkbox" data-val="true" value="true">
-                    <label asp-for="Features.ComfortDetails.Keyless">Безключово палене</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.DifferentialLock" type="checkbox" data-val="true" value="true">
-                    <label asp-for="Features.ComfortDetails.DifferentialLock">Блокаж на диференциала</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.BordPc" type="checkbox" data-val="true" value="true">
-                    <label asp-for="Features.ComfortDetails.BordPc">Бордкомпютър</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.FastSlowShifts" type="checkbox" data-val="true" value="true">
-                    <label for="fast-slow-shifts">Бързи \ бавни скорости</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.LightDetector" type="checkbox" data-val="true" value="true">
-                    <label for="light-detector">Датчик за светлина</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.ElMirrors" type="checkbox" data-val="true" value="true">
-                    <label for="el-mirrors">Ел. Огледала</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.ElGlass" type="checkbox" data-val="true" value="true">
-                    <label for="el-glass">Ел. Стъкла</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.ElSuspension" type="checkbox" data-val="true" value="true">
-                    <label for="el-suspension">Ел. регулиране на окачването</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.ElSeats" type="checkbox" data-val="true" value="true">
-                    <label for="el-seats">Ел. регулиране на седалките</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.Eps" type="checkbox" data-val="true" value="true">
-                    <label for="eps">Ел. усилвател на волана</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.Ac" type="checkbox" data-val="true" value="true">
-                    <label for="ac">Климатик</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.Climatecontroll" type="checkbox" data-val="true" value="true">
-                    <label for="climatecontroll">Климатроник</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.MultiSteeringWheel" type="checkbox" data-val="true" value="true">
-                    <label for="multi-steering-wheel">Мултифункционален волан</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.Navigation" type="checkbox" data-val="true" value="true">
-                    <label for="navigation">Навигация</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.SteeringWheelHeating" type="checkbox" data-val="true" value="true">
-                    <label for="steering-wheel-heating">Отопление на волана</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.FrontGlassHeating" type="checkbox" data-val="true" value="true">
-                    <label for="front-glass-heating">Подгряване на предното стъкло</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.SeatsHeating" type="checkbox" data-val="true" value="true">
-                    <label for="seats-heating">Подгряване на седалките</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.SteeringWheelAdjustment" type="checkbox" data-val="true" value="true">
-                    <label for="steering-wheel-adjustment">Регулиране на волана</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.RainSensor" type="checkbox" data-val="true" value="true">
-                    <label for="rain-sensor">Сензор за дъжд</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.PowerSteering" type="checkbox" data-val="true" value="true">
-                    <label for="power-steering">Серво усилвател на волана</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.HeadlampWashSystem" type="checkbox" data-val="true" value="true">
-                    <label for="headlamp-wash-system">Система за измиване на фаровете</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.Autopilot" type="checkbox" data-val="true" value="true">
-                    <label for="autopilot">Система за контрол на скоростта (автопилот)</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.Stereo" type="checkbox" data-val="true" value="true">
-                    <label for="stereo">Стерео уредба</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.Filter" type="checkbox" data-val="true" value="true">
-                    <label for="filter">Филтър за твърди частици</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ComfortDetails.RefrigerationFrog" type="checkbox" data-val="true" value="true">
-                    <label for="refrigeration-frog">Хладилна жабка</label>
-                </div>
-            </td>
-            <td valign="top">
-                <strong>Други</strong>
-                <div>
-                    <input asp-for="Features.OthersDetails.AllDrive" type="checkbox" data-val="true" value="true">
-                    <label for="4x4">4x4</label>
-                </div>
-                <div>
-                    <input asp-for="Features.OthersDetails.SevenSeats" type="checkbox" data-val="true" value="true">
-                    <label for="seven-seats">7 места</label>
-                </div>
-                <div>
-                    <input asp-for="Features.OthersDetails.BuyBack" type="checkbox" data-val="true" value="true">
-                    <label for="buy-back">Buy back</label>
-                </div>
-                <div>
-                    <input asp-for="Features.OthersDetails.Exchange" type="checkbox" data-val="true" value="true">
-                    <label for="exchange">Бартер</label>
-                </div>
-                <div>
-                    <input asp-for="Features.OthersDetails.AutoGas" type="checkbox" data-val="true" value="true">
-                    <label for="auto-gas">Газова уредба</label>
-                </div>
-                <div>
-                    <input asp-for="Features.OthersDetails.Long" type="checkbox" data-val="true" value="true">
-                    <label for="long">Дълга база</label>
-                </div>
-                <div>
-                    <input asp-for="Features.OthersDetails.Catastrophic" type="checkbox" data-val="true" value="true">
-                    <label for="catastrophic">Катастрофирал</label>
-                </div>
-                <div>
-                    <input asp-for="Features.OthersDetails.Leasing" type="checkbox" data-val="true" value="true">
-                    <label for="leasing">Лизинг</label>
-                </div>
-                <div>
-                    <input asp-for="Features.OthersDetails.MethaneSystem" type="checkbox" data-val="true" value="true">
-                    <label for="methane-system">Метанова уредба</label>
-                </div>
-                <div>
-                    <input asp-for="Features.OthersDetails.InPieces" type="checkbox" data-val="true" value="true">
-                    <label for="in-pieces">На части</label>
-                </div>
-                <div>
-                    <input asp-for="Features.OthersDetails.FullyServed" type="checkbox" data-val="true" value="true">
-                    <label for="fully-served">Напълно обслужен</label>
-                </div>
-                <div>
-                    <input asp-for="Features.OthersDetails.Registration" type="checkbox" data-val="true" value="true">
-                    <label for="registration">С регистрация</label>
-                </div>
-                <div>
-                    <input asp-for="Features.OthersDetails.Tuning" type="checkbox" data-val="true" value="true">
-                    <label for="tuning">Тунинг</label>
-                </div>
-                <strong>Екстериор</strong>
-                <div>
-                    <input asp-for="Features.ExteriorDetails.Coupe" type="checkbox" data-val="true" value="true">
-                    <label for="coupe">2(3) Врати</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ExteriorDetails.Sedan" type="checkbox" data-val="true" value="true">
-                    <label for="sedan">4(5) Врати</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ExteriorDetails.LedHeadlights" type="checkbox" data-val="true" value="true">
-                    <label for="led-headlights">LED фарове</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ExteriorDetails.XenonLights" type="checkbox" data-val="true" value="true">
-                    <label for="xenon-lights">Ксенонови фарове</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ExteriorDetails.AlloyWheels" type="checkbox" data-val="true" value="true">
-                    <label for="alloy-wheels">Лети джанти</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ExteriorDetails.Metallic" type="checkbox" data-val="true" value="true">
-                    <label for="metallic">Металик</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ExteriorDetails.PanoramicSunroof" type="checkbox" data-val="true" value="true">
-                    <label for="panoramic-sunroof">Панорамен люк</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ExteriorDetails.Spoilers" type="checkbox" data-val="true" value="true">
-                    <label for="spoilers">Спойлери</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ExteriorDetails.Shibedah" type="checkbox" data-val="true" value="true">
-                    <label for="Shibedah">Шибедах</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ExteriorDetails.HalogenHeadlights" type="checkbox" data-val="true" value="true">
-                    <label for="halogen-headlights">Халогенни фарове</label>
-                </div>
-            </td>
-            <td valign="top">
-                <strong>Защита</strong>
-                <div>
-                    <input type="checkbox" data-val="true" name="offroad-pack" value="true">
-                    <label for="offroad-pack">OFFROAD пакет</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ProtectionDetails.Alarm" type="checkbox" data-val="true" value="true">
-                    <label for="alarm">Аларма</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ProtectionDetails.Armored" type="checkbox" data-val="true" value="true">
-                    <label for="armored">Брониран</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ProtectionDetails.Immobilizer" type="checkbox" data-val="true" value="true">
-                    <label for="immobilizer">Имобилайзер</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ProtectionDetails.Casco" type="checkbox" data-val="true" value="true">
-                    <label for="Casco">Каско</label>
-                </div>
-                <div>
-                    <input asp-for="Features.ProtectionDetails.CentralLocking" type="checkbox" data-val="true" value="true">
-                    <label for="central-locking">Централно заключване</label>
-                </div>
-                <strong>Интериор</strong>
-                <div>
-                    <input asp-for="Features.InteriorDetails.SuedeSaloon" type="checkbox" data-val="true" value="true">
-                    <label for="suede-saloon">Велурен салон</label>
-                </div>
-                <div>
-                    <input asp-for="Features.InteriorDetails.LeatherSalon" type="checkbox" data-val="true" value="true">
-                    <label for="leather-salon">Кожен салон</label>
-                </div>
-                <strong>Специализирани</strong>
-                <div>
-                    <input asp-for="Features.InteriorDetails.Taxi" type="checkbox" data-val="true" value="true">
-                    <label for="taxi">TAXI</label>
-                </div>
-                <div>
-                    <input asp-for="Features.InteriorDetails.Educational" type="checkbox" data-val="true" value="true">
-                    <label for="educational">Учебен</label>
-                </div>
-                <div>
-                    <input asp-for="Features.InteriorDetails.Ruler" type="checkbox" data-val="true" value="true">
-                    <label for="ruler">Линейка</label>
-                </div>
-            </td>
-        </tr>
-    </tbody>
-</table>
+        <tbody>
+            <tr>
+                <td valign="top">
+                    <strong>Безопасност</strong>
+                    <div>
+                        <input name="Features.SafetyDetails.Gps" type="checkbox" data-val="true" value="true">
+                        <label name="Features.SafetyDetails.Gps">GPS система за пропредияване</label>
+                    </div>
+                    <div>
+                        <input name="Features.SafetyDetails.AutomaticStabilityControl" type="checkbox" data-val="true" value="true">
+                        <label name="Features.SafetyDetails.AutomaticStabilityControl">Автоматичен контрол на стабилността</label>
+                    </div>
+                    <div>
+                        <input name="Features.SafetyDetails.AdaptiveFrontLights" type="checkbox" data-val="true" value="true">
+                        <label name="Features.SafetyDetails.AdaptiveFrontLights">Адаптивни предни светлини</label>
+                    </div>
+                    <div>
+                        <input name="Features.SafetyDetails.Abs" type="checkbox" data-val="true" value="true">
+                        <label name="Features.SafetyDetails.Abs">Антиблокираща система</label>
+                    </div>
+                    <div>
+                        <input name="Features.SafetyDetails.ElBreaks" type="checkbox" data-val="true" value="true">
+                        <label name="Features.SafetyDetails.ElBreaks">Ел. разпределяне на спирачното усилие</label>
+                    </div>
+                    <div>
+                        <input name="Features.SafetyDetails.Esp" type="checkbox" data-val="true" value="true">
+                        <label name="Features.SafetyDetails.Esp">Електронна програма за стабилизиране</label>
+                    </div>
+                    <div>
+                        <input name="Features.SafetyDetails.TirePressure" type="checkbox" data-val="true" value="true">
+                        <label name="Features.SafetyDetails.TirePressure">Контрол на налягането на гумите</label>
+                    </div>
+                    <div>
+                        <input name="Features.SafetyDetails.ParkPilot" type="checkbox" data-val="true" value="true">
+                        <label name="Features.SafetyDetails.ParkPilot">Парктроник</label>
+                    </div>
+                    <div>
+                        <input name="Features.SafetyDetails.IsoFix" type="checkbox" data-val="true" value="true">
+                        <label name="Features.SafetyDetails.IsoFix">Система ISOFIX</label>
+                    </div>
+                    <div>
+                        <input name="Features.SafetyDetails.DynamicStabilitySystem" type="checkbox" data-val="true" value="true">
+                        <label name="Features.SafetyDetails.DynamicStabilitySystem">Система за динамична устойчивост</label>
+                    </div>
+                    <div>
+                        <input name="Features.SafetyDetails.SlipProtectionSystem" type="checkbox" data-val="true" value="true">
+                        <label name="Features.SafetyDetails.SlipProtectionSystem">Система за защита от пробуксуванет</label>
+                    </div>
+                    <div>
+                        <input name="Features.SafetyDetails.DryBrakesSystem" type="checkbox" data-val="true" value="true">
+                        <label name="Features.SafetyDetails.DryBrakesSystem">Система за изсушаване на накладките</label>
+                    </div>
+                    <div>
+                        <input name="Features.SafetyDetails.Distronic" type="checkbox" data-val="true" value="true">
+                        <label name="Features.SafetyDetails.Distronic">Система за контрол на дистанцията</label>
+                    </div>
+                    <div>
+                        <input name="Features.SafetyDetails.HillDescentControll" type="checkbox" data-val="true" value="true">
+                        <label name="Features.SafetyDetails.HillDescentControll">Система за контрол на спускането</label>
+                    </div>
+                    <div>
+                        <input name="Features.SafetyDetails.BrakeAssist" type="checkbox" data-val="true" value="true">
+                        <label name="Features.SafetyDetails.BrakeAssist">Система за подпомагане на спирането</label>
+                    </div>
+                </td>
+                <td valign="top">
+                    <strong>Комфорт</strong>
+                    <div>
+                        <input name="Features.ComfortDetails.AutoStartStop" type="checkbox" data-val="true" value="true">
+                        <label name="Features.ComfortDetails.AutoStartStop">Auto Start Stop function</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.DvdTv" type="checkbox" data-val="true" value="true">
+                        <label name="Features.ComfortDetails.DvdTv">DVD, TV</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.BluetoothHandsfree" type="checkbox" data-val="true" value="true">
+                        <label name="Features.ComfortDetails.BluetoothHandsfree">Bluetooth \ handsfree система</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.SteptronicTiptronic" type="checkbox" data-val="true" value="true">
+                        <label name="Features.ComfortDetails.SteptronicTiptronic">Steptronic, Tiptronic</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.Usb" type="checkbox" data-val="true" value="true">
+                        <label name="Features.ComfortDetails.Usb">USB, audio\video, IN\AUX изводи</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.Airmatic" type="checkbox" data-val="true" value="true">
+                        <label name="Features.ComfortDetails.Airmatic">Адаптивно въздушно окачване</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.Keyless" type="checkbox" data-val="true" value="true">
+                        <label name="Features.ComfortDetails.Keyless">Безключово палене</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.DifferentialLock" type="checkbox" data-val="true" value="true">
+                        <label name="Features.ComfortDetails.DifferentialLock">Блокаж на диференциала</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.BordPc" type="checkbox" data-val="true" value="true">
+                        <label name="Features.ComfortDetails.BordPc">Бордкомпютър</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.FastSlowShifts" type="checkbox" data-val="true" value="true">
+                        <label for="fast-slow-shifts">Бързи \ бавни скорости</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.LightDetector" type="checkbox" data-val="true" value="true">
+                        <label for="light-detector">Датчик за светлина</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.ElMirrors" type="checkbox" data-val="true" value="true">
+                        <label for="el-mirrors">Ел. Огледала</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.ElGlass" type="checkbox" data-val="true" value="true">
+                        <label for="el-glass">Ел. Стъкла</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.ElSuspension" type="checkbox" data-val="true" value="true">
+                        <label for="el-suspension">Ел. регулиране на окачването</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.ElSeats" type="checkbox" data-val="true" value="true">
+                        <label for="el-seats">Ел. регулиране на седалките</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.Eps" type="checkbox" data-val="true" value="true">
+                        <label for="eps">Ел. усилвател на волана</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.Ac" type="checkbox" data-val="true" value="true">
+                        <label for="ac">Климатик</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.Climatecontroll" type="checkbox" data-val="true" value="true">
+                        <label for="climatecontroll">Климатроник</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.MultiSteeringWheel" type="checkbox" data-val="true" value="true">
+                        <label for="multi-steering-wheel">Мултифункционален волан</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.Navigation" type="checkbox" data-val="true" value="true">
+                        <label for="navigation">Навигация</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.SteeringWheelHeating" type="checkbox" data-val="true" value="true">
+                        <label for="steering-wheel-heating">Отопление на волана</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.FrontGlassHeating" type="checkbox" data-val="true" value="true">
+                        <label for="front-glass-heating">Подгряване на предното стъкло</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.SeatsHeating" type="checkbox" data-val="true" value="true">
+                        <label for="seats-heating">Подгряване на седалките</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.SteeringWheelAdjustment" type="checkbox" data-val="true" value="true">
+                        <label for="steering-wheel-adjustment">Регулиране на волана</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.RainSensor" type="checkbox" data-val="true" value="true">
+                        <label for="rain-sensor">Сензор за дъжд</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.PowerSteering" type="checkbox" data-val="true" value="true">
+                        <label for="power-steering">Серво усилвател на волана</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.HeadlampWashSystem" type="checkbox" data-val="true" value="true">
+                        <label for="headlamp-wash-system">Система за измиване на фаровете</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.Autopilot" type="checkbox" data-val="true" value="true">
+                        <label for="autopilot">Система за контрол на скоростта (автопилот)</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.Stereo" type="checkbox" data-val="true" value="true">
+                        <label for="stereo">Стерео уредба</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.Filter" type="checkbox" data-val="true" value="true">
+                        <label for="filter">Филтър за твърди частици</label>
+                    </div>
+                    <div>
+                        <input name="Features.ComfortDetails.RefrigerationFrog" type="checkbox" data-val="true" value="true">
+                        <label for="refrigeration-frog">Хладилна жабка</label>
+                    </div>
+                </td>
+                <td valign="top">
+                    <strong>Други</strong>
+                    <div>
+                        <input name="Features.OthersDetails.AllDrive" type="checkbox" data-val="true" value="true">
+                        <label for="4x4">4x4</label>
+                    </div>
+                    <div>
+                        <input name="Features.OthersDetails.SevenSeats" type="checkbox" data-val="true" value="true">
+                        <label for="seven-seats">7 места</label>
+                    </div>
+                    <div>
+                        <input name="Features.OthersDetails.BuyBack" type="checkbox" data-val="true" value="true">
+                        <label for="buy-back">Buy back</label>
+                    </div>
+                    <div>
+                        <input name="Features.OthersDetails.Exchange" type="checkbox" data-val="true" value="true">
+                        <label for="exchange">Бартер</label>
+                    </div>
+                    <div>
+                        <input name="Features.OthersDetails.AutoGas" type="checkbox" data-val="true" value="true">
+                        <label for="auto-gas">Газова уредба</label>
+                    </div>
+                    <div>
+                        <input name="Features.OthersDetails.Long" type="checkbox" data-val="true" value="true">
+                        <label for="long">Дълга база</label>
+                    </div>
+                    <div>
+                        <input name="Features.OthersDetails.Catastrophic" type="checkbox" data-val="true" value="true">
+                        <label for="catastrophic">Катастрофирал</label>
+                    </div>
+                    <div>
+                        <input name="Features.OthersDetails.Leasing" type="checkbox" data-val="true" value="true">
+                        <label for="leasing">Лизинг</label>
+                    </div>
+                    <div>
+                        <input name="Features.OthersDetails.MethaneSystem" type="checkbox" data-val="true" value="true">
+                        <label for="methane-system">Метанова уредба</label>
+                    </div>
+                    <div>
+                        <input name="Features.OthersDetails.InPieces" type="checkbox" data-val="true" value="true">
+                        <label for="in-pieces">На части</label>
+                    </div>
+                    <div>
+                        <input name="Features.OthersDetails.FullyServed" type="checkbox" data-val="true" value="true">
+                        <label for="fully-served">Напълно обслужен</label>
+                    </div>
+                    <div>
+                        <input name="Features.OthersDetails.Registration" type="checkbox" data-val="true" value="true">
+                        <label for="registration">С регистрация</label>
+                    </div>
+                    <div>
+                        <input name="Features.OthersDetails.Tuning" type="checkbox" data-val="true" value="true">
+                        <label for="tuning">Тунинг</label>
+                    </div>
+                    <strong>Екстериор</strong>
+                    <div>
+                        <input name="Features.ExteriorDetails.Coupe" type="checkbox" data-val="true" value="true">
+                        <label for="coupe">2(3) Врати</label>
+                    </div>
+                    <div>
+                        <input name="Features.ExteriorDetails.Sedan" type="checkbox" data-val="true" value="true">
+                        <label for="sedan">4(5) Врати</label>
+                    </div>
+                    <div>
+                        <input name="Features.ExteriorDetails.LedHeadlights" type="checkbox" data-val="true" value="true">
+                        <label for="led-headlights">LED фарове</label>
+                    </div>
+                    <div>
+                        <input name="Features.ExteriorDetails.XenonLights" type="checkbox" data-val="true" value="true">
+                        <label for="xenon-lights">Ксенонови фарове</label>
+                    </div>
+                    <div>
+                        <input name="Features.ExteriorDetails.AlloyWheels" type="checkbox" data-val="true" value="true">
+                        <label for="alloy-wheels">Лети джанти</label>
+                    </div>
+                    <div>
+                        <input name="Features.ExteriorDetails.Metallic" type="checkbox" data-val="true" value="true">
+                        <label for="metallic">Металик</label>
+                    </div>
+                    <div>
+                        <input name="Features.ExteriorDetails.PanoramicSunroof" type="checkbox" data-val="true" value="true">
+                        <label for="panoramic-sunroof">Панорамен люк</label>
+                    </div>
+                    <div>
+                        <input name="Features.ExteriorDetails.Spoilers" type="checkbox" data-val="true" value="true">
+                        <label for="spoilers">Спойлери</label>
+                    </div>
+                    <div>
+                        <input name="Features.ExteriorDetails.Shibedah" type="checkbox" data-val="true" value="true">
+                        <label for="Shibedah">Шибедах</label>
+                    </div>
+                    <div>
+                        <input name="Features.ExteriorDetails.HalogenHeadlights" type="checkbox" data-val="true" value="true">
+                        <label for="halogen-headlights">Халогенни фарове</label>
+                    </div>
+                </td>
+                <td valign="top">
+                    <strong>Защита</strong>
+                    <div>
+                        <input type="checkbox" data-val="true" name="offroad-pack" value="true">
+                        <label for="offroad-pack">OFFROAD пакет</label>
+                    </div>
+                    <div>
+                        <input name="Features.ProtectionDetails.Alarm" type="checkbox" data-val="true" value="true">
+                        <label for="alarm">Аларма</label>
+                    </div>
+                    <div>
+                        <input name="Features.ProtectionDetails.Armored" type="checkbox" data-val="true" value="true">
+                        <label for="armored">Брониран</label>
+                    </div>
+                    <div>
+                        <input name="Features.ProtectionDetails.Immobilizer" type="checkbox" data-val="true" value="true">
+                        <label for="immobilizer">Имобилайзер</label>
+                    </div>
+                    <div>
+                        <input name="Features.ProtectionDetails.Casco" type="checkbox" data-val="true" value="true">
+                        <label for="Casco">Каско</label>
+                    </div>
+                    <div>
+                        <input name="Features.ProtectionDetails.CentralLocking" type="checkbox" data-val="true" value="true">
+                        <label for="central-locking">Централно заключване</label>
+                    </div>
+                    <strong>Интериор</strong>
+                    <div>
+                        <input name="Features.InteriorDetails.SuedeSaloon" type="checkbox" data-val="true" value="true">
+                        <label for="suede-saloon">Велурен салон</label>
+                    </div>
+                    <div>
+                        <input name="Features.InteriorDetails.LeatherSalon" type="checkbox" data-val="true" value="true">
+                        <label for="leather-salon">Кожен салон</label>
+                    </div>
+                    <strong>Специализирани</strong>
+                    <div>
+                        <input name="Features.InteriorDetails.Taxi" type="checkbox" data-val="true" value="true">
+                        <label for="taxi">TAXI</label>
+                    </div>
+                    <div>
+                        <input name="Features.InteriorDetails.Educational" type="checkbox" data-val="true" value="true">
+                        <label for="educational">Учебен</label>
+                    </div>
+                    <div>
+                        <input name="Features.InteriorDetails.Ruler" type="checkbox" data-val="true" value="true">
+                        <label for="ruler">Линейка</label>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
