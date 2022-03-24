@@ -1,4 +1,5 @@
 ﻿using MobileWorld.Infrastructure.Data.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace MobileWorld.Core.Models
 {
@@ -6,6 +7,8 @@ namespace MobileWorld.Core.Models
     {
         public string Make { get; set; }
 
+        [Required]
+        [StringLength(20)]
         public string Model { get; set; }
 
         public int Year { get; set; }

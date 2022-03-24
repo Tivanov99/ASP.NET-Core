@@ -14,6 +14,7 @@ namespace MobileWorld.Infrastructure.Data.Models
         public string Title { get; set; }
 
         [Required]
+        [Phone]
         public int PhoneNumber { get; set; }
 
         [ForeignKey(nameof(Car))]
