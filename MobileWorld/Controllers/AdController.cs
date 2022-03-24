@@ -4,9 +4,13 @@ namespace MobileWorld.Controllers
 {
     public class AdController : Controller
     {
-        public IActionResult Index()
+
+        public IActionResult AdDetails(int carId)
         {
-            return View();
+            var carAd = this.carService
+                .GetCarById(carId);
+
+            return View(carAd);
         }
     }
 }
