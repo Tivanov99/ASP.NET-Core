@@ -13,12 +13,10 @@ namespace MobileWorld.Infrastructure.Data.Models
 
         public Town Town { get; set; }
 
-        [Required]
         [StringLength(70)]
         public string RegionName { get; set; }
 
 
-        [Required]
         [StringLength(70)]
         public string Neiborhood { get; set; }
     }

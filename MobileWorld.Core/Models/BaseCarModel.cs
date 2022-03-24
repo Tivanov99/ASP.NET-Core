@@ -22,6 +22,7 @@ namespace MobileWorld.Core.Models
 
         public RegionModel Region { get; set; }
 
+        [Range(0,999999)]
         public decimal MaxPrice { get; set; }
 
         public EngineModel Engine { get; set; }
