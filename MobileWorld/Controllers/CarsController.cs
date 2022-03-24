@@ -22,13 +22,13 @@ namespace MobileWorld.Controllers
             return View(cars);
         }
 
-        public IActionResult CarDetails(int carId)
-        {
-            var carAd = this.carService
-                .GetCarById(carId);
+        //public IActionResult CarDetails(int carId)
+        //{
+        //    var carAd = this.carService
+        //        .GetCarById(carId);
 
-            return View(carAd);
-        }
+        //    return View(carAd);
+        //}
 
         public IActionResult AdvancedSearch()
         {

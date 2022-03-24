@@ -72,14 +72,13 @@ namespace MobileWorld.Core.Services
                     //Region = a.Region.RegionName,
                     Car = new CarModel()
                     {
-                        HorsePower = a.Car.Engine.HorsePower,
                         SeatsCount = a.Car.SeatsCount,
                         Year = a.Car.Year,
                         Make = a.Car.Make,
                         Model = a.Car.Model,
                         GearType = a.Car.GearType,
                         Color = a.Car.Color,
-                        Mileage = a.Car.Mileage
+                        Mileage = a.Car.Mileage,
                     },
                     Owner = new OwnerModel()
                     {
