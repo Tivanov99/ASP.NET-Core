@@ -28,7 +28,7 @@ namespace MobileWorld.Core.Services
                 .SelectMany(a => a.Ads
                                 .Select(x => new AdCardViewModel()
                                 {
-                                    CarId = x.CarId,
+                                    AdId = x.Id,
                                     Title = x.Title,
                                     Description = x.Description,
                                     Price = x.Price,
@@ -46,7 +46,7 @@ namespace MobileWorld.Core.Services
                 .SelectMany(u => u.FavoriteAds)
                 .Select(fv => new AdCardViewModel()
                 {
-                    CarId = fv.Ad.CarId,
+                    AdId = fv.Ad.Id,
                     Title = fv.Ad.Title,
                     Description = fv.Ad.Description,
                     Price = fv.Ad.Price,
