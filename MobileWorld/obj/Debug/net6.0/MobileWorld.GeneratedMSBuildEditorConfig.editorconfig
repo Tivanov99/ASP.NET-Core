@@ -231,12 +231,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDcmVhdGVBZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/User/UserAds.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyQWRzLmNzaHRtbA==
+[C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/User/FavoritesAds.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxGYXZvcml0ZXNBZHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/User/UserFavoriteAds.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyRmF2b3JpdGVBZHMuY3NodG1s
+[C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/User/UserAds.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyQWRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/_ViewImports.cshtml]

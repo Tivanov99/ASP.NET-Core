@@ -15,10 +15,11 @@ namespace MobileWorld.Controllers
         }
 
         [Authorize]
-        public IActionResult Favourites(string userId)
+        public IActionResult FavoritesAds(string userId)
         {
-            var result = this.userService.UserFavourites(userId);
-            return View();
+            var result = this.userService
+                .UserFavourites(userId);
+            return View(result);
         }
 
         [Authorize]
