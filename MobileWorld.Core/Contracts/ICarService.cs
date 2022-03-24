@@ -9,6 +9,5 @@ namespace MobileWorld.Core.Contracts
 
         List<AdCardViewModel> GetAllCarsWithCriteria(AdvancedSearchCarModel model);
 
-        AdViewModel GetCarById(int carId);
     }
 }

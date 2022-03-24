@@ -2,7 +2,7 @@
 {
     public class AdCardViewModel
     {
-        public int CarId { get; set; }
+        public string AdId { get; set; }
 
         public string Title { get; set; }
 

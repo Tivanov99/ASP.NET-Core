@@ -6,10 +6,10 @@ using MobileWorld.Core.ViewModels;
 
 namespace MobileWorld.Controllers
 {
-    public class UserController : MyBaseController
+    public class UsersController : MyBaseController
     {
         private readonly IUserService userService;
-        public UserController(IUserService _userService)
+        public UsersController(IUserService _userService)
         {
             this.userService = _userService;
         }
@@ -30,7 +30,7 @@ namespace MobileWorld.Controllers
 
             var cars = new AdCardViewModel()
             {
-                CarId = 33,
+                AdId = "33",
                 Title = "Sport Car",
                 Description = "Mnogo zapazena",
                 Price = 333,
