@@ -5,14 +5,19 @@ namespace MobileWorld.Core.Models
 {
     public class BaseCarModel
     {
+        [Required]
+        [StringLength(30)]
         public string Make { get; set; }
 
         [Required]
         [StringLength(20)]
         public string Model { get; set; }
 
+
+        [Range(1886, 2022)]
         public int Year { get; set; }
 
+        [Required]
         public GearType GearType { get; set; }
 
         public RegionModel Region { get; set; }
