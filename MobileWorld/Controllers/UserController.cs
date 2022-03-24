@@ -36,7 +36,9 @@ namespace MobileWorld.Controllers
                 Price = 333,
             };
             //TODO: check here , and add view
-            return View(new List<AdCardViewModel>() { cars});
+            //return View(new List<AdCardViewModel>() { cars});
+            return View(result);
+
         }
 
         //[Authorize]
