@@ -17,6 +17,5 @@ namespace MobileWorld.Core.Models
         public decimal MaxPrice { get; set; }
 
         public EngineModel Engine { get; set; }
-
     }
 }

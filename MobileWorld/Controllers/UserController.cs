@@ -21,7 +21,7 @@ namespace MobileWorld.Controllers
         }
 
         [Authorize]
-        public IActionResult Ads(string userId)
+        public IActionResult UserAds(string userId)
         {
             var result = this.userService.UserAds(userId);
 
