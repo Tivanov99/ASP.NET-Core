@@ -22,14 +22,6 @@ namespace MobileWorld.Controllers
             return View(cars);
         }
 
-        //public IActionResult CarDetails(int carId)
-        //{
-        //    var carAd = this.carService
-        //        .GetCarById(carId);
-
-        //    return View(carAd);
-        //}
-
         public IActionResult AdvancedSearch()
         {
             return View("AdvancedSearchView");

@@ -1,13 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MobileWorld.Core.Services;
+using MobileWorld.Core.Contracts;
+using MobileWorld.Core.ViewModels;
 
 namespace MobileWorld.Controllers
 {
     public class AdsController : Controller
     {
-        private readonly AdService service;
+        private readonly IAdService service;
 
-        public AdsController(AdService _service)
+        public AdsController(IAdService _service)
         {
             this.service = _service;
         }
@@ -17,6 +18,10 @@ namespace MobileWorld.Controllers
             var carAd = this.service
                 .GetAdById(adId);
 
+            var model = new AdViewModel()
+            {
+
+            };
             return View(carAd);
         }
     }
