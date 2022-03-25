@@ -1,0 +1,16 @@
+﻿body {
+
+}
+
+.dilarData li:nth-of-type(odd) {
+    width: 190px;
+    float: left;
+    padding-top: 6px;
+    clear: both;
+}
+.dilarData li:nth-of-type(even) {
+    width: 150px;
+    float: left;
+    font-weight: 700;
+    padding-top: 6px;
+}
