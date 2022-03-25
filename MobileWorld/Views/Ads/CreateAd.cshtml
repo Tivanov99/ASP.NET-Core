@@ -11,10 +11,11 @@
 </head>
 <body>
 
-    <form asp-controller="User" asp-action="CreateAd" method="post">
+    <form asp-controller="Ads" asp-action="CreateAd" method="post">
         @await Html.PartialAsync("_SearchPartial")
-
+        @await Html.PartialAsync("_CreateAdPartial")
         @await Html.PartialAsync("_FeaturesPartial")
+
     </form>
 
 </body>
@@ -29,6 +30,13 @@
     let button = document.querySelector("#searchBtn");
     console.log(button);
     button.textContent="Добави обява";
+
+    let searchFrom=document.querySelector("#searchElements");
+
+    let userData=document.querySelector("#userData");
+
+    searchFrom.appendChild(userData);
+
 </script>
 
 
