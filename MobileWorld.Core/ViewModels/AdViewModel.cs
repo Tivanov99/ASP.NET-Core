@@ -1,5 +1,4 @@
 ﻿using MobileWorld.Core.Models;
-using MobileWorld.Infrastructure.Data.Common;
 
 namespace MobileWorld.Core.ViewModels
 {
