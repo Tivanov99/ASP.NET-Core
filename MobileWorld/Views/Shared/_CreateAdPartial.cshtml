@@ -1,0 +1,32 @@
+﻿<div class="div-labels">
+    <div>
+        <label name="FirstName">Име</label>
+    </div>
+
+    <div>
+        <label name="LastName">Фамилия</label>
+    </div>
+
+    <div>
+        <label name="PhoneNumber">Телефонен номер</label>
+    </div>
+
+</div>
+
+<div class="div-labels">
+
+    <div class="selects">
+        <input class="form-control selectors" name="Owner.FirstName" />
+    </div>
+
+    <div class="selects">
+        <input class="form-control selectors" name="Owner.LastName" />
+    </div>
+
+
+    <div class="selects">
+        <input name="Owner.PhoneNumber"
+               onsubmit="javascript: if (this.value.length < this.maxLength || this.value.length>this.maxLength) alert(" Невалиден телефонен номер!")"
+               type="number" maxlength="10" class="form-control selectors" value="">
+    </div>
+</div>
