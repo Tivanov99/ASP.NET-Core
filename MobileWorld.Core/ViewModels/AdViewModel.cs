@@ -10,6 +10,8 @@ namespace MobileWorld.Core.ViewModels
 
         public string Description { get; set; }
 
+        public DateTime CreatedOn { get; set; }
+
         public CarModel Car { get; set; }
 
         public OwnerModel Owner { get; set; }

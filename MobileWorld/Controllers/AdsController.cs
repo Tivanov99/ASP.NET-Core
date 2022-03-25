@@ -2,6 +2,7 @@
 using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Models;
 using MobileWorld.Core.ViewModels;
+using MobileWorld.Infrastructure.Data.Enums;
 
 namespace MobileWorld.Controllers
 {
@@ -34,6 +35,18 @@ namespace MobileWorld.Controllers
                     Town = new TownModel()
                     {
                         Name = "Burgas",
+                    }
+                },
+                Car = new CarModel()
+                {
+                    GearType = GearType.Автоматична,
+                    Mileage = 180000,
+                    Color = "Mid night",
+                    Engine = new EngineModel()
+                    {
+                        FuelType = FuelType.Безин,
+                        HorsePower = 230,
+                        EcoLevel = 4,
                     }
                 }
             };
