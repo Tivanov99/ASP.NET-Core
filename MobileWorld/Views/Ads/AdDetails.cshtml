@@ -53,25 +53,25 @@
             <li class=".dilarData li:nth-of-type(odd)">Дата на производство</li>
             <li class=".dilarData li:nth-of-type(even)">декември 2006г.</li>
             <li class=".dilarData li:nth-of-type(odd)">Тип двигател</li>
-            <li class=".dilarData li:nth-of-type(even)">Дизелов</li>
+            <li class=".dilarData li:nth-of-type(even)">@Model.Car.Engine.FuelType</li>
             <li class=".dilarData li:nth-of-type(odd)">Мощност</li>
-            <li class=".dilarData li:nth-of-type(even)">190 к.с.</li>
+            <li class=".dilarData li:nth-of-type(even)">@Model.Car.Engine.HorsePower к.с.</li>
             <li class=".dilarData li:nth-of-type(odd)">Евростандарт</li>
-            <li class=".dilarData li:nth-of-type(even)">Евро 4</li>
+            <li class=".dilarData li:nth-of-type(even)">Евро @Model.Car.Engine.EcoLevel</li>
             <li class=".dilarData li:nth-of-type(odd)">Скоростна кутия</li>
-            <li class=".dilarData li:nth-of-type(even)">Автоматична</li>
-            <li class=".dilarData li:nth-of-type(odd)">Категория</li>
-            <li class=".dilarData li:nth-of-type(even)">Джип</li>
+            <li class=".dilarData li:nth-of-type(even)">@Model.Car.GearType</li>
+            @*<li class=".dilarData li:nth-of-type(odd)">Категория</li>
+                <li class=".dilarData li:nth-of-type(even)">Джип</li>*@
             <li class=".dilarData li:nth-of-type(odd)">Пробег</li>
-            <li class=".dilarData li:nth-of-type(even)">254000 км</li>
+            <li class=".dilarData li:nth-of-type(even)">@Model.Car.Mileage км</li>
             <li class=".dilarData li:nth-of-type(odd)">Цвят</li>
-            <li class=".dilarData li:nth-of-type(even)">Тъмно син мет.</li>
+            <li class=".dilarData li:nth-of-type(even)">@Model.Car.Color.</li>
         </ul>
-       @* <div class="clearfix" style="margin-bottom:11px;"></div>
-        <div style="float:left; margin-top:10px;">
+        @* <div class="clearfix" style="margin-bottom:11px;"></div>
+            <div style="float:left; margin-top:10px;">
             <span style="color:#999999">Редактирана в 13:19 ч. на 25 март 2022 г.</span><br>
             Обявата е посетена <span class="advact">649</span> пъти.<br>
-        </div>*@
+            </div>*@
     </div>
 
 </body>
