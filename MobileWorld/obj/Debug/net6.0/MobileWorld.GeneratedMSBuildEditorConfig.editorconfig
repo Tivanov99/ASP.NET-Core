@@ -183,6 +183,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRzXEFkc0J5Q3JpdGVyaWEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Ads/CreateAd.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRzXENyZWF0ZUFkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Cars/AdvancedSearchView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2Fyc1xBZHZhbmNlZFNlYXJjaFZpZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -225,10 +229,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Users/CreateAd.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcQ3JlYXRlQWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Users/FavoritesAds.cshtml]

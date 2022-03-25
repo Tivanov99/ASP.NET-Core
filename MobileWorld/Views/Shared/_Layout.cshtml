@@ -30,16 +30,16 @@
                         @if (SignInManager.IsSignedIn(User))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="User" asp-action="FavoritesAds" asp-route-userId=@UserManager.GetUserId(User)>Любими</a>
+                                <a class="nav-link text-dark" asp-controller="Users" asp-action="FavoritesAds" asp-route-userId=@UserManager.GetUserId(User)>Любими</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="User" asp-action="UserAds" asp-route-userId=@UserManager.GetUserId(User)>Обяви</a>
+                                <a class="nav-link text-dark" asp-controller="Users" asp-action="UserAds" asp-route-userId=@UserManager.GetUserId(User)>Обяви</a>
                             </li>
 
                         }
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="User" asp-action="CreateAd">Добави обява</a>
+                            <a class="nav-link text-dark" asp-controller="Ads" asp-action="CreateAd">Добави обява</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Начало</a>
