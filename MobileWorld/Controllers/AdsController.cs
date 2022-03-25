@@ -2,6 +2,7 @@
 using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Models;
 using MobileWorld.Core.ViewModels;
+using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.Enums;
 
 namespace MobileWorld.Controllers
@@ -23,6 +24,7 @@ namespace MobileWorld.Controllers
             var model = new AdViewModel()
             {
                 Description = "mngoo nova",
+                CreatedOn = DateTime.UtcNow.ToString(GlobalConstants.dateTimeFormat),
                 Owner = new OwnerModel()
                 {
                     PhoneNumber = 0893668829,

@@ -1,4 +1,5 @@
 ﻿using MobileWorld.Core.Models;
+using MobileWorld.Infrastructure.Data.Common;
 
 namespace MobileWorld.Core.ViewModels
 {
@@ -10,7 +11,7 @@ namespace MobileWorld.Core.ViewModels
 
         public string Description { get; set; }
 
-        public DateTime CreatedOn { get; set; }
+        public string CreatedOn { get; set; }
 
         public CarModel Car { get; set; }
 
