@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MobileWorld.Core.Contracts;
+using MobileWorld.Core.Models;
 using MobileWorld.Core.ViewModels;
 
 namespace MobileWorld.Controllers
@@ -20,9 +21,23 @@ namespace MobileWorld.Controllers
 
             var model = new AdViewModel()
             {
+                Description = "mngoo nova",
+                Owner = new OwnerModel()
+                {
+                    PhoneNumber = 0893668829,
 
+                },
+                Region = new RegionModel()
+                {
+                    RegionName = "Burgas",
+                    Neiborhood = "Vuzrajdane",
+                    Town = new TownModel()
+                    {
+                        Name = "Burgas",
+                    }
+                }
             };
-            return View(carAd);
+            return View(model);
         }
     }
 }

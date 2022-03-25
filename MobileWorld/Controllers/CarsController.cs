@@ -11,6 +11,7 @@ namespace MobileWorld.Controllers
 
         public CarsController(ICarService _carService)
         {
+            Console.WriteLine(DateTime.Now.Year);
             this.carService = _carService;
         }
 

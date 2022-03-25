@@ -15,6 +15,7 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>@Model.Title</h1>
     @if (Model.Description != null)
     {
         <div class="more-info">Допълнителна информация:</div>
@@ -30,14 +31,13 @@
         <tbody>
             <tr>
                 <td class="owner-info">
-                    <span class="owner-phone">Телефон: 893668829</span><br><br>
-                    <span class="owner-name">Име - @Model.Owner.FirstName @Model.Owner.LastName</span>
+                    <span class="owner-phone">Телефон: @Model.Owner.PhoneNumber</span><br><br>
+                    <span class="owner-name">Име - Trifon</span>
                     <span class="owner-addres">Адрес :</span>
-                    Регион: @Model.Region<br>гр. @Model.Region.Town.Name<br>
+                    Регион: @Model.Region.RegionName<br>гр. @Model.Region.Town.Name<br>
                     @if (Model.Region.Neiborhood != null)
                     {
                         <span>КВ.@Model.Region.Neiborhood</span>
-
                         <br>
                     }
                     <br>
