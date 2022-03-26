@@ -43,5 +43,7 @@ namespace MobileWorld.Infrastructure.Data
         public DbSet<Town> Towns { get; set; }
 
         public DbSet<FavoriteAd> FavoriteAds { get; set; }
+
+        public DbSet<Image> Images { get; set; }
     }
 }

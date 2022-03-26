@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MobileWorld.Infrastructure.Data.Models
 {
-    public class Ad 
+    public class Ad
     {
         [Key]
         public string Id { get; set; }
@@ -38,12 +38,13 @@ namespace MobileWorld.Infrastructure.Data.Models
         [MaxLength(700)]
         public string Description { get; set; }
 
-        //TODO: Add owner / User
         [ForeignKey(nameof(Owner))]
         public string OwnerId { get; set; }
 
-        public ApplicationUser  Owner { get; set; }
+        public ApplicationUser Owner { get; set; }
 
         public List<FavoriteAd> Fans { get; set; }
+
+        public List<Image> Images { get; set; }
     }
 }
