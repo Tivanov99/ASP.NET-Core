@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MobileWorld.Core.Contracts;
-using MobileWorld.Core.ViewModels;
-using MobileWorld.Core.Models;
 
 namespace MobileWorld.Controllers
 {
@@ -15,7 +13,6 @@ namespace MobileWorld.Controllers
             this.carService = _carService;
         }
 
-       
 
         public IActionResult AdvancedSearch()
         {

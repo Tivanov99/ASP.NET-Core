@@ -57,7 +57,7 @@ namespace MobileWorld.Core.Services
 
         public List<AdCardViewModel> GetAdsByCriteria(AdvancedSearchCarModel model)
         {
-            List<PropertyDto> defaultSearchCriteria = GetDefaultProperties(model);
+            List<PropertyDto> defaultSearchCriteria = GetBaseSearchCriteria(model);
 
             Dictionary<string, List<string>> featuresSearchCriteria = new();
 
@@ -139,13 +139,14 @@ namespace MobileWorld.Core.Services
         }
 
 
-        private List<PropertyDto> GetDefaultProperties(object model)
+        private List<PropertyDto> GetBaseSearchCriteria(object model)
         {
             Type type = model.GetType();
 
             string featuresType = typeof(FeaturesModel).Name;
 
-            var propertyInfos = type.GetProperties()
+            var propertyInfos = type
+                .GetProperties()
                 .Where(x => x.GetValue(model) != null &&
                         x.PropertyType.Name != featuresType)
                 .Select(x => new PropertyDto(x.Name, x.GetValue(model)))
@@ -177,7 +178,6 @@ namespace MobileWorld.Core.Services
             (List<PropertyDto> defaultSearchCriteria, Dictionary<string, List<string>> featuresSearchCriteria)
         {
             string queryString = "Select * From";
-
 
             return queryString;
         }
