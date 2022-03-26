@@ -181,10 +181,14 @@ namespace MobileWorld.Core.Services
             return queryString;
         }
 
-
-        private List<Image> GetImagesUploaded(IFormCollection)
+        public bool CreateAd(CreateAdModel model, List<Image> images)
         {
+            Ad newAd = new Ad()
+            {
 
+            };
+
+            return true;
         }
     }
 }
