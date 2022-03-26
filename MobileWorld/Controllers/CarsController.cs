@@ -15,13 +15,7 @@ namespace MobileWorld.Controllers
             this.carService = _carService;
         }
 
-        public IActionResult CarsByCriteria(AdvancedSearchCarModel searchModel)
-        {
-            List<AdCardViewModel> cars = this.carService
-                .GetAllCarsWithCriteria(searchModel);
-
-            return View(cars);
-        }
+       
 
         public IActionResult AdvancedSearch()
         {
