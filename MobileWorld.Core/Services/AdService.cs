@@ -182,9 +182,10 @@ namespace MobileWorld.Core.Services
             return queryString;
         }
 
-        public bool CreateAd(CreateAdModel model, List<Image> images)
+        public bool CreateAd(CreateAdModel model, List<Image> images, string ownerId)
         {
-
+            int townId = this.GetTownByName(model.Region.Town.Name);
+            //TODO : Add seed to Db all Towns
 
             Ad newAd = new Ad()
             {
@@ -193,6 +194,7 @@ namespace MobileWorld.Core.Services
                 PhoneNumber = model.PhoneNumber,
                 Price = model.Price,
                 Description = model.Description,
+                Images = images,
                 Car = new Car()
                 {
                     Color = model.Car.Color,
@@ -201,20 +203,24 @@ namespace MobileWorld.Core.Services
                 },
                 Region = new Region()
                 {
-                    Town = new Town()
-                    {
-                        Name = model.Region.Town.Name,
-                        PostalCode = model.Region.Town.PostalCode,
-                    },
+                    TownId = townId,
                     RegionName = model.Region.RegionName,
                     Neiborhood = model.Region.Neiborhood,
                 },
-                Owner = new ApplicationUser()
-                {
-                }
+                OwnerId = ownerId
             };
 
             return true;
+        }
+
+        private int GetTownByName(string townName)
+        {
+            var townId = this.repo.All<Town>()
+                .Where(t => t.Name == townName)
+                .Select(t => t.Id)
+                .FirstOrDefault();
+
+            return townId;
         }
     }
 }
