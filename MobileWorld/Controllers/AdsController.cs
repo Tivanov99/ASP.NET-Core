@@ -4,6 +4,7 @@ using MobileWorld.Core.Models;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.Enums;
+using MobileWorld.Infrastructure.Data.Models;
 
 namespace MobileWorld.Controllers
 {
@@ -13,7 +14,6 @@ namespace MobileWorld.Controllers
 
         public AdsController(IAdService _service)
         {
-
             this.service = _service;
         }
 
@@ -68,6 +68,21 @@ namespace MobileWorld.Controllers
         [HttpPost]
         public IActionResult CreateAd(CreateAdModel model)
         {
+            List<Image> images = new List<Image>();
+
+            foreach (var file in Request.Form.Files)
+            {
+                Image img = new Image();
+                img.ImageTitle = file.FileName;
+
+                MemoryStream ms = new MemoryStream();
+                file.CopyTo(ms);
+                img.ImageData = ms.ToArray();
+
+                ms.Close();
+                ms.Dispose();
+                images.Add(img);
+            }
             return View();
         }
 

@@ -138,7 +138,6 @@ namespace MobileWorld.Core.Services
             return adds;
         }
 
-
         private List<PropertyDto> GetBaseSearchCriteria(object model)
         {
             Type type = model.GetType();
@@ -180,6 +179,12 @@ namespace MobileWorld.Core.Services
             string queryString = "Select * From";
 
             return queryString;
+        }
+
+
+        private List<Image> GetImagesUploaded(IFormCollection)
+        {
+
         }
     }
 }
