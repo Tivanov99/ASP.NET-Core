@@ -66,7 +66,7 @@ namespace MobileWorld.Controllers
 
         //[Authorize]
         [HttpPost]
-        public IActionResult CreateAd(CreateAdModel model)
+        public IActionResult CreateAd(CreateAdModel model, string userId)
         {
             List<Image> images = new List<Image>();
 

@@ -3,6 +3,7 @@ using MobileWorld.Core.Dto;
 using MobileWorld.Core.Models;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Infrastructure.Data.Common;
+using MobileWorld.Infrastructure.Data.Identity;
 using MobileWorld.Infrastructure.Data.Models;
 
 namespace MobileWorld.Core.Services
@@ -183,9 +184,34 @@ namespace MobileWorld.Core.Services
 
         public bool CreateAd(CreateAdModel model, List<Image> images)
         {
+
+
             Ad newAd = new Ad()
             {
-
+                Id = Guid.NewGuid().ToString(),
+                Title = model.Title,
+                PhoneNumber = model.PhoneNumber,
+                Price = model.Price,
+                Description = model.Description,
+                Car = new Car()
+                {
+                    Color = model.Car.Color,
+                    SeatsCount = model.Car.SeatsCount,
+                    Mileage = model.Car.Mileage,
+                },
+                Region = new Region()
+                {
+                    Town = new Town()
+                    {
+                        Name = model.Region.Town.Name,
+                        PostalCode = model.Region.Town.PostalCode,
+                    },
+                    RegionName = model.Region.RegionName,
+                    Neiborhood = model.Region.Neiborhood,
+                },
+                Owner = new ApplicationUser()
+                {
+                }
             };
 
             return true;
