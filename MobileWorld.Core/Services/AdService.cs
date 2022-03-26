@@ -184,7 +184,7 @@ namespace MobileWorld.Core.Services
 
         public bool CreateAd(CreateAdModel model, List<Image> images, string ownerId)
         {
-            int townId = this.GetTownByName(model.Region.Town.Name);
+            int townId = this.GetTownIdByName(model.Region.Town.Name);
             //TODO : Add seed to Db all Towns
 
             Ad newAd = new Ad()
@@ -210,10 +210,18 @@ namespace MobileWorld.Core.Services
                 OwnerId = ownerId
             };
 
+            this.repo.Add<Ad>(newAd);
+
+            int result = this.repo.SaveChanges();
+
+            if (result == 0)
+            {
+                return false;
+            }
             return true;
         }
 
-        private int GetTownByName(string townName)
+        private int GetTownIdByName(string townName)
         {
             var townId = this.repo.All<Town>()
                 .Where(t => t.Name == townName)
