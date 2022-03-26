@@ -11,9 +11,14 @@
 </head>
 <body>
 
-    <form asp-controller="Ads" asp-action="CreateAd" method="post">
+    <form asp-controller="Ads" asp-action="CreateAd" method="post" enctype="multipart/form-data">
         @await Html.PartialAsync("_SearchPartial")
         @await Html.PartialAsync("_CreateAdPartial")
+        @*   <input type="file" id="file1"
+            name="file1"
+            multiple="multiple" />*@
+
+        <input class="form-control" type="file" id="formFileMultiple" multiple />
         @await Html.PartialAsync("_FeaturesPartial")
 
     </form>

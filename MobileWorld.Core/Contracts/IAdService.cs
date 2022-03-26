@@ -1,5 +1,6 @@
 ﻿using MobileWorld.Core.Models;
 using MobileWorld.Core.ViewModels;
+using MobileWorld.Infrastructure.Data.Models;
 
 namespace MobileWorld.Core.Contracts
 {
@@ -10,5 +11,6 @@ namespace MobileWorld.Core.Contracts
         List<AdCardViewModel> GetAdsByCriteria(AdvancedSearchCarModel model);
 
         List<AdCardViewModel> GetIndexAds();
+
     }
 }

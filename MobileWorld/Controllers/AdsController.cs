@@ -13,6 +13,7 @@ namespace MobileWorld.Controllers
 
         public AdsController(IAdService _service)
         {
+
             this.service = _service;
         }
 

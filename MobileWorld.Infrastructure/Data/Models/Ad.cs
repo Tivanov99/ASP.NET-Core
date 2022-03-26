@@ -43,8 +43,8 @@ namespace MobileWorld.Infrastructure.Data.Models
 
         public ApplicationUser Owner { get; set; }
 
-        public List<FavoriteAd> Fans { get; set; }
+        public List<FavoriteAd> Fans { get; set; } = new();
 
-        public List<Image> Images { get; set; }
+        public List<Image> Images { get; set; } = new();
     }
 }
