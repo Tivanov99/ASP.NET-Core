@@ -77,5 +77,10 @@ namespace MobileWorld.Controllers
 
             return View(cars);
         }
+
+        public IActionResult AdvancedSearch()
+        {
+            return View("AdvancedSearchView");
+        }
     }
 }

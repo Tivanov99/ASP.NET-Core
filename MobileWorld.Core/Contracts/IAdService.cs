@@ -9,5 +9,6 @@ namespace MobileWorld.Core.Contracts
 
         List<AdCardViewModel> GetAdsByCriteria(AdvancedSearchCarModel model);
 
+        List<AdCardViewModel> GetIndexAds();
     }
 }

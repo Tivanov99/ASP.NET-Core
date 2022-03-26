@@ -16,9 +16,6 @@ namespace MobileWorld.Core.Services
             this.repo = _repo;
         }
 
-        
-
-
 
         public List<AdCardViewModel> GetIndexCars()
         {
@@ -61,47 +58,47 @@ namespace MobileWorld.Core.Services
             return adds;
         }
 
-        private List<PropertyDto> GetDefaultProperties(object model)
-        {
-            Type type = model.GetType();
+        //private List<PropertyDto> GetDefaultProperties(object model)
+        //{
+        //    Type type = model.GetType();
 
-            string featuresType = typeof(FeaturesModel).Name;
+        //    string featuresType = typeof(FeaturesModel).Name;
 
-            var propertyInfos = type.GetProperties()
-                .Where(x => x.GetValue(model) != null &&
-                        x.PropertyType.Name != featuresType)
-                .Select(x => new PropertyDto(x.Name, x.GetValue(model)))
-                .ToList();
+        //    var propertyInfos = type.GetProperties()
+        //        .Where(x => x.GetValue(model) != null &&
+        //                x.PropertyType.Name != featuresType)
+        //        .Select(x => new PropertyDto(x.Name, x.GetValue(model)))
+        //        .ToList();
 
-            return propertyInfos;
-        }
+        //    return propertyInfos;
+        //}
 
-        private void GetSelectedFeatures(object model, Dictionary<string, List<string>> currentCriteria)
-        {
-            Type type = model
-                .GetType();
+        //private void GetSelectedFeatures(object model, Dictionary<string, List<string>> currentCriteria)
+        //{
+        //    Type type = model
+        //        .GetType();
 
-            string categoryName = model.GetType().Name;
+        //    string categoryName = model.GetType().Name;
 
-            var features = type
-                .GetProperties()
-                .Where(x => (bool)x.GetValue(model) == true)
-                .Select(x => x.Name)
-                .ToList();
+        //    var features = type
+        //        .GetProperties()
+        //        .Where(x => (bool)x.GetValue(model) == true)
+        //        .Select(x => x.Name)
+        //        .ToList();
 
-            if (features.Any())
-            {
-                currentCriteria.Add(categoryName, features);
-            }
-        }
+        //    if (features.Any())
+        //    {
+        //        currentCriteria.Add(categoryName, features);
+        //    }
+        //}
 
-        private string ConfigurateSqlCommand
-            (List<PropertyDto> defaultSearchCriteria, Dictionary<string, List<string>> featuresSearchCriteria)
-        {
-            string queryString = "Select * From";
+        //private string ConfigurateSqlCommand
+        //    (List<PropertyDto> defaultSearchCriteria, Dictionary<string, List<string>> featuresSearchCriteria)
+        //{
+        //    string queryString = "Select * From";
 
 
-            return queryString;
-        }
+        //    return queryString;
+        //}
     }
 }

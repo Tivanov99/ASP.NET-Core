@@ -7,7 +7,7 @@ namespace MobileWorld.Core.Contracts
     {
         List<AdCardViewModel> GetIndexCars();
 
-        List<AdCardViewModel> GetAllCarsWithCriteria(AdvancedSearchCarModel model);
+        //List<AdCardViewModel> GetAllCarsWithCriteria(AdvancedSearchCarModel model);
 
     }
 }
