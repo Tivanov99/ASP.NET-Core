@@ -22,6 +22,7 @@
         <div>
             <input class="form-control selectors" name="Title" />
         </div>
+
         <div class="selects">
             <input class="form-control selectors" name="Owner.FirstName" />
         </div>
@@ -31,8 +32,8 @@
         </div>
 
         <div class="selects">
-            <input name="Owner.PhoneNumber"
-                   onsubmit="javascript: if (this.value.length > this.maxLength) alert(" test")"
+            <input name="Owner.PhoneNumber" oninput="javascript: if (this.value.length > this.maxLength)
+                this.value = this.value.slice(0, this.maxLength);"
                    type="number" maxlength="10" class="form-control selectors" value="">
         </div>
     </div>
@@ -40,6 +41,9 @@
 
     <div class="div-labels">
         <div>
+            <label name="Car.Mileage">Пробег</label>
+        </div>
+        <div class="labels">
             <label name="Car.Color">Цвят</label>
         </div>
 
@@ -54,6 +58,12 @@
 
     <div class="div-labels">
         <div>
+            <input name="Car.Mileage" oninput="javascript: if (this.value.length > this.maxLength)
+                this.value = this.value.slice(0, this.maxLength);"
+                   step="0.3"
+                   type="number" maxlength="9" class="form-control selectors" value="">
+        </div>
+        <div class="selects">
             <input class="form-control selectors" name="Car.Color" />
         </div>
 
