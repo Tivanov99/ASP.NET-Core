@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MobileWorld.Core.Models
 {
+
+    //TODO : Check fuel type, engines are null
     public class CreateAdModel
     {
         [Required]
@@ -20,6 +22,8 @@ namespace MobileWorld.Core.Models
         [Required]
         [MaxLength(700)]
         public string Description { get; set; }
+
+        public string TownName { get; set; }
 
         public CarModel Car { get; set; }
 

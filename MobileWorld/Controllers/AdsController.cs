@@ -35,10 +35,6 @@ namespace MobileWorld.Controllers
                 {
                     RegionName = "Burgas",
                     Neiborhood = "Vuzrajdane",
-                    Town = new TownModel()
-                    {
-                        Name = "Burgas",
-                    }
                 },
                 Car = new CarModel()
                 {
