@@ -199,7 +199,8 @@ namespace MobileWorld.Core.Services
                     Color = model.Car.Color,
                     SeatsCount = model.Car.SeatsCount,
                     Mileage = model.Car.Mileage,
-                    Model = model.Car.Model,
+                    //TODO : Think about models
+                    Model = "e46",
                     Make = model.Car.Make,
                     Year = model.Car.Year,
                     Engine = model.Car.Engine,
