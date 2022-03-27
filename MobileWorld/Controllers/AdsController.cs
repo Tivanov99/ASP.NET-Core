@@ -93,14 +93,16 @@ namespace MobileWorld.Controllers
         public IActionResult AdsByCriteria(AdvancedSearchCarModel searchModel)
         {
             List<AdCardViewModel> cars = this.service
-                .GetAdsByCriteria(searchModel);
+                .GetAdsByAdvancedCriteria(searchModel);
 
             return View(cars);
         }
 
         public IActionResult AdsByBaseCriteria(BaseSearchCarModel searchModel)
         {
+            var result = this.service.GetAdsByBaseCriteria(searchModel);
 
+            return View();
         }
 
         public IActionResult AdvancedSearch()

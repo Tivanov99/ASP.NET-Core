@@ -55,7 +55,14 @@ namespace MobileWorld.Core.Services
             return car;
         }
 
-        public List<AdCardViewModel> GetAdsByCriteria(AdvancedSearchCarModel model)
+        public List<AdCardViewModel> GetAdsByBaseCriteria(BaseSearchCarModel model)
+        {
+            List<PropertyDto> properties = GetBaseSearchCriteria(model);
+
+            return new List<AdCardViewModel>();
+        }
+
+        public List<AdCardViewModel> GetAdsByAdvancedCriteria(AdvancedSearchCarModel model)
         {
             List<PropertyDto> defaultSearchCriteria = GetBaseSearchCriteria(model);
 
@@ -138,49 +145,6 @@ namespace MobileWorld.Core.Services
             return adds;
         }
 
-        private List<PropertyDto> GetBaseSearchCriteria(object model)
-        {
-            Type type = model.GetType();
-
-            string featuresType = typeof(FeaturesModel).Name;
-
-            var propertyInfos = type
-                .GetProperties()
-                .Where(x => x.GetValue(model) != null &&
-                        x.PropertyType.Name != featuresType)
-                .Select(x => new PropertyDto(x.Name, x.GetValue(model)))
-                .ToList();
-
-            return propertyInfos;
-        }
-
-        private void GetSelectedFeatures(object model, Dictionary<string, List<string>> currentCriteria)
-        {
-            Type type = model
-                .GetType();
-
-            string categoryName = model.GetType().Name;
-
-            var features = type
-                .GetProperties()
-                .Where(x => (bool)x.GetValue(model) == true)
-                .Select(x => x.Name)
-                .ToList();
-
-            if (features.Any())
-            {
-                currentCriteria.Add(categoryName, features);
-            }
-        }
-
-        private string ConfigurateSqlCommand
-            (List<PropertyDto> defaultSearchCriteria, Dictionary<string, List<string>> featuresSearchCriteria)
-        {
-            string queryString = "Select * From";
-
-            return queryString;
-        }
-
         public bool CreateAd(CreateAdModel model, List<Image> images, string ownerId)
         {
             int townId = this.GetTownIdByName(model.Region.Town.Name);
@@ -223,6 +187,49 @@ namespace MobileWorld.Core.Services
                 return false;
             }
             return true;
+        }
+
+        private List<PropertyDto> GetBaseSearchCriteria(object model)
+        {
+            Type type = model.GetType();
+
+            string featuresType = typeof(FeaturesModel).Name;
+
+            var propertyInfos = type
+                .GetProperties()
+                .Where(x => x.GetValue(model) != null &&
+                        x.PropertyType.Name != featuresType)
+                .Select(x => new PropertyDto(x.Name, x.GetValue(model)))
+                .ToList();
+
+            return propertyInfos;
+        }
+
+        private void GetSelectedFeatures(object model, Dictionary<string, List<string>> currentCriteria)
+        {
+            Type type = model
+                .GetType();
+
+            string categoryName = model.GetType().Name;
+
+            var features = type
+                .GetProperties()
+                .Where(x => (bool)x.GetValue(model) == true)
+                .Select(x => x.Name)
+                .ToList();
+
+            if (features.Any())
+            {
+                currentCriteria.Add(categoryName, features);
+            }
+        }
+
+        private string ConfigurateSqlCommand
+            (List<PropertyDto> defaultSearchCriteria, Dictionary<string, List<string>> featuresSearchCriteria)
+        {
+            string queryString = "Select * From";
+
+            return queryString;
         }
 
         private int GetTownIdByName(string townName)
