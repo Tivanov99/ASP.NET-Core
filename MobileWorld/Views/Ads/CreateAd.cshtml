@@ -21,7 +21,9 @@
         @await Html.PartialAsync("_SearchPartial")
         @await Html.PartialAsync("_CreateAdPartial")
 
+        <a>Изберете желаните от вас снимки</a>
         <input class="form-control" type="file" id="file1" name="file1" multiple />
+
         @await Html.PartialAsync("_FeaturesPartial")
 
     </form>
