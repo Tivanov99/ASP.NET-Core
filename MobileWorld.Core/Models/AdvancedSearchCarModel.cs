@@ -6,6 +6,8 @@ namespace MobileWorld.Core.Models
     {
         public FeaturesModel Features { get; set; } = new();
 
-        public int ToYear { get; set; }
+        public int? ToYear { get; set; }
+
+        public decimal? MinPrice { get; set; }
     }
 }

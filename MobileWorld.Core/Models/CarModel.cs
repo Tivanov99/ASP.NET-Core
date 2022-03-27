@@ -16,8 +16,5 @@ namespace MobileWorld.Core.Models
         [Required]
         [Column(TypeName = "decimal(6,3)")]
         public decimal Mileage { get; set; }
-
-        [Range(0,999999)]
-        public decimal MinPrice { get; set; }
     }
 }

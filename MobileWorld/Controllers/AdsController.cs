@@ -98,6 +98,11 @@ namespace MobileWorld.Controllers
             return View(cars);
         }
 
+        public IActionResult AdsByBaseCriteria(BaseSearchCarModel searchModel)
+        {
+
+        }
+
         public IActionResult AdvancedSearch()
         {
             return View("AdvancedSearchView");
