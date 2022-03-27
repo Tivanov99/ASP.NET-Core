@@ -13,7 +13,6 @@ namespace MobileWorld.Core.Models
         [StringLength(20)]
         public string Model { get; set; }
 
-
         [Range(1886, 2022)]
         public int Year { get; set; }
 
