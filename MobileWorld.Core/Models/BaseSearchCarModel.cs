@@ -11,9 +11,5 @@
         public decimal? MaxPrice { get; set; }
 
         public int? FromYear { get; set; }
-
-        //public int? ToYear { get; set; }
-
-        public int? MinHorsePower { get; set; }
     }
 }
