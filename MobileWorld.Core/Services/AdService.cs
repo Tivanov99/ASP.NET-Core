@@ -3,7 +3,6 @@ using MobileWorld.Core.Dto;
 using MobileWorld.Core.Models;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Infrastructure.Data.Common;
-using MobileWorld.Infrastructure.Data.Identity;
 using MobileWorld.Infrastructure.Data.Models;
 
 namespace MobileWorld.Core.Services
@@ -200,6 +199,10 @@ namespace MobileWorld.Core.Services
                     Color = model.Car.Color,
                     SeatsCount = model.Car.SeatsCount,
                     Mileage = model.Car.Mileage,
+                    Model=model.Car.Model,
+                    Make=model.Car.Make,
+                    Year=model.Car.Year,
+                    Engine=model.Car.Engine,
                 },
                 Region = new Region()
                 {

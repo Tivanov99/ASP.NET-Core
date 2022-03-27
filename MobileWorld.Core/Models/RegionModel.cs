@@ -7,9 +7,9 @@ namespace MobileWorld.Core.Models
         public TownModel Town { get; set; }
 
         [StringLength(70)]
-        public string RegionName { get; set; }
+        public string? RegionName { get; set; }
 
         [StringLength(70)]
-        public string Neiborhood { get; set; }
+        public string? Neiborhood { get; set; }
     }
 }
