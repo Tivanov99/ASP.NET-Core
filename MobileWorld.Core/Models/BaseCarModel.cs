@@ -20,8 +20,6 @@ namespace MobileWorld.Core.Models
         [Required]
         public GearType GearType { get; set; }
 
-        public RegionModel Region { get; set; }
-
         [Range(0, 999999)]
         public decimal MaxPrice { get; set; }
 

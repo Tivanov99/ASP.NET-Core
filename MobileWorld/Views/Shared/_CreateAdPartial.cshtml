@@ -11,10 +11,6 @@
         <div class="labels">
             <label name="LastName" style="padding-left: 17px">Фамилия</label>
         </div>
-
-        <div class="labels">
-            <label name="PhoneNumber">Телефонен номер</label>
-        </div>
     </div>
 
     <div class="div-labels">
@@ -31,11 +27,6 @@
             <input class="form-control selectors" name="Owner.LastName" />
         </div>
 
-        <div class="selects">
-            <input name="Owner.PhoneNumber" oninput="javascript: if (this.value.length > this.maxLength)
-                this.value = this.value.slice(0, this.maxLength);"
-                   type="number" maxlength="10" class="form-control selectors" value="">
-        </div>
     </div>
 
 
@@ -50,10 +41,6 @@
         <div class="labels">
             <label name="Region.RegionName" style="padding-left: 17px">Област</label>
         </div>
-
-        <div class="labels">
-            <label name="Region.Neiborhood">Квартал</label>
-        </div>
     </div>
 
     <div class="div-labels">
@@ -63,6 +50,7 @@
                    step="0.3"
                    type="number" maxlength="9" class="form-control selectors" value="">
         </div>
+
         <div class="selects">
             <input class="form-control selectors" name="Car.Color" />
         </div>
@@ -71,10 +59,34 @@
             <input class="form-control selectors" name="Region.RegionName" />
         </div>
 
+    </div>
+
+    <br />
+    <div class="div-labels">
+        <div>
+            <label name="PhoneNumber">Телефонен номер</label>
+        </div>
+
+        <div class="labels">
+            <label name="Region.Neiborhood">Квартал</label>
+        </div>
+    </div>
+
+    <br />
+
+    <div class="div-labels">
+        <div>
+            <input name="Owner.PhoneNumber" oninput="javascript: if (this.value.length > this.maxLength)
+                this.value = this.value.slice(0, this.maxLength);"
+                   type="number" maxlength="10" class="form-control selectors" value="">
+        </div>
+
         <div class="selects">
             <input class="form-control selectors" name="Region.Neiborhood" />
         </div>
+
     </div>
+
 
     <div class="form-group purple-border">
         <label for="exampleFormControlTextarea4">Описание</label>
