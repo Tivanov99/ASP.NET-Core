@@ -199,10 +199,10 @@ namespace MobileWorld.Core.Services
                     Color = model.Car.Color,
                     SeatsCount = model.Car.SeatsCount,
                     Mileage = model.Car.Mileage,
-                    Model=model.Car.Model,
-                    Make=model.Car.Make,
-                    Year=model.Car.Year,
-                    Engine=model.Car.Engine,
+                    Model = model.Car.Model,
+                    Make = model.Car.Make,
+                    Year = model.Car.Year,
+                    Engine = model.Car.Engine,
                 },
                 Region = new Region()
                 {
