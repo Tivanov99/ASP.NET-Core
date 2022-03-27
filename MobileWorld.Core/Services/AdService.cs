@@ -158,6 +158,7 @@ namespace MobileWorld.Core.Services
                 Price = model.Price,
                 Description = model.Description,
                 Images = images,
+                CreatedOn = DateTime.Now,
                 Car = new Car()
                 {
                     Color = model.Car.Color,
