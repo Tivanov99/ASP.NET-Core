@@ -19,7 +19,6 @@ namespace MobileWorld.Core.Models
         [MaxLength(700)]
         public string Description { get; set; }
 
-
         public CarModel Car { get; set; }
 
         public RegionModel Region { get; set; }

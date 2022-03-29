@@ -15,12 +15,8 @@ namespace MobileWorld.Infrastructure.Data.Models
         [Range(40, 2000)]
         public int HorsePower { get; set; }
 
-        [Required]
         [Range(100, 2000)]
-        public int NewtonMeter { get; set; }
-
-        [Required]
-        public bool Turbo { get; set; }
+        public int? NewtonMeter { get; set; }
 
         [Required]
         public bool Hybrid { get; set; }
