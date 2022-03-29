@@ -19,10 +19,12 @@ namespace MobileWorld.Core.Models
         [MaxLength(700)]
         public string Description { get; set; }
 
-        public CarModel Car { get; set; }
+        public CarModel Car { get; set; } = new();
 
-        public RegionModel Region { get; set; }
+        public RegionModel Region { get; set; } = new();
 
         public OwnerModel Owner { get; set; } = new();
+
+        public FeaturesModel Features { get; set; } = new();
     }
 }
