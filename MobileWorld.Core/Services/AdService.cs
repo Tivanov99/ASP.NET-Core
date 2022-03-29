@@ -205,7 +205,7 @@ namespace MobileWorld.Core.Services
 
             return propertyInfos;
         }
-            
+
         private void GetSelectedFeatures(object model, Dictionary<string, List<string>> currentCriteria)
         {
             Type type = model

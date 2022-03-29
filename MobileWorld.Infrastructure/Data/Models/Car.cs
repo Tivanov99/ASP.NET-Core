@@ -13,7 +13,7 @@ namespace MobileWorld.Infrastructure.Data.Models
         [StringLength(20)]
         public string Model { get; set; }
 
-        [Range(1886,2022)]
+        [Range(1886, 2022)]
         [Required]
         public int Year { get; set; }
 
@@ -36,11 +36,11 @@ namespace MobileWorld.Infrastructure.Data.Models
         public virtual Engine Engine { get; set; }
 
         [Required]
-        [Range(2,12)]
+        [Range(2, 12)]
         public int SeatsCount { get; set; }
 
         [Required]
-        [Column(TypeName ="decimal(6,3)")]
+        [Column(TypeName = "decimal(6,3)")]
         public decimal Mileage { get; set; }
     }
 }
