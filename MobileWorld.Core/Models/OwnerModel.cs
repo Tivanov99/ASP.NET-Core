@@ -1,4 +1,6 @@
-﻿namespace MobileWorld.Core.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MobileWorld.Core.Models
 {
     public class OwnerModel
     {
@@ -8,6 +10,8 @@
 
         public string LastName { get; set; }
 
+        [Required]
+        [Phone]
         public int PhoneNumber { get; set; }
     }
 }

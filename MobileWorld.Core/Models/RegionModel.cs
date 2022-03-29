@@ -2,7 +2,7 @@
 
 namespace MobileWorld.Core.Models
 {
-    public class RegionModel 
+    public class RegionModel
     {
         [StringLength(70)]
         public string? RegionName { get; set; }
@@ -10,5 +10,6 @@ namespace MobileWorld.Core.Models
         [StringLength(70)]
         public string? Neiborhood { get; set; }
 
+        public string TownName { get; set; }
     }
 }

@@ -12,10 +12,6 @@ namespace MobileWorld.Core.Models
         [StringLength(50)]
         public string Title { get; set; }
 
-        [Required]
-        [Phone]
-        public int PhoneNumber { get; set; }
-
         [Column(TypeName = "decimal(6,2)")]
         public decimal Price { get; set; }
 
@@ -23,7 +19,6 @@ namespace MobileWorld.Core.Models
         [MaxLength(700)]
         public string Description { get; set; }
 
-        public string TownName { get; set; }
 
         public CarModel Car { get; set; }
 

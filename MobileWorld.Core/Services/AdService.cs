@@ -147,14 +147,14 @@ namespace MobileWorld.Core.Services
 
         public bool CreateAd(CreateAdModel model, List<Image> images, string ownerId)
         {
-            int townId = this.GetTownIdByName(model.TownName);
+            int townId = this.GetTownIdByName(model.Region.TownName);
             //TODO : Add seed to Db all Towns
 
             Ad newAd = new Ad()
             {
                 Id = Guid.NewGuid().ToString(),
                 Title = model.Title,
-                PhoneNumber = model.PhoneNumber,
+                PhoneNumber = model.Owner.PhoneNumber,
                 Price = model.Price,
                 Description = model.Description,
                 Images = images,
