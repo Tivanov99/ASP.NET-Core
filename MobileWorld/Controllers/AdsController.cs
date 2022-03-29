@@ -19,7 +19,7 @@ namespace MobileWorld.Controllers
 
         public IActionResult AdDetails(string adId)
         {
-            var carAd = this.service
+            var ad = this.service
                 .GetAdById(adId);
 
             var model = new AdViewModel()
@@ -49,7 +49,7 @@ namespace MobileWorld.Controllers
                     }
                 }
             };
-            return View(model);
+            return View(ad);
         }
 
 

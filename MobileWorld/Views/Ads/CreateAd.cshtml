@@ -15,7 +15,6 @@
     <link asp-append-version="true" rel="stylesheet" href="~/css/CarCard.css">
 </head>
 <body>
-
     <form asp-controller="Ads" asp-action="CreateAd" asp-route-userId=@UserManager.GetUserId(User) method="post" enctype="multipart/form-data">
 
         <div id="searchElements">
@@ -1043,21 +1042,3 @@
 
 </body>
 </html>
-<script>
-    let searchLink= document.querySelector(".detailed-search");
-    searchLink.remove();
-
-    let inputDetails = document.querySelector("#details");
-    inputDetails.remove();
-
-    let button = document.querySelector("#searchBtn");
-    console.log(button);
-    button.textContent="Добави обява";
-
-    let searchFrom=document.querySelector("#searchElements");
-
-    let userData=document.querySelector("#userData");
-
-    searchFrom.appendChild(userData);
-
-</script>
