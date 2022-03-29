@@ -4,6 +4,8 @@ namespace MobileWorld.Core.Models
 {
     public class FeaturesModel
     {
+        public EngineDetailsModel EngineDetails { get; set; }
+
         public SafetyDetailsModel SafetyDetails { get; set; } = new();
 
         public ComfortDetailsModel ComfortDetails { get; set; } = new();

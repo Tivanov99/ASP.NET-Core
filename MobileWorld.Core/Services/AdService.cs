@@ -68,7 +68,7 @@ namespace MobileWorld.Core.Services
 
             Dictionary<string, List<string>> featuresSearchCriteria = new();
 
-
+            GetSelectedFeatures(model.Features.EngineDetails, featuresSearchCriteria);
             GetSelectedFeatures(model.Features.SafetyDetails, featuresSearchCriteria);
             GetSelectedFeatures(model.Features.ComfortDetails, featuresSearchCriteria);
             GetSelectedFeatures(model.Features.OthersDetails, featuresSearchCriteria);
@@ -205,7 +205,7 @@ namespace MobileWorld.Core.Services
 
             return propertyInfos;
         }
-
+            
         private void GetSelectedFeatures(object model, Dictionary<string, List<string>> currentCriteria)
         {
             Type type = model
