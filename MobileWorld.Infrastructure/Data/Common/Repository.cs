@@ -8,8 +8,6 @@ namespace MobileWorld.Infrastructure.Data.Common
 
         public Repository(ApplicationDbContext _context)
         {
-            //dbContext.Users.Select(x => new { x. })
-            //    .ToList()
             this.dbContext = _context;
         }
 

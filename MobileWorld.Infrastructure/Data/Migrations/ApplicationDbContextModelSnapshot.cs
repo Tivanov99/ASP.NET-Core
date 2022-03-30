@@ -248,7 +248,7 @@ namespace MobileWorld.Infrastructure.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(6,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("RegionId")
                         .HasColumnType("int");

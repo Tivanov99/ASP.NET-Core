@@ -169,6 +169,7 @@ namespace MobileWorld.Core.Services
                     Make = model.Car.Make,
                     Year = model.Car.Year,
                     Engine = model.Car.Engine,
+                    Feature = model.Features,
                 },
                 Region = new Region()
                 {
