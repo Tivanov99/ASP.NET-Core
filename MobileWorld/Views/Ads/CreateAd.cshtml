@@ -587,11 +587,11 @@
                 <div class="selects">
                     <input name="Price"
                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                           type="number" maxlength="6" class="form-control selectors" value="">
+                           type="number" maxlength="6" class="form-control selectors" value="" required>
                 </div>
 
                 <div class="selects">
-                    <input class="form-control selectors" name="Title" />
+                    <input class="form-control selectors" name="Title" required/>
                 </div>
             </div>
 
@@ -945,8 +945,8 @@
                 <div class="selects">
                     <input name="Car.Mileage" oninput="javascript: if (this.value.length > this.maxLength)
                 this.value = this.value.slice(0, this.maxLength);"
-                           step="0.3"
-                           type="number" maxlength="9" class="form-control selectors" value="">
+                           step="0.1"
+                           type="number" maxlength="9" class="form-control selectors" value="" required>
                 </div>
             </div>
 
@@ -983,7 +983,7 @@
                     <input class="form-control selectors" name="Owner.LastName" />
                 </div>
                 <div class="selects">
-                    <input class="form-control selectors" name="Car.Color" />
+                    <input class="form-control selectors" name="Car.Color" required/>
                 </div>
 
                 <div class="selects">
@@ -1016,7 +1016,7 @@
                 <div>
                     <input name="Owner.PhoneNumber" oninput="javascript: if (this.value.length > this.maxLength)
                 this.value = this.value.slice(0, this.maxLength);"
-                           type="number" maxlength="10" class="form-control selectors" value="">
+                           type="number" maxlength="10" class="form-control selectors" value="" required>
                 </div>
 
                 <div class="selects">
@@ -1024,11 +1024,11 @@
                 </div>
 
                 <div class="selects">
-                    <input type="number" class="form-control selectors" name="Car.Engine.CubicCapacity" />
+                    <input type="number" class="form-control selectors" name="Car.Engine.CubicCapacity" required/>
                 </div class="selects">
 
                 <div class="selects">
-                    <input type="number" class="form-control selectors" name="Car.Engine.HorsePower" />
+                    <input type="number" class="form-control selectors" name="Car.Engine.HorsePower" required/>
                 </div>
 
             </div>
@@ -1065,11 +1065,11 @@
                 </div>
 
                 <div class="selects">
-                    <input type="number" class="form-control selectors" name="Car.Engine.EcoLevel" />
+                    <input type="number" class="form-control selectors" name="Car.Engine.EcoLevel" required/>
                 </div>
 
                 <div class="selects">
-                    <input type="number" class="form-control selectors" name="Car.SeatsCount" />
+                    <input type="number" class="form-control selectors" name="Car.SeatsCount" required/>
                 </div>
             </div>
             <br />
@@ -1077,14 +1077,14 @@
 
             <div class="form-group purple-border">
                 <label for="exampleFormControlTextarea4">Описание</label>
-                <textarea style="width:400px" class="form-control" id="exampleFormControlTextarea4" name="Description" rows="4"></textarea>
+                <textarea style="width:400px" class="form-control" id="exampleFormControlTextarea4" name="Description" rows="4" required></textarea>
             </div>
         </div>
         <br />
 
 
         <a>Изберете желаните от вас снимки</a>
-        <input class="form-control" type="file" id="file1" name="file1" multiple />
+        <input class="form-control" type="file" id="file1" name="file1" multiple required/>
 
             <button id="searchBtn" type="submit" class="btn btn-block btn-primary">Добави обявата</button>
 
@@ -1095,3 +1095,16 @@
 
 </body>
 </html>
+
+<script>
+    function InvalidMSG(element){
+        if(element.value=="" || element.value==String.is)
+            element.setCustomValidity('Това поле е задължително!')
+    }
+        let requiredInputs= document.querySelectorAll("[required]");
+
+        for(let element of requiredInputs){
+           element.onin
+        }
+
+</script>
