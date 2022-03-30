@@ -42,5 +42,7 @@ namespace MobileWorld.Infrastructure.Data.Models
         [Required]
         [Column(TypeName = "decimal(6,3)")]
         public decimal Mileage { get; set; }
+
+        //public FeaturesModel MyProperty { get; set; }
     }
 }
