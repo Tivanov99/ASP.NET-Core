@@ -1,7 +1,12 @@
-﻿namespace MobileWorld.Infrastructure.Data.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MobileWorld.Infrastructure.Data.Models
 {
-    public class ExteriorDetails
+    public class ExteriorDetail
     {
+        [Key]
+        public int Id { get; set; }
+
         public bool Coupe { get; set; }
 
         public bool Sedan { get; set; }

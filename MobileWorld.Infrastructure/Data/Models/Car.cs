@@ -43,6 +43,9 @@ namespace MobileWorld.Infrastructure.Data.Models
         [Column(TypeName = "decimal(6,3)")]
         public decimal Mileage { get; set; }
 
-        //public FeaturesModel MyProperty { get; set; }
+        [ForeignKey(nameof(Feature))]
+        public int FeatureId { get; set; }
+
+        public Feature Feature { get; set; }
     }
 }

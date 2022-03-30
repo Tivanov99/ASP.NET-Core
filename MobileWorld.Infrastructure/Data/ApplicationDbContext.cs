@@ -28,6 +28,18 @@ namespace MobileWorld.Infrastructure.Data
                 .WithMany(x => x.FavoriteAds)
                 .OnDelete(DeleteBehavior.NoAction);
 
+            builder.Entity<Car>()
+                .HasOne(c=>c.Feature)
+                .WithOne(f=>f.Car)
+                .OnDelete(DeleteBehavior.Cascade);
+
+
+            builder.Entity<Feature>()
+                .HasOne(f => f.Car)
+                .WithOne(c => c.Feature)
+                .OnDelete(DeleteBehavior.NoAction);
+
+
             base.OnModelCreating(builder);
         }
 
@@ -45,5 +57,19 @@ namespace MobileWorld.Infrastructure.Data
         public DbSet<FavoriteAd> FavoriteAds { get; set; }
 
         public DbSet<Image> Images { get; set; }
+
+        public DbSet<Feature> Features { get; set; }
+
+        public DbSet<ComfortDetail> ComfortDetails { get; set; }
+
+        public DbSet<ExteriorDetail> ExteriorDetails { get; set; }
+
+        public DbSet<InteriorDetail> InteriorDetails { get; set; }
+
+        public DbSet<OthersDetail> OthersDetails { get; set; }
+
+        public DbSet<ProtectionDetail> ProtectionDetails { get; set; }
+
+        public DbSet<SafetyDetail> SafetyDetails { get; set; }
     }
 }

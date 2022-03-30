@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MobileWorld.Infrastructure.Data.Models
 {
-    public class SafetyDetails
+    public class SafetyDetail
     {
+        [Key]
+        public int Id { get; set; }
+
         public bool Gps { get; set; }
 
         public bool AutomaticStabilityControl { get; set; }

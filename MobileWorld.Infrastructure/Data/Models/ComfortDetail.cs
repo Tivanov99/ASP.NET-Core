@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace MobileWorld.Infrastructure.Data.Models
 {
-    public class ComfortDetails
+    public class ComfortDetail
     {
+        [Key]
+        public int Id { get; set; }
         public bool AutoStartStop { get; set; }
 
         public bool DvdTv { get; set; }
