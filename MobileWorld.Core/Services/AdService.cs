@@ -145,14 +145,13 @@ namespace MobileWorld.Core.Services
             return adds;
         }
 
-        public bool CreateAd(CreateAdModel model, List<Image> images, string ownerId)
+        public async Task<bool> CreateAd(CreateAdModel model, List<Image> images, string ownerId)
         {
             int townId = this.GetTownIdByName(model.Region.TownName);
             //TODO : Add seed to Db all Towns
 
-            Car car = CreateCar(model.Car, model.Features);
-
-            Region region = CreateRegion(model.Region, townId);
+            Car car = await CreateCar(model.Car, model.Features);
+            Region region =await CreateRegion(model.Region, townId);
 
             Ad newAd = new Ad()
             {
@@ -166,7 +165,6 @@ namespace MobileWorld.Core.Services
                 Car = car,
                 Region = region,
                 OwnerId = ownerId,
-
             };
 
             this.repo.Add<Ad>(newAd);
@@ -233,7 +231,7 @@ namespace MobileWorld.Core.Services
             return townId;
         }
 
-        private Car CreateCar(CarModel car, Feature features)
+        private async Task<Car> CreateCar(CarModel car, Feature features)
         => new Car()
         {
             Color = car.Color,
@@ -248,7 +246,7 @@ namespace MobileWorld.Core.Services
         };
 
 
-        private Region CreateRegion(RegionModel region, int townId)
+        private async Task<Region> CreateRegion(RegionModel region, int townId)
             => new Region()
             {
                 TownId = townId,
