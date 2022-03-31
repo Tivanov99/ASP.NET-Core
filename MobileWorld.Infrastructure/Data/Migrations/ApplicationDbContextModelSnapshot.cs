@@ -300,7 +300,7 @@ namespace MobileWorld.Infrastructure.Data.Migrations
                         .HasColumnType("nvarchar(30)");
 
                     b.Property<decimal>("Mileage")
-                        .HasColumnType("decimal(6,3)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Model")
                         .IsRequired()
