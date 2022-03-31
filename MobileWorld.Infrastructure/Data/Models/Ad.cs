@@ -20,7 +20,7 @@ namespace MobileWorld.Infrastructure.Data.Models
         [ForeignKey(nameof(Car))]
         public int CarId { get; set; }
 
-        public Car Car { get; set; }
+        public Car Car { get; set; } = new();
 
         [Required]
         [ForeignKey(nameof(Region))]

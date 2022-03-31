@@ -150,6 +150,10 @@ namespace MobileWorld.Core.Services
             int townId = this.GetTownIdByName(model.Region.TownName);
             //TODO : Add seed to Db all Towns
 
+            Car car = CreateCar(model.Car, model.Features);
+
+            Region region = CreateRegion(model.Region, townId);
+
             Ad newAd = new Ad()
             {
                 Id = Guid.NewGuid().ToString(),
@@ -159,25 +163,10 @@ namespace MobileWorld.Core.Services
                 Description = model.Description,
                 Images = images,
                 CreatedOn = DateTime.Now,
-                Car = new Car()
-                {
-                    Color = model.Car.Color,
-                    SeatsCount = model.Car.SeatsCount,
-                    Mileage = model.Car.Mileage,
-                    //TODO : Think about models
-                    Model = "e46",
-                    Make = model.Car.Make,
-                    Year = model.Car.Year,
-                    Engine = model.Car.Engine,
-                    Feature = model.Features,
-                },
-                Region = new Region()
-                {
-                    TownId = townId,
-                    RegionName = model.Region.RegionName,
-                    Neiborhood = model.Region.Neiborhood,
-                },
-                OwnerId = ownerId
+                Car = car,
+                Region = region,
+                OwnerId = ownerId,
+
             };
 
             this.repo.Add<Ad>(newAd);
@@ -243,5 +232,28 @@ namespace MobileWorld.Core.Services
 
             return townId;
         }
+
+        private Car CreateCar(CarModel car, Feature features)
+        => new Car()
+        {
+            Color = car.Color,
+            SeatsCount = car.SeatsCount,
+            Mileage = car.Mileage,
+            //TODO : Think about models
+            Model = "e46",
+            Make = car.Make,
+            Year = car.Year,
+            Engine = car.Engine,
+            Feature = features,
+        };
+
+
+        private Region CreateRegion(RegionModel region, int townId)
+            => new Region()
+            {
+                TownId = townId,
+                RegionName = region.RegionName,
+                Neiborhood = region.Neiborhood,
+            };
     }
 }
