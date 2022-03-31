@@ -17,8 +17,6 @@ namespace MobileWorld.Infrastructure.Data.Models
         [Required]
         public int Year { get; set; }
 
-        public DateTime CarDate { get; set; }
-
         [Required]
         public GearType GearType { get; set; }
 
