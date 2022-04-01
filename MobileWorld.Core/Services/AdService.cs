@@ -1,4 +1,5 @@
-﻿using MobileWorld.Core.Contracts;
+﻿using Microsoft.EntityFrameworkCore;
+using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Dto;
 using MobileWorld.Core.Models;
 using MobileWorld.Core.ViewModels;
@@ -15,7 +16,7 @@ namespace MobileWorld.Core.Services
             this.repo = _repo;
         }
 
-        public AdViewModel GetAdById(string adId)
+        public Task<AdViewModel> GetAdById(string adId)
         {
             var car = this.repo.All<Ad>()
                 .Where(a => a.Id == adId)
@@ -24,8 +25,12 @@ namespace MobileWorld.Core.Services
                     Title = a.Title,
                     Price = a.Price,
                     Description = a.Description,
-                    //Town = a.Region.Town.Name,
-                    //Region = a.Region.RegionName,
+                    TownName = a.Region.Town.Name,
+                    Region = new RegionModel()
+                    {
+                        RegionName =a.Region.RegionName,
+                        Neiborhood=a.Region.Neiborhood
+                    },
                     Car = new CarModel()
                     {
                         SeatsCount = a.Car.SeatsCount,
@@ -41,16 +46,7 @@ namespace MobileWorld.Core.Services
                         PhoneNumber = a.PhoneNumber
                     }
                 })
-                .FirstOrDefault();
-
-            //TODO: Make request to db with car Id
-            //CarViewModel carAd = new CarViewModel();
-            //carAd.Car.Description = "ВЪЗМОЖЕН ЛИЗИНГ БЕЗ ДОКАЗВАНЕ НА ДОХОДИ, ПРИ МИНИМАЛНА ПЪРВОНАЧАЛНА ВНОСКА СТАРТИРАЩА ОТ 10% ОДОБРЕНИЕ И РЕГИСТРАЦИЯ В РАМКИТЕ НА ДЕНЯ. Автомобила е от шоурум на BMW в Южна Швейцария (Мендризо). Само един собственик който го връща в представителството и взима нов. Пълна подръжка и документация за всяко обслужване на 15 хиляди километра изцяло, и единствено в сервиз на BMW.";
-            //carAd.Owner.PhoneNumber = 0893668829;
-            //carAd.Owner.Name = "АУТО КЛАСИК - ДИРЕКТЕН";
-            //carAd.Region = "Бургас";
-            //carAd.Town = "Сарафово";
-            //carAd.Neighborhood = "Сарафово";
+                .FirstOrDefaultAsync();
 
             return car;
         }
@@ -147,11 +143,12 @@ namespace MobileWorld.Core.Services
 
         public async Task<bool> CreateAd(CreateAdModel model, List<Image> images, string ownerId)
         {
-            int townId = this.GetTownIdByName(model.Region.TownName);
+            int townId = this.GetTownIdByName(model.Region.TownName)
+                .Result;
             //TODO : Add seed to Db all Towns
 
             Car car = await CreateCar(model.Car, model.Features);
-            Region region =await CreateRegion(model.Region, townId);
+            Region region = await CreateRegion(model.Region, townId);
 
             Ad newAd = new Ad()
             {
@@ -221,15 +218,19 @@ namespace MobileWorld.Core.Services
             return queryString;
         }
 
-        private int GetTownIdByName(string townName)
+        private async Task<int> GetTownIdByName(string townName)
         {
-            var townId = this.repo.All<Town>()
+            var result = await this.repo.All<Town>()
                 .Where(t => t.Name == townName)
                 .Select(t => t.Id)
-                .FirstOrDefault();
+                .FirstOrDefaultAsync();
 
-            return townId;
+            return result;
         }
+
+
+
+
 
         private async Task<Car> CreateCar(CarModel car, Feature features)
         => new Car()
@@ -244,8 +245,6 @@ namespace MobileWorld.Core.Services
             Engine = car.Engine,
             Feature = features,
         };
-
-
         private async Task<Region> CreateRegion(RegionModel region, int townId)
             => new Region()
             {

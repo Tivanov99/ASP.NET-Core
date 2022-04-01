@@ -79,7 +79,7 @@ namespace MobileWorld.Controllers
                 ms.Dispose();
                 images.Add(img);
             }
-            bool isSuccessfully = this.service.CreateAd(model, images, userId);
+            bool isSuccessfully = await this.service.CreateAd(model, images, userId);
 
 
             //TODO : Redirect correct view after successfully add
