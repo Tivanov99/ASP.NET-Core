@@ -27,22 +27,15 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
-        <div class="carousel-inner">
+        <div class="carousel-inner ">
 
             @foreach (var bytes in @Model.Car.Images)
             {
                 @await Html.PartialAsync("_CarImagePartial", bytes)
                 ;
+
             }
-            @*<div class="carousel-item active">
-                <img class="d-block w-100" alt="First slide" src="data:image/jpeg;base64,@Convert.ToBase64String(@Model.Car.Images[0])" />
-                </div>
-                <div class="carousel-item active">
-                <img class="d-block w-100" src="..." alt="Second slide">
-                </div>
-                <div class="carousel-item active">
-                <img class="d-block w-100" src="..." alt="Third slide">
-                </div>*@
+
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -113,3 +106,7 @@
 
 </body>
 </html>
+<script>
+    let image = document.querySelector(".carousel-item");
+    image.classList.add("active");
+</script>
