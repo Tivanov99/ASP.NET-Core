@@ -40,6 +40,7 @@ namespace MobileWorld.Core.Services
                         GearType = a.Car.GearType,
                         Color = a.Car.Color,
                         Mileage = a.Car.Mileage,
+                        Images = a.Images.Select(x => x.ImageData).ToList(),
                         Engine = new EngineModel()
                         {
                             FuelConsuption = a.Car.Engine.FuelConsuption,
@@ -140,7 +141,7 @@ namespace MobileWorld.Core.Services
                     AdId = a.Id,
                     Description = a.Description,
                     Price = a.Price,
-                    Title = a.Title,             
+                    Title = a.Title,
                     ImageData = a.Images[0].ImageData
                     //TODO : Get images
                 })

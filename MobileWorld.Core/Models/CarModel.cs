@@ -16,5 +16,7 @@ namespace MobileWorld.Core.Models
         [Required]
         [Column(TypeName = "decimal(6,3)")]
         public decimal Mileage { get; set; }
+
+        public List<byte[]> Images { get; set; }
     }
 }
