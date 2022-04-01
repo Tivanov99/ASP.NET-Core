@@ -14,7 +14,7 @@ namespace MobileWorld.Core.ViewModels
 
         public decimal Price { get; set; }
 
-        public string Image { get; set; }
+        public byte[] ImageData { get; set; }
 
         //TODO : Add property for date of creating ad
     }

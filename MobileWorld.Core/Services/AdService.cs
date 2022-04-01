@@ -141,7 +141,7 @@ namespace MobileWorld.Core.Services
                     Description = a.Description,
                     Price = a.Price,
                     Title = a.Title,             
-                    Image = string.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(a.Images[0].ImageData))
+                    ImageData = a.Images[0].ImageData
                     //TODO : Get images
                 })
                 .Take(6)

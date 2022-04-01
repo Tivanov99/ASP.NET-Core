@@ -4,7 +4,7 @@
 
 <div class="wrapper">
     <div class="product-img">
-        <img src="Url" class="car-img">
+        <img class="car-img" src="data:image/jpeg;base64,@Convert.ToBase64String(@Model.ImageData)" />
     </div>
     <div class="product-info">
         <div class="product-text">
@@ -13,7 +13,6 @@
             <h2>@Model.Description</h2>
             <hr class="split-line">
             <h3 class="product-price">Price : @Model.Price</h3>
-            <asp:Image ID="ImgProfilePic" runat="server"  />
             <div class="button-holder info-button">
                 <a href="/Ads/AdDetails?adId=@Model.AdId" class="btn btn-info text-uppercase">Разгледай</a>
             </div>
