@@ -28,8 +28,8 @@ namespace MobileWorld.Core.Services
                     TownName = a.Region.Town.Name,
                     Region = new RegionModel()
                     {
-                        RegionName =a.Region.RegionName,
-                        Neiborhood=a.Region.Neiborhood
+                        RegionName = a.Region.RegionName,
+                        Neiborhood = a.Region.Neiborhood
                     },
                     Car = new CarModel()
                     {
@@ -227,9 +227,6 @@ namespace MobileWorld.Core.Services
 
             return result;
         }
-
-
-
 
 
         private async Task<Car> CreateCar(CarModel car, Feature features)
