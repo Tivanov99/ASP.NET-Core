@@ -140,14 +140,15 @@ namespace MobileWorld.Core.Services
                     AdId = a.Id,
                     Description = a.Description,
                     Price = a.Price,
-                    Title = a.Title,
+                    Title = a.Title,             
+                    Image = string.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(a.Images[0].ImageData))
                     //TODO : Get images
                 })
                 .Take(6)
                 .ToList();
 
 
-            return adds;
+            return cars;
         }
 
         public async Task<bool> CreateAd(CreateAdModel model, List<Image> images, string ownerId)
@@ -209,7 +210,7 @@ namespace MobileWorld.Core.Services
 
             var features = type
                 .GetProperties()
-                .Where(x => x.Name!="Id" && (bool)x.GetValue(model) == true)
+                .Where(x => x.Name != "Id" && (bool)x.GetValue(model) == true)
                 .Select(x => x.Name)
                 .ToList();
 

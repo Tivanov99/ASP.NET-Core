@@ -8,19 +8,19 @@ namespace MobileWorld.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly ICarService carService;
+        private readonly IAdService adService;
 
         public HomeController(ILogger<HomeController> logger,
-            ICarService _carService)
+            IAdService _adService)
         {
             _logger = logger;
-            this.carService = _carService;
+            this.adService = _adService;
         }
 
         public IActionResult Index()
         {
-            List<AdCardViewModel> cars = this.carService
-                .GetIndexCars();
+            List<AdCardViewModel> cars = this.adService
+                .GetIndexAds();
             return View(cars);
         }
 
