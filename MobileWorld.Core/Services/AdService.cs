@@ -209,7 +209,7 @@ namespace MobileWorld.Core.Services
 
             var features = type
                 .GetProperties()
-                .Where(x => (bool)x.GetValue(model) == true)
+                .Where(x => x.Name!="Id" && (bool)x.GetValue(model) == true)
                 .Select(x => x.Name)
                 .ToList();
 
@@ -237,7 +237,6 @@ namespace MobileWorld.Core.Services
             return result;
         }
 
-
         private async Task<Car> CreateCar(CarModel car, Feature features)
         => new Car()
         {
@@ -251,6 +250,7 @@ namespace MobileWorld.Core.Services
             Engine = car.Engine,
             Feature = features,
         };
+
         private async Task<Region> CreateRegion(RegionModel region, int townId)
             => new Region()
             {
