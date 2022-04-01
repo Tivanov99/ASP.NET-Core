@@ -16,7 +16,7 @@ namespace MobileWorld.Core.Services
             this.repo = _repo;
         }
 
-        public Task<AdViewModel> GetAdById(string adId)
+        public AdViewModel GetAdById(string adId)
         {
             var car = this.repo.All<Ad>()
                 .Where(a => a.Id == adId)
@@ -40,13 +40,22 @@ namespace MobileWorld.Core.Services
                         GearType = a.Car.GearType,
                         Color = a.Car.Color,
                         Mileage = a.Car.Mileage,
+                        Engine = new EngineModel()
+                        {
+                            FuelConsuption = a.Car.Engine.FuelConsuption,
+                            FuelType = a.Car.Engine.FuelType,
+                            EcoLevel = a.Car.Engine.EcoLevel,
+                            CubicCapacity = a.Car.Engine.CubicCapacity,
+                            NewtonMeter = a.Car.Engine.NewtonMeter,
+                            HorsePower = a.Car.Engine.HorsePower,
+                        }
                     },
                     Owner = new OwnerModel()
                     {
                         PhoneNumber = a.PhoneNumber
                     }
                 })
-                .FirstOrDefaultAsync();
+                .FirstOrDefault();
 
             return car;
         }
