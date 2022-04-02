@@ -19,17 +19,19 @@
 }
 
 .contacts {
+    left:0px;
     width: 660px;
     font-size: 14px;
     font-weight: bold;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-    border-bottom: #CCC 2px solid;
-    margin-top: 10px;
-    padding-top: 25px;
+    /*padding-bottom: 10px;*/
+    /*margin-bottom: 10px;*/
+    /*border-bottom: #CCC 2px solid;*/
+/*    margin-top: 10px;
+    padding-top: 25px;*/
 }
 
-/*.div-contacts {
+.div-contacts {
+    left;   
     width: 660px;
     cellspacing: 0px;
     cellpadding: 0px;
@@ -37,9 +39,9 @@
     bgcolor: "#EFEFEF";
 }
 .owner-info {
-    width : 265px;*/
-    /*align: top;*/
-    /*padding:10px;
+    width : 265px;
+    align: top;
+    padding:10px;
 }
 .owner-phone {
     padding-bottom: 5px;
@@ -61,9 +63,9 @@
     font-weight: bold;
     display: block;
     padding-bottom: 5px;
-}*/
+}
 .dealerData-odd {
-    width: 190px;
+    margin-right: 6px;
     float: left;
     padding-top: 6px;
     clear: both;

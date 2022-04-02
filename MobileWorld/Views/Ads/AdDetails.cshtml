@@ -49,21 +49,21 @@
         <strong style="font-size:18px;color:#333;">Land Rover Range Rover Sport 2.7d</strong><br>
         <div style="box-sizing: border-box"></div>
         <ul style="list-style: none; width: 400px; padding: 0;margin: 12px 0 0;" class="dilarData">
-            <li class="dealerData-odd">Дата на производство</li>
+            <li class="dealerData-odd">Дата на производство -</li>
             <li class="dealerData-even">@Model.Car.Year</li>
-            <li class="dealerData-odd">Тип двигател</li>
+            <li class="dealerData-odd">Тип двигател -</li>
             <li class="dealerData-even">@Model.Car.Engine.FuelType</li>
-            <li class="dealerData-odd">Мощност</li>
+            <li class="dealerData-odd">Мощност -</li>
             <li class="dealerData-even">@Model.Car.Engine.HorsePower к.с.</li>
-            <li class="dealerData-odd">Евростандарт</li>
+            <li class="dealerData-odd">Евростандарт -</li>
             <li class="dealerData-even">Евро @Model.Car.Engine.EcoLevel</li>
-            <li class="dealerData-odd">Скоростна кутия</li>
+            <li class="dealerData-odd">Скоростна кутия -</li>
             <li class="dealerData-even">@Model.Car.GearType</li>
             @*<li class=".dealerData li:nth-of-type(odd)">Категория</li>
                 <li class=".dilarData li:nth-of-type(even)">Джип</li>*@
-            <li class="dealerData-odd">Пробег</li>
+            <li class="dealerData-odd">Пробег -</li>
             <li class="dealerData-even">@Model.Car.Mileage км</li>
-            <li class="dealerData-odd">Цвят</li>
+            <li class="dealerData-odd">Цвят -</li>
             <li class="dealerData-even">@Model.Car.Color.</li>
         </ul>
         <div style="margin-bottom:11px;"></div>
@@ -75,9 +75,6 @@
         <br>
         <div>
             <p class="more-info">Допълнителна информация:</p>
-           @* <div class="more-info">
-                Допълнителна информация:
-            </div>*@
             <table class="table-more-info">
                 <tbody>
                     <tr><td class="more-info-text">@Model.Description </td></tr>
@@ -88,25 +85,29 @@
 
     }
 
-    @* <br> <div class="contacts">За контакти:</div>
-        <table style="width:360px;" cellspacing="0" cellpadding="0" border="0" bgcolor="#EFEFEF">
+    <br>
+    <div>
+        <p class="contacts">За контакти:</p>
+    <table style="width:360px;" cellspacing="0" cellpadding="0" bgcolor="#EFEFEF">
         <tbody>
-        <tr>
-        <td class="owner-info">
-        <span class="owner-phone">Телефон: @Model.Owner.PhoneNumber</span><br><br>
-        <span class="owner-name">Име - Trifon</span>
-        <span class="owner-addres">Адрес :</span>
-        Регион: @Model.Region.RegionName<br>гр. @Model.TownName<br>
-        @if (Model.Region.Neiborhood != null)
-        {
-        <span>КВ.@Model.Region.Neiborhood</span>
-        <br>
-        }
-        <br>
-        </td>
-        </tr>
+            <tr>
+                <td class="owner-info">
+                    <span class="owner-phone">Телефон: @Model.Owner.PhoneNumber</span><br><br>
+                    <span class="owner-name">Име - Trifon</span>
+                    <span class="owner-addres">Адрес :</span>
+                    Регион: @Model.Region.RegionName<br>гр. @Model.TownName<br>
+                    @if (Model.Region.Neiborhood != null)
+                    {
+                        <span>КВ.@Model.Region.Neiborhood</span>
+                        <br>
+                    }
+                    <br>
+                </td>
+            </tr>
         </tbody>
-        </table>*@
+    </table>
+    </div>
+    
     <div style="float:left; margin-top:10px;">
         <span style="color:#999999">Създадена на @Model.CreatedOn</span><br>
     </div>
