@@ -2,10 +2,7 @@
     width: 660px;
     font-size: 15px;
     font-weight: bold;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-    border-bottom: #CCC 2px solid;
-    margin-top: 10px;
+    /*border-left: #CCC 2px solid;*/
 }
 
 .table-more-info {
@@ -18,7 +15,7 @@
     font-size: 15px;
     color: #444;
     border-bottom: #CCC 2px solid;
-    padding-bottom: 12px;
+    /*padding-bottom: 12px;*/
 }
 
 .contacts {
@@ -32,7 +29,7 @@
     padding-top: 25px;
 }
 
-.div-contacts {
+/*.div-contacts {
     width: 660px;
     cellspacing: 0px;
     cellpadding: 0px;
@@ -40,9 +37,9 @@
     bgcolor: "#EFEFEF";
 }
 .owner-info {
-    width : 265px;
+    width : 265px;*/
     /*align: top;*/
-    padding:10px;
+    /*padding:10px;
 }
 .owner-phone {
     padding-bottom: 5px;
@@ -64,4 +61,18 @@
     font-weight: bold;
     display: block;
     padding-bottom: 5px;
+}*/
+.dealerData-odd {
+    width: 190px;
+    float: left;
+    padding-top: 6px;
+    clear: both;
+}
+
+.dealerData-even{
+    width: 150px;
+    float: left;
+    font-weight: 700;
+    padding-top: 6px;
+    font-weight: bold;
 }
