@@ -29,7 +29,7 @@ namespace MobileWorld.Infrastructure.Data.Models
         public Region Region { get; set; }
 
         [Required]
-        public DateTime CreatedOn { get; set; }
+        public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
 
         public decimal Price { get; set; }
 

@@ -26,5 +26,6 @@ namespace MobileWorld.Core.Models
         public OwnerModel Owner { get; set; } = new();
 
         public FeaturesModel Features { get; set; } = new();
+
     }
 }
