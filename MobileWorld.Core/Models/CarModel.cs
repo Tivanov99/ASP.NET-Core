@@ -18,5 +18,8 @@ namespace MobileWorld.Core.Models
         public decimal Mileage { get; set; }
 
         public List<byte[]> Images { get; set; }
+
+        public FeaturesModel Features { get; set; } = new();
+
     }
 }

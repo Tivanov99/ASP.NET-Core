@@ -17,7 +17,7 @@ namespace MobileWorld.Controllers
             this.service = _service;
         }
 
-        public IActionResult AdDetails(string adId)
+        public IActionResult Ad(string adId)
         {
             var ad = this.service
                 .GetAdById(adId);

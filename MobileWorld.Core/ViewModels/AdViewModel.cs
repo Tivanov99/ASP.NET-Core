@@ -20,6 +20,5 @@ namespace MobileWorld.Core.ViewModels
 
         public RegionModel Region { get; set; }
 
-        public FeaturesModel Features { get; set; } = new();
     }
 }
