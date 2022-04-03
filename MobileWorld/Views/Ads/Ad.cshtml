@@ -1,5 +1,9 @@
 ﻿@using MobileWorld.Core.Models;
 @using System.Linq;
+@using Microsoft.AspNetCore.Identity
+@using MobileWorld.Infrastructure.Data.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 @model AdViewModel;
 
 
@@ -47,7 +51,11 @@
         </a>
         <br />
 
-        <button>Delete</button>
+        @if (Model.Owner.OwnerId == UserManager.GetUserId(User))
+        {
+            <button>Delete</button>
+
+        }
     </div>
 
 

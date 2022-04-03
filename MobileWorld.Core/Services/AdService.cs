@@ -64,7 +64,8 @@ namespace MobileWorld.Core.Services
                     },
                     Owner = new OwnerModel()
                     {
-                        PhoneNumber = a.PhoneNumber
+                        PhoneNumber = a.PhoneNumber,
+                        OwnerId = a.OwnerId,
                     },
                 })
                 .FirstOrDefault();
