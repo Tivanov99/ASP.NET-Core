@@ -49,6 +49,17 @@ namespace MobileWorld.Core.Services
                             CubicCapacity = a.Car.Engine.CubicCapacity,
                             NewtonMeter = a.Car.Engine.NewtonMeter,
                             HorsePower = a.Car.Engine.HorsePower,
+                            AutoGas = a.Car.Engine.AutoGas,
+                            Hybrid = a.Car.Engine.Hybrid,
+                        },
+                        Features = new FeaturesModel()
+                        {
+                            OthersDetails = a.Car.Feature.OthersDetails,
+                            ComfortDetails = a.Car.Feature.ComfortDetails,
+                            SafetyDetails = a.Car.Feature.SafetyDetails,
+                            ExteriorDetails = a.Car.Feature.ExteriorDetails,
+                            ProtectionDetails = a.Car.Feature.ProtectionDetails,
+                            InteriorDetails = a.Car.Feature.InteriorDetails,
                         }
                     },
                     Owner = new OwnerModel()
