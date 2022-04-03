@@ -17,6 +17,11 @@ namespace MobileWorld.Controllers
             this.service = _service;
         }
 
+        public IActionResult Delete(string id)
+        {
+            return View("");
+        }
+
         public IActionResult Ad(string adId)
         {
             var ad = this.service

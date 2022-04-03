@@ -22,6 +22,7 @@ namespace MobileWorld.Core.Services
                 .Where(a => a.Id == adId)
                 .Select(a => new AdViewModel()
                 {
+                    Id= a.Id,
                     Title = a.Title,
                     Price = a.Price,
                     Description = a.Description,

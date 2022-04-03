@@ -37,7 +37,6 @@
             {
                 @await Html.PartialAsync("_CarImagePartial", bytes)
                 ;
-
             }
 
         </div>
@@ -51,11 +50,15 @@
         </a>
         <br />
 
-        @if (Model.Owner.OwnerId == UserManager.GetUserId(User))
-        {
-            <button>Delete</button>
-
-        }
+        @*@if (Model.Owner.OwnerId == UserManager.GetUserId(User))
+            {*@
+        <button name="X-HTTP-Method-Override" value="DELETE" formnovalidate
+                class="cancel" onclick="return confirm('Are you sure?')">
+            Delete
+        </button>
+        @*<button>Delete</button>*@
+        <button>Edit</button>
+        @*}*@
     </div>
 
 
