@@ -52,8 +52,8 @@
 
         @*@if (Model.Owner.OwnerId == UserManager.GetUserId(User))
             {*@
-        <a asp-action="Delete" asp-route-adId="@Model.Id">Изтрий</a>
-        <a asp-page="/Ads/Edit" asp-route-adId="@Model.Id">Редактирай</a>
+        <a class="delete-border" asp-action="Delete" asp-route-adId="@Model.Id">Изтрий</a>
+        <a class="edit-border" asp-page="/Ads/Edit" asp-route-adId="@Model.Id">Редактирай</a>
 
         @*}*@
     </div>
