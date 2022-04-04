@@ -272,5 +272,13 @@ namespace MobileWorld.Core.Services
                 RegionName = region.RegionName,
                 Neiborhood = region.Neiborhood,
             };
+
+        public Ad Delete(string adId)
+        {
+           Ad ad = this.repo.All<Ad>().Where(a=>a.Id== adId)
+                .FirstOrDefault();
+
+            if(ad!=null)
+        }
     }
 }

@@ -52,6 +52,7 @@
 
         @*@if (Model.Owner.OwnerId == UserManager.GetUserId(User))
             {*@
+                <a href='<%= Url.Action("Edit", "Home", new { id = item.Id })%>'><img src="Content/Edit.png" alt="edit" border="0" /></a>
         <button name="X-HTTP-Method-Override" value="DELETE" formnovalidate
                 class="cancel" onclick="return confirm('Are you sure?')">
             Delete

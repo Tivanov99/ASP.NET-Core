@@ -21,6 +21,11 @@ namespace MobileWorld.Infrastructure.Data.Common
             return this.DbSet<T>().AsQueryable();
         }
 
+        public void Remove<T>(T entity) where T : class
+        {
+            DbSet<T>().Remove(entity);
+        }
+
         public int SaveChanges()
         {
             return this.dbContext.SaveChanges();
