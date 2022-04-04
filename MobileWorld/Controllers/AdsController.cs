@@ -133,24 +133,24 @@ namespace MobileWorld.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string adId)
         {
-            var student =
+            var ad =
                 this.service.GetAdById(adId);
 
-            if (student == null)
+            if (ad == null)
             {
                 return RedirectToAction(nameof(Index));
             }
 
-            //try
-            //{
+            try
+            {
                 this.service.Delete(adId);
                 return RedirectToAction(nameof(Index));
-            //}
-            //catch (DbUpdateException /* ex */)
-            //{
-                //Log the error (uncomment ex variable name and write a log.)
+            }
+            catch (Exception /* ex */)
+            {
+                //Log the error(uncomment ex variable name and write a log.)
                 return RedirectToAction(nameof(Delete), new { id = adId, saveChangesError = true });
-            //}
+            }
         }
     }
 }
