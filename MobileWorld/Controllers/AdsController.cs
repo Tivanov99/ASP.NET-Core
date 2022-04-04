@@ -154,7 +154,8 @@ namespace MobileWorld.Controllers
         }
         public IActionResult Edit(string adId)
         {
-            return View();
+            var ad= this.service.GetAdById(adId);
+            return View(ad);
         }
     }
 }
