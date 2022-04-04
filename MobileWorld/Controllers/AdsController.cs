@@ -152,5 +152,9 @@ namespace MobileWorld.Controllers
                 return RedirectToAction(nameof(Delete), new { id = adId, saveChangesError = true });
             }
         }
+        public IActionResult Edit(string adId)
+        {
+            return View();
+        }
     }
 }
