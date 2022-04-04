@@ -278,7 +278,14 @@ namespace MobileWorld.Core.Services
            Ad ad = this.repo.All<Ad>().Where(a=>a.Id== adId)
                 .FirstOrDefault();
 
-            if(ad!=null)
+            if (ad != null)
+            {
+                this.repo.Remove<Ad>(ad);
+            }
+
+            this.repo.SaveChanges();
+
+            return ad;
         }
     }
 }
