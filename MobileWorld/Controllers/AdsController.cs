@@ -157,5 +157,15 @@ namespace MobileWorld.Controllers
             var ad = this.service.GetAdById(adId);
             return View(ad);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> EditPost(string adId)
+        {
+            if(adId == null)
+            {
+                return NotFound();
+            }
+            return View();
+        }
     }
 }

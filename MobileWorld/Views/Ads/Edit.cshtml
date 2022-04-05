@@ -55,7 +55,10 @@
 
     </div>
 
-    <form asp-controller="Ads" asp-action="CreateAd" asp-route-userId=@UserManager.GetUserId(User) method="post" enctype="multipart/form-data">
+   
+    <form asp-controller="Ads" asp-action="EditPost" asp-route-adId=@Model.Id method="post" enctype="multipart/form-data">
+    
+    
     </form>
 
     <div id="searchElements">
