@@ -1,7 +1,11 @@
-﻿@using Microsoft.AspNetCore.Identity
+﻿@using MobileWorld.Core.Models;
+@using System.Linq;
+@using Microsoft.AspNetCore.Identity
 @using MobileWorld.Infrastructure.Data.Identity
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
+@model AdViewModel;
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,15 +13,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link asp-append-version="true" rel="stylesheet" href="~/css/CarDetails.css">
     <link asp-append-version="true" rel="stylesheet" href="~/css/site.css">
     <link asp-append-version="true" rel="stylesheet" href="~/css/SearchForm.css">
     <link asp-append-version="true" rel="stylesheet" href="~/css/CarCard.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>Document</title>
 </head>
 <body>
-    <form asp-controller="Ads" asp-action="CreateAd" asp-route-userId=@UserManager.GetUserId(User) method="post" enctype="multipart/form-data">
+    <h1>@Model.Title</h1>
+    @*//*@
 
-        <div id="searchElements">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div style="width:80%" class="carousel-inner">
+
+            @foreach (var bytes in @Model.Car.Images)
+            {
+                @await Html.PartialAsync("_CarImagePartial", bytes)
+                ;
+            }
+
+        </div>
+        <a style="height: 495px" class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a style="right: 195px; height: 495px" class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+        <br />
+
+
+    </div>
+
+    <form asp-controller="Ads" asp-action="CreateAd" asp-route-userId=@UserManager.GetUserId(User) method="post" enctype="multipart/form-data">
+    </form>
+
+    <div id="searchElements">
             <div class="div-labels">
                 <div>
                     <label name="Car.Make">Марка</label>
@@ -39,7 +80,7 @@
                 <div>
                     <select name="Car.Make" class="form-control">
                         <option value="">
-                            всички
+                            @Model.Car.Make
                         </option>
                         <option value="AC">
                             AC
@@ -488,10 +529,10 @@
                     </select>
                 </div>
 
-                <div class="selects" >
+                <div class="selects">
                     <select name="Region.TownName" class="form-control selectors">
                         <option value="">
-                            всички
+                           @Model.TownName
                         </option>
                         <option value="Благоевград">
                             Благоевград
@@ -587,11 +628,11 @@
                 <div class="selects">
                     <input name="Price"
                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                           type="number" maxlength="9" class="form-control selectors" value="" required>
+                           type="number" maxlength="9" class="form-control selectors" value="@Model.Price" required>
                 </div>
 
                 <div class="selects">
-                    <input class="form-control selectors" name="Title" required/>
+                    <input value="@Model.Title" class="form-control selectors" name="Title" required/>
                 </div>
             </div>
 
@@ -621,7 +662,7 @@
                 <div>
                     <select name="Car.Year" class="form-control">
                         <option value="">
-                            всички
+                            @Model.Car.Year
                         </option>
                         <option value="2022">
                             2022
@@ -908,7 +949,7 @@
                 <div class="selects">
                     <select name="=FuelType" class="form-control">
                         <option value="">
-                            всички
+                            @Model.Car.Engine.FuelType
                         </option>
                         <option value="Бензинов">
                             Бензинов
@@ -928,7 +969,7 @@
                 <div class="selects">
                     <select name="=GearType" class="form-control">
                         <option value="">
-                            всички
+                            @Model.Car.GearType
                         </option>
                         <option value="Ръчна">
                             Ръчна
@@ -946,7 +987,7 @@
                     <input name="Car.Mileage" oninput="javascript: if (this.value.length > this.maxLength)
                 this.value = this.value.slice(0, this.maxLength);"
                            step="0.1"
-                           type="number" maxlength="9" class="form-control selectors" value="" required>
+                           type="number" maxlength="9" class="form-control selectors" value="@Model.Car.Mileage" required>
                 </div>
             </div>
 
@@ -976,18 +1017,18 @@
             <div class="div-labels">
 
                 <div>
-                    <input class="form-control selectors" name="Owner.FirstName" />
+                    <input value="@Model.Owner.FirstName" class="form-control selectors" name="Owner.FirstName" />
                 </div>
 
                 <div class="selects">
-                    <input class="form-control selectors" name="Owner.LastName" />
+                    <input value="@Model.Owner.LastName" class="form-control selectors" name="Owner.LastName" />
                 </div>
                 <div class="selects">
-                    <input class="form-control selectors" name="Car.Color" required/>
+                    <input value="@Model.Car.Color" class="form-control selectors" name="Car.Color" required/>
                 </div>
 
                 <div class="selects">
-                    <input class="form-control selectors" name="Region.RegionName" />
+                    <input value="@Model.Region.RegionName" class="form-control selectors" name="Region.RegionName" />
                 </div>
             </div>
 
@@ -1016,19 +1057,19 @@
                 <div>
                     <input name="Owner.PhoneNumber" oninput="javascript: if (this.value.length > this.maxLength)
                 this.value = this.value.slice(0, this.maxLength);"
-                           type="number" maxlength="10" class="form-control selectors" value="" required>
+                           type="number" maxlength="10" class="form-control selectors" value="@Model.Owner.PhoneNumber" required>
                 </div>
 
                 <div class="selects">
-                    <input class="form-control selectors" name="Region.Neiborhood" />
+                    <input value="@Model.Region.Neiborhood" class="form-control selectors" name="Region.Neiborhood" />
                 </div>
 
                 <div class="selects">
-                    <input type="number" class="form-control selectors" name="Car.Engine.CubicCapacity" required/>
+                    <input value="@Model.Car.Engine.CubicCapacity" type="number" class="form-control selectors" name="Car.Engine.CubicCapacity" required/>
                 </div class="selects">
 
                 <div class="selects">
-                    <input type="number" class="form-control selectors" name="Car.Engine.HorsePower" required/>
+                    <input value ="@Model.Car.Engine.HorsePower" type="number" class="form-control selectors" name="Car.Engine.HorsePower" required/>
                 </div>
 
             </div>
@@ -1057,19 +1098,19 @@
             <div class="div-labels">
 
                 <div>
-                    <input type="number" class="form-control selectors" name="Car.Engine.FuelConsuption" />
+                    <input value="@Model.Car.Engine.FuelConsuption" type="number" class="form-control selectors" name="Car.Engine.FuelConsuption" />
                 </div>
                 
                 <div class="selects">
-                    <input type="number" class="form-control selectors" name="Car.Engine.NewtonMeter" />
+                    <input value="@Model.Car.Engine.NewtonMeter" type="number" class="form-control selectors" name="Car.Engine.NewtonMeter" />
                 </div>
 
                 <div class="selects">
-                    <input type="number" class="form-control selectors" name="Car.Engine.EcoLevel" required/>
+                    <input value="@Model.Car.Engine.EcoLevel" type="number" class="form-control selectors" name="Car.Engine.EcoLevel" required/>
                 </div>
 
                 <div class="selects">
-                    <input type="number" class="form-control selectors" name="Car.SeatsCount" required/>
+                    <input value="@Model.Car.SeatsCount" type="number" class="form-control selectors" name="Car.SeatsCount" required/>
                 </div>
             </div>
             <br />
@@ -1080,32 +1121,412 @@
                 <textarea style="width:400px" class="form-control" id="exampleFormControlTextarea4" name="Description" rows="4" required></textarea>
             </div>
         </div>
-        <br />
+
+    <br>
+    @*<div>
+        <p class="contacts">За контакти:</p>
+        <table style="width:360px;" cellspacing="0" cellpadding="0" bgcolor="#EFEFEF">
+            <tbody>
+                <tr>
+                    <td class="owner-info">
+                        <span class="owner-phone">Телефон: @Model.Owner.PhoneNumber</span><br><br>
+                        <span class="owner-name">Име - Trifon</span>
+                        <span class="owner-addres">Адрес :</span>
+                        Регион: @Model.Region.RegionName<br>гр. @Model.TownName<br>
+                        @if (Model.Region.Neiborhood != null)
+                        {
+                                <span>КВ.@Model.Region.Neiborhood</span>
+                                <br>
+                        }
+                        <br>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>*@
+    @*//*@
+
+    <div>
+        <table id="features">
+            <tbody>
+                <tr>
+                    <td valign="top">
+                        <div>
+                            <strong>Спецификация на двигателя</strong>
+                            <div>
+                                <input checked="@Model.Car.Features.EngineDetails.Hybrid" type="checkbox" data-val="true" value="true">
+                                <label>Хибридна система</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.EngineDetails.AutoGas" type="checkbox" data-val="true" value="true">
+                                <label>Газова уредба</label>
+                            </div>
+                        </div>
+                        <div>
+                            <strong>Безопасност</strong>
+                            <div>
+                                <input checked="@Model.Car.Features.SafetyDetails.Gps" type="checkbox" data-val="true" value="true">
+                                <label>GPS система за пропредияване</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.SafetyDetails.AutomaticStabilityControl" type="checkbox" data-val="true" value="true">
+                                <label>Автоматичен контрол на стабилността</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.SafetyDetails.AdaptiveFrontLights" type="checkbox" data-val="true" value="true">
+                                <label>Адаптивни предни светлини</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.SafetyDetails.Abs" type="checkbox" data-val="true" value="true">
+                                <label>Антиблокираща система</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.SafetyDetails.ElBreaks" type="checkbox" data-val="true" value="true">
+                                <label>Ел. разпределяне на спирачното усилие</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.SafetyDetails.Esp" type="checkbox" data-val="true" value="true">
+                                <label>Електронна програма за стабилизиране</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.SafetyDetails.TirePressure" type="checkbox" data-val="true" value="true">
+                                <label>Контрол на налягането на гумите</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.SafetyDetails.ParkPilot" type="checkbox" data-val="true" value="true">
+                                <label>Парктроник</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.SafetyDetails.IsoFix" type="checkbox" data-val="true" value="true">
+                                <label>Система ISOFIX</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.SafetyDetails.DynamicStabilitySystem" type="checkbox" data-val="true" value="true">
+                                <label>Система за динамична устойчивост</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.SafetyDetails.SlipProtectionSystem" type="checkbox" data-val="true" value="true">
+                                <label>Система за защита от пробуксуванет</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.SafetyDetails.DryBrakesSystem" type="checkbox" data-val="true" value="true">
+                                <label>Система за изсушаване на накладките</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.SafetyDetails.Distronic" type="checkbox" data-val="true" value="true">
+                                <label>Система за контрол на дистанцията</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.SafetyDetails.HillDescentControll" type="checkbox" data-val="true" value="true">
+                                <label>Система за контрол на спускането</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.SafetyDetails.BrakeAssist" type="checkbox" data-val="true" value="true">
+                                <label>Система за подпомагане на спирането</label>
+                            </div>
+                        </div>
+
+                    </td>
+                    <td valign="top">
+                        <div>
+                            <strong>Комфорт</strong>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.AutoStartStop" type="checkbox" data-val="true" value="true">
+                                <label>Auto Start Stop function</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.DvdTv" type="checkbox" data-val="true" value="true">
+                                <label>DVD, TV</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.BluetoothHandsfree" type="checkbox" data-val="true" value="true">
+                                <label>Bluetooth \ handsfree система</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.SteptronicTiptronic" type="checkbox" data-val="true" value="true">
+                                <label>Steptronic, Tiptronic</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.Usb" type="checkbox" data-val="true" value="true">
+                                <label>USB, audio\video, IN\AUX изводи</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.Airmatic" type="checkbox" data-val="true" value="true">
+                                <label>Адаптивно въздушно окачване</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.Keyless" type="checkbox" data-val="true" value="true">
+                                <label>Безключово палене</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.DifferentialLock" type="checkbox" data-val="true" value="true">
+                                <label>Блокаж на диференциала</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.BordPc" type="checkbox" data-val="true" value="true">
+                                <label>Бордкомпютър</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.FastSlowShifts" type="checkbox" data-val="true" value="true">
+                                <label>Бързи \ бавни скорости</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.LightDetector" type="checkbox" data-val="true" value="true">
+                                <label>Датчик за светлина</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.ElMirrors" type="checkbox" data-val="true" value="true">
+                                <label>Ел. Огледала</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.ElGlass" type="checkbox" data-val="true" value="true">
+                                <label>Ел. Стъкла</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.ElSuspension" type="checkbox" data-val="true" value="true">
+                                <label>Ел. регулиране на окачването</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.ElSeats" type="checkbox" data-val="true" value="true">
+                                <label>Ел. регулиране на седалките</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.Eps" type="checkbox" data-val="true" value="true">
+                                <label>Ел. усилвател на волана</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.Ac" type="checkbox" data-val="true" value="true">
+                                <label>Климатик</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.Climatecontroll" type="checkbox" data-val="true" value="true">
+                                <label>Климатроник</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.MultiSteeringWheel" type="checkbox" data-val="true" value="true">
+                                <label>Мултифункционален волан</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.Navigation" type="checkbox" data-val="true" value="true">
+                                <label>Навигация</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.SteeringWheelHeating" type="checkbox" data-val="true" value="true">
+                                <label>Отопление на волана</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.FrontGlassHeating" type="checkbox" data-val="true" value="true">
+                                <label for="front-glass-heating">Подгряване на предното стъкло</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.SeatsHeating" type="checkbox" data-val="true" value="true">
+                                <label>Подгряване на седалките</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.SteeringWheelAdjustment" type="checkbox" data-val="true" value="true">
+                                <label>Регулиране на волана</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.RainSensor" type="checkbox" data-val="true" value="true">
+                                <label>Сензор за дъжд</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.PowerSteering" type="checkbox" data-val="true" value="true">
+                                <label>Серво усилвател на волана</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.HeadlampWashSystem" type="checkbox" data-val="true" value="true">
+                                <label>Система за измиване на фаровете</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.Autopilot" type="checkbox" data-val="true" value="true">
+                                <label>Система за контрол на скоростта (автопилот)</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.Stereo" type="checkbox" data-val="true" value="true">
+                                <label>Стерео уредба</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.Filter" type="checkbox" data-val="true" value="true">
+                                <label>Филтър за твърди частици</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ComfortDetails.RefrigerationFrog" type="checkbox" data-val="true" value="true">
+                                <label for="refrigeration-frog">Хладилна жабка</label>
+                            </div>
+                        </div>
+
+                    </td>
+                    <td valign="top">
+                        <div>
+                            <strong>Други</strong>
+                            <div>
+                                <input checked="@Model.Car.Features.OthersDetails.AllDrive" type="checkbox" data-val="true" value="true">
+                                <label>4x4</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.OthersDetails.SevenSeats" type="checkbox" data-val="true" value="true">
+                                <label>7 места</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.OthersDetails.BuyBack" type="checkbox" data-val="true" value="true">
+                                <label>Buy back</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.OthersDetails.Exchange" type="checkbox" data-val="true" value="true">
+                                <label for="exchange">Бартер</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.OthersDetails.AutoGas" type="checkbox" data-val="true" value="true">
+                                <label>Газова уредба</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.OthersDetails.Long" type="checkbox" data-val="true" value="true">
+                                <label for="long">Дълга база</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.OthersDetails.Catastrophic" type="checkbox" data-val="true" value="true">
+                                <label>Катастрофирал</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.OthersDetails.Leasing" type="checkbox" data-val="true" value="true">
+                                <label>Лизинг</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.OthersDetails.MethaneSystem" type="checkbox" data-val="true" value="true">
+                                <label>Метанова уредба</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.OthersDetails.InPieces" type="checkbox" data-val="true" value="true">
+                                <label>На части</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.OthersDetails.FullyServed" type="checkbox" data-val="true" value="true">
+                                <label>Напълно обслужен</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.OthersDetails.Registration" type="checkbox" data-val="true" value="true">
+                                <label>С регистрация</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.OthersDetails.Tuning" type="checkbox" data-val="true" value="true">
+                                <label for="tuning">Тунинг</label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <strong>Екстериор</strong>
+                            <div>
+                                <input checked="@Model.Car.Features.ExteriorDetails.Coupe" type="checkbox" data-val="true" value="true">
+                                <label>2(3) Врати</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ExteriorDetails.Sedan" type="checkbox" data-val="true" value="true">
+                                <label>4(5) Врати</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ExteriorDetails.LedHeadlights" type="checkbox" data-val="true" value="true">
+                                <label>LED фарове</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ExteriorDetails.XenonLights" type="checkbox" data-val="true" value="true">
+                                <label>Ксенонови фарове</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ExteriorDetails.AlloyWheels" type="checkbox" data-val="true" value="true">
+                                <label>Лети джанти</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ExteriorDetails.Metallic" type="checkbox" data-val="true" value="true">
+                                <label>Металик</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ExteriorDetails.PanoramicSunroof" type="checkbox" data-val="true" value="true">
+                                <label>Панорамен люк</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ExteriorDetails.Spoilers" type="checkbox" data-val="true" value="true">
+                                <label>Спойлери</label>
+                            </div>
+                            <div>
+                                <input name="Features.ExteriorDetails.Shibedah" type="checkbox" data-val="true" value="true">
+                                <label for="Shibedah">Шибедах</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ExteriorDetails.HalogenHeadlights" type="checkbox" data-val="true" value="true">
+                                <label>Халогенни фарове</label>
+                            </div>
+                        </div>
+
+                    </td>
+                    <td valign="top">
+                        <div>
+                            <strong>Защита</strong>
+                            <div>
+                                <input checked="@Model.Car.Features.ProtectionDetails.Alarm" type="checkbox" data-val="true" value="true">
+                                <label>Аларма</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ProtectionDetails.Armored" type="checkbox" data-val="true" value="true">
+                                <label for="armored">Брониран</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ProtectionDetails.Immobilizer" type="checkbox" data-val="true" value="true">
+                                <label>Имобилайзер</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ProtectionDetails.Casco" type="checkbox" data-val="true" value="true">
+                                <label>Каско</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.ProtectionDetails.CentralLocking" type="checkbox" data-val="true" value="true">
+                                <label>Централно заключване</label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <strong>Интериор</strong>
+                            <div>
+                                <input checked="@Model.Car.Features.InteriorDetails.SuedeSaloon" type="checkbox" data-val="true" value="true">
+                                <label>Велурен салон</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.InteriorDetails.LeatherSalon" type="checkbox" data-val="true" value="true">
+                                <label for="leather-salon">Кожен салон</label>
+                            </div>
+                        </div>
 
 
-        <a>Изберете желаните от вас снимки</a>
-        <input class="form-control" type="file" id="file1" name="file1" multiple required/>
+                        <div>
+                            <strong>Специализирани</strong>
+                            <div>
+                                <input checked="@Model.Car.Features.InteriorDetails.Taxi" type="checkbox" data-val="true" value="true">
+                                <label>TAXI</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.InteriorDetails.Educational" type="checkbox" data-val="true" value="true">
+                                <label for="educational">Учебен</label>
+                            </div>
+                            <div>
+                                <input checked="@Model.Car.Features.InteriorDetails.Ruler" type="checkbox" data-val="true" value="true">
+                                <label for="ruler">Линейка</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    @*//*@
 
-            <button id="searchBtn" type="submit" class="btn btn-block btn-primary">Добави обявата</button>
-
-
-        @await Html.PartialAsync("_FeaturesPartial")
-
-    </form>
+    <div style="float:left; margin-top:10px;">
+        <span style="color:#999999">Създадена на @Model.CreatedOn</span><br>
+    </div>
 
 </body>
 </html>
 
-@*<script>
-    function InvalidMSG(element){
-        if(element.value=="" || element.value==String.is)
-            element.setCustomValidity('Това поле е задължително!')
-    }
-
-        let requiredInputs= document.querySelectorAll("[required]");
-
-        for(let element of requiredInputs){
-           element.onin
-        }
-
-</script>*@
+<script>
+     let image = document.querySelector(".carousel-item");
+     image.classList.add("active");
+</script>
