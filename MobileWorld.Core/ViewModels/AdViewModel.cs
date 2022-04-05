@@ -14,8 +14,6 @@ namespace MobileWorld.Core.ViewModels
 
         public string CreatedOn { get; set; }
 
-        public string TownName { get; set; }
-
         public CarModel Car { get; set; }
 
         public OwnerModel Owner { get; set; }

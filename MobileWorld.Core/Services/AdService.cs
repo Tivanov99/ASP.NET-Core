@@ -22,15 +22,16 @@ namespace MobileWorld.Core.Services
                 .Where(a => a.Id == adId)
                 .Select(a => new AdViewModel()
                 {
-                    Id= a.Id,
+                    Id = a.Id,
                     Title = a.Title,
                     Price = a.Price,
                     Description = a.Description,
-                    TownName = a.Region.Town.Name,
+                    
                     Region = new RegionModel()
                     {
                         RegionName = a.Region.RegionName,
-                        Neiborhood = a.Region.Neiborhood
+                        Neiborhood = a.Region.Neiborhood,
+                        TownName= a.Region.Town.Name,
                     },
                     Car = new CarModel()
                     {
@@ -275,8 +276,9 @@ namespace MobileWorld.Core.Services
 
         public Ad Delete(string adId)
         {
-           Ad ad = this.repo.All<Ad>().Where(a=>a.Id== adId)
-                .FirstOrDefault();
+            Ad ad = this.repo.All<Ad>()
+                .Where(a => a.Id == adId)
+                 .FirstOrDefault();
 
             if (ad != null)
             {
@@ -286,6 +288,23 @@ namespace MobileWorld.Core.Services
             this.repo.SaveChanges();
 
             return ad;
+        }
+
+        public bool Update(string adId, AdViewModel updatedModel)
+        {
+            Ad ad = this.repo.All<Ad>()
+                .Where(a => a.Id == adId)
+                .FirstOrDefault();
+
+            ad.Car.Engine = updatedModel.Car.Engine;
+            ad.Car.SeatsCount = updatedModel.Car.SeatsCount;
+            ad.Car.Feature = updatedModel.Car.Features;
+            ad.Car.GearType = updatedModel.Car.GearType;
+            //ad.Images.ForEach(i=>i.ImageData=updatedModel.Car.Images[i]);
+            ad.Title=updatedModel.Title;
+            ad.Price=updatedModel.Price;
+            ad.PhoneNumber = updatedModel.Owner.PhoneNumber;
+            return true;
         }
     }
 }

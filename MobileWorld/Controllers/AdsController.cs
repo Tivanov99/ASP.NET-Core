@@ -158,8 +158,9 @@ namespace MobileWorld.Controllers
             return View(ad);
         }
 
+
         [HttpPost]
-        public async Task<IActionResult> EditPost(string adId)
+        public async Task<IActionResult> EditPost(AdViewModel updatedModel, string? adId)
         {
             if(adId == null)
             {

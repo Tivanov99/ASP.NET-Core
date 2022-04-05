@@ -58,8 +58,8 @@
    
     <form asp-controller="Ads" asp-action="EditPost" asp-route-adId=@Model.Id method="post" enctype="multipart/form-data">
     
+            <button type="submit" class="btn btn-block btn-primary">Запази промените</button>
     
-    </form>
 
     <div id="searchElements">
             <div class="div-labels">
@@ -535,7 +535,7 @@
                 <div class="selects">
                     <select name="Region.TownName" class="form-control selectors">
                         <option value="">
-                           @Model.TownName
+                           @Model.Region.TownName
                         </option>
                         <option value="Благоевград">
                             Благоевград
@@ -994,9 +994,7 @@
                 </div>
             </div>
 
-            <br />
-
-        </div>
+    </div>
         <div>
             <div class="div-labels">         
 
@@ -1074,7 +1072,6 @@
                 <div class="selects">
                     <input value ="@Model.Car.Engine.HorsePower" type="number" class="form-control selectors" name="Car.Engine.HorsePower" required/>
                 </div>
-
             </div>
 
             <br />
@@ -1126,28 +1123,6 @@
         </div>
 
     <br>
-    @*<div>
-        <p class="contacts">За контакти:</p>
-        <table style="width:360px;" cellspacing="0" cellpadding="0" bgcolor="#EFEFEF">
-            <tbody>
-                <tr>
-                    <td class="owner-info">
-                        <span class="owner-phone">Телефон: @Model.Owner.PhoneNumber</span><br><br>
-                        <span class="owner-name">Име - Trifon</span>
-                        <span class="owner-addres">Адрес :</span>
-                        Регион: @Model.Region.RegionName<br>гр. @Model.TownName<br>
-                        @if (Model.Region.Neiborhood != null)
-                        {
-                                <span>КВ.@Model.Region.Neiborhood</span>
-                                <br>
-                        }
-                        <br>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>*@
-    @*//*@
 
     <div>
         <table id="features">
@@ -1498,8 +1473,6 @@
                                 <label for="leather-salon">Кожен салон</label>
                             </div>
                         </div>
-
-
                         <div>
                             <strong>Специализирани</strong>
                             <div>
@@ -1519,13 +1492,8 @@
                 </tr>
             </tbody>
         </table>
-    </div>
-    @*//*@
-
-    <div style="float:left; margin-top:10px;">
-        <span style="color:#999999">Създадена на @Model.CreatedOn</span><br>
-    </div>
-
+        </div>
+    </form>
 </body>
 </html>
 
