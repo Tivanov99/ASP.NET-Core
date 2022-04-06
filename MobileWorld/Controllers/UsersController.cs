@@ -27,13 +27,6 @@ namespace MobileWorld.Controllers
             var result = this.userService
                 .UserAds(userId);
 
-            var cars = new AdCardViewModel()
-            {
-                AdId = "33",
-                Title = "Sport Car",
-                Description = "Mnogo zapazena",
-                Price = 333,
-            };
             //return View(new List<AdCardViewModel>() { cars});
             return View(result);
         }

@@ -133,7 +133,6 @@ namespace MobileWorld.Core.Services
             return car;
         }
 
-
         public List<AdCardViewModel> GetAdsByBaseCriteria(BaseSearchCarModel model)
         {
             List<PropertyDto> properties = GetBaseSearchCriteria(model);
@@ -324,6 +323,7 @@ namespace MobileWorld.Core.Services
                 try
                 {
                     this.repo.Remove<Ad>(ad);
+                    this.repo.SaveChanges();
                 }
                 catch (Exception)
                 {
@@ -331,7 +331,7 @@ namespace MobileWorld.Core.Services
                 }
             }
 
-            this.repo.SaveChanges();
+            
 
             return ad;
         }

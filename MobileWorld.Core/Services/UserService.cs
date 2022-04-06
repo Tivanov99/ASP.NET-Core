@@ -3,6 +3,7 @@ using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.Identity;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Core.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace MobileWorld.Core.Services
 {
@@ -24,6 +25,7 @@ namespace MobileWorld.Core.Services
         {
             //TODO: Export car images from car model
             var userAds = this.repo.All<ApplicationUser>()
+                .AsNoTracking()
                 .Where(u => u.Id == userId)
                 .SelectMany(a => a.Ads
                                 .Select(x => new AdCardViewModel()
@@ -32,16 +34,17 @@ namespace MobileWorld.Core.Services
                                     Title = x.Title,
                                     Description = x.Description,
                                     Price = x.Price,
+                                    ImageData= x.Images[0].ImageData
                                 }))
                 .ToList();
 
-            //user adds
             return userAds;
         }
 
         public List<AdCardViewModel> UserFavourites(string userId)
         {
             var result = this.repo.All<ApplicationUser>()
+                .AsNoTracking()
                 .Where(u => u.Id == userId)
                 .SelectMany(u => u.FavoriteAds)
                 .Select(fv => new AdCardViewModel()

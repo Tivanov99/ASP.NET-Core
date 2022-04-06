@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Models;
 using MobileWorld.Core.ViewModels;
@@ -26,14 +27,14 @@ namespace MobileWorld.Controllers
         }
 
 
-        //[Authorize]
+        [Authorize]
         [HttpGet]
         public IActionResult CreateAd()
         {
             return View();
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpPost]
         public IActionResult CreateAd(CreateAdModel model, string userId)
         {

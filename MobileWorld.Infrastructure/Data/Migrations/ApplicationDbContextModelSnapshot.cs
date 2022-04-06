@@ -577,6 +577,7 @@ namespace MobileWorld.Infrastructure.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("AdId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<byte[]>("ImageData")
@@ -976,9 +977,13 @@ namespace MobileWorld.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("MobileWorld.Infrastructure.Data.Models.Image", b =>
                 {
-                    b.HasOne("MobileWorld.Infrastructure.Data.Models.Ad", null)
+                    b.HasOne("MobileWorld.Infrastructure.Data.Models.Ad", "Ad")
                         .WithMany("Images")
-                        .HasForeignKey("AdId");
+                        .HasForeignKey("AdId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Ad");
                 });
 
             modelBuilder.Entity("MobileWorld.Infrastructure.Data.Models.Region", b =>
