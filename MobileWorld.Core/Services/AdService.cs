@@ -26,12 +26,12 @@ namespace MobileWorld.Core.Services
                     Title = a.Title,
                     Price = a.Price,
                     Description = a.Description,
-                    
+
                     Region = new RegionModel()
                     {
                         RegionName = a.Region.RegionName,
                         Neiborhood = a.Region.Neiborhood,
-                        TownName= a.Region.Town.Name,
+                        TownName = a.Region.Town.Name,
                     },
                     Car = new CarModel()
                     {
@@ -300,10 +300,21 @@ namespace MobileWorld.Core.Services
             ad.Car.SeatsCount = updatedModel.Car.SeatsCount;
             ad.Car.Feature = updatedModel.Car.Features;
             ad.Car.GearType = updatedModel.Car.GearType;
+            ad.Car.Year = updatedModel.Car.Year;
+            ad.Car.Model = updatedModel.Car.Model;
+            ad.Car.Color = updatedModel.Car.Color;
+            ad.Car.Make = updatedModel.Car.Make;
+            ad.Car.Mileage = updatedModel.Car.Mileage;
+
             //ad.Images.ForEach(i=>i.ImageData=updatedModel.Car.Images[i]);
-            ad.Title=updatedModel.Title;
-            ad.Price=updatedModel.Price;
+            ad.Title = updatedModel.Title;
+            ad.Price = updatedModel.Price;
             ad.PhoneNumber = updatedModel.Owner.PhoneNumber;
+            ad.Region.Town.Name = updatedModel.Region.TownName;
+            ad.Region.RegionName = updatedModel.Region.RegionName;
+            ad.Region.Neiborhood = updatedModel.Region.Neiborhood;
+            ad.Owner.PhoneNumber = updatedModel.Owner.PhoneNumber.ToString();
+
             return true;
         }
     }
