@@ -66,7 +66,6 @@ namespace MobileWorld.Core.Services
                     },
                     Owner = new OwnerModel()
                     {
-                        PhoneNumber = a.PhoneNumber,
                         OwnerId = a.OwnerId,
                     },
                 })
@@ -178,7 +177,7 @@ namespace MobileWorld.Core.Services
             {
                 Id = Guid.NewGuid().ToString(),
                 Title = model.Title,
-                PhoneNumber = model.Owner.PhoneNumber,
+                PhoneNumber = model.PhoneNumber,
                 Price = model.Price,
                 Description = model.Description,
                 Images = images,
@@ -313,7 +312,6 @@ namespace MobileWorld.Core.Services
             ad.Region.Town.Name = updatedModel.Region.TownName;
             ad.Region.RegionName = updatedModel.Region.RegionName;
             ad.Region.Neiborhood = updatedModel.Region.Neiborhood;
-            ad.Owner.PhoneNumber = updatedModel.Owner.PhoneNumber;
 
             return true;
         }

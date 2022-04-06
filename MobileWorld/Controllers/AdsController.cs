@@ -22,33 +22,6 @@ namespace MobileWorld.Controllers
             var ad = this.service
                 .GetAdById(adId);
 
-            var model = new AdViewModel()
-            {
-                Description = "mngoo nova",
-                CreatedOn = DateTime.UtcNow.ToString(GlobalConstants.dateTimeFormat),
-                Owner = new OwnerModel()
-                {
-                    PhoneNumber = 0893668829,
-
-                },
-                Region = new RegionModel()
-                {
-                    RegionName = "Burgas",
-                    Neiborhood = "Vuzrajdane",
-                },
-                Car = new CarModel()
-                {
-                    GearType = GearType.Автоматична,
-                    Mileage = 180000,
-                    Color = "Mid night",
-                    Engine = new EngineModel()
-                    {
-                        FuelType = FuelType.Безин,
-                        HorsePower = 230,
-                        EcoLevel = 4,
-                    }
-                }
-            };
             return View(ad);
         }
 

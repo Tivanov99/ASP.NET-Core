@@ -8,16 +8,18 @@ namespace MobileWorld.Core.ViewModels
     {
         public string Id { get; set; }
 
+        [Required]
         public string Title { get; set; }
 
         [Phone]
-        public int PhoneNumber { get; set; }
+        [Required]
+        public string PhoneNumber { get; set; }
 
         public CarModel Car { get; set; }
 
         public RegionModel Region { get; set; }
 
-        public DateTime CreatedOn { get; set; }
+        public string CreatedOn { get; set; }
 
         public decimal Price { get; set; }
 

@@ -11,9 +11,5 @@ namespace MobileWorld.Core.Models
 
         [Required]
         public string LastName { get; set; }
-
-        [Required]
-        [Phone]
-        public string PhoneNumber { get; set; }
     }
 }

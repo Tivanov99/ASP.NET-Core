@@ -16,6 +16,10 @@ namespace MobileWorld.Core.Models
         public decimal Price { get; set; }
 
         [Required]
+        [Phone]
+        public string PhoneNumber { get; set; }
+
+        [Required]
         [MaxLength(700)]
         public string Description { get; set; }
 
