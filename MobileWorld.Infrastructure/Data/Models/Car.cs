@@ -10,6 +10,10 @@ namespace MobileWorld.Infrastructure.Data.Models
         public int Id { get; set; }
 
         [Required]
+        [StringLength(30)]
+        public string Make { get; set; }
+
+        [Required]
         [StringLength(20)]
         public string Model { get; set; }
 
@@ -23,10 +27,6 @@ namespace MobileWorld.Infrastructure.Data.Models
         [Required]
         [StringLength(35)]
         public string Color { get; set; }
-
-        [Required]
-        [StringLength(30)]
-        public string Make { get; set; }
 
         [ForeignKey(nameof(Engine))]
         public int EngineId { get; set; }

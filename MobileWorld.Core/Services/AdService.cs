@@ -309,11 +309,11 @@ namespace MobileWorld.Core.Services
             //ad.Images.ForEach(i=>i.ImageData=updatedModel.Car.Images[i]);
             ad.Title = updatedModel.Title;
             ad.Price = updatedModel.Price;
-            ad.PhoneNumber = updatedModel.Owner.PhoneNumber;
+            ad.PhoneNumber = updatedModel.PhoneNumber;
             ad.Region.Town.Name = updatedModel.Region.TownName;
             ad.Region.RegionName = updatedModel.Region.RegionName;
             ad.Region.Neiborhood = updatedModel.Region.Neiborhood;
-            ad.Owner.PhoneNumber = updatedModel.Owner.PhoneNumber.ToString();
+            ad.Owner.PhoneNumber = updatedModel.Owner.PhoneNumber;
 
             return true;
         }

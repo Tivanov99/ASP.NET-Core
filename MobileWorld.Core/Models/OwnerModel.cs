@@ -6,12 +6,14 @@ namespace MobileWorld.Core.Models
     {
         public string OwnerId { get; set; }
 
+        [Required]
         public string FirstName { get; set; }
 
+        [Required]
         public string LastName { get; set; }
 
         [Required]
         [Phone]
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
     }
 }

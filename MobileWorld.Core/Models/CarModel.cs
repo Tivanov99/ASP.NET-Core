@@ -20,6 +20,5 @@ namespace MobileWorld.Core.Models
         public List<byte[]> Images { get; set; }
 
         public FeaturesModel Features { get; set; } = new();
-
     }
 }

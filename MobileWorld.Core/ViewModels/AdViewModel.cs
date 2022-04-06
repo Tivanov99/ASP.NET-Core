@@ -26,7 +26,7 @@ namespace MobileWorld.Core.ViewModels
         public string Description { get; set; }
 
 
-        //public OwnerModel Owner { get; set; }
+        public OwnerModel Owner { get; set; }
 
         public List<Image> Images { get; set; } = new();
     }
