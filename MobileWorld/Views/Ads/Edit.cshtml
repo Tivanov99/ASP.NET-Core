@@ -662,9 +662,9 @@
             </div>
 
             <br />
-            <div class="div-labels">
+            <div class="div-labels" >
                 <div>
-                    <select name="Car.Year" class="form-control">
+                    <select style="width:160%" name="Car.Year" class="form-control">
                         <option value="">
                             @Model.Car.Year
                         </option>
@@ -994,6 +994,7 @@
                            type="number" maxlength="9" class="form-control selectors" value="@Model.Car.Mileage" required>
                 </div>
             </div>
+            <br />
 
     </div>
         <div>
@@ -1119,7 +1120,7 @@
 
             <div class="form-group purple-border">
                 <label for="exampleFormControlTextarea4">Описание</label>
-                <textarea style="width:400px" class="form-control" id="exampleFormControlTextarea4" name="Description" rows="4" required></textarea>
+                <textarea style="width:400px" class="form-control" id="exampleFormControlTextarea4" name="Description" rows="4" required>@Model.Description</textarea>
             </div>
         </div>
 
