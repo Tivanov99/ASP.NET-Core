@@ -68,7 +68,8 @@ namespace MobileWorld.Controllers
 
         public IActionResult AdsByBaseCriteria(BaseSearchCarModel searchModel)
         {
-            var result = this.service.GetAdsByBaseCriteria(searchModel);
+            var result = this.service
+                .GetAdsByBaseCriteria(searchModel);
 
             return View();
         }
@@ -86,22 +87,11 @@ namespace MobileWorld.Controllers
             }
 
             var ad = this.service
-                .GetAdById(adId);
+                .GetAdByIdAsNoTracking(adId);
 
             if (ad == null)
             {
                 return NotFound();
-            }
-
-
-
-
-
-            if (saveChangesError.GetValueOrDefault())
-            {
-                ViewData["ErrorMessage"] =
-                    "Delete failed. Try again, and if the problem persists " +
-                    "see your system administrator.";
             }
 
             return View();
@@ -111,8 +101,8 @@ namespace MobileWorld.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string adId)
         {
-            var ad =
-                this.service.GetAdById(adId);
+            var ad = this.service
+                .GetAdByIdAsNoTracking(adId);
 
             if (ad == null)
             {
