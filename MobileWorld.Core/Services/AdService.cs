@@ -19,6 +19,7 @@ namespace MobileWorld.Core.Services
         public AdViewModel GetAdById(string adId)
         {
             var car = this.repo.All<Ad>()
+                .AsNoTracking()
                 .Where(a => a.Id == adId)
                 .Select(a => new AdViewModel()
                 {
@@ -276,12 +277,20 @@ namespace MobileWorld.Core.Services
         public Ad Delete(string adId)
         {
             Ad ad = this.repo.All<Ad>()
+                .AsNoTracking()
                 .Where(a => a.Id == adId)
-                 .FirstOrDefault();
+                .FirstOrDefault();
 
             if (ad != null)
             {
-                this.repo.Remove<Ad>(ad);
+                try
+                {
+                    this.repo.Remove<Ad>(ad);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
 
             this.repo.SaveChanges();
@@ -314,6 +323,11 @@ namespace MobileWorld.Core.Services
             ad.Region.Neiborhood = updatedModel.Region.Neiborhood;
 
             return true;
+        }
+
+        public AdViewModel GetAdByIdAsNoTracking(string adId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

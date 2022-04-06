@@ -59,7 +59,7 @@ namespace MobileWorld.Controllers
         }
 
         public IActionResult AdsByCriteria(AdvancedSearchCarModel searchModel)
-        {
+        { 
             List<AdCardViewModel> cars = this.service
                 .GetAdsByAdvancedCriteria(searchModel);
 
@@ -78,19 +78,24 @@ namespace MobileWorld.Controllers
             return View("AdvancedSearchView");
         }
 
-        public async Task<IActionResult> Delete(string? adId, bool? saveChangesError = false)
+        public async Task<IActionResult> Delete(string? adId)
         {
             if (adId == null)
             {
                 return NotFound();
             }
 
-            var ad = this.service.GetAdById(adId);
-            //.AsNoTracking()
+            var ad = this.service
+                .GetAdById(adId);
+
             if (ad == null)
             {
                 return NotFound();
             }
+
+
+
+
 
             if (saveChangesError.GetValueOrDefault())
             {
