@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,11 @@ namespace MobileWorld.Infrastructure.Data.Models
     {
         [Key]
         public int Id { get; set; }
+
+        [ForeignKey(nameof(Feature))]
+        public int FeatureId { get; set; }
+
+        public Feature Feature { get; set; }
 
         public bool Gps { get; set; }
 

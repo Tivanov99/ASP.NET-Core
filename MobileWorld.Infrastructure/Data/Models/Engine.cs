@@ -1,11 +1,13 @@
 ﻿using MobileWorld.Infrastructure.Data.Enums;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MobileWorld.Infrastructure.Data.Models
 {
     public class Engine
     {
         [Key]
+        [Required]
         public int Id { get; set; }
 
         [Required]
@@ -35,5 +37,10 @@ namespace MobileWorld.Infrastructure.Data.Models
         [Required]
         [Range(3, 100)]
         public double FuelConsuption { get; set; }
+
+        //[ForeignKey(nameof(Car))]
+        //public int CarId { get; set; }
+
+        //public virtual Car Car { get; set; }
     }
 }

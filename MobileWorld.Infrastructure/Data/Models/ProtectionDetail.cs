@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MobileWorld.Infrastructure.Data.Models
 {
@@ -6,6 +7,12 @@ namespace MobileWorld.Infrastructure.Data.Models
     {
         [Key]
         public int Id { get; set; }
+
+
+        [ForeignKey(nameof(Feature))]
+        public int FeatureId { get; set; }
+
+        public Feature Feature { get; set; }
         public bool Alarm { get; set; }
 
         public bool Armored { get; set; }

@@ -21,10 +21,17 @@ namespace MobileWorld.Infrastructure.Data.Common
             return this.DbSet<T>().AsQueryable();
         }
 
-        public void Remove<T>(T entity) where T : class
+        public void Delete<TEntity>(TEntity entity) where TEntity : class
         {
-            dbContext.Remove(entity);
+            if (entity == null)
+            {
+                throw new ArgumentNullException("entity");
+            }
+
+            dbContext.Set<TEntity>().Remove(entity);
         }
+
+        
 
         public int SaveChanges()
         {

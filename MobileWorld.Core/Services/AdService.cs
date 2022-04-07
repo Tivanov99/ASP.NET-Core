@@ -206,10 +206,21 @@ namespace MobileWorld.Core.Services
         {
             int townId = this.GetTownIdByName(model.Region.TownName)
                 .Result;
+
+
             //TODO : Add seed to Db all Towns
 
-            Car car = await CreateCar(model.Car, model.Features);
+            Car car = CreateCar(model.Car, model.Features);
+
+
+            //Feature feature = CreateFeature(model.Features);
+
+
+            //Engine engine = CreateEngine(model.Car.Engine);
+
+
             Region region = await CreateRegion(model.Region, townId);
+
 
             Ad newAd = new Ad()
             {
@@ -225,7 +236,10 @@ namespace MobileWorld.Core.Services
                 OwnerId = ownerId,
             };
 
+
             car.AdId = newAd.Id;
+            car.Ad = newAd;
+
 
             this.repo.Add<Ad>(newAd);
 
@@ -235,6 +249,70 @@ namespace MobileWorld.Core.Services
             {
                 return false;
             }
+            return true;
+        }
+
+
+
+        public Car Delete(string adId)
+        {
+            //Ad ad = this.repo.All<Ad>()
+            //    .Include(a => a.Car)
+            //    .Single(a => a.Id == adId);
+
+            Car car = this.repo.All<Car>()
+                .Include(c => c.Engine)
+                .Include(c => c.Feature)
+                .Single(c => c.AdId == adId);
+
+
+            if (car != null)
+            {
+                try
+                {
+                    this.repo.Delete<Car>(car);
+                    this.repo.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+
+
+
+            return car;
+        }
+
+        public bool Update(string adId, AdViewModel updatedModel)
+        {
+            Ad? ad = this.repo.All<Ad>()
+                .Where(a => a.Id == adId)
+                .FirstOrDefault();
+
+            if (ad != null)
+            {
+                ad.Car.Engine = updatedModel.Car.Engine;
+                ad.Car.SeatsCount = updatedModel.Car.SeatsCount;
+                ad.Car.Feature = updatedModel.Car.Features;
+                ad.Car.GearType = updatedModel.Car.GearType;
+                ad.Car.Year = updatedModel.Car.Year;
+                ad.Car.Model = updatedModel.Car.Model;
+                ad.Car.Color = updatedModel.Car.Color;
+                ad.Car.Make = updatedModel.Car.Make;
+                ad.Car.Mileage = updatedModel.Car.Mileage;
+
+                //ad.Images.ForEach(i=>i.ImageData=updatedModel.Car.Images[i]);
+                ad.Title = updatedModel.Title;
+                ad.Price = updatedModel.Price;
+                ad.PhoneNumber = updatedModel.PhoneNumber;
+                ad.Region.Town.Name = updatedModel.Region.TownName;
+                ad.Region.RegionName = updatedModel.Region.RegionName;
+                ad.Region.Neiborhood = updatedModel.Region.Neiborhood;
+
+            }
+
+
             return true;
         }
 
@@ -291,18 +369,18 @@ namespace MobileWorld.Core.Services
             return result;
         }
 
-        private async Task<Car> CreateCar(CarModel car, Feature features)
+        private Car CreateCar(CarModel car, Feature features)
         => new Car()
         {
             Color = car.Color,
             SeatsCount = car.SeatsCount,
             Mileage = car.Mileage,
             //TODO : Think about models
+            Engine = CreateEngine(car.Engine),
+            Feature = CreateFeature(car.Features),
             Model = "e46",
             Make = car.Make,
             Year = car.Year,
-            Engine = car.Engine,
-            Feature = features,
         };
 
         private async Task<Region> CreateRegion(RegionModel region, int townId)
@@ -313,57 +391,20 @@ namespace MobileWorld.Core.Services
                 Neiborhood = region.Neiborhood,
             };
 
-        public Ad Delete(string adId)
+        private Engine CreateEngine(EngineModel model)
+        => new Engine()
         {
-            Ad ad = this.repo.All<Ad>()
-                .Include(a=>a.Car)
-                .Where(a => a.Id == adId)
-                .FirstOrDefault();
-
-            if (ad != null)
-            {
-                try
-                {
-
-                    this.repo.Remove<Ad>(ad);
-                    this.repo.SaveChanges();
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-            }
-
+            FuelConsuption = model.FuelConsuption,
+            FuelType = model.FuelType,
+            CubicCapacity = model.CubicCapacity,
+            HorsePower = model.HorsePower,
+            NewtonMeter = model.NewtonMeter,
+            EcoLevel = model.EcoLevel,
+            Hybrid = model.Hybrid,
+            AutoGas = model.AutoGas,
+        };
+        private Feature CreateFeature(Feature features)
+            => new Feature();
             
-
-            return ad;
-        }
-
-        public bool Update(string adId, AdViewModel updatedModel)
-        {
-            Ad ad = this.repo.All<Ad>()
-                .Where(a => a.Id == adId)
-                .FirstOrDefault();
-
-            ad.Car.Engine = updatedModel.Car.Engine;
-            ad.Car.SeatsCount = updatedModel.Car.SeatsCount;
-            ad.Car.Feature = updatedModel.Car.Features;
-            ad.Car.GearType = updatedModel.Car.GearType;
-            ad.Car.Year = updatedModel.Car.Year;
-            ad.Car.Model = updatedModel.Car.Model;
-            ad.Car.Color = updatedModel.Car.Color;
-            ad.Car.Make = updatedModel.Car.Make;
-            ad.Car.Mileage = updatedModel.Car.Mileage;
-
-            //ad.Images.ForEach(i=>i.ImageData=updatedModel.Car.Images[i]);
-            ad.Title = updatedModel.Title;
-            ad.Price = updatedModel.Price;
-            ad.PhoneNumber = updatedModel.PhoneNumber;
-            ad.Region.Town.Name = updatedModel.Region.TownName;
-            ad.Region.RegionName = updatedModel.Region.RegionName;
-            ad.Region.Neiborhood = updatedModel.Region.Neiborhood;
-
-            return true;
-        }
     }
 }

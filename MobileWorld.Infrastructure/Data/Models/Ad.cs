@@ -20,7 +20,7 @@ namespace MobileWorld.Infrastructure.Data.Models
         [ForeignKey(nameof(Car))]
         public int CarId { get; set; }
 
-        public Car Car { get; set; } = new();
+        public virtual Car Car { get; set; } 
 
         [Required]
         [ForeignKey(nameof(Region))]
@@ -31,6 +31,7 @@ namespace MobileWorld.Infrastructure.Data.Models
         [Required]
         public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
 
+        [Required]
         public decimal Price { get; set; }
 
         [Required]
