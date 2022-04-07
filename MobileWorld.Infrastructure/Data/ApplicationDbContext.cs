@@ -38,6 +38,10 @@ namespace MobileWorld.Infrastructure.Data
                 .WithOne(i=>i.Ad)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            builder.Entity<Ad>()
+                .HasOne(a => a.Car)
+                .WithOne(a => a.Ad);
+
 
             builder.Entity<Feature>()
                 .HasOne(f => f.Car)

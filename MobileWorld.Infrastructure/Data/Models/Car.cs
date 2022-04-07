@@ -44,5 +44,11 @@ namespace MobileWorld.Infrastructure.Data.Models
         public int FeatureId { get; set; }
 
         public Feature Feature { get; set; }
+
+
+        [ForeignKey(nameof(Ad))]
+        public string AdId { get; set; }
+
+        public Ad Ad { get; set; }
     }
 }
