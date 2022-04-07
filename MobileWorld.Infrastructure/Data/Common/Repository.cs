@@ -23,7 +23,7 @@ namespace MobileWorld.Infrastructure.Data.Common
 
         public void Remove<T>(T entity) where T : class
         {
-            DbSet<T>().Remove(entity);
+            dbContext.Remove(entity);
         }
 
         public int SaveChanges()

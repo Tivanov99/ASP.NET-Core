@@ -18,35 +18,46 @@ namespace MobileWorld.Infrastructure.Data
             builder.Entity<FavoriteAd>()
                 .HasKey(f => new { f.AdId, f.UserId });
 
-            builder.Entity<FavoriteAd>()
-                .HasOne(f => f.Ad)
-                .WithMany(a => a.Fans)
-                .OnDelete(DeleteBehavior.NoAction);
-
-            builder.Entity<FavoriteAd>()
-                .HasOne(f => f.User)
-                .WithMany(x => x.FavoriteAds)
-                .OnDelete(DeleteBehavior.NoAction);
-
-            builder.Entity<Car>()
-                .HasOne(c=>c.Feature)
-                .WithOne(f=>f.Car)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            builder.Entity<Ad>()
-                .HasMany(c => c.Images)
-                .WithOne(i=>i.Ad)
-                .OnDelete(DeleteBehavior.Cascade);
-
             builder.Entity<Ad>()
                 .HasOne(a => a.Car)
-                .WithOne(a => a.Ad);
+                .WithOne(c => c.Ad)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            //builder.Entity<FavoriteAd>()
+            //    .HasOne(f => f.Ad)
+            //    .WithMany(a => a.Fans)
+            //    .OnDelete(DeleteBehavior.NoAction);
+
+            //builder.Entity<FavoriteAd>()
+            //    .HasOne(f => f.User)
+            //    .WithMany(x => x.FavoriteAds)
+            //    .OnDelete(DeleteBehavior.NoAction);
+
+            //builder.Entity<Car>()
+            //    .HasOne(c=>c.Feature)
+            //    .WithOne(f=>f.Car)
+            //    .OnDelete(DeleteBehavior.Cascade);
+
+            //builder.Entity<Ad>()
+            //    .HasMany(c => c.Images)
+            //    .WithOne(i=>i.Ad)
+            //    .OnDelete(DeleteBehavior.Cascade);
+
+            //builder.Entity<Ad>()
+            //    .HasOne(a => a.Car)
+            //    .WithOne(a => a.Ad)
+            //    .OnDelete(DeleteBehavior.Cascade);
+
+            //builder.Entity<Car>()
+            //    .HasOne(c => c.Ad)
+            //    .WithOne(a => a.Car)
+            //    .OnDelete(DeleteBehavior.Cascade);
 
 
-            builder.Entity<Feature>()
-                .HasOne(f => f.Car)
-                .WithOne(c => c.Feature)
-                .OnDelete(DeleteBehavior.NoAction);
+            //builder.Entity<Feature>()
+            //    .HasOne(f => f.Car)
+            //    .WithOne(c => c.Feature)
+            //    .OnDelete(DeleteBehavior.NoAction);
 
 
             base.OnModelCreating(builder);

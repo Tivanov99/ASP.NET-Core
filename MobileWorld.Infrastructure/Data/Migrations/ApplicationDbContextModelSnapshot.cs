@@ -261,8 +261,7 @@ namespace MobileWorld.Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CarId")
-                        .IsUnique();
+                    b.HasIndex("CarId");
 
                     b.HasIndex("OwnerId");
 
@@ -281,7 +280,7 @@ namespace MobileWorld.Infrastructure.Data.Migrations
 
                     b.Property<string>("AdId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Color")
                         .IsRequired()
@@ -318,10 +317,11 @@ namespace MobileWorld.Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AdId");
+
                     b.HasIndex("EngineId");
 
-                    b.HasIndex("FeatureId")
-                        .IsUnique();
+                    b.HasIndex("FeatureId");
 
                     b.ToTable("Cars");
                 });
@@ -557,6 +557,8 @@ namespace MobileWorld.Infrastructure.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CarId");
 
                     b.HasIndex("ComfortDetailsId");
 
@@ -867,8 +869,8 @@ namespace MobileWorld.Infrastructure.Data.Migrations
             modelBuilder.Entity("MobileWorld.Infrastructure.Data.Models.Ad", b =>
                 {
                     b.HasOne("MobileWorld.Infrastructure.Data.Models.Car", "Car")
-                        .WithOne("Ad")
-                        .HasForeignKey("MobileWorld.Infrastructure.Data.Models.Ad", "CarId")
+                        .WithMany()
+                        .HasForeignKey("CarId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -893,6 +895,12 @@ namespace MobileWorld.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("MobileWorld.Infrastructure.Data.Models.Car", b =>
                 {
+                    b.HasOne("MobileWorld.Infrastructure.Data.Models.Ad", "Ad")
+                        .WithMany()
+                        .HasForeignKey("AdId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("MobileWorld.Infrastructure.Data.Models.Engine", "Engine")
                         .WithMany()
                         .HasForeignKey("EngineId")
@@ -900,10 +908,12 @@ namespace MobileWorld.Infrastructure.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("MobileWorld.Infrastructure.Data.Models.Feature", "Feature")
-                        .WithOne("Car")
-                        .HasForeignKey("MobileWorld.Infrastructure.Data.Models.Car", "FeatureId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .WithMany()
+                        .HasForeignKey("FeatureId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Ad");
 
                     b.Navigation("Engine");
 
@@ -915,13 +925,13 @@ namespace MobileWorld.Infrastructure.Data.Migrations
                     b.HasOne("MobileWorld.Infrastructure.Data.Models.Ad", "Ad")
                         .WithMany("Fans")
                         .HasForeignKey("AdId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("MobileWorld.Infrastructure.Data.Identity.ApplicationUser", "User")
                         .WithMany("FavoriteAds")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Ad");
@@ -931,6 +941,12 @@ namespace MobileWorld.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("MobileWorld.Infrastructure.Data.Models.Feature", b =>
                 {
+                    b.HasOne("MobileWorld.Infrastructure.Data.Models.Car", "Car")
+                        .WithMany()
+                        .HasForeignKey("CarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("MobileWorld.Infrastructure.Data.Models.ComfortDetail", "ComfortDetails")
                         .WithMany()
                         .HasForeignKey("ComfortDetailsId")
@@ -966,6 +982,8 @@ namespace MobileWorld.Infrastructure.Data.Migrations
                         .HasForeignKey("SafetyDetailsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Car");
 
                     b.Navigation("ComfortDetails");
 
@@ -1014,18 +1032,6 @@ namespace MobileWorld.Infrastructure.Data.Migrations
                     b.Navigation("Fans");
 
                     b.Navigation("Images");
-                });
-
-            modelBuilder.Entity("MobileWorld.Infrastructure.Data.Models.Car", b =>
-                {
-                    b.Navigation("Ad")
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("MobileWorld.Infrastructure.Data.Models.Feature", b =>
-                {
-                    b.Navigation("Car")
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

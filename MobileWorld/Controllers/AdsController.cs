@@ -113,7 +113,7 @@ namespace MobileWorld.Controllers
             try
             {
                 this.service.Delete(adId);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
             }
             catch (Exception /* ex */)
             {

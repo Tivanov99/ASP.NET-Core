@@ -225,6 +225,8 @@ namespace MobileWorld.Core.Services
                 OwnerId = ownerId,
             };
 
+            car.AdId = newAd.Id;
+
             this.repo.Add<Ad>(newAd);
 
             int result = this.repo.SaveChanges();
@@ -314,7 +316,7 @@ namespace MobileWorld.Core.Services
         public Ad Delete(string adId)
         {
             Ad ad = this.repo.All<Ad>()
-                .AsNoTracking()
+                .Include(a=>a.Car)
                 .Where(a => a.Id == adId)
                 .FirstOrDefault();
 
@@ -322,6 +324,7 @@ namespace MobileWorld.Core.Services
             {
                 try
                 {
+
                     this.repo.Remove<Ad>(ad);
                     this.repo.SaveChanges();
                 }
