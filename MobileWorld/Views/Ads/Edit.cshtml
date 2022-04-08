@@ -64,24 +64,24 @@
     <div id="searchElements">
             <div class="div-labels">
                 <div>
-                    <label name="Car.Make">Марка</label>
+                    <label >Марка</label>
                 </div>
 
                 <div class="labels">
-                    <label name="Location" style="margin-left: -53px">Локация</label>
+                    <label  style="margin-left: -53px">Локация</label>
                 </div>
 
                 <div class="labels">
-                    <label style="margin-left: -62px" name="Price">Цена</label>
+                    <label style="margin-left: -62px" >Цена</label>
                 </div>
                  <div class="labels">
-                    <label name="Title">Заглавие</label>
+                    <label >Заглавие</label>
                 </div>
             </div>
 
             <div class="div-labels">
                 <div>
-                    <select name="Car.Make" class="form-control">
+                    <select asp-for="@Model.Car.Make" class="form-control">
                         <option value="">
                             @Model.Car.Make
                         </option>
@@ -534,7 +534,7 @@
 
 
                 <div class="selects">
-                    <select name="@Model.Region.TownName" class="form-control selectors">
+                    <select asp-for="@Model.Region.TownName" class="form-control selectors">
                         <option value="">
                            @Model.Region.TownName
                         </option>
@@ -630,13 +630,13 @@
 
 
                 <div class="selects">
-                    <input name="Price"
+                    <input asp-for="@Model.Price"
                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                            type="number" maxlength="9" class="form-control selectors" value="@Model.Price" required>
                 </div>
 
                 <div class="selects">
-                    <input value="@Model.Title" class="form-control selectors" name="Title" required/>
+                    <input value="@Model.Title" class="form-control selectors" asp-for="@Model.Title" required/>
                 </div>
             </div>
 
@@ -644,27 +644,27 @@
             <br />
             <div class="div-labels" style="margin-top:20px">
                 <div>
-                    <label name="Car.Year">Година</label>
+                    <label >Година</label>
                 </div>
 
 
                 <div class="labels">
-                    <label style="margin-left: -132px" name="FuelType">Двигател</label>
+                    <label style="margin-left: -132px">Двигател</label>
                 </div>
 
                 <div class="labels">
-                    <label style="margin-left: -151px" name="GearType">Скоростна кутия</label>
+                    <label style="margin-left: -151px" >Скоростна кутия</label>
                 </div >
 
                  <div class="labels">
-                    <label style="margin-left: -140px" name="Car.Mileage">Пробег</label>
+                    <label style="margin-left: -140px">Пробег</label>
                 </div>
             </div>
 
             <br />
             <div class="div-labels" >
                 <div>
-                    <select style="width:160%" name="Car.Year" class="form-control">
+                    <select style="width:160%" asp-for="@Model.Car.Year" class="form-control">
                         <option value="">
                             @Model.Car.Year
                         </option>
@@ -988,7 +988,7 @@
                 </div>
 
                 <div class="selects">
-                    <input name="Car.Mileage" oninput="javascript: if (this.value.length > this.maxLength)
+                    <input asp-for="@Model.Car.Mileage" oninput="javascript: if (this.value.length > this.maxLength)
                 this.value = this.value.slice(0, this.maxLength);"
                            step="0.1"
                            type="number" maxlength="9" class="form-control selectors" value="@Model.Car.Mileage" required>
@@ -1001,56 +1001,56 @@
             <div class="div-labels">         
 
                 <div>
-                    <label name="FirstName">Име</label>
+                    <label>Име</label>
                 </div>
 
                 <div class="labels">
-                    <label name="LastName" style="padding-left: 30px">Фамилия</label>
+                    <label style="padding-left: 30px">Фамилия</label>
                 </div>
 
                 <div class="labels">
-                    <label name="Car.Color">Цвят</label>
+                    <label >Цвят</label>
                 </div>
 
                 <div class="labels">
-                    <label style="padding-left: 20px" name="Region.RegionName">Област</label>
+                    <label style="padding-left: 20px" >Област</label>
                 </div>
             </div>
 
             <div class="div-labels">
 
                 <div>
-                    <input value="@Model.Owner.FirstName" class="form-control selectors" name="Owner.FirstName" />
+                    <input value="@Model.Owner.FirstName" class="form-control selectors" asp-for="@Model.Owner.FirstName" />
                 </div>
 
                 <div class="selects">
-                    <input value="@Model.Owner.LastName" class="form-control selectors" name="Owner.LastName" />
+                    <input value="@Model.Owner.LastName" class="form-control selectors" asp-for="@Model.Owner.LastName" />
                 </div>
                 <div class="selects">
-                    <input value="@Model.Car.Color" class="form-control selectors" name="Car.Color" required/>
+                    <input value="@Model.Car.Color" class="form-control selectors" asp-for="@Model.Car.Color" required/>
                 </div>
 
                 <div class="selects">
-                    <input value="@Model.Region.RegionName" class="form-control selectors" name="Region.RegionName" />
+                    <input value="@Model.Region.RegionName" class="form-control selectors" asp-for="@Model.Region.RegionName" />
                 </div>
             </div>
 
             <br />
             <div class="div-labels">
                 <div>
-                    <label name="PhoneNumber">Телефонен номер</label>
+                    <label >Телефонен номер</label>
                 </div>
 
                 <div class="labels">
-                    <label style="margin-left: -67px" name="Region.Neiborhood">Квартал</label>
+                    <label style="margin-left: -67px" >Квартал</label>
                 </div>
 
                  <div class="labels">
-                    <label  style="margin-left: -10px" name="Car.Engine.CubicCapacity">Кубични сантиметри</label>
+                    <label  style="margin-left: -10px" >Кубични сантиметри</label>
                 </div>
 
                 <div class="labels">
-                    <label style="margin-left: -87px" name="Car.Engine.HorsePower">Конски сили</label>
+                    <label style="margin-left: -87px" >Конски сили</label>
                 </div>
             </div>
 
@@ -1058,21 +1058,21 @@
 
             <div class="div-labels">
                 <div>
-                    <input name="Owner.PhoneNumber" oninput="javascript: if (this.value.length > this.maxLength)
+                    <input oninput="javascript: if (this.value.length > this.maxLength)
                 this.value = this.value.slice(0, this.maxLength);"
-                           type="number" maxlength="10" class="form-control selectors" value="@Model.PhoneNumber" required>
+                           type="number" maxlength="10" class="form-control selectors" asp-for="@Model.PhoneNumber" required>
                 </div>
 
                 <div class="selects">
-                    <input value="@Model.Region.Neiborhood" class="form-control selectors" name="Region.Neiborhood" />
+                    <input value="@Model.Region.Neiborhood" class="form-control selectors" asp-for="@Model.Region.Neiborhood" />
                 </div>
 
                 <div class="selects">
-                    <input value="@Model.Car.Engine.CubicCapacity" type="number" class="form-control selectors" name="Car.Engine.CubicCapacity" required/>
+                    <input value="@Model.Car.Engine.CubicCapacity" type="number" class="form-control selectors" asp-for="@Model.Car.Engine.CubicCapacity" required/>
                 </div class="selects">
 
                 <div class="selects">
-                    <input value ="@Model.Car.Engine.HorsePower" type="number" class="form-control selectors" name="Car.Engine.HorsePower" required/>
+                    <input value ="@Model.Car.Engine.HorsePower" type="number" class="form-control selectors" asp-for="@Model.Car.Engine.HorsePower" required/>
                 </div>
             </div>
 
@@ -1080,19 +1080,19 @@
 
             <div class="div-labels">
                 <div>
-                    <label name="Car.Engine.FuelConsuption">Среден разход на гориво</label>
+                    <label>Среден разход на гориво</label>
                 </div>
 
                 <div class="labels">
-                    <label style="margin-left: -125px" name="Car.Engine.NewtonMeter">Нютон-метъри</label>
+                    <label style="margin-left: -125px" >Нютон-метъри</label>
                 </div>
 
                 <div class="labels">
-                    <label style="margin-left: -63px" name="Car.Engine.EcoLevel">Евро</label>
+                    <label style="margin-left: -63px" >Евро</label>
                 </div>
 
                 <div class="labels">
-                    <label name="Car.SeatsCount">Брой пасажерски места</label>
+                    <label >Брой пасажерски места</label>
                 </div>
             </div>
             <br />
@@ -1100,27 +1100,27 @@
             <div class="div-labels">
 
                 <div>
-                    <input value="@Model.Car.Engine.FuelConsuption" type="number" class="form-control selectors" name="Car.Engine.FuelConsuption" />
+                    <input value="@Model.Car.Engine.FuelConsuption" type="number" class="form-control selectors" asp-for="@Model.Car.Engine.FuelConsuption" />
                 </div>
                 
                 <div class="selects">
-                    <input value="@Model.Car.Engine.NewtonMeter" type="number" class="form-control selectors" name="Car.Engine.NewtonMeter" />
+                    <input value="@Model.Car.Engine.NewtonMeter" type="number" class="form-control selectors" asp-for="@Model.Car.Engine.NewtonMeter" />
                 </div>
 
                 <div class="selects">
-                    <input value="@Model.Car.Engine.EcoLevel" type="number" class="form-control selectors" name="Car.Engine.EcoLevel" required/>
+                    <input value="@Model.Car.Engine.EcoLevel" type="number" class="form-control selectors" asp-for="@Model.Car.Engine.EcoLevel" required/>
                 </div>
 
                 <div class="selects">
-                    <input value="@Model.Car.SeatsCount" type="number" class="form-control selectors" name="Car.SeatsCount" required/>
+                    <input value="@Model.Car.SeatsCount" type="number" class="form-control selectors" asp-for="@Model.Car.SeatsCount" required/>
                 </div>
             </div>
             <br />
 
 
             <div class="form-group purple-border">
-                <label for="exampleFormControlTextarea4">Описание</label>
-                <textarea style="width:400px" class="form-control" id="exampleFormControlTextarea4" name="Description" rows="4" required>@Model.Description</textarea>
+                <label >Описание</label>
+                <textarea style="width:400px" class="form-control" asp-for="@Model.Description" rows="4" required>@Model.Description</textarea>
             </div>
         </div>
 
@@ -1134,74 +1134,74 @@
                         <div>
                             <strong>Спецификация на двигателя</strong>
                             <div>
-                                <input checked="@Model.Car.Features.EngineDetails.Hybrid" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.EngineDetails.Hybrid" checked="@Model.Car.Features.EngineDetails.Hybrid" type="checkbox" data-val="true" value="true">
                                 <label>Хибридна система</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.EngineDetails.AutoGas" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.EngineDetails.AutoGas" checked="@Model.Car.Features.EngineDetails.AutoGas" type="checkbox" data-val="true" value="true">
                                 <label>Газова уредба</label>
                             </div>
                         </div>
                         <div>
                             <strong>Безопасност</strong>
                             <div>
-                                <input checked="@Model.Car.Features.SafetyDetails.Gps" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.SafetyDetails.Gps" checked="@Model.Car.Features.SafetyDetails.Gps" type="checkbox" data-val="true" value="true">
                                 <label>GPS система за пропредияване</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.SafetyDetails.AutomaticStabilityControl" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.SafetyDetails.AutomaticStabilityControl" checked="@Model.Car.Features.SafetyDetails.AutomaticStabilityControl" type="checkbox" data-val="true" value="true">
                                 <label>Автоматичен контрол на стабилността</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.SafetyDetails.AdaptiveFrontLights" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.SafetyDetails.AdaptiveFrontLights" checked="@Model.Car.Features.SafetyDetails.AdaptiveFrontLights" type="checkbox" data-val="true" value="true">
                                 <label>Адаптивни предни светлини</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.SafetyDetails.Abs" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.SafetyDetails.Abs" checked="@Model.Car.Features.SafetyDetails.Abs" type="checkbox" data-val="true" value="true">
                                 <label>Антиблокираща система</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.SafetyDetails.ElBreaks" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.SafetyDetails.ElBreaks" checked="@Model.Car.Features.SafetyDetails.ElBreaks" type="checkbox" data-val="true" value="true">
                                 <label>Ел. разпределяне на спирачното усилие</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.SafetyDetails.Esp" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.SafetyDetails.Esp" checked="@Model.Car.Features.SafetyDetails.Esp" type="checkbox" data-val="true" value="true">
                                 <label>Електронна програма за стабилизиране</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.SafetyDetails.TirePressure" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.SafetyDetails.TirePressure" checked="@Model.Car.Features.SafetyDetails.TirePressure" type="checkbox" data-val="true" value="true">
                                 <label>Контрол на налягането на гумите</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.SafetyDetails.ParkPilot" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.SafetyDetails.ParkPilot" checked="@Model.Car.Features.SafetyDetails.ParkPilot" type="checkbox" data-val="true" value="true">
                                 <label>Парктроник</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.SafetyDetails.IsoFix" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.SafetyDetails.IsoFix" checked="@Model.Car.Features.SafetyDetails.IsoFix" type="checkbox" data-val="true" value="true">
                                 <label>Система ISOFIX</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.SafetyDetails.DynamicStabilitySystem" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.SafetyDetails.DynamicStabilitySystem" checked="@Model.Car.Features.SafetyDetails.DynamicStabilitySystem" type="checkbox" data-val="true" value="true">
                                 <label>Система за динамична устойчивост</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.SafetyDetails.SlipProtectionSystem" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.SafetyDetails.SlipProtectionSystem" checked="@Model.Car.Features.SafetyDetails.SlipProtectionSystem" type="checkbox" data-val="true" value="true">
                                 <label>Система за защита от пробуксуванет</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.SafetyDetails.DryBrakesSystem" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.SafetyDetails.DryBrakesSystem" checked="@Model.Car.Features.SafetyDetails.DryBrakesSystem" type="checkbox" data-val="true" value="true">
                                 <label>Система за изсушаване на накладките</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.SafetyDetails.Distronic" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.SafetyDetails.Distronic" checked="@Model.Car.Features.SafetyDetails.Distronic" type="checkbox" data-val="true" value="true">
                                 <label>Система за контрол на дистанцията</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.SafetyDetails.HillDescentControll" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.SafetyDetails.HillDescentControll" checked="@Model.Car.Features.SafetyDetails.HillDescentControll" type="checkbox" data-val="true" value="true">
                                 <label>Система за контрол на спускането</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.SafetyDetails.BrakeAssist" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.SafetyDetails.BrakeAssist" checked="@Model.Car.Features.SafetyDetails.BrakeAssist" type="checkbox" data-val="true" value="true">
                                 <label>Система за подпомагане на спирането</label>
                             </div>
                         </div>
@@ -1215,124 +1215,124 @@
                                 <label>Auto Start Stop function</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.DvdTv" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ComfortDetails.DvdTv" checked="@Model.Car.Features.ComfortDetails.DvdTv" type="checkbox" data-val="true" value="true">
                                 <label>DVD, TV</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.BluetoothHandsfree" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ComfortDetails.BluetoothHandsfree" checked="@Model.Car.Features.ComfortDetails.BluetoothHandsfree" type="checkbox" data-val="true" value="true">
                                 <label>Bluetooth \ handsfree система</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.SteptronicTiptronic" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ComfortDetails.SteptronicTiptronic" checked="@Model.Car.Features.ComfortDetails.SteptronicTiptronic" type="checkbox" data-val="true" value="true">
                                 <label>Steptronic, Tiptronic</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.Usb" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ComfortDetails.Usb" checked="@Model.Car.Features.ComfortDetails.Usb" type="checkbox" data-val="true" value="true">
                                 <label>USB, audio\video, IN\AUX изводи</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.Airmatic" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ComfortDetails.Airmatic" checked="@Model.Car.Features.ComfortDetails.Airmatic" type="checkbox" data-val="true" value="true">
                                 <label>Адаптивно въздушно окачване</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.Keyless" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ComfortDetails.Keyless" checked="@Model.Car.Features.ComfortDetails.Keyless" type="checkbox" data-val="true" value="true">
                                 <label>Безключово палене</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.DifferentialLock" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ComfortDetails.DifferentialLock" checked="@Model.Car.Features.ComfortDetails.DifferentialLock" type="checkbox" data-val="true" value="true">
                                 <label>Блокаж на диференциала</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.BordPc" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ComfortDetails.BordPc" checked="@Model.Car.Features.ComfortDetails.BordPc" type="checkbox" data-val="true" value="true">
                                 <label>Бордкомпютър</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.FastSlowShifts" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ComfortDetails.FastSlowShifts" checked="@Model.Car.Features.ComfortDetails.FastSlowShifts" type="checkbox" data-val="true" value="true">
                                 <label>Бързи \ бавни скорости</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.LightDetector" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ComfortDetails.LightDetector" checked="@Model.Car.Features.ComfortDetails.LightDetector" type="checkbox" data-val="true" value="true">
                                 <label>Датчик за светлина</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.ElMirrors" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ComfortDetails.ElMirrors" checked="@Model.Car.Features.ComfortDetails.ElMirrors" type="checkbox" data-val="true" value="true">
                                 <label>Ел. Огледала</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.ElGlass" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ComfortDetails.ElGlass" checked="@Model.Car.Features.ComfortDetails.ElGlass" type="checkbox" data-val="true" value="true">
                                 <label>Ел. Стъкла</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.ElSuspension" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ComfortDetails.ElSuspension" checked="@Model.Car.Features.ComfortDetails.ElSuspension" type="checkbox" data-val="true" value="true">
                                 <label>Ел. регулиране на окачването</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.ElSeats" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ComfortDetails.ElSeats" checked="@Model.Car.Features.ComfortDetails.ElSeats" type="checkbox" data-val="true" value="true">
                                 <label>Ел. регулиране на седалките</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.Eps" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ComfortDetails.Eps" checked="@Model.Car.Features.ComfortDetails.Eps" type="checkbox" data-val="true" value="true">
                                 <label>Ел. усилвател на волана</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.Ac" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ComfortDetails.Ac" checked="@Model.Car.Features.ComfortDetails.Ac" type="checkbox" data-val="true" value="true">
                                 <label>Климатик</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.Climatecontroll" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ComfortDetails.Climatecontroll" checked="@Model.Car.Features.ComfortDetails.Climatecontroll" type="checkbox" data-val="true" value="true">
                                 <label>Климатроник</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.MultiSteeringWheel" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ComfortDetails.MultiSteeringWheel" checked="@Model.Car.Features.ComfortDetails.MultiSteeringWheel" type="checkbox" data-val="true" value="true">
                                 <label>Мултифункционален волан</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.Navigation" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ComfortDetails.Navigation" checked="@Model.Car.Features.ComfortDetails.Navigation" type="checkbox" data-val="true" value="true">
                                 <label>Навигация</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.SteeringWheelHeating" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ComfortDetails.SteeringWheelHeating" checked="@Model.Car.Features.ComfortDetails.SteeringWheelHeating" type="checkbox" data-val="true" value="true">
                                 <label>Отопление на волана</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.FrontGlassHeating" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ComfortDetails.FrontGlassHeating" checked="@Model.Car.Features.ComfortDetails.FrontGlassHeating" type="checkbox" data-val="true" value="true">
                                 <label for="front-glass-heating">Подгряване на предното стъкло</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.SeatsHeating" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ComfortDetails.SeatsHeating" checked="@Model.Car.Features.ComfortDetails.SeatsHeating" type="checkbox" data-val="true" value="true">
                                 <label>Подгряване на седалките</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.SteeringWheelAdjustment" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ComfortDetails.SteeringWheelAdjustment" checked="@Model.Car.Features.ComfortDetails.SteeringWheelAdjustment" type="checkbox" data-val="true" value="true">
                                 <label>Регулиране на волана</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.RainSensor" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ComfortDetails.RainSensor" checked="@Model.Car.Features.ComfortDetails.RainSensor" type="checkbox" data-val="true" value="true">
                                 <label>Сензор за дъжд</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.PowerSteering" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ComfortDetails.PowerSteering" checked="@Model.Car.Features.ComfortDetails.PowerSteering" type="checkbox" data-val="true" value="true">
                                 <label>Серво усилвател на волана</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.HeadlampWashSystem" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ComfortDetails.HeadlampWashSystem" checked="@Model.Car.Features.ComfortDetails.HeadlampWashSystem" type="checkbox" data-val="true" value="true">
                                 <label>Система за измиване на фаровете</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.Autopilot" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ComfortDetails.Autopilot" checked="@Model.Car.Features.ComfortDetails.Autopilot" type="checkbox" data-val="true" value="true">
                                 <label>Система за контрол на скоростта (автопилот)</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.Stereo" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ComfortDetails.Stereo" checked="@Model.Car.Features.ComfortDetails.Stereo" type="checkbox" data-val="true" value="true">
                                 <label>Стерео уредба</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.Filter" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ComfortDetails.Filter" checked="@Model.Car.Features.ComfortDetails.Filter" type="checkbox" data-val="true" value="true">
                                 <label>Филтър за твърди частици</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ComfortDetails.RefrigerationFrog" type="checkbox" data-val="true" value="true">
-                                <label for="refrigeration-frog">Хладилна жабка</label>
+                                <input asp-for="@Model.Car.Features.ComfortDetails.RefrigerationFrog" checked="@Model.Car.Features.ComfortDetails.RefrigerationFrog" type="checkbox" data-val="true" value="true">
+                                <label>Хладилна жабка</label>
                             </div>
                         </div>
 
@@ -1341,56 +1341,56 @@
                         <div>
                             <strong>Други</strong>
                             <div>
-                                <input checked="@Model.Car.Features.OthersDetails.AllDrive" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.OthersDetails.AllDrive" checked="@Model.Car.Features.OthersDetails.AllDrive" type="checkbox" data-val="true" value="true">
                                 <label>4x4</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.OthersDetails.SevenSeats" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.OthersDetails.SevenSeats" checked="@Model.Car.Features.OthersDetails.SevenSeats" type="checkbox" data-val="true" value="true">
                                 <label>7 места</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.OthersDetails.BuyBack" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.OthersDetails.BuyBack" checked="@Model.Car.Features.OthersDetails.BuyBack" type="checkbox" data-val="true" value="true">
                                 <label>Buy back</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.OthersDetails.Exchange" type="checkbox" data-val="true" value="true">
-                                <label for="exchange">Бартер</label>
+                                <input asp-for="@Model.Car.Features.OthersDetails.Exchange" checked="@Model.Car.Features.OthersDetails.Exchange" type="checkbox" data-val="true" value="true">
+                                <label >Бартер</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.OthersDetails.AutoGas" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.OthersDetails.AutoGas" checked="@Model.Car.Features.OthersDetails.AutoGas" type="checkbox" data-val="true" value="true">
                                 <label>Газова уредба</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.OthersDetails.Long" type="checkbox" data-val="true" value="true">
-                                <label for="long">Дълга база</label>
+                                <input asp-for="@Model.Car.Features.OthersDetails.Long" checked="@Model.Car.Features.OthersDetails.Long" type="checkbox" data-val="true" value="true">
+                                <label>Дълга база</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.OthersDetails.Catastrophic" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.OthersDetails.Catastrophic" checked="@Model.Car.Features.OthersDetails.Catastrophic" type="checkbox" data-val="true" value="true">
                                 <label>Катастрофирал</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.OthersDetails.Leasing" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.OthersDetails.Leasing" checked="@Model.Car.Features.OthersDetails.Leasing" type="checkbox" data-val="true" value="true">
                                 <label>Лизинг</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.OthersDetails.MethaneSystem" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.OthersDetails.MethaneSystem" checked="@Model.Car.Features.OthersDetails.MethaneSystem" type="checkbox" data-val="true" value="true">
                                 <label>Метанова уредба</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.OthersDetails.InPieces" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.OthersDetails.InPieces" checked="@Model.Car.Features.OthersDetails.InPieces" type="checkbox" data-val="true" value="true">
                                 <label>На части</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.OthersDetails.FullyServed" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.OthersDetails.FullyServed" checked="@Model.Car.Features.OthersDetails.FullyServed" type="checkbox" data-val="true" value="true">
                                 <label>Напълно обслужен</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.OthersDetails.Registration" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.OthersDetails.Registration" checked="@Model.Car.Features.OthersDetails.Registration" type="checkbox" data-val="true" value="true">
                                 <label>С регистрация</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.OthersDetails.Tuning" type="checkbox" data-val="true" value="true">
-                                <label for="tuning">Тунинг</label>
+                                <input asp-for="@Model.Car.Features.OthersDetails.Tuning" checked="@Model.Car.Features.OthersDetails.Tuning" type="checkbox" data-val="true" value="true">
+                                <label>Тунинг</label>
                             </div>
                         </div>
 
@@ -1443,23 +1443,23 @@
                         <div>
                             <strong>Защита</strong>
                             <div>
-                                <input checked="@Model.Car.Features.ProtectionDetails.Alarm" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ProtectionDetails.Alarm" checked="@Model.Car.Features.ProtectionDetails.Alarm" type="checkbox" data-val="true" value="true">
                                 <label>Аларма</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ProtectionDetails.Armored" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ProtectionDetails.Armored" checked="@Model.Car.Features.ProtectionDetails.Armored" type="checkbox" data-val="true" value="true">
                                 <label for="armored">Брониран</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ProtectionDetails.Immobilizer" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ProtectionDetails.Immobilizer" checked="@Model.Car.Features.ProtectionDetails.Immobilizer" type="checkbox" data-val="true" value="true">
                                 <label>Имобилайзер</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ProtectionDetails.Casco" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ProtectionDetails.Casco" checked="@Model.Car.Features.ProtectionDetails.Casco" type="checkbox" data-val="true" value="true">
                                 <label>Каско</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.ProtectionDetails.CentralLocking" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.ProtectionDetails.CentralLocking" checked="@Model.Car.Features.ProtectionDetails.CentralLocking" type="checkbox" data-val="true" value="true">
                                 <label>Централно заключване</label>
                             </div>
                         </div>
@@ -1467,12 +1467,12 @@
                         <div>
                             <strong>Интериор</strong>
                             <div>
-                                <input checked="@Model.Car.Features.InteriorDetails.SuedeSaloon" type="checkbox" data-val="true" value="true">
+                                <input asp-for="@Model.Car.Features.InteriorDetails.SuedeSaloon" checked="@Model.Car.Features.InteriorDetails.SuedeSaloon" type="checkbox" data-val="true" value="true">
                                 <label>Велурен салон</label>
                             </div>
                             <div>
-                                <input checked="@Model.Car.Features.InteriorDetails.LeatherSalon" type="checkbox" data-val="true" value="true">
-                                <label for="leather-salon">Кожен салон</label>
+                                <input asp-for="@Model.Car.Features.InteriorDetails.LeatherSalon" checked="@Model.Car.Features.InteriorDetails.LeatherSalon" type="checkbox" data-val="true" value="true">
+                                <label>Кожен салон</label>
                             </div>
                         </div>
                         <div>
