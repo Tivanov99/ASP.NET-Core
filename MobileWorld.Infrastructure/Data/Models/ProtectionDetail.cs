@@ -8,8 +8,6 @@ namespace MobileWorld.Infrastructure.Data.Models
         [Key]
         public int Id { get; set; }
 
-
-        //[ForeignKey(nameof(Feature))]
         public int FeatureId { get; set; }
 
         public Feature Feature { get; set; }

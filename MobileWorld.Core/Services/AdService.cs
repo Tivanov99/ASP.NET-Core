@@ -18,7 +18,15 @@ namespace MobileWorld.Core.Services
 
         public AdViewModel GetAdById(string adId)
         {
-            var car = this.repo.All<Ad>()
+            var test = this.repo.All<Ad>()
+              .Include(a => a.Car)
+              .Include(a=>a.Car.Feature)
+              .Where(a => a.Id == adId)
+              .Select(a => a)
+              .Single();
+
+          var car = this.repo.All<Ad>()
+                .Include(a=>a.Car)
                 .Where(a => a.Id == adId)
                 .Select(a => new AdViewModel()
                 {
@@ -404,6 +412,5 @@ namespace MobileWorld.Core.Services
                 OthersDetails = features.OthersDetails,
                 InteriorDetails = features.InteriorDetails,
             };
-
     }
 }
