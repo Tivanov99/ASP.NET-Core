@@ -6,7 +6,7 @@ namespace MobileWorld.Core.Models
 {
 
     //TODO : Check fuel type, engines are null
-    public class CreateAdModel
+    public class AdInputModel
     {
         [Required]
         [StringLength(50)]

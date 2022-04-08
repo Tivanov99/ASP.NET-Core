@@ -18,59 +18,59 @@ namespace MobileWorld.Core.Services
 
         public AdViewModel GetAdById(string adId)
         {
-          var car = this.repo.All<Ad>()
-                .Include(a=>a.Car)
-                .Where(a => a.Id == adId)
-                .Select(a => new AdViewModel()
-                {
-                    Id = a.Id,
-                    Title = a.Title,
-                    Price = a.Price,
-                    Description = a.Description,
+            var car = this.repo.All<Ad>()
+                  .Include(a => a.Car)
+                  .Where(a => a.Id == adId)
+                  .Select(a => new AdViewModel()
+                  {
+                      Id = a.Id,
+                      Title = a.Title,
+                      Price = a.Price,
+                      Description = a.Description,
 
-                    Region = new RegionModel()
-                    {
-                        RegionName = a.Region.RegionName,
-                        Neiborhood = a.Region.Neiborhood,
-                        TownName = a.Region.Town.Name,
-                    },
-                    Car = new CarModel()
-                    {
-                        SeatsCount = a.Car.SeatsCount,
-                        Year = a.Car.Year,
-                        Make = a.Car.Make,
-                        Model = a.Car.Model,
-                        GearType = a.Car.GearType,
-                        Color = a.Car.Color,
-                        Mileage = a.Car.Mileage,
-                        Images = a.Images.Select(x => x.ImageData).ToList(),
-                        Engine = new EngineModel()
-                        {
-                            FuelConsuption = a.Car.Engine.FuelConsuption,
-                            FuelType = a.Car.Engine.FuelType,
-                            EcoLevel = a.Car.Engine.EcoLevel,
-                            CubicCapacity = a.Car.Engine.CubicCapacity,
-                            NewtonMeter = a.Car.Engine.NewtonMeter,
-                            HorsePower = a.Car.Engine.HorsePower,
-                            AutoGas = a.Car.Engine.AutoGas,
-                            Hybrid = a.Car.Engine.Hybrid,
-                        },
-                        Features = new FeaturesModel()
-                        {
-                            OthersDetails = a.Car.Feature.OthersDetails,
-                            ComfortDetails = a.Car.Feature.ComfortDetails,
-                            SafetyDetails = a.Car.Feature.SafetyDetails,
-                            ExteriorDetails = a.Car.Feature.ExteriorDetails,
-                            ProtectionDetails = a.Car.Feature.ProtectionDetails,
-                            InteriorDetails = a.Car.Feature.InteriorDetails,
-                        }
-                    },
-                    Owner = new OwnerModel()
-                    {
-                        OwnerId = a.OwnerId,
-                    },
-                })
-                .FirstOrDefault();
+                      Region = new RegionModel()
+                      {
+                          RegionName = a.Region.RegionName,
+                          Neiborhood = a.Region.Neiborhood,
+                          TownName = a.Region.Town.Name,
+                      },
+                      Car = new CarModel()
+                      {
+                          SeatsCount = a.Car.SeatsCount,
+                          Year = a.Car.Year,
+                          Make = a.Car.Make,
+                          Model = a.Car.Model,
+                          GearType = a.Car.GearType,
+                          Color = a.Car.Color,
+                          Mileage = a.Car.Mileage,
+                          Images = a.Images.Select(x => x.ImageData).ToList(),
+                          Engine = new EngineModel()
+                          {
+                              FuelConsuption = a.Car.Engine.FuelConsuption,
+                              FuelType = a.Car.Engine.FuelType,
+                              EcoLevel = a.Car.Engine.EcoLevel,
+                              CubicCapacity = a.Car.Engine.CubicCapacity,
+                              NewtonMeter = a.Car.Engine.NewtonMeter,
+                              HorsePower = a.Car.Engine.HorsePower,
+                              AutoGas = a.Car.Engine.AutoGas,
+                              Hybrid = a.Car.Engine.Hybrid,
+                          },
+                          Features = new FeaturesModel()
+                          {
+                              OthersDetails = a.Car.Feature.OthersDetails,
+                              ComfortDetails = a.Car.Feature.ComfortDetails,
+                              SafetyDetails = a.Car.Feature.SafetyDetails,
+                              ExteriorDetails = a.Car.Feature.ExteriorDetails,
+                              ProtectionDetails = a.Car.Feature.ProtectionDetails,
+                              InteriorDetails = a.Car.Feature.InteriorDetails,
+                          }
+                      },
+                      Owner = new OwnerModel()
+                      {
+                          OwnerId = a.OwnerId,
+                      },
+                  })
+                  .FirstOrDefault();
 
             return car;
         }
@@ -202,7 +202,7 @@ namespace MobileWorld.Core.Services
             return cars;
         }
 
-        public async Task<bool> CreateAd(CreateAdModel model, List<Image> images, string ownerId)
+        public async Task<bool> CreateAd(AdInputModel model, List<Image> images, string ownerId)
         {
             int townId = this.GetTownIdByName(model.Region.TownName);
 
@@ -210,29 +210,18 @@ namespace MobileWorld.Core.Services
 
             Car car = CreateCar(model.Car, model.Features);
 
-            Feature feature = CreateFeature(model.Features);
+            //Feature feature = CreateFeature(model.Features);
 
-            Engine engine = CreateEngine(model.Car.Engine);
+            //Engine engine = CreateEngine(model.Car.Engine);
 
             Region region = await CreateRegion(model.Region, townId);
+            //TODO: If something with create are not works check here and CreateCar method.
+            //car.Engine = engine;
 
-            car.Engine = engine;
+            //car.Feature = feature;
 
-            car.Feature = feature;
+            Ad newAd = CreaAdModel(model, images, ownerId, car, region);
 
-            Ad newAd = new Ad()
-            {
-                Id = Guid.NewGuid().ToString(),
-                Title = model.Title,
-                PhoneNumber = model.PhoneNumber,
-                Price = model.Price,
-                Description = model.Description,
-                Car = car,
-                Images = images,
-                CreatedOn = DateTime.Now,
-                Region = region,
-                OwnerId = ownerId,
-            };
             car.AdId = newAd.Id;
             car.Ad = newAd;
 
@@ -246,6 +235,21 @@ namespace MobileWorld.Core.Services
             }
             return true;
         }
+
+        private Ad CreaAdModel(AdInputModel model, List<Image> images, string ownerId, Car car, Region region)
+        => new Ad()
+        {
+            Id = Guid.NewGuid().ToString(),
+            Title = model.Title,
+            PhoneNumber = model.PhoneNumber,
+            Price = model.Price,
+            Description = model.Description,
+            Car = car,
+            Images = images,
+            CreatedOn = DateTime.Now,
+            Region = region,
+            OwnerId = ownerId,
+        };
 
         public void Delete(string adId)
         {
@@ -277,9 +281,9 @@ namespace MobileWorld.Core.Services
         public bool Update(string adId, AdViewModel updatedModel)
         {
             Ad? ad = this.repo.All<Ad>()
-                .Include(a=>a.Region)
-                .Include(a=>a.Car)
-                .Include(a=>a.Car.Feature)
+                .Include(a => a.Region)
+                .Include(a => a.Car)
+                .Include(a => a.Car.Feature)
                 .Include(a => a.Car.Engine)
                 .Where(a => a.Id == adId)
                 .FirstOrDefault();
@@ -380,7 +384,8 @@ namespace MobileWorld.Core.Services
             Color = car.Color,
             SeatsCount = car.SeatsCount,
             Mileage = car.Mileage,
-            //TODO : Think about models
+            Engine= CreateEngine(car.Engine),
+            Feature= CreateFeature(car.Features),
             Model = "e46",
             Make = car.Make,
             Year = car.Year,
