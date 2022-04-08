@@ -204,8 +204,7 @@ namespace MobileWorld.Core.Services
 
         public async Task<bool> CreateAd(CreateAdModel model, List<Image> images, string ownerId)
         {
-            int townId = this.GetTownIdByName(model.Region.TownName)
-                .Result;
+            int townId = this.GetTownIdByName(model.Region.TownName);
 
             //TODO : Add seed to Db all Towns
 
@@ -285,6 +284,8 @@ namespace MobileWorld.Core.Services
                 .Where(a => a.Id == adId)
                 .FirstOrDefault();
 
+            int townId = GetTownIdByName(updatedModel.Region.TownName);
+
             if (ad != null)
             {
                 ad.Car.Engine = updatedModel.Car.Engine;
@@ -292,7 +293,7 @@ namespace MobileWorld.Core.Services
                 ad.Car.Feature = updatedModel.Car.Features;
                 ad.Car.GearType = updatedModel.Car.GearType;
                 ad.Car.Year = updatedModel.Car.Year;
-                ad.Car.Model = updatedModel.Car.Model;
+                //ad.Car.Model = updatedModel.Car.Model;
                 ad.Car.Color = updatedModel.Car.Color;
                 ad.Car.Make = updatedModel.Car.Make;
                 ad.Car.Mileage = updatedModel.Car.Mileage;
@@ -301,16 +302,23 @@ namespace MobileWorld.Core.Services
                 ad.Title = updatedModel.Title;
                 ad.Price = updatedModel.Price;
                 ad.PhoneNumber = updatedModel.PhoneNumber;
-                ad.Region.Town.Name = updatedModel.Region.TownName;
+                ad.Region.TownId = townId;
                 ad.Region.RegionName = updatedModel.Region.RegionName;
                 ad.Region.Neiborhood = updatedModel.Region.Neiborhood;
 
-                this.repo.SaveChanges();
+                try
+                {
+                    this.repo.SaveChanges();
+                    return true;
+
+                }
+                catch (Exception)
+                {
+
+                }
 
             }
-
-
-            return true;
+            return false;
         }
 
         private List<PropertyDto> GetBaseSearchCriteria(object model)
@@ -356,12 +364,12 @@ namespace MobileWorld.Core.Services
             return queryString;
         }
 
-        private async Task<int> GetTownIdByName(string townName)
+        private int GetTownIdByName(string townName)
         {
-            var result = await this.repo.All<Town>()
+            var result = this.repo.All<Town>()
                 .Where(t => t.Name == townName)
                 .Select(t => t.Id)
-                .FirstOrDefaultAsync();
+                .FirstOrDefault();
 
             return result;
         }
