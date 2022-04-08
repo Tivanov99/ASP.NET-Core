@@ -13,6 +13,7 @@ namespace MobileWorld.Core.Models
         public string Title { get; set; }
 
         [Column(TypeName = "decimal(6,2)")]
+        [Range(0,2000000)]
         public decimal Price { get; set; }
 
         [Required]
@@ -21,6 +22,7 @@ namespace MobileWorld.Core.Models
 
         [Required]
         [MaxLength(700)]
+        [MinLength(30)]
         public string Description { get; set; }
 
         public CarModel Car { get; set; } = new();

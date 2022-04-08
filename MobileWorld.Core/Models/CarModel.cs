@@ -10,13 +10,14 @@ namespace MobileWorld.Core.Models
         public string Color { get; set; }
 
         [Required]
-        [Range(2, 12)]
+        [Range(2, 12,ErrorMessage ="Трябва да е число в диапазона от 2 до 12.")]
         public int SeatsCount { get; set; }
 
         [Required]
         [Column(TypeName = "decimal(6,3)")]
         public decimal Mileage { get; set; }
 
+        [Required]
         public List<byte[]> Images { get; set; }
 
         public FeaturesModel Features { get; set; } = new();
