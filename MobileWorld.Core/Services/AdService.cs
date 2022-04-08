@@ -208,19 +208,19 @@ namespace MobileWorld.Core.Services
 
             //TODO : Add seed to Db all Towns
 
-            Car car = CreateCar(model.Car, model.Features);
+            Car car = CreateCarEntity(model.Car, model.Features);
 
             //Feature feature = CreateFeature(model.Features);
 
             //Engine engine = CreateEngine(model.Car.Engine);
 
-            Region region = await CreateRegion(model.Region, townId);
+            Region region = await CreateRegionEntity(model.Region, townId);
             //TODO: If something with create are not works check here and CreateCar method.
             //car.Engine = engine;
 
             //car.Feature = feature;
 
-            Ad newAd = CreaAdModel(model, images, ownerId, car, region);
+            Ad newAd = CreaAdEntity(model, images, ownerId, car, region);
 
             car.AdId = newAd.Id;
             car.Ad = newAd;
@@ -236,20 +236,7 @@ namespace MobileWorld.Core.Services
             return true;
         }
 
-        private Ad CreaAdModel(AdInputModel model, List<Image> images, string ownerId, Car car, Region region)
-        => new Ad()
-        {
-            Id = Guid.NewGuid().ToString(),
-            Title = model.Title,
-            PhoneNumber = model.PhoneNumber,
-            Price = model.Price,
-            Description = model.Description,
-            Car = car,
-            Images = images,
-            CreatedOn = DateTime.Now,
-            Region = region,
-            OwnerId = ownerId,
-        };
+
 
         public void Delete(string adId)
         {
@@ -378,20 +365,20 @@ namespace MobileWorld.Core.Services
             return result;
         }
 
-        private Car CreateCar(CarModel car, Feature features)
+        private Car CreateCarEntity(CarModel car, Feature features)
         => new Car()
         {
             Color = car.Color,
             SeatsCount = car.SeatsCount,
             Mileage = car.Mileage,
-            Engine= CreateEngine(car.Engine),
-            Feature= CreateFeature(car.Features),
+            Engine = CreateEngineEntity(car.Engine),
+            Feature = CreateFeatureEntity(car.Features),
             Model = "e46",
             Make = car.Make,
             Year = car.Year,
         };
 
-        private async Task<Region> CreateRegion(RegionModel region, int townId)
+        private async Task<Region> CreateRegionEntity(RegionModel region, int townId)
             => new Region()
             {
                 TownId = townId,
@@ -399,7 +386,7 @@ namespace MobileWorld.Core.Services
                 Neiborhood = region.Neiborhood,
             };
 
-        private Engine CreateEngine(EngineModel model)
+        private Engine CreateEngineEntity(EngineModel model)
         => new Engine()
         {
             FuelConsuption = model.FuelConsuption,
@@ -411,7 +398,7 @@ namespace MobileWorld.Core.Services
             Hybrid = model.Hybrid,
             AutoGas = model.AutoGas,
         };
-        private Feature CreateFeature(Feature features)
+        private Feature CreateFeatureEntity(Feature features)
             => new Feature()
             {
                 SafetyDetails = features.SafetyDetails,
@@ -421,5 +408,19 @@ namespace MobileWorld.Core.Services
                 OthersDetails = features.OthersDetails,
                 InteriorDetails = features.InteriorDetails,
             };
+        private Ad CreaAdEntity(AdInputModel model, List<Image> images, string ownerId, Car car, Region region)
+             => new Ad()
+             {
+                 Id = Guid.NewGuid().ToString(),
+                 Title = model.Title,
+                 PhoneNumber = model.PhoneNumber,
+                 Price = model.Price,
+                 Description = model.Description,
+                 Car = car,
+                 Images = images,
+                 CreatedOn = DateTime.Now,
+                 Region = region,
+                 OwnerId = ownerId,
+             };
     }
 }
