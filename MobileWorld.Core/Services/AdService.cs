@@ -207,7 +207,6 @@ namespace MobileWorld.Core.Services
             int townId = this.GetTownIdByName(model.Region.TownName)
                 .Result;
 
-
             //TODO : Add seed to Db all Towns
 
             Car car = CreateCar(model.Car, model.Features);
@@ -396,7 +395,15 @@ namespace MobileWorld.Core.Services
             AutoGas = model.AutoGas,
         };
         private Feature CreateFeature(Feature features)
-            => new Feature();
+            => new Feature()
+            {
+                SafetyDetails = features.SafetyDetails,
+                ProtectionDetails = features.ProtectionDetails,
+                ComfortDetails = features.ComfortDetails,
+                ExteriorDetails = features.ExteriorDetails,
+                OthersDetails = features.OthersDetails,
+                InteriorDetails = features.InteriorDetails,
+            };
 
     }
 }

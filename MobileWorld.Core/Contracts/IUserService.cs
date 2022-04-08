@@ -8,7 +8,5 @@ namespace MobileWorld.Core.Contracts
         List<AdCardViewModel> UserFavourites(string userId);
 
         List<AdCardViewModel> UserAds(string userId);
-
-        bool CreateAd(CreateAdModel model);
     }
 }

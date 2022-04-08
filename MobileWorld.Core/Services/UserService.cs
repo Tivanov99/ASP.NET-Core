@@ -16,15 +16,9 @@ namespace MobileWorld.Core.Services
             this.repo = _repo;
         }
 
-        public bool CreateAd(CreateAdModel model)
-        {
-            throw new NotImplementedException();
-        }
 
         public List<AdCardViewModel> UserAds(string userId)
         {
-            //TODO: Export car images from car model
-
             try
             {
                 var userAds = this.repo.All<ApplicationUser>()
@@ -40,12 +34,11 @@ namespace MobileWorld.Core.Services
                                        ImageData = x.Images[0].ImageData
                                    }))
                    .ToList();
-                return userAds;
 
+                return  userAds;
             }
             catch (KeyNotFoundException)
             {
-
                 return null;
             }
         }

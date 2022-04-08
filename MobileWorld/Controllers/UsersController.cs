@@ -1,7 +1,6 @@
 ﻿using MobileWorld.Core.Contracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MobileWorld.Core.ViewModels;
 
 namespace MobileWorld.Controllers
 {
@@ -26,7 +25,6 @@ namespace MobileWorld.Controllers
         {
             var result = this.userService
                 .UserAds(userId);
-
             return View(result);
         }
 
