@@ -216,6 +216,7 @@ namespace MobileWorld.Core.Services
 
             Region region = await CreateRegionEntity(model.Region, townId);
             //TODO: If something with create are not works check here and CreateCar method.
+
             //car.Engine = engine;
 
             //car.Feature = feature;
@@ -225,14 +226,17 @@ namespace MobileWorld.Core.Services
             car.AdId = newAd.Id;
             car.Ad = newAd;
 
-            this.repo.Add<Ad>(newAd);
 
-            int result = this.repo.SaveChanges();
-
-            if (result == 0)
+            try
+            {
+                this.repo.Add<Ad>(newAd);
+                int result = this.repo.SaveChanges();
+            }
+            catch (Exception)
             {
                 return false;
             }
+
             return true;
         }
 
@@ -279,26 +283,25 @@ namespace MobileWorld.Core.Services
 
             if (ad != null)
             {
-                ad.Car.Engine = updatedModel.Car.Engine;
-                ad.Car.SeatsCount = updatedModel.Car.SeatsCount;
-                ad.Car.Feature = updatedModel.Car.Features;
-                ad.Car.GearType = updatedModel.Car.GearType;
-                ad.Car.Year = updatedModel.Car.Year;
-                //ad.Car.Model = updatedModel.Car.Model;
-                ad.Car.Color = updatedModel.Car.Color;
-                ad.Car.Make = updatedModel.Car.Make;
-                ad.Car.Mileage = updatedModel.Car.Mileage;
-
-                //ad.Images.ForEach(i=>i.ImageData=updatedModel.Car.Images[i]);
-                ad.Title = updatedModel.Title;
-                ad.Price = updatedModel.Price;
-                ad.PhoneNumber = updatedModel.PhoneNumber;
-                ad.Region.TownId = townId;
-                ad.Region.RegionName = updatedModel.Region.RegionName;
-                ad.Region.Neiborhood = updatedModel.Region.Neiborhood;
-
                 try
                 {
+                    ad.Car.Engine = updatedModel.Car.Engine;
+                    ad.Car.SeatsCount = updatedModel.Car.SeatsCount;
+                    ad.Car.Feature = updatedModel.Car.Features;
+                    ad.Car.GearType = updatedModel.Car.GearType;
+                    ad.Car.Year = updatedModel.Car.Year;
+                    //ad.Car.Model = updatedModel.Car.Model;
+                    ad.Car.Color = updatedModel.Car.Color;
+                    ad.Car.Make = updatedModel.Car.Make;
+                    ad.Car.Mileage = updatedModel.Car.Mileage;
+
+                    //ad.Images.ForEach(i=>i.ImageData=updatedModel.Car.Images[i]);
+                    ad.Title = updatedModel.Title;
+                    ad.Price = updatedModel.Price;
+                    ad.PhoneNumber = updatedModel.PhoneNumber;
+                    ad.Region.TownId = townId;
+                    ad.Region.RegionName = updatedModel.Region.RegionName;
+                    ad.Region.Neiborhood = updatedModel.Region.Neiborhood;
                     this.repo.SaveChanges();
                     return true;
 
@@ -307,7 +310,6 @@ namespace MobileWorld.Core.Services
                 {
 
                 }
-
             }
             return false;
         }
