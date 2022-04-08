@@ -135,6 +135,8 @@ namespace MobileWorld.Controllers
             {
                 return NotFound();
             }
+
+            this.service.Update(adId, updatedModel);
             return View();
         }
     }

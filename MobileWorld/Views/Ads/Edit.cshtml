@@ -534,7 +534,7 @@
 
 
                 <div class="selects">
-                    <select name="Region.TownName" class="form-control selectors">
+                    <select name="@Model.Region.TownName" class="form-control selectors">
                         <option value="">
                            @Model.Region.TownName
                         </option>
@@ -951,7 +951,7 @@
                 </div>
 
                 <div class="selects">
-                    <select name="=FuelType" class="form-control">
+                    <select asp-for="@Model.Car.Engine.FuelType" class="form-control">
                         <option value="">
                             @Model.Car.Engine.FuelType
                         </option>
@@ -971,7 +971,7 @@
                 </div>
 
                 <div class="selects">
-                    <select name="=GearType" class="form-control">
+                    <select asp-for="@Model.Car.GearType" class="form-control">
                         <option value="">
                             @Model.Car.GearType
                         </option>

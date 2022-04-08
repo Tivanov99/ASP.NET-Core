@@ -195,7 +195,6 @@ namespace MobileWorld.Core.Services
                     Price = a.Price,
                     Title = a.Title,
                     ImageData = a.Images[0].ImageData
-                    //TODO : Get images
                 })
                 .Take(6)
                 .ToList();
@@ -249,8 +248,6 @@ namespace MobileWorld.Core.Services
             return true;
         }
 
-
-
         public void Delete(string adId)
         {
             Ad ad = this.repo.All<Ad>()
@@ -281,6 +278,10 @@ namespace MobileWorld.Core.Services
         public bool Update(string adId, AdViewModel updatedModel)
         {
             Ad? ad = this.repo.All<Ad>()
+                .Include(a=>a.Region)
+                .Include(a=>a.Car)
+                .Include(a=>a.Car.Feature)
+                .Include(a => a.Car.Engine)
                 .Where(a => a.Id == adId)
                 .FirstOrDefault();
 
@@ -303,6 +304,8 @@ namespace MobileWorld.Core.Services
                 ad.Region.Town.Name = updatedModel.Region.TownName;
                 ad.Region.RegionName = updatedModel.Region.RegionName;
                 ad.Region.Neiborhood = updatedModel.Region.Neiborhood;
+
+                this.repo.SaveChanges();
 
             }
 
