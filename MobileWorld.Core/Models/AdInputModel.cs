@@ -9,11 +9,12 @@ namespace MobileWorld.Core.Models
     public class AdInputModel
     {
         [Required]
-        [StringLength(50)]
+        [MinLength(5)]
+        [StringLength(50, ErrorMessage = "Заглавието трябва да е меджу 5 и 50 символа.")]
         public string Title { get; set; }
 
         [Column(TypeName = "decimal(6,2)")]
-        [Range(0,2000000)]
+        [Range(0, 2000000)]
         public decimal Price { get; set; }
 
         [Required]
