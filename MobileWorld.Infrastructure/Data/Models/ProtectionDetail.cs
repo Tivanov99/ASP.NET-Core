@@ -9,7 +9,7 @@ namespace MobileWorld.Infrastructure.Data.Models
         public int Id { get; set; }
 
 
-        [ForeignKey(nameof(Feature))]
+        //[ForeignKey(nameof(Feature))]
         public int FeatureId { get; set; }
 
         public Feature Feature { get; set; }

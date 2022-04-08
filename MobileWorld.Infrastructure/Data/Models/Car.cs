@@ -11,10 +11,12 @@ namespace MobileWorld.Infrastructure.Data.Models
 
         [Required]
         [StringLength(30)]
+        [DataType("Nvarchar")]
         public string Make { get; set; }
 
         [Required]
         [StringLength(20)]
+        [DataType("Nvarchar")]
         public string Model { get; set; }
 
         [Range(1886, 2022)]
@@ -26,10 +28,11 @@ namespace MobileWorld.Infrastructure.Data.Models
 
         [Required]
         [StringLength(35)]
+        [DataType("Nvarchar")]
         public string Color { get; set; }
 
-        [ForeignKey(nameof(Engine))]
-        public int EngineId { get; set; }
+        //[ForeignKey(nameof(Engine))]
+        //public int EngineId { get; set; }
 
         public virtual Engine Engine { get; set; }
 
@@ -40,12 +43,12 @@ namespace MobileWorld.Infrastructure.Data.Models
         [Required]
         public decimal Mileage { get; set; }
 
-        [ForeignKey(nameof(Feature))]
-        public int FeatureId { get; set; }
+        //[ForeignKey(nameof(Feature))]
+        //public int FeatureId { get; set; }
 
         public virtual Feature Feature { get; set; }
 
-        [ForeignKey(nameof(Ad))]
+        //[ForeignKey(nameof(Ad))]
         public string AdId { get; set; }
 
         public virtual Ad Ad { get; set; }

@@ -18,7 +18,7 @@ namespace MobileWorld.Core.Contracts
 
         Task<bool> CreateAd(CreateAdModel model, List<Image> images, string ownerId);
 
-        Car Delete(string adId);
+        void Delete(string adId);
 
         bool Update(string adId,AdViewModel updatedModel);
     }

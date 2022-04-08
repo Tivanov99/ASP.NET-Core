@@ -229,16 +229,13 @@ namespace MobileWorld.Infrastructure.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("CarId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(700)
-                        .HasColumnType("nvarchar(700)");
+                        .HasColumnType("varchar(700)");
 
                     b.Property<string>("OwnerId")
                         .IsRequired()
@@ -261,9 +258,6 @@ namespace MobileWorld.Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CarId")
-                        .IsUnique();
-
                     b.HasIndex("OwnerId");
 
                     b.HasIndex("RegionId");
@@ -281,18 +275,12 @@ namespace MobileWorld.Infrastructure.Data.Migrations
 
                     b.Property<string>("AdId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Color")
                         .IsRequired()
                         .HasMaxLength(35)
                         .HasColumnType("nvarchar(35)");
-
-                    b.Property<int>("EngineId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("FeatureId")
-                        .HasColumnType("int");
 
                     b.Property<int>("GearType")
                         .HasColumnType("int");
@@ -318,9 +306,8 @@ namespace MobileWorld.Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EngineId");
-
-                    b.HasIndex("FeatureId");
+                    b.HasIndex("AdId")
+                        .IsUnique();
 
                     b.ToTable("Cars");
                 });
@@ -431,6 +418,9 @@ namespace MobileWorld.Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("FeatureId")
+                        .IsUnique();
+
                     b.ToTable("ComfortDetails");
                 });
 
@@ -444,6 +434,9 @@ namespace MobileWorld.Infrastructure.Data.Migrations
 
                     b.Property<bool>("AutoGas")
                         .HasColumnType("bit");
+
+                    b.Property<int>("CarId")
+                        .HasColumnType("int");
 
                     b.Property<int>("CubicCapacity")
                         .HasColumnType("int");
@@ -467,6 +460,9 @@ namespace MobileWorld.Infrastructure.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CarId")
+                        .IsUnique();
 
                     b.ToTable("Engines");
                 });
@@ -514,6 +510,9 @@ namespace MobileWorld.Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("FeatureId")
+                        .IsUnique();
+
                     b.ToTable("ExteriorDetails");
                 });
 
@@ -540,42 +539,12 @@ namespace MobileWorld.Infrastructure.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("ComfortDetailsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ExteriorDetailsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("InteriorDetailsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OthersDetailsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProtectionDetailsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SafetyDetailsId")
+                    b.Property<int>("CarId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ComfortDetailsId")
-                        .IsUnique();
-
-                    b.HasIndex("ExteriorDetailsId")
-                        .IsUnique();
-
-                    b.HasIndex("InteriorDetailsId")
-                        .IsUnique();
-
-                    b.HasIndex("OthersDetailsId")
-                        .IsUnique();
-
-                    b.HasIndex("ProtectionDetailsId")
-                        .IsUnique();
-
-                    b.HasIndex("SafetyDetailsId")
+                    b.HasIndex("CarId")
                         .IsUnique();
 
                     b.ToTable("Features");
@@ -636,6 +605,9 @@ namespace MobileWorld.Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("FeatureId")
+                        .IsUnique();
+
                     b.ToTable("InteriorDetails");
                 });
 
@@ -691,6 +663,9 @@ namespace MobileWorld.Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("FeatureId")
+                        .IsUnique();
+
                     b.ToTable("OthersDetails");
                 });
 
@@ -721,6 +696,9 @@ namespace MobileWorld.Infrastructure.Data.Migrations
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("FeatureId")
+                        .IsUnique();
 
                     b.ToTable("ProtectionDetails");
                 });
@@ -809,6 +787,9 @@ namespace MobileWorld.Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("FeatureId")
+                        .IsUnique();
+
                     b.ToTable("SafetyDetails");
                 });
 
@@ -886,12 +867,6 @@ namespace MobileWorld.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("MobileWorld.Infrastructure.Data.Models.Ad", b =>
                 {
-                    b.HasOne("MobileWorld.Infrastructure.Data.Models.Car", "Car")
-                        .WithOne("Ad")
-                        .HasForeignKey("MobileWorld.Infrastructure.Data.Models.Ad", "CarId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("MobileWorld.Infrastructure.Data.Identity.ApplicationUser", "Owner")
                         .WithMany("Ads")
                         .HasForeignKey("OwnerId")
@@ -904,8 +879,6 @@ namespace MobileWorld.Infrastructure.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Car");
-
                     b.Navigation("Owner");
 
                     b.Navigation("Region");
@@ -913,19 +886,44 @@ namespace MobileWorld.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("MobileWorld.Infrastructure.Data.Models.Car", b =>
                 {
-                    b.HasOne("MobileWorld.Infrastructure.Data.Models.Engine", "Engine")
-                        .WithMany()
-                        .HasForeignKey("EngineId")
+                    b.HasOne("MobileWorld.Infrastructure.Data.Models.Ad", "Ad")
+                        .WithOne("Car")
+                        .HasForeignKey("MobileWorld.Infrastructure.Data.Models.Car", "AdId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Ad");
+                });
+
+            modelBuilder.Entity("MobileWorld.Infrastructure.Data.Models.ComfortDetail", b =>
+                {
                     b.HasOne("MobileWorld.Infrastructure.Data.Models.Feature", "Feature")
-                        .WithMany()
-                        .HasForeignKey("FeatureId")
+                        .WithOne("ComfortDetails")
+                        .HasForeignKey("MobileWorld.Infrastructure.Data.Models.ComfortDetail", "FeatureId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Engine");
+                    b.Navigation("Feature");
+                });
+
+            modelBuilder.Entity("MobileWorld.Infrastructure.Data.Models.Engine", b =>
+                {
+                    b.HasOne("MobileWorld.Infrastructure.Data.Models.Car", "Car")
+                        .WithOne("Engine")
+                        .HasForeignKey("MobileWorld.Infrastructure.Data.Models.Engine", "CarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Car");
+                });
+
+            modelBuilder.Entity("MobileWorld.Infrastructure.Data.Models.ExteriorDetail", b =>
+                {
+                    b.HasOne("MobileWorld.Infrastructure.Data.Models.Feature", "Feature")
+                        .WithOne("ExteriorDetails")
+                        .HasForeignKey("MobileWorld.Infrastructure.Data.Models.ExteriorDetail", "FeatureId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Feature");
                 });
@@ -951,53 +949,13 @@ namespace MobileWorld.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("MobileWorld.Infrastructure.Data.Models.Feature", b =>
                 {
-                    b.HasOne("MobileWorld.Infrastructure.Data.Models.ComfortDetail", "ComfortDetails")
+                    b.HasOne("MobileWorld.Infrastructure.Data.Models.Car", "Car")
                         .WithOne("Feature")
-                        .HasForeignKey("MobileWorld.Infrastructure.Data.Models.Feature", "ComfortDetailsId")
+                        .HasForeignKey("MobileWorld.Infrastructure.Data.Models.Feature", "CarId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MobileWorld.Infrastructure.Data.Models.ExteriorDetail", "ExteriorDetails")
-                        .WithOne("Feature")
-                        .HasForeignKey("MobileWorld.Infrastructure.Data.Models.Feature", "ExteriorDetailsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MobileWorld.Infrastructure.Data.Models.InteriorDetail", "InteriorDetails")
-                        .WithOne("Feature")
-                        .HasForeignKey("MobileWorld.Infrastructure.Data.Models.Feature", "InteriorDetailsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MobileWorld.Infrastructure.Data.Models.OthersDetail", "OthersDetails")
-                        .WithOne("Feature")
-                        .HasForeignKey("MobileWorld.Infrastructure.Data.Models.Feature", "OthersDetailsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MobileWorld.Infrastructure.Data.Models.ProtectionDetail", "ProtectionDetails")
-                        .WithOne("Feature")
-                        .HasForeignKey("MobileWorld.Infrastructure.Data.Models.Feature", "ProtectionDetailsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MobileWorld.Infrastructure.Data.Models.SafetyDetail", "SafetyDetails")
-                        .WithOne("Feature")
-                        .HasForeignKey("MobileWorld.Infrastructure.Data.Models.Feature", "SafetyDetailsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ComfortDetails");
-
-                    b.Navigation("ExteriorDetails");
-
-                    b.Navigation("InteriorDetails");
-
-                    b.Navigation("OthersDetails");
-
-                    b.Navigation("ProtectionDetails");
-
-                    b.Navigation("SafetyDetails");
+                    b.Navigation("Car");
                 });
 
             modelBuilder.Entity("MobileWorld.Infrastructure.Data.Models.Image", b =>
@@ -1011,6 +969,39 @@ namespace MobileWorld.Infrastructure.Data.Migrations
                     b.Navigation("Ad");
                 });
 
+            modelBuilder.Entity("MobileWorld.Infrastructure.Data.Models.InteriorDetail", b =>
+                {
+                    b.HasOne("MobileWorld.Infrastructure.Data.Models.Feature", "Feature")
+                        .WithOne("InteriorDetails")
+                        .HasForeignKey("MobileWorld.Infrastructure.Data.Models.InteriorDetail", "FeatureId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Feature");
+                });
+
+            modelBuilder.Entity("MobileWorld.Infrastructure.Data.Models.OthersDetail", b =>
+                {
+                    b.HasOne("MobileWorld.Infrastructure.Data.Models.Feature", "Feature")
+                        .WithOne("OthersDetails")
+                        .HasForeignKey("MobileWorld.Infrastructure.Data.Models.OthersDetail", "FeatureId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Feature");
+                });
+
+            modelBuilder.Entity("MobileWorld.Infrastructure.Data.Models.ProtectionDetail", b =>
+                {
+                    b.HasOne("MobileWorld.Infrastructure.Data.Models.Feature", "Feature")
+                        .WithOne("ProtectionDetails")
+                        .HasForeignKey("MobileWorld.Infrastructure.Data.Models.ProtectionDetail", "FeatureId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Feature");
+                });
+
             modelBuilder.Entity("MobileWorld.Infrastructure.Data.Models.Region", b =>
                 {
                     b.HasOne("MobileWorld.Infrastructure.Data.Models.Town", "Town")
@@ -1022,6 +1013,17 @@ namespace MobileWorld.Infrastructure.Data.Migrations
                     b.Navigation("Town");
                 });
 
+            modelBuilder.Entity("MobileWorld.Infrastructure.Data.Models.SafetyDetail", b =>
+                {
+                    b.HasOne("MobileWorld.Infrastructure.Data.Models.Feature", "Feature")
+                        .WithOne("SafetyDetails")
+                        .HasForeignKey("MobileWorld.Infrastructure.Data.Models.SafetyDetail", "FeatureId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Feature");
+                });
+
             modelBuilder.Entity("MobileWorld.Infrastructure.Data.Identity.ApplicationUser", b =>
                 {
                     b.Navigation("Ads");
@@ -1031,6 +1033,9 @@ namespace MobileWorld.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("MobileWorld.Infrastructure.Data.Models.Ad", b =>
                 {
+                    b.Navigation("Car")
+                        .IsRequired();
+
                     b.Navigation("Fans");
 
                     b.Navigation("Images");
@@ -1038,43 +1043,31 @@ namespace MobileWorld.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("MobileWorld.Infrastructure.Data.Models.Car", b =>
                 {
-                    b.Navigation("Ad")
+                    b.Navigation("Engine")
                         .IsRequired();
-                });
 
-            modelBuilder.Entity("MobileWorld.Infrastructure.Data.Models.ComfortDetail", b =>
-                {
                     b.Navigation("Feature")
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("MobileWorld.Infrastructure.Data.Models.ExteriorDetail", b =>
+            modelBuilder.Entity("MobileWorld.Infrastructure.Data.Models.Feature", b =>
                 {
-                    b.Navigation("Feature")
+                    b.Navigation("ComfortDetails")
                         .IsRequired();
-                });
 
-            modelBuilder.Entity("MobileWorld.Infrastructure.Data.Models.InteriorDetail", b =>
-                {
-                    b.Navigation("Feature")
+                    b.Navigation("ExteriorDetails")
                         .IsRequired();
-                });
 
-            modelBuilder.Entity("MobileWorld.Infrastructure.Data.Models.OthersDetail", b =>
-                {
-                    b.Navigation("Feature")
+                    b.Navigation("InteriorDetails")
                         .IsRequired();
-                });
 
-            modelBuilder.Entity("MobileWorld.Infrastructure.Data.Models.ProtectionDetail", b =>
-                {
-                    b.Navigation("Feature")
+                    b.Navigation("OthersDetails")
                         .IsRequired();
-                });
 
-            modelBuilder.Entity("MobileWorld.Infrastructure.Data.Models.SafetyDetail", b =>
-                {
-                    b.Navigation("Feature")
+                    b.Navigation("ProtectionDetails")
+                        .IsRequired();
+
+                    b.Navigation("SafetyDetails")
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

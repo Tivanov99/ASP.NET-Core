@@ -39,8 +39,8 @@ namespace MobileWorld.Infrastructure.Data.Models
         public double FuelConsuption { get; set; }
 
         //[ForeignKey(nameof(Car))]
-        //public int CarId { get; set; }
+        public int CarId { get; set; }
 
-        //public virtual Car Car { get; set; }
+        public virtual Car Car { get; set; }
     }
 }

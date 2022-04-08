@@ -212,15 +212,15 @@ namespace MobileWorld.Core.Services
 
             Car car = CreateCar(model.Car, model.Features);
 
+            Feature feature = CreateFeature(model.Features);
 
-            //Feature feature = CreateFeature(model.Features);
-
-
-            //Engine engine = CreateEngine(model.Car.Engine);
-
+            Engine engine = CreateEngine(model.Car.Engine);
 
             Region region = await CreateRegion(model.Region, townId);
 
+            car.Engine = engine;
+
+            car.Feature = feature;
 
             Ad newAd = new Ad()
             {
@@ -229,17 +229,14 @@ namespace MobileWorld.Core.Services
                 PhoneNumber = model.PhoneNumber,
                 Price = model.Price,
                 Description = model.Description,
+                Car = car,
                 Images = images,
                 CreatedOn = DateTime.Now,
-                Car = car,
                 Region = region,
                 OwnerId = ownerId,
             };
-
-
             car.AdId = newAd.Id;
             car.Ad = newAd;
-
 
             this.repo.Add<Ad>(newAd);
 
@@ -254,23 +251,24 @@ namespace MobileWorld.Core.Services
 
 
 
-        public Car Delete(string adId)
+        public void Delete(string adId)
         {
-            //Ad ad = this.repo.All<Ad>()
-            //    .Include(a => a.Car)
-            //    .Single(a => a.Id == adId);
+            Ad ad = this.repo.All<Ad>()
+                .Include(c => c.Car)
+               .Where(a => a.Id == adId)
+                .Single();
 
             Car car = this.repo.All<Car>()
                 .Include(c => c.Engine)
                 .Include(c => c.Feature)
-                .Single(c => c.AdId == adId);
+                .Where(c => c.Ad.Id == adId)
+                .Single();
 
-
-            if (car != null)
+            if (ad != null)
             {
                 try
                 {
-                    this.repo.Delete<Car>(car);
+                    this.repo.Delete<Ad>(ad);
                     this.repo.SaveChanges();
                 }
                 catch (Exception)
@@ -278,10 +276,6 @@ namespace MobileWorld.Core.Services
                     throw;
                 }
             }
-
-
-
-            return car;
         }
 
         public bool Update(string adId, AdViewModel updatedModel)
@@ -376,8 +370,6 @@ namespace MobileWorld.Core.Services
             SeatsCount = car.SeatsCount,
             Mileage = car.Mileage,
             //TODO : Think about models
-            Engine = CreateEngine(car.Engine),
-            Feature = CreateFeature(car.Features),
             Model = "e46",
             Make = car.Make,
             Year = car.Year,
@@ -405,6 +397,6 @@ namespace MobileWorld.Core.Services
         };
         private Feature CreateFeature(Feature features)
             => new Feature();
-            
+
     }
 }

@@ -17,8 +17,8 @@ namespace MobileWorld.Infrastructure.Data.Models
         [Phone]
         public string PhoneNumber { get; set; }
 
-        [ForeignKey(nameof(Car))]
-        public int CarId { get; set; }
+        //[ForeignKey(nameof(Car))]
+        //public int CarId { get; set; }
 
         public virtual Car Car { get; set; } 
 
@@ -29,6 +29,7 @@ namespace MobileWorld.Infrastructure.Data.Models
         public Region Region { get; set; }
 
         [Required]
+        [DataType("datetime2")]
         public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
 
         [Required]
@@ -36,6 +37,7 @@ namespace MobileWorld.Infrastructure.Data.Models
 
         [Required]
         [MaxLength(700)]
+        [Column(TypeName = "varchar(700)")]
         public string Description { get; set; }
 
         [ForeignKey(nameof(Owner))]
