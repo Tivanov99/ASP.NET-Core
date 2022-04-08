@@ -1,6 +1,5 @@
 ﻿using MobileWorld.Infrastructure.Data.Enums;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MobileWorld.Infrastructure.Data.Models
 {
@@ -31,9 +30,6 @@ namespace MobileWorld.Infrastructure.Data.Models
         [DataType("Nvarchar")]
         public string Color { get; set; }
 
-        //[ForeignKey(nameof(Engine))]
-        //public int EngineId { get; set; }
-
         public virtual Engine Engine { get; set; }
 
         [Required]
@@ -43,12 +39,8 @@ namespace MobileWorld.Infrastructure.Data.Models
         [Required]
         public decimal Mileage { get; set; }
 
-        //[ForeignKey(nameof(Feature))]
-        //public int FeatureId { get; set; }
-
         public virtual Feature Feature { get; set; }
 
-        //[ForeignKey(nameof(Ad))]
         public string AdId { get; set; }
 
         public virtual Ad Ad { get; set; }
