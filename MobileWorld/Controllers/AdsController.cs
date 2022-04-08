@@ -60,7 +60,7 @@ namespace MobileWorld.Controllers
         }
 
         public IActionResult AdsByCriteria(AdvancedSearchCarModel searchModel)
-        { 
+        {
             List<AdCardViewModel> cars = this.service
                 .GetAdsByAdvancedCriteria(searchModel);
 
@@ -129,20 +129,22 @@ namespace MobileWorld.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> EditPost(AdViewModel updatedModel, string? adId)
+        public IActionResult EditPost(AdViewModel updatedModel, string? adId)
         {
-            if(adId == null)
+            if (adId == null)
             {
                 return NotFound();
             }
-           bool result= this.service.Update(adId, updatedModel);
+
+            bool result = this.service.Update(adId, updatedModel);
 
             if (!result)
             {
                 //TODO : Return some error
             }
 
-            return View();
+
+            return RedirectToAction(actionName: nameof(this.Ad), new { adId = adId });
         }
     }
 }
