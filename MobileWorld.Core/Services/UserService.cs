@@ -24,21 +24,30 @@ namespace MobileWorld.Core.Services
         public List<AdCardViewModel> UserAds(string userId)
         {
             //TODO: Export car images from car model
-            var userAds = this.repo.All<ApplicationUser>()
-                .AsNoTracking()
-                .Where(u => u.Id == userId)
-                .SelectMany(a => a.Ads
-                                .Select(x => new AdCardViewModel()
-                                {
-                                    AdId = x.Id,
-                                    Title = x.Title,
-                                    Description = x.Description,
-                                    Price = x.Price,
-                                    ImageData= x.Images[0].ImageData
-                                }))
-                .ToList();
 
-            return userAds;
+            try
+            {
+                var userAds = this.repo.All<ApplicationUser>()
+                   .AsNoTracking()
+                   .Where(u => u.Id == userId)
+                   .SelectMany(a => a.Ads
+                                   .Select(x => new AdCardViewModel()
+                                   {
+                                       AdId = x.Id,
+                                       Title = x.Title,
+                                       Description = x.Description,
+                                       Price = x.Price,
+                                       ImageData = x.Images[0].ImageData
+                                   }))
+                   .ToList();
+                return userAds;
+
+            }
+            catch (KeyNotFoundException)
+            {
+
+                return null;
+            }
         }
 
         public List<AdCardViewModel> UserFavourites(string userId)

@@ -79,8 +79,6 @@ namespace MobileWorld.Infrastructure.Data
                 .OnDelete(DeleteBehavior.Cascade);
 
 
-
-
             base.OnModelCreating(builder);
         }
 

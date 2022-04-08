@@ -27,7 +27,6 @@ namespace MobileWorld.Controllers
             var result = this.userService
                 .UserAds(userId);
 
-            //return View(new List<AdCardViewModel>() { cars});
             return View(result);
         }
 
