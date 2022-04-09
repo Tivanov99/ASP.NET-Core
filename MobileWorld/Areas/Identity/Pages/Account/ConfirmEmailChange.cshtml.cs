@@ -63,7 +63,7 @@ namespace MobileWorld.Areas.Identity.Pages.Account
             }
 
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Thank you for confirming your email change.";
+            StatusMessage = "Благодарам ви, че потвърдихте промяната на вашият имейл.";
             return Page();
         }
     }
