@@ -8,7 +8,7 @@ namespace MobileWorld.Core.Contracts
     {
         AdViewModel GetAdById(string adId);
 
-        AdViewModel GetAdByIdAsNoTracking(string adId);
+        AdViewModel GetAdByIdForEdit(string adId);
 
         List<AdCardViewModel> GetAdsByAdvancedCriteria(AdvancedSearchCarModel model);
 

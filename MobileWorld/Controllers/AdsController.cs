@@ -88,7 +88,7 @@ namespace MobileWorld.Controllers
             }
 
             var ad = this.service
-                .GetAdByIdAsNoTracking(adId);
+                .GetAdByIdForEdit(adId);
 
             if (ad == null)
             {
@@ -103,7 +103,7 @@ namespace MobileWorld.Controllers
         public async Task<IActionResult> DeleteConfirmed(string adId)
         {
             var ad = this.service
-                .GetAdByIdAsNoTracking(adId);
+                .GetAdByIdForEdit(adId);
 
             if (ad == null)
             {
@@ -123,7 +123,7 @@ namespace MobileWorld.Controllers
         }
         public IActionResult Edit(string adId)
         {
-            var ad = this.service.GetAdById(adId);
+            var ad = this.service.GetAdByIdForEdit(adId);
             return View(ad);
         }
 

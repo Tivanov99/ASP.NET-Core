@@ -16,119 +16,19 @@ namespace MobileWorld.Core.Services
             this.repo = _repo;
         }
 
+        
         public AdViewModel GetAdById(string adId)
         {
-            var car = this.repo.All<Ad>()
-                  .Include(a => a.Car)
-                  .Where(a => a.Id == adId)
-                  .Select(a => new AdViewModel()
-                  {
-                      Id = a.Id,
-                      Title = a.Title,
-                      Price = a.Price,
-                      Description = a.Description,
-
-                      Region = new RegionModel()
-                      {
-                          RegionName = a.Region.RegionName,
-                          Neiborhood = a.Region.Neiborhood,
-                          TownName = a.Region.Town.Name,
-                      },
-                      Car = new CarModel()
-                      {
-                          SeatsCount = a.Car.SeatsCount,
-                          Year = a.Car.Year,
-                          Make = a.Car.Make,
-                          Model = a.Car.Model,
-                          GearType = a.Car.GearType,
-                          Color = a.Car.Color,
-                          Mileage = a.Car.Mileage,
-                          Images = a.Images.Select(x => x.ImageData).ToList(),
-                          Engine = new EngineModel()
-                          {
-                              FuelConsuption = a.Car.Engine.FuelConsuption,
-                              FuelType = a.Car.Engine.FuelType,
-                              EcoLevel = a.Car.Engine.EcoLevel,
-                              CubicCapacity = a.Car.Engine.CubicCapacity,
-                              NewtonMeter = a.Car.Engine.NewtonMeter,
-                              HorsePower = a.Car.Engine.HorsePower,
-                              AutoGas = a.Car.Engine.AutoGas,
-                              Hybrid = a.Car.Engine.Hybrid,
-                          },
-                          Features = new FeaturesModel()
-                          {
-                              OthersDetails = a.Car.Feature.OthersDetails,
-                              ComfortDetails = a.Car.Feature.ComfortDetails,
-                              SafetyDetails = a.Car.Feature.SafetyDetails,
-                              ExteriorDetails = a.Car.Feature.ExteriorDetails,
-                              ProtectionDetails = a.Car.Feature.ProtectionDetails,
-                              InteriorDetails = a.Car.Feature.InteriorDetails,
-                          }
-                      },
-                      Owner = new OwnerModel()
-                      {
-                          OwnerId = a.OwnerId,
-                      },
-                  })
-                  .FirstOrDefault();
+            var car = AdProjection(adId)
+                .AsNoTracking()
+                .FirstOrDefault();
 
             return car;
         }
 
-        public AdViewModel GetAdByIdAsNoTracking(string adId)
+        public AdViewModel GetAdByIdForEdit(string adId)
         {
-            var car = this.repo.All<Ad>()
-                .AsNoTracking()
-                .Where(a => a.Id == adId)
-                .Select(a => new AdViewModel()
-                {
-                    Id = a.Id,
-                    Title = a.Title,
-                    Price = a.Price,
-                    Description = a.Description,
-
-                    Region = new RegionModel()
-                    {
-                        RegionName = a.Region.RegionName,
-                        Neiborhood = a.Region.Neiborhood,
-                        TownName = a.Region.Town.Name,
-                    },
-                    Car = new CarModel()
-                    {
-                        SeatsCount = a.Car.SeatsCount,
-                        Year = a.Car.Year,
-                        Make = a.Car.Make,
-                        Model = a.Car.Model,
-                        GearType = a.Car.GearType,
-                        Color = a.Car.Color,
-                        Mileage = a.Car.Mileage,
-                        Images = a.Images.Select(x => x.ImageData).ToList(),
-                        Engine = new EngineModel()
-                        {
-                            FuelConsuption = a.Car.Engine.FuelConsuption,
-                            FuelType = a.Car.Engine.FuelType,
-                            EcoLevel = a.Car.Engine.EcoLevel,
-                            CubicCapacity = a.Car.Engine.CubicCapacity,
-                            NewtonMeter = a.Car.Engine.NewtonMeter,
-                            HorsePower = a.Car.Engine.HorsePower,
-                            AutoGas = a.Car.Engine.AutoGas,
-                            Hybrid = a.Car.Engine.Hybrid,
-                        },
-                        Features = new FeaturesModel()
-                        {
-                            OthersDetails = a.Car.Feature.OthersDetails,
-                            ComfortDetails = a.Car.Feature.ComfortDetails,
-                            SafetyDetails = a.Car.Feature.SafetyDetails,
-                            ExteriorDetails = a.Car.Feature.ExteriorDetails,
-                            ProtectionDetails = a.Car.Feature.ProtectionDetails,
-                            InteriorDetails = a.Car.Feature.InteriorDetails,
-                        }
-                    },
-                    Owner = new OwnerModel()
-                    {
-                        OwnerId = a.OwnerId,
-                    },
-                })
+            var car = AdProjection(adId)
                 .FirstOrDefault();
 
             return car;
@@ -387,7 +287,6 @@ namespace MobileWorld.Core.Services
                 RegionName = region.RegionName,
                 Neiborhood = region.Neiborhood,
             };
-
         private Engine CreateEngineEntity(EngineModel model)
         => new Engine()
         {
@@ -424,5 +323,58 @@ namespace MobileWorld.Core.Services
                  Region = region,
                  OwnerId = ownerId,
              };
+        private IQueryable<AdViewModel> AdProjection(string adId)
+            => this.repo.All<Ad>()
+                  .Include(a => a.Car)
+                  .Where(a => a.Id == adId)
+                  .Select(a => new AdViewModel()
+                  {
+                      Id = a.Id,
+                      Title = a.Title,
+                      Price = a.Price,
+                      Description = a.Description,
+
+                      Region = new RegionModel()
+                      {
+                          RegionName = a.Region.RegionName,
+                          Neiborhood = a.Region.Neiborhood,
+                          TownName = a.Region.Town.Name,
+                      },
+                      Car = new CarModel()
+                      {
+                          SeatsCount = a.Car.SeatsCount,
+                          Year = a.Car.Year,
+                          Make = a.Car.Make,
+                          Model = a.Car.Model,
+                          GearType = a.Car.GearType,
+                          Color = a.Car.Color,
+                          Mileage = a.Car.Mileage,
+                          Images = a.Images.Select(x => x.ImageData).ToList(),
+                          Engine = new EngineModel()
+                          {
+                              FuelConsuption = a.Car.Engine.FuelConsuption,
+                              FuelType = a.Car.Engine.FuelType,
+                              EcoLevel = a.Car.Engine.EcoLevel,
+                              CubicCapacity = a.Car.Engine.CubicCapacity,
+                              NewtonMeter = a.Car.Engine.NewtonMeter,
+                              HorsePower = a.Car.Engine.HorsePower,
+                              AutoGas = a.Car.Engine.AutoGas,
+                              Hybrid = a.Car.Engine.Hybrid,
+                          },
+                          Features = new FeaturesModel()
+                          {
+                              OthersDetails = a.Car.Feature.OthersDetails,
+                              ComfortDetails = a.Car.Feature.ComfortDetails,
+                              SafetyDetails = a.Car.Feature.SafetyDetails,
+                              ExteriorDetails = a.Car.Feature.ExteriorDetails,
+                              ProtectionDetails = a.Car.Feature.ProtectionDetails,
+                              InteriorDetails = a.Car.Feature.InteriorDetails,
+                          }
+                      },
+                      Owner = new OwnerModel()
+                      {
+                          OwnerId = a.OwnerId,
+                      },
+                  });
     }
 }
