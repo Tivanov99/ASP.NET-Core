@@ -64,12 +64,12 @@ namespace MobileWorld.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
-            [Required]
+            [Required(ErrorMessage = "Полето 'Име' е задължително.")]
             [StringLength(40, ErrorMessage = "Името трябва да е между 5 и {0} символа")]
             [Display(Name = "Име")]
             public string FirstName { get; set; }
 
-            [Required]
+            [Required(ErrorMessage ="Полето 'Фамилия' е задължително.")]
             [StringLength(45, ErrorMessage = "Фамилното име трябва да е между 5 и {0} символа")]
             [Display(Name ="Фамилия")]
             public string LastName { get; set; }
@@ -79,7 +79,7 @@ namespace MobileWorld.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required(ErrorMessage = "Полето Имейл е задължително.")]
+            [Required(ErrorMessage = "Полето 'Имейл' е задължително.")]
             [EmailAddress(ErrorMessage = "Не валиден имейл адрес.")]
             [Display(Name = "Email")]
             public string Email { get; set; }
@@ -88,7 +88,7 @@ namespace MobileWorld.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required(ErrorMessage = "Полето Парола е задължително.")]
+            [Required(ErrorMessage = "Полето 'Парола' е задължително.")]
             [StringLength(100, ErrorMessage = "{0} трябва да бъде най-малко {2} и най-много {1} знака.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
@@ -98,8 +98,9 @@ namespace MobileWorld.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
+            [Required(ErrorMessage = "Полето 'Потвърди парола' е задължително.")]
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
+            [Display(Name = "Потвърди парола")]
             [Compare("Password", ErrorMessage = "Паролата и паролата за потвърждение не съвпадат.")]
             public string ConfirmPassword { get; set; }
         }
