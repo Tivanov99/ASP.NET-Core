@@ -7,11 +7,11 @@ namespace MobileWorld.Infrastructure.Data.Identity
     public class ApplicationUser : IdentityUser
     {
         [Required]
-        [StringLength(40,ErrorMessage ="Потребителското име трябва да е между 5 и {0} символа")]
+        [StringLength(45, MinimumLength = 3)]
         public string FirstName { get; set; }
 
         [Required]
-        [StringLength(45, ErrorMessage = "Фамилното име трябва да е между 5 и {0} символа")]
+        [StringLength(45,MinimumLength =3)]
         public string LastName { get; set; }
 
         public List<Ad> Ads { get; set; } = new();
