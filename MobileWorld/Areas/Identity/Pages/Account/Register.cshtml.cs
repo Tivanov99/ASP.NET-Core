@@ -64,6 +64,17 @@ namespace MobileWorld.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
+            [Required]
+            [StringLength(40, ErrorMessage = "Името трябва да е между 5 и {0} символа")]
+            [Display(Name = "Име")]
+            public string FirstName { get; set; }
+
+            [Required]
+            [StringLength(45, ErrorMessage = "Фамилното име трябва да е между 5 и {0} символа")]
+            [Display(Name ="Фамилия")]
+            public string LastName { get; set; }
+
+
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
