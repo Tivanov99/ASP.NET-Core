@@ -142,7 +142,7 @@ namespace MobileWorld.Areas.Identity.Pages.Account
                         protocol: Request.Scheme);
 
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Моля, потвърдете акаунта си <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>щракване тук </a>.");
+                        $"Моля, потвърдете акаунта си <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>кликайки върху този линк</a>.");
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
