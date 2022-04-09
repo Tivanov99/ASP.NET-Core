@@ -13,7 +13,7 @@ namespace MobileWorld.Infrastructure.Data.Common
 
         public void Add<T>(T entity) where T : class
         {
-            DbSet<T>().Add(entity);
+            this.DbSet<T>().Add(entity);
         }
 
         public IQueryable<T> All<T>() where T : class
@@ -28,10 +28,10 @@ namespace MobileWorld.Infrastructure.Data.Common
                 throw new ArgumentNullException("entity");
             }
 
-            dbContext.Set<TEntity>().Remove(entity);
+            this.DbSet<TEntity>().Remove(entity);
         }
 
-        
+
 
         public int SaveChanges()
         {
