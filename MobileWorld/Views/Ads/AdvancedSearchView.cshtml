@@ -4,16 +4,14 @@
 
 <form asp-action="AdsByCriteria" asp-controller="Ads" method="get">
     @await Html.PartialAsync("_SearchPartial")
+    @await Html.PartialAsync("_AdvancedSearchPartial")
     @await Html.PartialAsync("_FeaturesPartial")
 </form>
 
 
 <script>
     let searchLink= document.querySelector(".detailed-search");
-    searchLink.className="hide";
-    let form = document.querySelector("#searchForm");
-    let details = document.querySelector("#details");
-    form.appendChild(details);
+    searchLink.parentNode.removeChild(searchLink);
 
     let button = document.querySelector(".btn-primary");
     button.classList.add("searchBtn");
