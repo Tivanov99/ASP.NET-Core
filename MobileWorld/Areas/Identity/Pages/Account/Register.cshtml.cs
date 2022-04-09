@@ -65,12 +65,12 @@ namespace MobileWorld.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required(ErrorMessage = "Полето 'Име' е задължително.")]
-            [StringLength(40, ErrorMessage = "Името трябва да е между 5 и {0} символа")]
+            [StringLength(40, ErrorMessage = "Полето '{0}' трябва да бъде най-малко {2} и най-много {1} знака.", MinimumLength = 3)]
             [Display(Name = "Име")]
             public string FirstName { get; set; }
 
             [Required(ErrorMessage ="Полето 'Фамилия' е задължително.")]
-            [StringLength(45, ErrorMessage = "Фамилното име трябва да е между 5 и {0} символа")]
+            [StringLength(40, ErrorMessage = "Полето '{0}' трябва да бъде най-малко {2} и най-много {1} знака.", MinimumLength = 3)]
             [Display(Name ="Фамилия")]
             public string LastName { get; set; }
 
