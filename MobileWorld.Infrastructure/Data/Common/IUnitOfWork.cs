@@ -2,11 +2,13 @@
 
 namespace MobileWorld.Infrastructure.Data.Common
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
-        IRepository<Ad> AdRepository { get;  }
+        IAdRepository AdRepository { get;  }
 
-        IRepository<Car> CarRepository { get;  }
+        ICarRepository CarRepository { get;  }
+
+        IUserRepository UserRepository { get; }
 
         void Save();
 

@@ -9,9 +9,9 @@ namespace MobileWorld.Core.Services
 {
     public class CarService : ICarService
     {
-        private readonly IRepository repo;
+        private readonly ICarRepository repo;
 
-        public CarService(IRepository _repo)
+        public CarService(ICarRepository _repo)
         {
             this.repo = _repo;
         }

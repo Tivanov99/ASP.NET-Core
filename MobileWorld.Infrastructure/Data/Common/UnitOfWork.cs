@@ -4,27 +4,31 @@ namespace MobileWorld.Infrastructure.Data.Common
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
-        private ApplicationDbContext context;
+        private readonly ApplicationDbContext context;
+        private bool disposed = false;
+
 
         public UnitOfWork(ApplicationDbContext _context,
-            IRepository<Ad> _adRepository
-            , IRepository<Car> _carRepository)
+            IAdRepository _adRepository,
+            ICarRepository _carRepository,
+            IUserRepository _userRepository)
         {
             this.context = _context;
             this.AdRepository = _adRepository;
             this.CarRepository = _carRepository;
+            this.UserRepository = _userRepository;
         }
 
-        public IRepository<Ad> AdRepository { get; }
+        public IAdRepository AdRepository { get; }
 
-        public IRepository<Car> CarRepository { get; }
+        public ICarRepository CarRepository { get; }
 
+        public IUserRepository UserRepository { get; }
 
         public void Save()
         {
             this.context.SaveChanges();
         }
-        private bool disposed = false;
 
         protected virtual void Dispose(bool disposing)
         {

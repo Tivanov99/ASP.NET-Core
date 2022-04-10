@@ -1,19 +1,16 @@
 ﻿using MobileWorld.Core.Contracts;
 using MobileWorld.Infrastructure.Data.Common;
-using MobileWorld.Infrastructure.Data.Identity;
 using MobileWorld.Core.ViewModels;
-using MobileWorld.Core.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace MobileWorld.Core.Services
 {
     public class UserService : IUserService
     {
-        private readonly IRepository repo;
+        private readonly IUnitOfWork unitOfWork;
 
-        public UserService(IRepository _repo)
+        public UserService(IUnitOfWork _unitOfWork)
         {
-            this.repo = _repo;
+            this.unitOfWork = _unitOfWork;
         }
 
 
@@ -21,8 +18,8 @@ namespace MobileWorld.Core.Services
         {
             try
             {
-                var userAds = this.repo.All<ApplicationUser>()
-                   .AsNoTracking()
+                var userAds = this.unitOfWork.UserRepository.GetAll()
+                   //.AsNoTracking()
                    .Where(u => u.Id == userId)
                    .SelectMany(a => a.Ads
                                    .Select(x => new AdCardViewModel()
@@ -45,8 +42,8 @@ namespace MobileWorld.Core.Services
 
         public List<AdCardViewModel> UserFavourites(string userId)
         {
-            var result = this.repo.All<ApplicationUser>()
-                .AsNoTracking()
+            var result = this.unitOfWork.UserRepository.GetAll()
+                //.AsNoTracking()
                 .Where(u => u.Id == userId)
                 .SelectMany(u => u.FavoriteAds)
                 .Select(fv => new AdCardViewModel()
