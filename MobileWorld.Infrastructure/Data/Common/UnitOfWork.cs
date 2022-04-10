@@ -9,7 +9,7 @@ namespace MobileWorld.Infrastructure.Data.Common
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
-        private ApplicationDbContext context ;
+        private ApplicationDbContext context;
 
         public UnitOfWork(ApplicationDbContext _context,
             IRepository<Ad> _adRepository
@@ -20,19 +20,33 @@ namespace MobileWorld.Infrastructure.Data.Common
             this.CarRepository = _carRepository;
         }
 
+        public IRepository<Ad> AdRepository { get; }
 
-        public IRepository<Ad> AdRepository { get ;  }
+        public IRepository<Car> CarRepository { get; }
 
-        public IRepository<Car> CarRepository { get ;}
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            this.context.SaveChanges();
+        }
+        private bool disposed = false;
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                    context.Dispose();
+                }
+            }
+            this.disposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 }
