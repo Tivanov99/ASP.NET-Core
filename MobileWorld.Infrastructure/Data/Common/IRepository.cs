@@ -1,11 +1,11 @@
 ﻿namespace MobileWorld.Infrastructure.Data.Common
 {
-    public interface IRepository<T> where T : class
+    public interface IRepository<TEntity> where TEntity : class
     {
-        IEnumerable<T> GetAll();
-        T GetById(object id);
-        void Insert(T obj);
-        void Update(T obj);
-        void Delete(T obj);
+        IEnumerable<TEntity> GetAll();
+        TEntity GetById(object id);
+        void Insert(TEntity obj);
+        void Update(TEntity obj);
+        void Delete(TEntity obj);
     }
 }

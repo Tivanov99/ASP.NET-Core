@@ -3,40 +3,43 @@ using System;
 
 namespace MobileWorld.Infrastructure.Data.Common
 {
-    public class Repository : IRepository, IDisposable
+    public class Repository<TEntity> : IRepository<TEntity>, IDisposable where TEntity : class
     {
-        private readonly ApplicationDbContext dbContext;
+        private ApplicationDbContext context;
+        private DbSet<TEntity> dbSet;
 
         public Repository(ApplicationDbContext _context)
         {
-            this.dbContext = _context;
+            this.context = _context;
+            this.dbSet = context.Set<TEntity>();
         }
 
-        public void Add<T>(T entity) where T : class
+        public void Delete(TEntity obj)
         {
-            this.DbSet<T>().Add(entity);
+            throw new NotImplementedException();
         }
 
-        public IQueryable<T> All<T>() where T : class
+        public IEnumerable<TEntity> GetAll()
         {
-            return this.DbSet<T>().AsQueryable();
+            throw new NotImplementedException();
         }
 
-        public void Delete<TEntity>(TEntity entity) where TEntity : class
+        public TEntity GetById(object id)
         {
-            if (entity == null)
-            {
-                throw new ArgumentNullException("entity");
-            }
-
-            this.DbSet<TEntity>().Remove(entity);
+            throw new NotImplementedException();
         }
 
-        public void Dispose()
+        public void Insert(TEntity obj)
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            throw new NotImplementedException();
         }
+
+        public void Update(TEntity obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        private bool disposed = false;
 
         protected virtual void Dispose(bool disposing)
         {
@@ -44,23 +47,16 @@ namespace MobileWorld.Infrastructure.Data.Common
             {
                 if (disposing)
                 {
-                    this.dbContext.Dispose();
+                    context.Dispose();
                 }
             }
             this.disposed = true;
         }
 
-        public int SaveChanges()
+        public void Dispose()
         {
-            return this.dbContext.SaveChanges();
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
-
-        private DbSet<T> DbSet<T>() where T : class
-        {
-            return dbContext.Set<T>();
-        }
-
-        private bool disposed = false;
-
     }
 }
