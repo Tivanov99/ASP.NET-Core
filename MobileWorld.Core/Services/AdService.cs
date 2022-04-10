@@ -16,7 +16,6 @@ namespace MobileWorld.Core.Services
             this.repo = _repo;
         }
 
-        
         public AdViewModel GetAdById(string adId)
         {
             var car = AdProjection(adId)
@@ -193,6 +192,8 @@ namespace MobileWorld.Core.Services
             }
             return false;
         }
+
+
 
         private List<PropertyDto> GetBaseSearchCriteria(object model)
         {

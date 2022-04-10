@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace MobileWorld.Infrastructure.Data.Common
 {
-    public class Repository : IRepository
+    public class Repository : IRepository, IDisposable
     {
         private readonly ApplicationDbContext dbContext;
 
@@ -31,7 +32,23 @@ namespace MobileWorld.Infrastructure.Data.Common
             this.DbSet<TEntity>().Remove(entity);
         }
 
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
 
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                    this.dbContext.Dispose();
+                }
+            }
+            this.disposed = true;
+        }
 
         public int SaveChanges()
         {
@@ -42,5 +59,8 @@ namespace MobileWorld.Infrastructure.Data.Common
         {
             return dbContext.Set<T>();
         }
+
+        private bool disposed = false;
+
     }
 }

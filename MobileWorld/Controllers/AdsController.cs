@@ -146,5 +146,10 @@ namespace MobileWorld.Controllers
 
             return RedirectToAction(actionName: nameof(this.Ad), new { adId = adId });
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+        }
     }
 }
