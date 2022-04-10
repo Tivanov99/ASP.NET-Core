@@ -31,22 +31,23 @@ namespace MobileWorld.Infrastructure.Data.Common
 
         public virtual IEnumerable<TEntity> GetAll()
         {
-            throw new NotImplementedException();
+            return this.dbSet.ToList();
         }
 
         public virtual TEntity GetById(object id)
         {
-            throw new NotImplementedException();
+            return this.dbSet.Find(id);
         }
 
-        public virtual void Insert(TEntity obj)
+        public virtual void Insert(TEntity entity)
         {
-            throw new NotImplementedException();
+           this.dbSet.Add(entity);
         }
 
-        public virtual void Update(TEntity obj)
+        public virtual void Update(TEntity entityToUpdate)
         {
-            throw new NotImplementedException();
+            dbSet.Attach(entityToUpdate);
+            this.context.Entry(entityToUpdate).State = EntityState.Modified;
         }
 
         private bool disposed = false;
