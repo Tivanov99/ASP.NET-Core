@@ -2,7 +2,7 @@
 
 namespace MobileWorld.Infrastructure.Data.Common
 {
-    public class CarRepository : Repository<Car>, IRepository<Car>
+    public class CarRepository : Repository<Car>, ICarRepository
     {
         public CarRepository(ApplicationDbContext context)
             :base(context)

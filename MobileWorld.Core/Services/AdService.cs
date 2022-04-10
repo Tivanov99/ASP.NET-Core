@@ -10,10 +10,10 @@ namespace MobileWorld.Core.Services
 {
     public class AdService : IAdService
     {
-        private readonly IRepository repo;
-        public AdService(IRepository _repo)
+        private readonly IUnitOfWork unitOfWork;
+        public AdService(IUnitOfWork _unitOfWork)
         {
-            this.repo = _repo;
+            this.unitOfWork = _unitOfWork;
         }
 
         public AdViewModel GetAdById(string adId)
@@ -64,8 +64,9 @@ namespace MobileWorld.Core.Services
 
         public List<AdCardViewModel> GetIndexAds()
         {
-            var cars = this.repo.All<Ad>()
-                .AsNoTracking()
+            var cars = this.unitOfWork.AdRepository
+                .GetAll()
+                //.AsNoTracking()
                 .OrderByDescending(a => a.CreatedOn)
                 .Select(a => new AdCardViewModel()
                 {
@@ -108,8 +109,9 @@ namespace MobileWorld.Core.Services
 
             try
             {
-                this.repo.Add<Ad>(newAd);
-                int result = this.repo.SaveChanges();
+                this.unitOfWork.AdRepository.Insert(newAd);
+                //TODO: Check here 
+                //int result = this.unitOfWork.SaveChanges();
             }
             catch (Exception)
             {
@@ -123,34 +125,32 @@ namespace MobileWorld.Core.Services
 
         public void Delete(string adId)
         {
-            Ad ad = this.repo.All<Ad>()
-                .Include(c => c.Car)
-               .Where(a => a.Id == adId)
-                .Single();
+           this.unitOfWork.AdRepository
+                .Delete(adId);
 
-            Car car = this.repo.All<Car>()
-                .Include(c => c.Engine)
-                .Include(c => c.Feature)
-                .Where(c => c.Ad.Id == adId)
-                .Single();
+            //Car car = this.unitOfWork.All<Car>()
+            //    .Include(c => c.Engine)
+            //    .Include(c => c.Feature)
+            //    .Where(c => c.Ad.Id == adId)
+            //    .Single();
 
-            if (ad != null)
-            {
-                try
-                {
-                    this.repo.Delete<Ad>(ad);
-                    this.repo.SaveChanges();
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-            }
+            //if (ad != null)
+            //{
+            //    try
+            //    {
+            //        this.unitOfWork.Delete<Ad>(ad);
+            //        this.unitOfWork.SaveChanges();
+            //    }
+            //    catch (Exception)
+            //    {
+            //        throw;
+            //    }
+            //}
         }
 
         public bool Update(string adId, AdViewModel updatedModel)
         {
-            Ad? ad = this.repo.All<Ad>()
+            Ad? ad = this.unitOfWork.All<Ad>()
                 .Include(a => a.Region)
                 .Include(a => a.Car)
                     .ThenInclude(c => c.Feature)
@@ -181,7 +181,7 @@ namespace MobileWorld.Core.Services
                     ad.Region.TownId = townId;
                     ad.Region.RegionName = updatedModel.Region.RegionName;
                     ad.Region.Neiborhood = updatedModel.Region.Neiborhood;
-                    this.repo.SaveChanges();
+                    this.unitOfWork.SaveChanges();
                     return true;
 
                 }
@@ -240,7 +240,7 @@ namespace MobileWorld.Core.Services
 
         private int GetTownIdByName(string townName)
         {
-            var result = this.repo.All<Town>()
+            var result = this.unitOfWork.All<Town>()
                 .Where(t => t.Name == townName)
                 .Select(t => t.Id)
                 .FirstOrDefault();
@@ -305,7 +305,7 @@ namespace MobileWorld.Core.Services
                  OwnerId = ownerId,
              };
         private IQueryable<AdViewModel> AdProjection(string adId)
-            => this.repo.All<Ad>()
+            => this.unitOfWork.All<Ad>()
                   .Include(a => a.Car)
                   .Where(a => a.Id == adId)
                   .Select(a => new AdViewModel()

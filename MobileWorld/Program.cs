@@ -20,8 +20,9 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IUserService, UserService>()
 .AddScoped<ICarService, CarService>()
-.AddScoped<IRepository, Repository>()
 .AddScoped<IUnitOfWork, UnitOfWork>()
+.AddScoped<IAdRepository, AdRepository>()
+.AddScoped<ICarRepository, CarRepository>()
 .AddScoped<IAdService, AdService>()
 .AddScoped<DbContext, ApplicationDbContext>();
 
