@@ -5,9 +5,5 @@ namespace MobileWorld.Core.Contracts
 {
     public interface ICarService
     {
-        List<AdCardViewModel> GetIndexCars();
-
-        //List<AdCardViewModel> GetAllCarsWithCriteria(AdvancedSearchCarModel model);
-
     }
 }
