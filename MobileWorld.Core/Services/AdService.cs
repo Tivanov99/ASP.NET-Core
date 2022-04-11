@@ -18,9 +18,8 @@ namespace MobileWorld.Core.Services
 
         public AdViewModel GetAdById(string adId)
         {
-            var car = AdProjection(adId)
-                .AsNoTracking()
-                .FirstOrDefault();
+            var car = AdProjection(adId);
+                //.AsNoTracking()
 
             return car;
         }
@@ -93,7 +92,7 @@ namespace MobileWorld.Core.Services
 
             //Engine engine = CreateEngine(model.Car.Engine);
 
-            Region region = await CreateRegionEntity(model.Region, townId);
+            Region region = CreateRegionEntity(model.Region, townId);
             //TODO: If something with create are not works check here and CreateCar method.
 
             //car.Engine = engine;
@@ -242,7 +241,7 @@ namespace MobileWorld.Core.Services
 
         private int GetTownIdByName(string townName)
         {
-            var result = this.unitOfWork.All<Town>()
+            var result = this.unitOfWork.<Town>()
                 .Where(t => t.Name == townName)
                 .Select(t => t.Id)
                 .FirstOrDefault();
@@ -263,13 +262,14 @@ namespace MobileWorld.Core.Services
             Year = car.Year,
         };
 
-        private async Task<Region> CreateRegionEntity(RegionModel region, int townId)
+        private Region CreateRegionEntity(RegionModel region, int townId)
             => new Region()
             {
                 TownId = townId,
                 RegionName = region.RegionName,
                 Neiborhood = region.Neiborhood,
             };
+       
         private Engine CreateEngineEntity(EngineModel model)
         => new Engine()
         {
@@ -282,6 +282,7 @@ namespace MobileWorld.Core.Services
             Hybrid = model.Hybrid,
             AutoGas = model.AutoGas,
         };
+      
         private Feature CreateFeatureEntity(Feature features)
             => new Feature()
             {
@@ -292,6 +293,7 @@ namespace MobileWorld.Core.Services
                 OthersDetails = features.OthersDetails,
                 InteriorDetails = features.InteriorDetails,
             };
+       
         private Ad CreaAdEntity(AdInputModel model, List<Image> images, string ownerId, Car car, Region region)
              => new Ad()
              {
@@ -306,7 +308,8 @@ namespace MobileWorld.Core.Services
                  Region = region,
                  OwnerId = ownerId,
              };
-        private AdViewModel AdProjection(string adId)
+      
+        private AdViewModel? AdProjection(string adId)
             => this.unitOfWork.AdRepository.GetAdByIdAsIQueryable(adId)
                   .Include(a => a.Car)
                   .Select(a => new AdViewModel()
@@ -315,7 +318,6 @@ namespace MobileWorld.Core.Services
                       Title = a.Title,
                       Price = a.Price,
                       Description = a.Description,
-
                       Region = new RegionModel()
                       {
                           RegionName = a.Region.RegionName,
@@ -358,6 +360,6 @@ namespace MobileWorld.Core.Services
                           OwnerId = a.OwnerId,
                       },
                   })
-                .Single();
+                .FirstOrDefault();
     }
 }

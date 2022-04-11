@@ -9,7 +9,6 @@ namespace MobileWorld.Infrastructure.Data.Common
             : base(_context)
         {
             context = _context;
-            context.Ads.Find("Da");
         }
 
         public IQueryable<Ad> GetAdByIdAsIQueryable(string id)
