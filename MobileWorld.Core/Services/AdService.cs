@@ -19,7 +19,7 @@ namespace MobileWorld.Core.Services
         public AdViewModel GetAdById(string adId)
         {
             var car = AdProjection(adId);
-                //.AsNoTracking()
+            //.AsNoTracking()
 
             return car;
         }
@@ -56,16 +56,14 @@ namespace MobileWorld.Core.Services
                 (defaultSearchCriteria, featuresSearchCriteria);
 
 
-
             return null;
         }
 
         public List<AdCardViewModel> GetIndexAds()
         {
             var cars = this.unitOfWork.AdRepository
-                .GetAll()
-                //.AsNoTracking()
-                .OrderByDescending(a => a.CreatedOn)
+               .GetAllAsQueryable()
+               .Include(a => a.Images)
                 .Select(a => new AdCardViewModel()
                 {
                     AdId = a.Id,
@@ -74,7 +72,7 @@ namespace MobileWorld.Core.Services
                     Title = a.Title,
                     ImageData = a.Images[0].ImageData
                 })
-                .Take(6)
+               .Take(6)
                 .ToList();
 
             return cars;
@@ -107,7 +105,11 @@ namespace MobileWorld.Core.Services
 
             try
             {
+
                 this.unitOfWork.AdRepository.Insert(newAd);
+                this.unitOfWork.Save();
+
+                //this.unitOfWork.Dispose();
                 //TODO: Check here 
                 //int result = this.unitOfWork.SaveChanges();
             }
@@ -115,7 +117,6 @@ namespace MobileWorld.Core.Services
             {
                 return false;
             }
-
             return true;
         }
 
@@ -123,40 +124,27 @@ namespace MobileWorld.Core.Services
 
         public void Delete(string adId)
         {
-            this.unitOfWork.AdRepository
-                 .Delete(adId);
-
-            //Car car = this.unitOfWork.All<Car>()
-            //    .Include(c => c.Engine)
-            //    .Include(c => c.Feature)
-            //    .Where(c => c.Ad.Id == adId)
-            //    .Single();
-
-            //if (ad != null)
-            //{
-            //    try
-            //    {
-            //        this.unitOfWork.Delete<Ad>(ad);
-            //        this.unitOfWork.SaveChanges();
-            //    }
-            //    catch (Exception)
-            //    {
-            //        throw;
-            //    }
-            //}
+            Ad ad = this.unitOfWork
+                .AdRepository
+                .GetAllAsQueryable()
+                .Include(a=>a.Car)
+                .ThenInclude(c=> new {c.Engine,c.Feature })
+                .Where(ad => ad.Id == adId)
+                .First();
+            this.unitOfWork.Save();
         }
 
         public bool Update(string adId, AdViewModel updatedModel)
         {
-            Ad? ad = this.unitOfWork.AdRepository.GetById(adId);
-            //TODO : Check here
-
-            //.Include(a => a.Region)
-            //.Include(a => a.Car)
-            //    .ThenInclude(c => c.Feature)
-            //.Include(a => a.Car.Engine)
-            //.Where(a => a.Id == adId)
-            //.FirstOrDefault();
+            Ad? ad = this.unitOfWork
+                .AdRepository
+            .GetAllAsQueryable()
+            .Where(a => a.Id == adId)
+            .Include(a => a.Region)
+            .Include(a => a.Car)
+                .ThenInclude(c => c.Feature)
+            .Include(a => a.Car.Engine)
+            .FirstOrDefault();
 
             int townId = GetTownIdByName(updatedModel.Region.TownName);
 
@@ -241,7 +229,7 @@ namespace MobileWorld.Core.Services
 
         private int GetTownIdByName(string townName)
         {
-            var result = this.unitOfWork.<Town>()
+            var result = this.unitOfWork.TownRepository.GetAll()
                 .Where(t => t.Name == townName)
                 .Select(t => t.Id)
                 .FirstOrDefault();
@@ -269,7 +257,7 @@ namespace MobileWorld.Core.Services
                 RegionName = region.RegionName,
                 Neiborhood = region.Neiborhood,
             };
-       
+
         private Engine CreateEngineEntity(EngineModel model)
         => new Engine()
         {
@@ -282,7 +270,7 @@ namespace MobileWorld.Core.Services
             Hybrid = model.Hybrid,
             AutoGas = model.AutoGas,
         };
-      
+
         private Feature CreateFeatureEntity(Feature features)
             => new Feature()
             {
@@ -293,7 +281,7 @@ namespace MobileWorld.Core.Services
                 OthersDetails = features.OthersDetails,
                 InteriorDetails = features.InteriorDetails,
             };
-       
+
         private Ad CreaAdEntity(AdInputModel model, List<Image> images, string ownerId, Car car, Region region)
              => new Ad()
              {
@@ -308,10 +296,13 @@ namespace MobileWorld.Core.Services
                  Region = region,
                  OwnerId = ownerId,
              };
-      
+
         private AdViewModel? AdProjection(string adId)
-            => this.unitOfWork.AdRepository.GetAdByIdAsIQueryable(adId)
+            => this.unitOfWork.AdRepository.GetAllAsQueryable()
                   .Include(a => a.Car)
+                        .ThenInclude(c=>c.Engine)
+                  .Include(c=>c.Car.Feature)
+                  .Include(a=>a.Images)
                   .Select(a => new AdViewModel()
                   {
                       Id = a.Id,

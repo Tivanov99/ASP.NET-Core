@@ -9,12 +9,15 @@
         public UnitOfWork(ApplicationDbContext _context,
             IAdRepository _adRepository,
             ICarRepository _carRepository,
-            IUserRepository _userRepository)
+            IUserRepository _userRepository,
+            ITownRepository _townRepository
+            )
         {
             this.context = _context;
             this.AdRepository = _adRepository;
             this.CarRepository = _carRepository;
             this.UserRepository = _userRepository;
+            this.TownRepository = _townRepository;
         }
 
         public IAdRepository AdRepository { get; }
@@ -22,6 +25,8 @@
         public ICarRepository CarRepository { get; }
 
         public IUserRepository UserRepository { get; }
+
+        public ITownRepository TownRepository { get; }
 
         public void Save()
         {

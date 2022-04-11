@@ -1,7 +1,11 @@
-﻿namespace MobileWorld.Infrastructure.Data.Common
+﻿using System.Linq;
+
+namespace MobileWorld.Infrastructure.Data.Common
 {
     public interface IRepository<TEntity> where TEntity : class
     {
+        IQueryable<TEntity> GetAllAsQueryable();
+
         IEnumerable<TEntity> GetAll();
 
         TEntity GetById(object id);

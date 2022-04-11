@@ -10,8 +10,5 @@ namespace MobileWorld.Infrastructure.Data.Common
         {
             context = _context;
         }
-
-        public IQueryable<Ad> GetAdByIdAsIQueryable(string id)
-            => context.Ads.Where(ad => ad.Id == id);
     }
 }

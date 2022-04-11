@@ -10,6 +10,8 @@ namespace MobileWorld.Infrastructure.Data.Common
 
         IUserRepository UserRepository { get; }
 
+        ITownRepository TownRepository { get; }
+
         void Save();
 
         //IRepository<Engine> EngineRepository { get; set; }

@@ -24,6 +24,8 @@ builder.Services.AddScoped<IUserService, UserService>()
 .AddScoped<IAdRepository, AdRepository>()
 .AddScoped<ICarRepository, CarRepository>()
 .AddScoped<IAdService, AdService>()
+.AddScoped<ITownRepository, TownRepository>()
+.AddScoped<IUserRepository,UserRepository>()
 .AddScoped<DbContext, ApplicationDbContext>();
 
 var app = builder.Build();
