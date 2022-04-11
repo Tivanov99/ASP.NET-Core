@@ -113,13 +113,13 @@ namespace MobileWorld.Core.Services
                 .AdRepository
                 .GetAllAsQueryable()
                 .Include(a => a.Images)
-                .Include(a=>a.Car)
-                .ThenInclude(c=> c.Engine)
-                .Include(a=>a.Car.Feature)
+                .Include(a => a.Car)
+                .ThenInclude(c => c.Engine)
+                .Include(a => a.Car.Feature)
                 .Where(ad => ad.Id == adId)
                 .First();
 
-            if(ad!= null)
+            if (ad != null)
             {
                 this.unitOfWork
                 .AdRepository
@@ -242,7 +242,7 @@ namespace MobileWorld.Core.Services
             SeatsCount = car.SeatsCount,
             Mileage = car.Mileage,
             Engine = CreateEngineEntity(car.Engine),
-            Feature = CreateFeatureEntity(car.Features),
+            Feature = CreateFeatureEntity(features),
             Model = "e46",
             Make = car.Make,
             Year = car.Year,
@@ -270,15 +270,17 @@ namespace MobileWorld.Core.Services
         };
 
         private Feature CreateFeatureEntity(Feature features)
-            => new Feature()
-            {
-                SafetyDetails = features.SafetyDetails,
-                ProtectionDetails = features.ProtectionDetails,
-                ComfortDetails = features.ComfortDetails,
-                ExteriorDetails = features.ExteriorDetails,
-                OthersDetails = features.OthersDetails,
-                InteriorDetails = features.InteriorDetails,
-            };
+        => new Feature()
+        {
+            SafetyDetails = features.SafetyDetails,
+            ProtectionDetails = features.ProtectionDetails,
+            ComfortDetails = features.ComfortDetails,
+            ExteriorDetails = features.ExteriorDetails,
+            OthersDetails = features.OthersDetails,
+            InteriorDetails = features.InteriorDetails,
+
+        };
+
 
         private Ad CreaAdEntity(AdInputModel model, List<Image> images, string ownerId, Car car, Region region)
              => new Ad()
@@ -297,11 +299,11 @@ namespace MobileWorld.Core.Services
 
         private AdViewModel? AdProjection(string adId)
             => this.unitOfWork.AdRepository.GetAllAsQueryable()
-                  .Where(a=>a.Id== adId)
+                  .Where(a => a.Id == adId)
                   .Include(a => a.Car)
-                        .ThenInclude(c=>c.Engine)
-                  .Include(c=>c.Car.Feature)
-                  .Include(a=>a.Images)
+                        .ThenInclude(c => c.Engine)
+                  .Include(c => c.Car.Feature)
+                  .Include(a => a.Images)
                   .Select(a => new AdViewModel()
                   {
                       Id = a.Id,
