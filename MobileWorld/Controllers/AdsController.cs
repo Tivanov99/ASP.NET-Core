@@ -100,10 +100,7 @@ namespace MobileWorld.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string adId)
         {
-            var ad = this.service
-                .GetAdByIdForEdit(adId);
-
-            if (ad == null)
+            if (adId == null)
             {
                 return RedirectToAction(nameof(Index));
             }

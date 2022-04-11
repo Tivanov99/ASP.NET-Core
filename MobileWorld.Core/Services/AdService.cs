@@ -127,10 +127,17 @@ namespace MobileWorld.Core.Services
             Ad ad = this.unitOfWork
                 .AdRepository
                 .GetAllAsQueryable()
+                .Include(a => a.Images)
                 .Include(a=>a.Car)
-                .ThenInclude(c=> new {c.Engine,c.Feature })
+                .ThenInclude(c=> c.Engine)
+                .Include(a=>a.Car.Feature)
                 .Where(ad => ad.Id == adId)
                 .First();
+
+            this.unitOfWork
+                .AdRepository
+                .Delete(ad);
+
             this.unitOfWork.Save();
         }
 
