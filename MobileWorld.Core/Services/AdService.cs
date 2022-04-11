@@ -142,9 +142,6 @@ namespace MobileWorld.Core.Services
             .FirstOrDefault();
 
 
-
-
-            this.unitOfWork.AdRepository.Update(ad);
             int townId = GetTownIdByName(updatedModel.Region.TownName);
 
             if (ad != null)
@@ -170,6 +167,7 @@ namespace MobileWorld.Core.Services
                     ad.Region.Neiborhood = updatedModel.Region.Neiborhood;
 
 
+                    this.unitOfWork.AdRepository.Update(ad);
                     this.unitOfWork.Save();
                     return true;
                 }
@@ -228,7 +226,8 @@ namespace MobileWorld.Core.Services
 
         private int GetTownIdByName(string townName)
         {
-            var result = this.unitOfWork.TownRepository.GetAll()
+            var result = this.unitOfWork.TownRepository
+                .GetAll()
                 .Where(t => t.Name == townName)
                 .Select(t => t.Id)
                 .FirstOrDefault();
@@ -298,6 +297,7 @@ namespace MobileWorld.Core.Services
 
         private AdViewModel? AdProjection(string adId)
             => this.unitOfWork.AdRepository.GetAllAsQueryable()
+                  .Where(a=>a.Id== adId)
                   .Include(a => a.Car)
                         .ThenInclude(c=>c.Engine)
                   .Include(c=>c.Car.Feature)
