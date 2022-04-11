@@ -27,8 +27,7 @@ namespace MobileWorld.Core.Services
 
         public AdViewModel GetAdByIdForEdit(string adId)
         {
-            var car = AdProjection(adId)
-                .FirstOrDefault();
+            var car = AdProjection(adId);
 
             return car;
         }
@@ -125,8 +124,8 @@ namespace MobileWorld.Core.Services
 
         public void Delete(string adId)
         {
-           this.unitOfWork.AdRepository
-                .Delete(adId);
+            this.unitOfWork.AdRepository
+                 .Delete(adId);
 
             //Car car = this.unitOfWork.All<Car>()
             //    .Include(c => c.Engine)
@@ -150,13 +149,15 @@ namespace MobileWorld.Core.Services
 
         public bool Update(string adId, AdViewModel updatedModel)
         {
-            Ad? ad = this.unitOfWork.All<Ad>()
-                .Include(a => a.Region)
-                .Include(a => a.Car)
-                    .ThenInclude(c => c.Feature)
-                .Include(a => a.Car.Engine)
-                .Where(a => a.Id == adId)
-                .FirstOrDefault();
+            Ad? ad = this.unitOfWork.AdRepository.GetById(adId);
+            //TODO : Check here
+
+            //.Include(a => a.Region)
+            //.Include(a => a.Car)
+            //    .ThenInclude(c => c.Feature)
+            //.Include(a => a.Car.Engine)
+            //.Where(a => a.Id == adId)
+            //.FirstOrDefault();
 
             int townId = GetTownIdByName(updatedModel.Region.TownName);
 
@@ -181,9 +182,10 @@ namespace MobileWorld.Core.Services
                     ad.Region.TownId = townId;
                     ad.Region.RegionName = updatedModel.Region.RegionName;
                     ad.Region.Neiborhood = updatedModel.Region.Neiborhood;
-                    this.unitOfWork.SaveChanges();
-                    return true;
 
+
+                    this.unitOfWork.Save();
+                    return true;
                 }
                 catch (Exception)
                 {
@@ -304,10 +306,9 @@ namespace MobileWorld.Core.Services
                  Region = region,
                  OwnerId = ownerId,
              };
-        private IQueryable<AdViewModel> AdProjection(string adId)
-            => this.unitOfWork.All<Ad>()
+        private AdViewModel AdProjection(string adId)
+            => this.unitOfWork.AdRepository.GetAdByIdAsIQueryable(adId)
                   .Include(a => a.Car)
-                  .Where(a => a.Id == adId)
                   .Select(a => new AdViewModel()
                   {
                       Id = a.Id,
@@ -356,6 +357,7 @@ namespace MobileWorld.Core.Services
                       {
                           OwnerId = a.OwnerId,
                       },
-                  });
+                  })
+                .Single();
     }
 }

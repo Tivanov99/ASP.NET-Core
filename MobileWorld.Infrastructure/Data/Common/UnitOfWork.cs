@@ -1,6 +1,4 @@
-﻿using MobileWorld.Infrastructure.Data.Models;
-
-namespace MobileWorld.Infrastructure.Data.Common
+﻿namespace MobileWorld.Infrastructure.Data.Common
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
     {

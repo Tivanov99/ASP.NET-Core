@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Models;
 using MobileWorld.Core.ViewModels;
-using MobileWorld.Infrastructure.Data.Common;
-using MobileWorld.Infrastructure.Data.Enums;
 using MobileWorld.Infrastructure.Data.Models;
 
 namespace MobileWorld.Controllers

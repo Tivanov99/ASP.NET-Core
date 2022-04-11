@@ -2,12 +2,17 @@
 
 namespace MobileWorld.Infrastructure.Data.Common
 {
-    public class AdRepository : Repository<Ad> , IAdRepository
+    public class AdRepository : Repository<Ad>, IAdRepository
     {
-        public AdRepository(ApplicationDbContext context)
-            : base(context)
+        private ApplicationDbContext context;
+        public AdRepository(ApplicationDbContext _context)
+            : base(_context)
         {
-
+            context = _context;
+            context.Ads.Find("Da");
         }
+
+        public IQueryable<Ad> GetAdByIdAsIQueryable(string id)
+            => context.Ads.Where(ad => ad.Id == id);
     }
 }
