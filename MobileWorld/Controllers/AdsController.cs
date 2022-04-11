@@ -51,10 +51,10 @@ namespace MobileWorld.Controllers
                 ms.Dispose();
                 images.Add(img);
             }
-            bool isSuccessfully = this.service.CreateAd(model, images, userId).Result;
+            this.service.CreateAd(model, images, userId);
 
             //TODO : Redirect correct view after successfully add
-            return View();
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult AdsByCriteria(AdvancedSearchCarModel searchModel)

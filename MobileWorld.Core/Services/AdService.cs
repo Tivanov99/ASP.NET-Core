@@ -78,7 +78,7 @@ namespace MobileWorld.Core.Services
             return cars;
         }
 
-        public async Task<bool> CreateAd(AdInputModel model, List<Image> images, string ownerId)
+        public void CreateAd(AdInputModel model, List<Image> images, string ownerId)
         {
             int townId = this.GetTownIdByName(model.Region.TownName);
 
@@ -100,9 +100,7 @@ namespace MobileWorld.Core.Services
             }
             catch (Exception)
             {
-                return false;
             }
-            return true;
         }
 
 
