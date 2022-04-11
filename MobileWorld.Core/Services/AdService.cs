@@ -86,32 +86,17 @@ namespace MobileWorld.Core.Services
 
             Car car = CreateCarEntity(model.Car, model.Features);
 
-            //Feature feature = CreateFeature(model.Features);
-
-            //Engine engine = CreateEngine(model.Car.Engine);
-
             Region region = CreateRegionEntity(model.Region, townId);
-            //TODO: If something with create are not works check here and CreateCar method.
-
-            //car.Engine = engine;
-
-            //car.Feature = feature;
 
             Ad newAd = CreaAdEntity(model, images, ownerId, car, region);
 
             car.AdId = newAd.Id;
             car.Ad = newAd;
 
-
             try
             {
-
                 this.unitOfWork.AdRepository.Insert(newAd);
                 this.unitOfWork.Save();
-
-                //this.unitOfWork.Dispose();
-                //TODO: Check here 
-                //int result = this.unitOfWork.SaveChanges();
             }
             catch (Exception)
             {
@@ -134,11 +119,14 @@ namespace MobileWorld.Core.Services
                 .Where(ad => ad.Id == adId)
                 .First();
 
-            this.unitOfWork
+            if(ad!= null)
+            {
+                this.unitOfWork
                 .AdRepository
                 .Delete(ad);
 
-            this.unitOfWork.Save();
+                this.unitOfWork.Save();
+            }
         }
 
         public bool Update(string adId, AdViewModel updatedModel)
@@ -153,6 +141,10 @@ namespace MobileWorld.Core.Services
             .Include(a => a.Car.Engine)
             .FirstOrDefault();
 
+
+
+
+            this.unitOfWork.AdRepository.Update(ad);
             int townId = GetTownIdByName(updatedModel.Region.TownName);
 
             if (ad != null)
