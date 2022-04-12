@@ -17,6 +17,11 @@ namespace MobileWorld.Infrastructure.Data
             builder.Entity<FavoriteAd>()
                 .HasKey(f => new { f.AdId, f.UserId });
 
+            builder.Entity<ApplicationUser>()
+          .HasMany(t => t.Ads)
+          .WithOne(c => c.Owner)
+          .HasForeignKey(c => c.OwnerId)
+          .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<Ad>()
                 .HasOne(a => a.Owner)

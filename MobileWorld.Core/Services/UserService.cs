@@ -2,6 +2,8 @@
 using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Core.Models;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace MobileWorld.Core.Services
 {
@@ -32,18 +34,20 @@ namespace MobileWorld.Core.Services
         {
             try
             {
-                var userAds = this.unitOfWork.UserRepository.GetAll()
-                   //.AsNoTracking()
+                var userAds = this.unitOfWork
+                    .UserRepository
+                    .GetAllAsQueryable()
+                    .Include(u => u.Ads)
                    .Where(u => u.Id == userId)
-                   .SelectMany(a => a.Ads
-                                   .Select(x => new AdCardViewModel()
-                                   {
-                                       AdId = x.Id,
-                                       Title = x.Title,
-                                       Description = x.Description,
-                                       Price = x.Price,
-                                       ImageData = x.Images[0].ImageData
-                                   }))
+                   .SelectMany(u=>u.Ads)
+                   .Select(a=> new AdCardViewModel()
+                   {
+                       AdId=a.Id,
+                       Title=a.Title,
+                       Description=a.Description,
+                       Price=a.Price,
+                       ImageData=a.Images[0].ImageData
+                   })
                    .ToList();
 
                 return  userAds;

@@ -40,7 +40,6 @@ namespace MobileWorld.Infrastructure.Data.Models
         [Column(TypeName = "varchar(700)")]
         public string Description { get; set; }
 
-        [ForeignKey(nameof(Owner))]
         public string OwnerId { get; set; }
 
         public ApplicationUser Owner { get; set; }
