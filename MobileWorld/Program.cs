@@ -18,8 +18,8 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<ApplicationUser>
     (options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddRoleManager<IdentityRole>();
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>();
 
 
 builder.Services.AddControllersWithViews();
@@ -31,7 +31,7 @@ builder.Services.AddScoped<IUserService, UserService>()
 .AddScoped<ICarRepository, CarRepository>()
 .AddScoped<IAdService, AdService>()
 .AddScoped<ITownRepository, TownRepository>()
-.AddScoped<IUserRepository,UserRepository>()
+.AddScoped<IUserRepository, UserRepository>()
 .AddScoped<DbContext, ApplicationDbContext>();
 
 

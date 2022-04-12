@@ -2,22 +2,20 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
+using MobileWorld.Infrastructure.Data.Common;
 
 namespace MobileWorld.Controllers
 {
     public class UserController : MyBaseController
     {
         private readonly IUserService userService;
-        private readonly UserManager<IdentityUser> userManager;
         private readonly RoleManager<IdentityRole> roleManager;
 
         public UserController(IUserService _userService,
-            RoleManager<IdentityRole> _roleManager,
-            UserManager<IdentityUser> _userManager)
+            RoleManager<IdentityRole> _roleManager)
         {
             this.userService = _userService;
             this.roleManager = _roleManager;
-            this.userManager = _userManager;
         }
 
         [Authorize]
@@ -36,14 +34,20 @@ namespace MobileWorld.Controllers
             return View(result);
         }
 
-        public async Task<IActionResult> ManageUsers()
+        [Authorize(Roles = GlobalConstants.AdministratorRole)]
+        public IActionResult ManageUsers()
         {
-
+            var users = this.userService.GetUsers();
+            return Ok(User);
         }
 
-        public async Task<IActionResult> CreateRole()
+        public async Task<IActionResult> CreateRolle()
         {
-
+            await roleManager.CreateAsync(new IdentityRole()
+            {
+                Name="Administator"
+            });
+            return Ok();
         }
 
     }
