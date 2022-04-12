@@ -1,6 +1,7 @@
 ﻿using MobileWorld.Core.Contracts;
 using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Core.ViewModels;
+using MobileWorld.Core.Models;
 
 namespace MobileWorld.Core.Services
 {
@@ -13,6 +14,10 @@ namespace MobileWorld.Core.Services
             this.unitOfWork = _unitOfWork;
         }
 
+        public List<UserViewModel> GetUsers()
+        {
+            throw new NotImplementedException();
+        }
 
         public List<AdCardViewModel> UserAds(string userId)
         {
