@@ -16,7 +16,16 @@ namespace MobileWorld.Core.Services
 
         public List<UserViewModel> GetUsers()
         {
-            throw new NotImplementedException();
+            return this.unitOfWork
+                .UserRepository
+                .GetAll()
+                .Select(u => new UserViewModel()
+                {
+                    Id = u.Id,
+                    FirstName = u.FirstName,
+                    LastName = u.LastName,
+                })
+                .ToList();
         }
 
         public List<AdCardViewModel> UserAds(string userId)
@@ -61,5 +70,8 @@ namespace MobileWorld.Core.Services
                 .ToList();
             return result;
         }
+
+
+
     }
 }
