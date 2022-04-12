@@ -1,4 +1,5 @@
-    using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Services;
 using MobileWorld.Infrastructure.Data;
@@ -7,6 +8,7 @@ using MobileWorld.Infrastructure.Data.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -14,8 +16,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddDefaultIdentity<ApplicationUser>
+    (options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddRoleManager<IdentityRole>();
+
+
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IUserService, UserService>()
@@ -27,6 +33,8 @@ builder.Services.AddScoped<IUserService, UserService>()
 .AddScoped<ITownRepository, TownRepository>()
 .AddScoped<IUserRepository,UserRepository>()
 .AddScoped<DbContext, ApplicationDbContext>();
+
+
 
 var app = builder.Build();
 
@@ -55,4 +63,8 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
 
+
 app.Run();
+
+
+   
