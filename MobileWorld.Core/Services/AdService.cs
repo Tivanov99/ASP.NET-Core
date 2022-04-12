@@ -19,14 +19,6 @@ namespace MobileWorld.Core.Services
         public AdViewModel GetAdById(string adId)
         {
             var car = AdProjection(adId);
-            //.AsNoTracking()
-
-            return car;
-        }
-
-        public AdViewModel GetAdByIdForEdit(string adId)
-        {
-            var car = AdProjection(adId);
 
             return car;
         }
@@ -63,6 +55,7 @@ namespace MobileWorld.Core.Services
         {
             var cars = this.unitOfWork.AdRepository
                .GetAllAsQueryable()
+               .AsNoTracking()
                .Include(a => a.Images)
                 .Select(a => new AdCardViewModel()
                 {
@@ -73,7 +66,7 @@ namespace MobileWorld.Core.Services
                     ImageData = a.Images[0].ImageData
                 })
                .Take(6)
-                .ToList();
+               .ToList();
 
             return cars;
         }
@@ -100,6 +93,7 @@ namespace MobileWorld.Core.Services
             }
             catch (Exception)
             {
+                //TODO: what if transaction throws ?
             }
         }
 
@@ -146,23 +140,23 @@ namespace MobileWorld.Core.Services
             {
                 try
                 {
-                    ad.Car.Engine = updatedModel.Car.Engine;
-                    ad.Car.SeatsCount = updatedModel.Car.SeatsCount;
-                    ad.Car.Feature = updatedModel.Car.Features;
-                    ad.Car.GearType = updatedModel.Car.GearType;
-                    ad.Car.Year = updatedModel.Car.Year;
-                    //ad.Car.Model = updatedModel.Car.Model;
-                    ad.Car.Color = updatedModel.Car.Color;
-                    ad.Car.Make = updatedModel.Car.Make;
-                    ad.Car.Mileage = updatedModel.Car.Mileage;
+                    //ad.Car.Engine = updatedModel.Car.Engine;
+                    //ad.Car.SeatsCount = updatedModel.Car.SeatsCount;
+                    //ad.Car.Feature = updatedModel.Car.Features;
+                    //ad.Car.GearType = updatedModel.Car.GearType;
+                    //ad.Car.Year = updatedModel.Car.Year;
+                    ////ad.Car.Model = updatedModel.Car.Model;
+                    //ad.Car.Color = updatedModel.Car.Color;
+                    //ad.Car.Make = updatedModel.Car.Make;
+                    //ad.Car.Mileage = updatedModel.Car.Mileage;
 
-                    //ad.Images.ForEach(i=>i.ImageData=updatedModel.Car.Images[i]);
-                    ad.Title = updatedModel.Title;
-                    ad.Price = updatedModel.Price;
-                    ad.PhoneNumber = updatedModel.PhoneNumber;
-                    ad.Region.TownId = townId;
-                    ad.Region.RegionName = updatedModel.Region.RegionName;
-                    ad.Region.Neiborhood = updatedModel.Region.Neiborhood;
+                    ////ad.Images.ForEach(i=>i.ImageData=updatedModel.Car.Images[i]);
+                    //ad.Title = updatedModel.Title;
+                    //ad.Price = updatedModel.Price;
+                    //ad.PhoneNumber = updatedModel.PhoneNumber;
+                    //ad.Region.TownId = townId;
+                    //ad.Region.RegionName = updatedModel.Region.RegionName;
+                    //ad.Region.Neiborhood = updatedModel.Region.Neiborhood;
 
 
                     this.unitOfWork.AdRepository.Update(ad);

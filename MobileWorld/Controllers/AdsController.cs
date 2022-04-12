@@ -53,7 +53,6 @@ namespace MobileWorld.Controllers
             }
             this.service.CreateAd(model, images, userId);
 
-            //TODO : Redirect correct view after successfully add
             return RedirectToAction("Index", "Home");
         }
 
@@ -86,7 +85,7 @@ namespace MobileWorld.Controllers
             }
 
             var ad = this.service
-                .GetAdByIdForEdit(adId);
+                .GetAdById(adId);
 
             if (ad == null)
             {
@@ -118,7 +117,7 @@ namespace MobileWorld.Controllers
         }
         public IActionResult Edit(string adId)
         {
-            var ad = this.service.GetAdByIdForEdit(adId);
+            var ad = this.service.GetAdById(adId);
             return View(ad);
         }
 
