@@ -38,7 +38,7 @@ namespace MobileWorld.Controllers
         public IActionResult ManageUsers()
         {
             var users = this.userService.GetUsers();
-            return Ok(User);
+            return Ok(users);
         }
 
         public async Task<IActionResult> CreateRolle()
