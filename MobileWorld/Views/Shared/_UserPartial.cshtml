@@ -5,5 +5,8 @@
     <label>ИД : @Model.Id | </label>
     <label>Потребителско име : @Model.UserName | </label>
     <label>Роля : @Model.Role</label>
+
+    <a class="delete-border" asp-action="Delete" asp-route-adId="@Model.Id">Изтрий</a>
+    <a class="edit-border" asp-action="Edit" asp-route-adId="@Model.Id">Редактирай</a>
 </div>
 
