@@ -1,12 +1,13 @@
 ﻿using MobileWorld.Core.Models;
+using MobileWorld.Infrastructure.Data.Identity;
 
 namespace MobileWorld.Core.Contracts
 {
     public interface IAdminService
     {
-        IEnumerable<UserViewModel> Users();
+        IEnumerable<ApplicationUser> Users();
 
-        UserViewModel ModifyUser(string userId);
+        ApplicationUser ModifyUser(string userId);
 
         void DeleteUser(string userId);
     }

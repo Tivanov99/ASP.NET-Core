@@ -11,14 +11,14 @@ namespace MobileWorld.Controllers
     public class AdminController : Controller
     {
         private readonly IAdminService _adminService;
-        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly UserManager<IdentityRole> _userManager;
 
         public AdminController(
             IAdminService adminService,
-            RoleManager<IdentityRole> roleManager)
+            UserManager<IdentityRole> userManager)
         {
           _adminService = adminService;
-            _roleManager = roleManager;
+            _userManager = userManager;
         }
         public IActionResult Index()
         {
@@ -28,18 +28,20 @@ namespace MobileWorld.Controllers
         public IActionResult Users()
         {
             var users = _adminService.Users();
-            return null;
+            var role = _userManager.GetUsersInRoleAsync(users[0]);
+
+            return View();
         }
 
         [Authorize(Roles = GlobalConstants.AdministratorRole)]
         public async Task<IActionResult> CreateRolle()
         {
-            await roleManager.CreateAsync(new IdentityRole()
+            await _userManager.CreateAsync(new IdentityRole()
             {
                 Name = "Administator"
             });
 
-            await roleManager.CreateAsync(new IdentityRole()
+            await _userManager.CreateAsync(new IdentityRole()
             {
                 Name = "Base"
             });

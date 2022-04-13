@@ -1,21 +1,18 @@
-﻿using Microsoft.AspNetCore.Identity;
-using MobileWorld.Core.Contracts;
+﻿using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Models;
 using MobileWorld.Infrastructure.Data.Common;
+using MobileWorld.Infrastructure.Data.Identity;
 
 namespace MobileWorld.Core.Services
 {
     public class AdminService : IAdminService
     {
         private readonly IUnitOfWork unitOfWork;
-        private readonly UserManager<IdentityUser> _userManager;
 
         public AdminService(
-            IUnitOfWork _unitOfWork,
-            UserManager<IdentityUser> userManager)
+            IUnitOfWork _unitOfWork)
         {
             unitOfWork = _unitOfWork;
-            _userManager = userManager;
         }
 
         public void DeleteUser(string userId)
@@ -24,26 +21,21 @@ namespace MobileWorld.Core.Services
             this.unitOfWork.Save();
         }
 
-        public UserViewModel ModifyUser(string userId)
+        public ApplicationUser ModifyUser(string userId)
         {
             var user = this.unitOfWork.AdminRepository.GetAll()
                 .Where(u => u.Id == userId)
                 .FirstOrDefault();
 
-            var role = _userManager.GetRolesAsync(user);
-
-            return null;
+            return user;
         }
 
-        public IEnumerable<UserViewModel> Users()
+        public IEnumerable<ApplicationUser> Users()
         {
-            var user = this.unitOfWork.AdminRepository.GetAll()
+            var users = this.unitOfWork.AdminRepository.GetAll()
                .ToList();
 
-            var role = _userManager.GetRolesAsync(user[0]);
-              
-            return null;
-            
+            return users;
         }
     }
 }
