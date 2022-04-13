@@ -16,19 +16,19 @@ namespace MobileWorld.Core.Services
             this.unitOfWork = _unitOfWork;
         }
 
-        public List<UserViewModel> GetUsers()
-        {
-            return this.unitOfWork
-                .UserRepository
-                .GetAll()
-                .Select(u => new UserViewModel()
-                {
-                    Id = u.Id,
-                    FirstName = u.FirstName,
-                    LastName = u.LastName,
-                })
-                .ToList();
-        }
+        //public List<UserViewModel> GetUsers()
+        //{
+        //    return this.unitOfWork
+        //        .UserRepository
+        //        .GetAll()
+        //        .Select(u => new UserViewModel()
+        //        {
+        //            Id = u.Id,
+        //            FirstName = u.FirstName,
+        //            LastName = u.LastName,
+        //        })
+        //        .ToList();
+        //}
 
         public List<AdCardViewModel> UserAds(string userId)
         {

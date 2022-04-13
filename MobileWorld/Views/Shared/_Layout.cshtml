@@ -38,7 +38,7 @@
                             @if (User.IsInRole("Administator"))
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-controller="User" asp-action="UserAds" asp-route-userId=@UserManager.GetUserId(User)>Всички потребители</a>
+                                    <a class="nav-link text-dark" asp-controller="Admin" asp-action="Users">Всички потребители</a>
                                 </li>
                             }
                         }

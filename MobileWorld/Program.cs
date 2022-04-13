@@ -24,16 +24,18 @@ builder.Services.AddDefaultIdentity<ApplicationUser>
 
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddScoped<IUserService, UserService>()
+builder.Services
+    .AddScoped<IUserService, UserService>()
 .AddScoped<ICarService, CarService>()
+.AddScoped<IAdminService, AdminService>()
+.AddScoped<IAdminRepository, AdminRepository>()
 .AddScoped<IUnitOfWork, UnitOfWork>()
 .AddScoped<IAdRepository, AdRepository>()
 .AddScoped<ICarRepository, CarRepository>()
 .AddScoped<IAdService, AdService>()
 .AddScoped<ITownRepository, TownRepository>()
 .AddScoped<IUserRepository, UserRepository>()
-.AddScoped<DbContext, ApplicationDbContext>()
-.AddScoped< IAdminRepository, AdminRepository>();
+.AddScoped<DbContext, ApplicationDbContext>();
 
 
 
@@ -68,4 +70,4 @@ app.MapRazorPages();
 app.Run();
 
 
-   
+
