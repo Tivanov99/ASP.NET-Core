@@ -41,13 +41,17 @@ namespace MobileWorld.Controllers
             return Ok(users);
         }
 
-        [Authorize(Roles = GlobalConstants.AdministratorRole)]
-
+        [Authorize(Roles = "Administator")]
         public async Task<IActionResult> CreateRolle()
         {
             await roleManager.CreateAsync(new IdentityRole()
             {
-                Name="Administator"
+                Name = "Administator"
+            });
+
+            await roleManager.CreateAsync(new IdentityRole()
+            {
+                Name = "Base"
             });
             return Ok();
         }

@@ -133,7 +133,7 @@ namespace MobileWorld.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
-                    var defaultRole = _roleManager.FindByNameAsync("Basic").Result;
+                    var defaultRole = _roleManager.FindByNameAsync("Base").Result;
 
                     if (defaultRole != null)
                     {
