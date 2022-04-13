@@ -1,4 +1,5 @@
-﻿using MobileWorld.Core.Contracts;
+﻿using Microsoft.AspNetCore.Identity;
+using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Models;
 using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.Identity;
@@ -30,10 +31,17 @@ namespace MobileWorld.Core.Services
             return user;
         }
 
-        public IEnumerable<ApplicationUser> Users()
+        public IEnumerable<UserViewModel> Users()
         {
-            var users = this.unitOfWork.AdminRepository.GetAll()
-               .ToList();
+            var users = unitOfWork
+                .AdminRepository
+                .GetAll()
+                .Select(u => new UserViewModel()
+                {
+                    Id = u.Id,
+                    UserName=u.UserName
+                })
+                .ToList();
 
             return users;
         }

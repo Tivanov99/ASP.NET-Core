@@ -27,8 +27,9 @@ namespace MobileWorld.Controllers
 
         public IActionResult Users()
         {
-            var users = _adminService.Users();
-            var role = _userManager.GetUsersInRoleAsync(users[0]);
+            var user = _userManager.FindByIdAsync("da");
+            var role = _userManager.GetRolesAsync(user.Result);
+
 
             return View();
         }
