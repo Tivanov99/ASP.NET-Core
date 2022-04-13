@@ -8,6 +8,6 @@
 
         public string LastName { get; set; }
 
-        public int MyProperty { get; set; }
+        public string Role { get; set; }
     }
 }
