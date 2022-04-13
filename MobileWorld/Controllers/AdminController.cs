@@ -7,7 +7,7 @@ using MobileWorld.Infrastructure.Data.Identity;
 
 namespace MobileWorld.Controllers
 {
-    [Authorize(Roles = GlobalConstants.AdministratorRole)]
+    //[Authorize(Roles = GlobalConstants.AdministratorRole)]
     public class AdminController : Controller
     {
         private readonly IAdminService _adminService;
@@ -43,7 +43,7 @@ namespace MobileWorld.Controllers
             return View();
         }
 
-        [Authorize(Roles = GlobalConstants.AdministratorRole)]
+        //[Authorize(Roles = GlobalConstants.AdministratorRole)]
         public async Task<IActionResult> CreateRolle()
         {
             await _roleManager.CreateAsync(new IdentityRole()
