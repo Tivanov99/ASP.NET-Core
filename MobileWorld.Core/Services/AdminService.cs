@@ -33,6 +33,7 @@ namespace MobileWorld.Core.Services
 
         public IEnumerable<UserViewModel> Users()
         {
+            
             var users = unitOfWork
                 .AdminRepository
                 .GetAll()

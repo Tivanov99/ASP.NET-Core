@@ -49,12 +49,12 @@
         </a>
         <br />
 
-        @*@if (Model.Owner.OwnerId == UserManager.GetUserId(User))
-            {*@
+        @if (Model.Owner.OwnerId == UserManager.GetUserId(User))
+            {
         <a class="delete-border" asp-action="Delete" asp-route-adId="@Model.Id">Изтрий</a>
         <a class="edit-border" asp-action="Edit" asp-route-adId="@Model.Id">Редактирай</a>
 
-        @*}*@
+        }
     </div>
 
 
@@ -72,8 +72,6 @@
             <li class="dealerData-even">Евро @Model.Car.Engine.EcoLevel</li>
             <li class="dealerData-odd">Скоростна кутия -</li>
             <li class="dealerData-even">@Model.Car.GearType</li>
-            @*<li class=".dealerData li:nth-of-type(odd)">Категория</li>
-                <li class=".dilarData li:nth-of-type(even)">Джип</li>*@
             <li class="dealerData-odd">Пробег -</li>
             <li class="dealerData-even">@Model.Car.Mileage км</li>
             <li class="dealerData-odd">Цвят -</li>

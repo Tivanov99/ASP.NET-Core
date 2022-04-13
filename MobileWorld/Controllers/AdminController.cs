@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MobileWorld.Core.Contracts;
+using MobileWorld.Core.Models;
 using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.Identity;
 
@@ -40,7 +41,16 @@ namespace MobileWorld.Controllers
                                    )
                     .Result[0];
             }
-            return View();
+            var list = new List<UserViewModel>()
+            {
+                new UserViewModel()
+                {
+                    Id="1",
+                    UserName="test",
+                    Role= "adminche"
+                }
+            };
+            return View(users);
         }
 
         //[Authorize(Roles = GlobalConstants.AdministratorRole)]
