@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.Identity;
 
 namespace MobileWorld.Areas.Identity.Pages.Account
@@ -133,7 +134,7 @@ namespace MobileWorld.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
-                    var defaultRole = _roleManager.FindByNameAsync("Base").Result;
+                    var defaultRole = _roleManager.FindByNameAsync(@GlobalConstants.BaseRole).Result;
 
                     if (defaultRole != null)
                     {

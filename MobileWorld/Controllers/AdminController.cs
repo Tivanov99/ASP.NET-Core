@@ -3,22 +3,25 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MobileWorld.Core.Contracts;
 using MobileWorld.Infrastructure.Data.Common;
+using MobileWorld.Infrastructure.Data.Identity;
 
 namespace MobileWorld.Controllers
 {
-
     [Authorize(Roles = GlobalConstants.AdministratorRole)]
     public class AdminController : Controller
     {
         private readonly IAdminService _adminService;
-        private readonly UserManager<IdentityRole> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
         public AdminController(
             IAdminService adminService,
-            UserManager<IdentityRole> userManager)
+            UserManager<ApplicationUser> userManager,
+            RoleManager<IdentityRole> roleManager)
         {
-          _adminService = adminService;
+            _adminService = adminService;
             _userManager = userManager;
+            _roleManager = roleManager;
         }
         public IActionResult Index()
         {
@@ -27,24 +30,30 @@ namespace MobileWorld.Controllers
 
         public IActionResult Users()
         {
-            var user = _userManager.FindByIdAsync("da");
-            var role = _userManager.GetRolesAsync(user.Result);
-
-
+            var users = this._adminService
+                .Users();
+            foreach (var currUser in users)
+            {
+                currUser.Role = _userManager
+                    .GetRolesAsync(
+                                    _userManager.FindByIdAsync(currUser.Id).Result
+                                   )
+                    .Result[0];
+            }
             return View();
         }
 
         [Authorize(Roles = GlobalConstants.AdministratorRole)]
         public async Task<IActionResult> CreateRolle()
         {
-            await _userManager.CreateAsync(new IdentityRole()
+            await _roleManager.CreateAsync(new IdentityRole()
             {
-                Name = "Administator"
+                Name = GlobalConstants.AdministratorRole
             });
 
-            await _userManager.CreateAsync(new IdentityRole()
+            await _roleManager.CreateAsync(new IdentityRole()
             {
-                Name = "Base"
+                Name = GlobalConstants.BaseRole
             });
             return Ok();
         }
