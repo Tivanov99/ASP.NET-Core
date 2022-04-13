@@ -32,7 +32,8 @@ builder.Services.AddScoped<IUserService, UserService>()
 .AddScoped<IAdService, AdService>()
 .AddScoped<ITownRepository, TownRepository>()
 .AddScoped<IUserRepository, UserRepository>()
-.AddScoped<DbContext, ApplicationDbContext>();
+.AddScoped<DbContext, ApplicationDbContext>()
+.AddScoped< IAdminRepository, AdminRepository>();
 
 
 
