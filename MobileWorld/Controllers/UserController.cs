@@ -41,6 +41,8 @@ namespace MobileWorld.Controllers
             return Ok(users);
         }
 
+        [Authorize(Roles = GlobalConstants.AdministratorRole)]
+
         public async Task<IActionResult> CreateRolle()
         {
             await roleManager.CreateAsync(new IdentityRole()
