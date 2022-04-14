@@ -42,15 +42,6 @@ namespace MobileWorld.Controllers
                                    )
                     .Result[0];
             }
-            var list = new List<UserViewModel>()
-            {
-                new UserViewModel()
-                {
-                    Id="1",
-                    UserName="test",
-                    Role= "adminche"
-                }
-            };
             return View(users);
         }
 

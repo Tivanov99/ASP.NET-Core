@@ -21,11 +21,17 @@ namespace MobileWorld.Core.Services
             this.unitOfWork.Save();
         }
 
-        public ApplicationUser GetUser(string userId)
+        public UserViewModel GetUser(string userId)
         {
             var user = this.unitOfWork.AdminRepository
                 .GetAll()
                 .Where(u => u.Id == userId)
+                .Select(u=> new UserViewModel()
+                {
+                    Id = u.Id,
+                    UserName = u.UserName,
+
+                })
                 .FirstOrDefault();
 
             return user;

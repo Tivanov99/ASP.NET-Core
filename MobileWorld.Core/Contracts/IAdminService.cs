@@ -8,7 +8,7 @@ namespace MobileWorld.Core.Contracts
     {
         IEnumerable<UserViewModel> Users();
 
-        ApplicationUser GetUser(string userId);
+        UserViewModel GetUser(string userId);
 
         void DeleteUser(string userId);
     }
