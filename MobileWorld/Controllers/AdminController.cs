@@ -56,7 +56,12 @@ namespace MobileWorld.Controllers
 
         public IActionResult UpdateUser(UserUpdateModel model,string userId)
         {
-
+            var user = this._adminService.GetUser(userId);
+           var rolle = _userManager.GetRolesAsync(
+                                                    _userManager.FindByIdAsync(user.Id).Result
+                                                 ).Result[0];
+            bool isInRolle = rolle == model.Role;
+            //TODO: change user role if is not in rolle
             return this.RedirectToAction("Index", "Home");
         }
 
