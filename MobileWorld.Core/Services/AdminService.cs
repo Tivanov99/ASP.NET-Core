@@ -1,7 +1,6 @@
 ﻿using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Models;
 using MobileWorld.Infrastructure.Data.Common;
-using MobileWorld.Infrastructure.Data.Identity;
 
 namespace MobileWorld.Core.Services
 {
