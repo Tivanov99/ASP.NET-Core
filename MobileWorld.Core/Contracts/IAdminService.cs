@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using MobileWorld.Core.Models;
-using MobileWorld.Infrastructure.Data.Identity;
+﻿using MobileWorld.Core.Models;
 
 namespace MobileWorld.Core.Contracts
 {

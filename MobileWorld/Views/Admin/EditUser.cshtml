@@ -1,7 +1,8 @@
-﻿@using MobileWorld.Infrastructure.Data.Identity
+﻿@using MobileWorld.Core.Models
+@using MobileWorld.Infrastructure.Data.Identity
 @using Microsoft.AspNetCore.Identity
 @using MobileWorld.Infrastructure.Data.Common
-@model ApplicationUser
+@model UserViewModel
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
@@ -34,7 +35,7 @@
 
     <strong>Роли на текущият потребирел "@Model.UserName"</strong>
 
-    @foreach (var role in @UserManager.GetRolesAsync(Model).Result)
+    @foreach (var role in Model.Roles)
     {
         <label>@role</label>
     }
