@@ -22,7 +22,7 @@ namespace MobileWorld.Infrastructure.Data.Common
 
         public void Delete(TEntity entityToDelete)
         {
-            if(this.context.Entry(entityToDelete).State == EntityState.Detached)
+            if (this.context.Entry(entityToDelete).State == EntityState.Detached)
             {
                 this.dbSet.Attach(entityToDelete);
             }
@@ -41,7 +41,7 @@ namespace MobileWorld.Infrastructure.Data.Common
 
         public virtual void Insert(TEntity entity)
         {
-           this.dbSet.Add(entity);
+            this.dbSet.Add(entity);
         }
 
         public virtual void Update(TEntity entityToUpdate)

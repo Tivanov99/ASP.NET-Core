@@ -129,7 +129,13 @@ namespace MobileWorld.Controllers
             {
                 return NotFound();
             }
+            Ad ad = new Ad();
 
+            if(await TryUpdateModelAsync<Ad>(
+                    new Ad(), "", s => s.FirstMidName, s => s.LastName, s => s.EnrollmentDate))
+            {
+
+            }
             bool result = this.service.Update(adId, updatedModel);
 
             if (!result)

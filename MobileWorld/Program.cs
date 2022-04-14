@@ -5,6 +5,7 @@ using MobileWorld.Core.Services;
 using MobileWorld.Infrastructure.Data;
 using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.Identity;
+using MobileWorld.ModelBinders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,7 +23,11 @@ builder.Services.AddDefaultIdentity<ApplicationUser>
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+    .AddMvcOptions(options =>
+    {
+        options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
+    });
 
 builder.Services
     .AddScoped<IUserService, UserService>()

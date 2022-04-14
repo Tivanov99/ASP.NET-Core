@@ -104,6 +104,7 @@ namespace MobileWorld.Core.Services
             Ad ad = this.unitOfWork
                 .AdRepository
                 .GetAllAsQueryable()
+                .AsNoTracking()
                 .Include(a => a.Images)
                 .Include(a => a.Car)
                 .ThenInclude(c => c.Engine)
@@ -126,6 +127,7 @@ namespace MobileWorld.Core.Services
             Ad? ad = this.unitOfWork
                 .AdRepository
             .GetAllAsQueryable()
+            .AsNoTracking()
             .Where(a => a.Id == adId)
             .Include(a => a.Region)
             .Include(a => a.Car)
@@ -291,6 +293,7 @@ namespace MobileWorld.Core.Services
 
         private AdViewModel? AdProjection(string adId)
             => this.unitOfWork.AdRepository.GetAllAsQueryable()
+                  .AsNoTracking()
                   .Where(a => a.Id == adId)
                   .Include(a => a.Car)
                         .ThenInclude(c => c.Engine)
