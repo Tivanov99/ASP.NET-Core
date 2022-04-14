@@ -27,7 +27,11 @@ builder.Services.AddControllersWithViews()
     .AddMvcOptions(options =>
     {
         options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
-    });
+    })
+    .AddMvcOptions(options =>
+ {
+     options.ModelBinderProviders.Insert(1, new DateTimeModelBinderProvider());
+ });
 
 builder.Services
     .AddScoped<IUserService, UserService>()
