@@ -37,7 +37,7 @@ namespace MobileWorld.ModelBinders
 
                 }
             }
-            throw new NotImplementedException();
+            return Task.CompletedTask;
         }
     }
 }
