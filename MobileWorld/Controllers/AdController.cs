@@ -7,11 +7,11 @@ using MobileWorld.Infrastructure.Data.Models;
 
 namespace MobileWorld.Controllers
 {
-    public class AdsController : Controller
+    public class AdController : Controller
     {
         private readonly IAdService service;
 
-        public AdsController(IAdService _service)
+        public AdController(IAdService _service)
         {
             this.service = _service;
         }
@@ -141,9 +141,5 @@ namespace MobileWorld.Controllers
             return RedirectToAction(actionName: nameof(this.Ad), new { adId = adId });
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            base.Dispose(disposing);
-        }
     }
 }

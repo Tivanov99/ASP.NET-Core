@@ -1,10 +1,13 @@
-﻿namespace MobileWorld.Core.Models
+﻿using MobileWorld.Core.ViewModels;
+
+namespace MobileWorld.Core.Models
 {
     public class UserViewModel
     {
         public UserViewModel()
         {
-            Roles= new List<string>();
+            Roles= new ();
+            UserAds = new();
         }
         public string Id { get; set; }
 
@@ -16,7 +19,7 @@
 
         public string Email { get; set; }
 
-        public int MyProperty { get; set; }
+        public List<AdViewModel> UserAds { get; set; } 
 
         public List<string> Roles { get; set; } 
     }

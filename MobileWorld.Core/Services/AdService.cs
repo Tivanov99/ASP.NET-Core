@@ -18,9 +18,9 @@ namespace MobileWorld.Core.Services
 
         public AdViewModel GetAdById(string adId)
         {
-            var car = AdProjection(adId);
+            var ad = AdProjection(adId);
 
-            return car;
+            return ad;
         }
 
         public List<AdCardViewModel> GetAdsByBaseCriteria(BaseSearchCarModel model)

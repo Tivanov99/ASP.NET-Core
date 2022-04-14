@@ -183,28 +183,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXNlcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Ads/Ad.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRzXEFkLmNzaHRtbA==
+[C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Ad/Ad.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRcQWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Ads/AdsByCriteria.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRzXEFkc0J5Q3JpdGVyaWEuY3NodG1s
+[C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Ad/AdsByCriteria.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRcQWRzQnlDcml0ZXJpYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Ads/AdvancedSearchView.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRzXEFkdmFuY2VkU2VhcmNoVmlldy5jc2h0bWw=
+[C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Ad/AdvancedSearchView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRcQWR2YW5jZWRTZWFyY2hWaWV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Ads/CreateAd.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRzXENyZWF0ZUFkLmNzaHRtbA==
+[C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Ad/CreateAd.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRcQ3JlYXRlQWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Ads/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRzXERlbGV0ZS5jc2h0bWw=
+[C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Ad/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Ads/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRzXEVkaXQuY3NodG1s
+[C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Ad/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Trifon/Desktop/ASP.NET-Core/MobileWorld/Views/Cars/CarLeftView.cshtml]
