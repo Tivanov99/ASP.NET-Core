@@ -12,21 +12,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Редактиране на потребител</title>
+    <link rel="stylesheet" href="~/css/EditUser.css" asp-append-version="true" />
+
 </head>
 <body>
+
     <strong>Име</strong>
-    <label>@Model.FirstName</label>
+    <input type="text" value="@Model.FirstName" />
+    <br />
     <strong>Фамилия</strong>
-    <label>@Model.LastName</label>
+    <input type="text" value="@Model.LastName" />
+    <br />
+
     <strong>Потребителско име</strong>
-    <label>@Model.UserName</label>
+    <input type="text" value="@Model.UserName" />
+    <br />
+
     <strong>Имейл</strong>
-    <label>@Model.Email</label>
+    <input type="text" value="@Model.Email" />
+    <br />
+
     <strong>Роли на текущият потребирел "@Model.UserName"</strong>
-    @foreach(var role in @UserManager.GetRolesAsync(Model).Result)
+
+    @foreach (var role in @UserManager.GetRolesAsync(Model).Result)
     {
         <label>@role</label>
     }
+    <br />
+
+    <div class="user-ads">
+        <strong>Брой на обяви</strong>
+        <label>@Model.Ads.Count</label>
+    </div>
 
 </body>
 </html>
