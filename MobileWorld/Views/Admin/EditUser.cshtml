@@ -1,0 +1,32 @@
+﻿@using MobileWorld.Infrastructure.Data.Identity
+@using Microsoft.AspNetCore.Identity
+@using MobileWorld.Infrastructure.Data.Common
+@model ApplicationUser
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактиране на потребител</title>
+</head>
+<body>
+    <strong>Име</strong>
+    <label>@Model.FirstName</label>
+    <strong>Фамилия</strong>
+    <label>@Model.LastName</label>
+    <strong>Потребителско име</strong>
+    <label>@Model.UserName</label>
+    <strong>Имейл</strong>
+    <label>@Model.Email</label>
+    <strong>Роли на текущият потребирел "@Model.UserName"</strong>
+    @foreach(var role in @UserManager.GetRolesAsync(Model).Result)
+    {
+        <label>@role</label>
+    }
+
+</body>
+</html>

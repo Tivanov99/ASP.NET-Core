@@ -21,9 +21,10 @@ namespace MobileWorld.Core.Services
             this.unitOfWork.Save();
         }
 
-        public ApplicationUser ModifyUser(string userId)
+        public ApplicationUser GetUser(string userId)
         {
-            var user = this.unitOfWork.AdminRepository.GetAll()
+            var user = this.unitOfWork.AdminRepository
+                .GetAll()
                 .Where(u => u.Id == userId)
                 .FirstOrDefault();
 

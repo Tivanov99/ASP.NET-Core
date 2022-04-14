@@ -56,8 +56,8 @@ namespace MobileWorld.Controllers
 
         public IActionResult EditUser(string userId)
         {
-
-            return View();
+            var user = this._adminService.GetUser(userId);
+            return View(user);
         }
 
         [Authorize(Roles = GlobalConstants.AdministratorRole)]
