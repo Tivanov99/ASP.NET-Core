@@ -9,7 +9,7 @@
     [@Model.UserName]
     <strong> | </strong>
     <strong>Роля : </strong>
-    [@String.Join(", ", Model.Roles)]
+    [@String.Join(", ", Model.Role)]
     <a class="delete-border"  asp-action="Delete" asp-route-userId="@Model.Id">Изтрий</a>
     <a class="edit-border" asp-action="EditUser" asp-route-userId="@Model.Id">Редактирай</a>
 </div>

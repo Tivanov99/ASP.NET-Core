@@ -36,11 +36,11 @@ namespace MobileWorld.Controllers
                 .Users();
             foreach (var currUser in users)
             {
-             currUser.Roles = _userManager
+             currUser.Role = _userManager
                     .GetRolesAsync(
                                     _userManager.FindByIdAsync(currUser.Id).Result
                                    )
-                    .Result.ToList();
+                    .Result[0];
             }
             return View(users);
         }
@@ -48,9 +48,9 @@ namespace MobileWorld.Controllers
         public IActionResult EditUser(string userId)
         {
             var user = this._adminService.GetUser(userId);
-                user.Roles=_userManager.GetRolesAsync(
+                user.Role=_userManager.GetRolesAsync(
                                                         _userManager.FindByIdAsync(user.Id).Result
-                                                     ).Result.ToList();
+                                                     ).Result[0];
             return View(user);
         }
 

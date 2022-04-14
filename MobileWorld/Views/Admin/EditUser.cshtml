@@ -5,6 +5,9 @@
 @model UserViewModel
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
+@{
+    string otherRole = Model.Role == "Base" ? "Administator" : "Base";
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,8 +20,8 @@
     <link asp-append-version="true" rel="stylesheet" href="~/css/EditUser.css">
 </head>
 <body>
-    <from asp-action="UpdateUser" asp-route-userId=@Model.Id method="post" enctype="multipart/form-data">
 
+    <from asp-action="UpdateUser" asp-route-userId=@Model.Id method="post" enctype="multipart/form-data">
         <strong>Име</strong>
         <input type="text" value="@Model.FirstName" />
         <br />
@@ -35,12 +38,18 @@
         <br />
 
         <strong>Роли на текущият потребирел "@Model.UserName"</strong>
-
-        @foreach (var role in Model.Roles)
-        {
-            <label>@role</label>
-        }
         <br />
+
+        <select>
+            <option value="">
+                @Model.Role
+            </option>
+            <option value="">
+               @otherRole
+            </option>
+        </select>
+
+
     </from>
 
 
