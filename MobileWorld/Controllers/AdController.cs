@@ -4,7 +4,6 @@ using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Models;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Infrastructure.Data.Models;
-using MobileWorld.ModelBinders;
 using MobileWorld.Models;
 
 namespace MobileWorld.Controllers

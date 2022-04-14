@@ -17,39 +17,42 @@
     <link asp-append-version="true" rel="stylesheet" href="~/css/EditUser.css">
 </head>
 <body>
+    <from asp-action="UpdateUser" asp-route-userId=@Model.Id method="post" enctype="multipart/form-data">
 
-    <strong>Име</strong>
-    <input type="text" value="@Model.FirstName" />
-    <br />
-    <strong>Фамилия</strong>
-    <input type="text" value="@Model.LastName" />
-    <br />
+        <strong>Име</strong>
+        <input type="text" value="@Model.FirstName" />
+        <br />
+        <strong>Фамилия</strong>
+        <input type="text" value="@Model.LastName" />
+        <br />
 
-    <strong>Потребителско име</strong>
-    <input type="text" value="@Model.UserName" />
-    <br />
+        <strong>Потребителско име</strong>
+        <input type="text" value="@Model.UserName" />
+        <br />
 
-    <strong>Имейл</strong>
-    <input type="text" value="@Model.Email" />
-    <br />
+        <strong>Имейл</strong>
+        <input type="text" value="@Model.Email" />
+        <br />
 
-    <strong>Роли на текущият потребирел "@Model.UserName"</strong>
+        <strong>Роли на текущият потребирел "@Model.UserName"</strong>
 
-    @foreach (var role in Model.Roles)
-    {
-        <label>@role</label>
-    }
-    <br />
+        @foreach (var role in Model.Roles)
+        {
+            <label>@role</label>
+        }
+        <br />
+    </from>
+
 
     <div class="user-ads">
         <strong>Брой на обяви</strong>
         <label>@Model.AdsCount</label>
         <div>
-            @foreach(var ad in Model.UserAds)
+            @foreach (var ad in Model.UserAds)
             {
                 <label>@ad.Id</label>
-                 <a class="delete-border" asp-controller="Ad" asp-action="Delete" asp-route-adId="@ad.Id">Изтрий</a>
-                 <a class="edit-border" asp-controller="Ad" asp-action="Edit" asp-route-adId="@ad.Id">Редактирай</a>
+                <a class="delete-border" asp-controller="Ad" asp-action="Delete" asp-route-adId="@ad.Id">Изтрий</a>
+                <a class="edit-border" asp-controller="Ad" asp-action="Edit" asp-route-adId="@ad.Id">Редактирай</a>
             }
         </div>
     </div>

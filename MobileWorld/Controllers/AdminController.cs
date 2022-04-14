@@ -54,6 +54,12 @@ namespace MobileWorld.Controllers
             return View(user);
         }
 
+        public IActionResult UpdateUser(UserUpdateModel model,string userId)
+        {
+
+            return this.RedirectToAction("Index", "Home");
+        }
+
         [Authorize(Roles = GlobalConstants.AdministratorRole)]
         public async Task<IActionResult> CreateRolle()
         {
