@@ -21,6 +21,8 @@ namespace MobileWorld.Core.Models
 
         public List<AdViewModel> UserAds { get; set; } 
 
-        public List<string> Roles { get; set; } 
+        public List<string> Roles { get; set; }
+
+        public int AdsCount { get; set; }
     }
 }

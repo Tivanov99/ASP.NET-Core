@@ -32,9 +32,14 @@ namespace MobileWorld.Core.Services
                 {
                     Id = u.Id,
                     UserName = u.UserName,
-                    UserAds = (List<AdViewModel>)u.Ads.Select(a=> new AdViewModel()
+                    FirstName = u.FirstName,
+                    LastName = u.LastName,
+                    Email = u.Email,
+                    AdsCount = u.Ads.Count,
+                    UserAds = (List<AdViewModel>)u.Ads.Select(a => new AdViewModel()
                     {
-                        Id=a.Id,
+                        Id = a.Id,
+
                     })
                 })
                 .FirstOrDefault();

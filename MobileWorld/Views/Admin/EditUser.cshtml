@@ -43,9 +43,12 @@
 
     <div class="user-ads">
         <strong>Брой на обяви</strong>
-        <label>@Model.Ads.Count</label>
+        <label>@Model.AdsCount</label>
         <div>
-
+            @foreach(var adId in Model.UserAds)
+            {
+                <p>@adId</p>
+            }
         </div>
     </div>
 

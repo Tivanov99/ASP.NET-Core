@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0xMaRl9kDhwkUEkQAWReWQM7WvJmeFpeoIvnfgqgilk=",
+  "Hash": "btPOZOerY4EdDyUDxHzRYOGrz+TiFES0sFZqB2k8Tss=",
   "Source": "MobileWorld",
   "BasePath": "_content/MobileWorld",
   "Mode": "Default",
@@ -1137,6 +1137,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\CarDetails.css"
+    },
+    {
+      "Identity": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld\\wwwroot\\css\\EditUser.css",
+      "SourceId": "MobileWorld",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld\\wwwroot\\",
+      "BasePath": "_content/MobileWorld",
+      "RelativePath": "css/EditUser.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\EditUser.css"
     },
     {
       "Identity": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld\\wwwroot\\css\\Index.css",
