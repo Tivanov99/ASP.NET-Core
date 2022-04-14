@@ -4,6 +4,8 @@ using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Models;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Infrastructure.Data.Models;
+using MobileWorld.ModelBinders;
+using MobileWorld.Models;
 
 namespace MobileWorld.Controllers
 {
@@ -34,26 +36,31 @@ namespace MobileWorld.Controllers
 
         [Authorize]
         [HttpPost]
-        public IActionResult CreateAd(AdInputModel model, string userId)
+        public IActionResult CreateAd(ModelBindingAdModel model, string userId)
         {
-            List<Image> images = new List<Image>();
-
-            foreach (var file in Request.Form.Files)
+            if (ModelState.IsValid)
             {
-                Image img = new Image();
-                img.ImageTitle = file.FileName;
+                List<Image> images = new List<Image>();
 
-                MemoryStream ms = new MemoryStream();
-                file.CopyTo(ms);
-                img.ImageData = ms.ToArray();
+                foreach (var file in Request.Form.Files)
+                {
+                    Image img = new Image();
+                    img.ImageTitle = file.FileName;
 
-                ms.Close();
-                ms.Dispose();
-                images.Add(img);
+                    MemoryStream ms = new MemoryStream();
+                    file.CopyTo(ms);
+                    img.ImageData = ms.ToArray();
+
+                    ms.Close();
+                    ms.Dispose();
+                    images.Add(img);
+                }
+                this.service.CreateAd((AdInputModel)model, images, userId);
+
+                return RedirectToAction("Index", "Home");
             }
-            this.service.CreateAd(model, images, userId);
 
-            return RedirectToAction("Index", "Home");
+            return View();
         }
 
         public IActionResult AdsByCriteria(AdvancedSearchCarModel searchModel)
@@ -131,11 +138,10 @@ namespace MobileWorld.Controllers
             }
             Ad ad = new Ad();
 
-            if(await TryUpdateModelAsync<Ad>(
-                    new Ad(), "", s => s.FirstMidName, s => s.LastName, s => s.EnrollmentDate))
-            {
+            //if(await TryUpdateModelAsync<Ad>(ad,"",x=>x))
+            //{
 
-            }
+            //}
             bool result = this.service.Update(adId, updatedModel);
 
             if (!result)

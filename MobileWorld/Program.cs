@@ -30,7 +30,7 @@ builder.Services.AddControllersWithViews()
     })
     .AddMvcOptions(options =>
  {
-     options.ModelBinderProviders.Insert(1, new DateTimeModelBinderProvider());
+     options.ModelBinderProviders.Insert(1, new DateTimeModelBinderProvider(GlobalConstants.dateTimeFormat));
  });
 
 builder.Services

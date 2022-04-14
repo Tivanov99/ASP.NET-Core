@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MobileWorld.Core.Models
 {
-
     //TODO : Check fuel type, engines are null
     public class AdInputModel
     {
@@ -15,7 +14,7 @@ namespace MobileWorld.Core.Models
 
         [Column(TypeName = "decimal(6,2)")]
         [Range(0, 2000000)]
-        public decimal Price { get; set; }
+        public virtual decimal Price { get; set; }
 
         [Required]
         [Phone]
