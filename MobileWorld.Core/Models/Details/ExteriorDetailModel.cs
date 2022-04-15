@@ -1,6 +1,6 @@
 ﻿namespace MobileWorld.Core.Models.Details
 {
-    public class ExteriorDetailsModel
+    public class ExteriorDetailModel
     {
         public bool Coupe { get; set; }
 

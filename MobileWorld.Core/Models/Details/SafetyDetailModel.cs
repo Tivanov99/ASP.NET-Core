@@ -1,6 +1,6 @@
 ﻿namespace MobileWorld.Core.Models.Details
 {
-    public class SafetyDetailsModel
+    public class SafetyDetailModel
     {
         public bool Gps { get; set; }
 

@@ -1,6 +1,6 @@
 ﻿namespace MobileWorld.Core.Models.Details
 {
-    public class InteriorDetailsModel
+    public class InteriorDetailModel
     {
         public bool SuedeSaloon { get; set; }
 

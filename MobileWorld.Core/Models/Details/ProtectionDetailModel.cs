@@ -1,6 +1,6 @@
 ﻿namespace MobileWorld.Core.Models.Details
 {
-    public class ProtectionDetailsModel
+    public class ProtectionDetailModel
     {
         public bool Alarm { get; set; }
 

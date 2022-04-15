@@ -1,6 +1,6 @@
 ﻿namespace MobileWorld.Core.Models.Details
 {
-    public class OthersDetailsModel
+    public class OthersDetailModel
     {
         public bool AllDrive { get; set; }
 
