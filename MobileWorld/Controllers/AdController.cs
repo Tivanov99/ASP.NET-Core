@@ -54,6 +54,7 @@ namespace MobileWorld.Controllers
                     ms.Dispose();
                     images.Add(img);
                 }
+
                 this.service.CreateAd((AdInputModel)model, images, userId);
 
                 return RedirectToAction("Index", "Home");
