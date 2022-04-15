@@ -21,26 +21,26 @@
 </head>
 <body>
 
-    <from asp-action="UpdateUser" asp-route-userId=@Model.Id method="post" enctype="multipart/form-data">
+    <form asp-action="UpdateUser" asp-route-userId=@Model.Id method="post" enctype="multipart/form-data">
         <strong>Име</strong>
-        <input type="text" value="@Model.FirstName" />
+        <input asp-for="FirstName" type="text" value="@Model.FirstName" />
         <br />
         <strong>Фамилия</strong>
-        <input type="text" value="@Model.LastName" />
+        <input asp-for="LastName" type="text" value="@Model.LastName" />
         <br />
 
         <strong>Потребителско име</strong>
-        <input type="text" value="@Model.UserName" />
+        <input asp-for="UserName" type="text" value="@Model.UserName" />
         <br />
 
         <strong>Имейл</strong>
-        <input type="text" value="@Model.Email" />
+        <input asp-for="Email" type="text" value="@Model.Email" />
         <br />
 
         <strong>Роли на текущият потребирел "@Model.UserName"</strong>
         <br />
 
-        <select>
+        <select asp-for="Role">
             <option value="">
                 @Model.Role
             </option>
@@ -49,8 +49,9 @@
             </option>
         </select>
 
+            <button type="submit" class="btn btn-block btn-primary">Запази промените</button>
 
-    </from>
+    </form>
 
 
     <div class="user-ads">
