@@ -6,7 +6,7 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 @{
-    string otherRole = Model.Role == "Base" ? "Administator" : "Base";
+    string otherRole = Model.Role == @GlobalConstants.BaseRole ? @GlobalConstants.AdministratorRole : @GlobalConstants.BaseRole;
 }
 
 <!DOCTYPE html>
@@ -41,10 +41,10 @@
         <br />
 
         <select asp-for="Role">
-            <option value="">
+            <option value="@Model.Role">
                 @Model.Role
             </option>
-            <option value="">
+            <option value="@otherRole">
                @otherRole
             </option>
         </select>
