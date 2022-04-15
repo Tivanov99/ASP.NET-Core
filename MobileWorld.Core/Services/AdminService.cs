@@ -1,18 +1,27 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Models;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Infrastructure.Data.Common;
+using MobileWorld.Infrastructure.Data.Identity;
 
 namespace MobileWorld.Core.Services
 {
     public class AdminService : IAdminService
     {
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IUnitOfWork unitOfWork;
 
         public AdminService(
-            IUnitOfWork _unitOfWork)
+            IUnitOfWork _unitOfWork,
+            UserManager<ApplicationUser> userManager,
+            RoleManager<IdentityRole> roleManager
+            )
         {
+            _userManager = userManager;
+            _roleManager = roleManager;
             unitOfWork = _unitOfWork;
         }
 

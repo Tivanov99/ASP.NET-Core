@@ -29,18 +29,22 @@ namespace MobileWorld.Controllers
         {
             return View();
         }
-
+        public IActionResult Delete(string userId)
+        {
+            this._adminService.DeleteUser(userId);
+            return this.RedirectToAction(nameof(Users));
+        }
         public IActionResult Users()
         {
             var users = this._adminService
                 .Users();
             foreach (var currUser in users)
             {
-             currUser.Role = _userManager
-                    .GetRolesAsync(
-                                    _userManager.FindByIdAsync(currUser.Id).Result
-                                   )
-                    .Result[0];
+                currUser.Role = _userManager
+                       .GetRolesAsync(
+                                       _userManager.FindByIdAsync(currUser.Id).Result
+                                      )
+                       .Result[0];
             }
             return View(users);
         }
@@ -48,19 +52,21 @@ namespace MobileWorld.Controllers
         public IActionResult EditUser(string userId)
         {
             var user = this._adminService.GetUser(userId);
-                user.Role=_userManager.GetRolesAsync(
-                                                        _userManager.FindByIdAsync(user.Id).Result
-                                                     ).Result[0];
+            user.Role = _userManager.GetRolesAsync(
+                                                    _userManager.FindByIdAsync(user.Id).Result
+                                                 ).Result[0];
             return View(user);
         }
 
-        public IActionResult UpdateUser(UserUpdateModel model,string userId)
+        public IActionResult UpdateUser(UserUpdateModel model, string userId)
         {
             var user = this._adminService.GetUser(userId);
-           var rolle = _userManager.GetRolesAsync(
-                                                    _userManager.FindByIdAsync(user.Id).Result
-                                                 ).Result[0];
+            var rolle = _userManager.GetRolesAsync(
+                                                     _userManager.FindByIdAsync(user.Id).Result
+                                                  ).Result[0];
+
             bool isInRolle = rolle == model.Role;
+
             //TODO: change user role if is not in rolle
             return this.RedirectToAction("Index", "Home");
         }
