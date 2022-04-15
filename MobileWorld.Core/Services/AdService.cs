@@ -19,7 +19,6 @@ namespace MobileWorld.Core.Services
         public AdViewModel GetAdById(string adId)
         {
             var ad = AdProjection(adId);
-
             return ad;
         }
 
@@ -73,39 +72,42 @@ namespace MobileWorld.Core.Services
 
         public void CreateAd(AdInputModel model, List<Image> images, string ownerId)
         {
-            int townId = this.GetTownIdByName(model.Region.TownName);
-
-            //TODO : Add seed to Db all Towns
-
-            Car car = CreateCarEntity(model.Car, model.Features);
-
-            MatchInputFeaturesToFeatureModel(model.Features.SafetyDetails,car.Feature.SafetyDetails);
-            MatchInputFeaturesToFeatureModel(model.Features.ComfortDetails, car.Feature.ComfortDetails);
-            MatchInputFeaturesToFeatureModel(model.Features.InteriorDetails, car.Feature.InteriorDetails);
-            MatchInputFeaturesToFeatureModel(model.Features.ExteriorDetails, car.Feature.ExteriorDetails);
-            MatchInputFeaturesToFeatureModel(model.Features.OthersDetails, car.Feature.OthersDetails);
-            MatchInputFeaturesToFeatureModel(model.Features.ProtectionDetails, car.Feature.ProtectionDetails);
-
-
-            Region region = CreateRegionEntity(model.Region, townId);
-
-            Ad newAd = CreaAdEntity(model, images, ownerId, car, region);
-
-            car.AdId = newAd.Id;
-            car.Ad = newAd;
-
             try
             {
-                this.unitOfWork.AdRepository.Insert(newAd);
-                this.unitOfWork.Save();
+                int townId = this.GetTownIdByName(model.Region.TownName);
+
+                //TODO : Add seed to Db all Towns
+
+                Car car = CreateCarEntity(model.Car, model.Features);
+
+                MatchInputFeaturesToFeatureModel(model.Features.SafetyDetails, car.Feature.SafetyDetails);
+                MatchInputFeaturesToFeatureModel(model.Features.ComfortDetails, car.Feature.ComfortDetails);
+                MatchInputFeaturesToFeatureModel(model.Features.InteriorDetails, car.Feature.InteriorDetails);
+                MatchInputFeaturesToFeatureModel(model.Features.ExteriorDetails, car.Feature.ExteriorDetails);
+                MatchInputFeaturesToFeatureModel(model.Features.OthersDetails, car.Feature.OthersDetails);
+                MatchInputFeaturesToFeatureModel(model.Features.ProtectionDetails, car.Feature.ProtectionDetails);
+
+                Region region = CreateRegionEntity(model.Region, townId);
+
+                Ad newAd = CreaAdEntity(model, images, ownerId, car, region);
+
+                car.AdId = newAd.Id;
+                car.Ad = newAd;
+                try
+                {
+                    this.unitOfWork.AdRepository.Insert(newAd);
+                    this.unitOfWork.Save();
+                }
+                catch (Exception)
+                {
+                    //TODO: what if transaction throws ?
+                }
             }
             catch (Exception)
             {
-                //TODO: what if transaction throws ?
+                
             }
         }
-
-
 
         public void Delete(string adId)
         {
@@ -180,8 +182,6 @@ namespace MobileWorld.Core.Services
             }
             return false;
         }
-
-
 
         private List<PropertyDto> GetBaseSearchCriteria(object model)
         {

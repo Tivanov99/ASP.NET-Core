@@ -31,13 +31,13 @@ namespace MobileWorld.Core.Services
             this.unitOfWork.Save();
         }
 
-        public UserViewModel GetUser(string userId)
+        public UserViewModel GetUserAsViewModel(string userId)
         {
             var user = this.unitOfWork.AdminRepository
                 .GetAllAsQueryable()
-                .Include(u=>u.Ads)
+                .Include(u => u.Ads)
                 .Where(u => u.Id == userId)
-                .Select(u=> new UserViewModel()
+                .Select(u => new UserViewModel()
                 {
                     Id = u.Id,
                     UserName = u.UserName,
@@ -58,18 +58,23 @@ namespace MobileWorld.Core.Services
 
         public IEnumerable<UserViewModel> Users()
         {
-            
+
             var users = unitOfWork
                 .AdminRepository
                 .GetAll()
                 .Select(u => new UserViewModel()
                 {
                     Id = u.Id,
-                    UserName=u.UserName
+                    UserName = u.UserName
                 })
                 .ToList();
 
             return users;
         }
+
+        public ApplicationUser GetApplicationUser(string userId)
+        => this.unitOfWork.UserRepository.GetAll()
+                .Where(u => u.Id == userId)
+                .First();
     }
 }

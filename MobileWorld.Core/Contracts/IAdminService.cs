@@ -1,4 +1,5 @@
 ﻿using MobileWorld.Core.Models;
+using MobileWorld.Infrastructure.Data.Identity;
 
 namespace MobileWorld.Core.Contracts
 {
@@ -6,8 +7,10 @@ namespace MobileWorld.Core.Contracts
     {
         IEnumerable<UserViewModel> Users();
 
-        UserViewModel GetUser(string userId);
+        UserViewModel GetUserAsViewModel(string userId);
 
         void DeleteUser(string userId);
+
+        ApplicationUser GetApplicationUser(string userId);
     }
 }
