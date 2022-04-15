@@ -25,15 +25,12 @@ namespace MobileWorld.Controllers
             _roleManager = roleManager;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
         public IActionResult Delete(string userId)
         {
             this._adminService.DeleteUser(userId);
             return this.RedirectToAction(nameof(Users));
         }
+
         public IActionResult Users()
         {
             var users = this._adminService
@@ -62,22 +59,27 @@ namespace MobileWorld.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateUser(UserUpdateModel model, string userId)
         {
-            var user = this._adminService.GetApplicationUser(userId);
-
-            var rolle =await _userManager.GetRolesAsync(
-                                                    await _userManager.FindByIdAsync(user.Id)
-                                                  );
-
-            bool isInRolle = rolle[0] == model.Role;
-
-           
-            if (!isInRolle)
+            try
             {
-               await _userManager.RemoveFromRoleAsync(user, rolle[0]);
-              await  _userManager.AddToRolesAsync(user, new List<string>() { model.Role});
+                var user = this._adminService.GetApplicationUser(userId);
+
+                var rolle = await _userManager.GetRolesAsync(
+                                                        await _userManager.FindByIdAsync(user.Id)
+                                                      );
+
+                bool isInRolle = rolle[0] == model.Role;
+
+                if (!isInRolle)
+                {
+                    await _userManager.RemoveFromRoleAsync(user, rolle[0]);
+                    await _userManager.AddToRolesAsync(user, new List<string>() { model.Role });
+                }
+            }
+            catch (Exception)
+            {
+
             }
 
-            //TODO: change user role if is not in rolle
             return this.RedirectToAction("Index", "Home");
         }
 

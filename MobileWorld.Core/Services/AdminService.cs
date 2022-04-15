@@ -10,18 +10,13 @@ namespace MobileWorld.Core.Services
 {
     public class AdminService : IAdminService
     {
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
+       
         private readonly IUnitOfWork unitOfWork;
 
         public AdminService(
-            IUnitOfWork _unitOfWork,
-            UserManager<ApplicationUser> userManager,
-            RoleManager<IdentityRole> roleManager
+            IUnitOfWork _unitOfWork
             )
         {
-            _userManager = userManager;
-            _roleManager = roleManager;
             unitOfWork = _unitOfWork;
         }
 
@@ -57,9 +52,7 @@ namespace MobileWorld.Core.Services
         }
 
         public IEnumerable<UserViewModel> Users()
-        {
-
-            var users = unitOfWork
+        => unitOfWork
                 .AdminRepository
                 .GetAll()
                 .Select(u => new UserViewModel()
@@ -68,9 +61,6 @@ namespace MobileWorld.Core.Services
                     UserName = u.UserName
                 })
                 .ToList();
-
-            return users;
-        }
 
         public ApplicationUser GetApplicationUser(string userId)
         => this.unitOfWork.UserRepository.GetAll()
