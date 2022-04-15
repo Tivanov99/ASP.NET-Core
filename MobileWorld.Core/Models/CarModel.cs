@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MobileWorld.Core.Models
 {
@@ -8,6 +7,7 @@ namespace MobileWorld.Core.Models
         public CarModel()
         {
             Images = new();
+            Features = new();
         }
 
         [Required]
@@ -20,8 +20,9 @@ namespace MobileWorld.Core.Models
 
         [Required]
         public decimal Mileage { get; set; }
+
         public List<byte[]> Images { get; set; }
 
-        public FeaturesModel Features { get; set; } = new();
+        public FeaturesModel Features { get; set; }
     }
 }

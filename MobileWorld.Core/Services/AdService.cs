@@ -272,7 +272,6 @@ namespace MobileWorld.Core.Services
             ExteriorDetails = features.ExteriorDetails,
             OthersDetails = features.OthersDetails,
             InteriorDetails = features.InteriorDetails,
-
         };
 
 
