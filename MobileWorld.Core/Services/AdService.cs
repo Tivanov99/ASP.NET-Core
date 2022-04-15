@@ -79,6 +79,8 @@ namespace MobileWorld.Core.Services
 
             Car car = CreateCarEntity(model.Car, model.Features);
 
+            MatchInputFeaturesToFeatureModel(car.Feature.SafetyDetails, model.Features.SafetyDetails);
+
             Region region = CreateRegionEntity(model.Region, townId);
 
             Ad newAd = CreaAdEntity(model, images, ownerId, car, region);
@@ -204,6 +206,17 @@ namespace MobileWorld.Core.Services
                 .Select(x => x.Name)
                 .ToList();
 
+            var test = type.GetProperties()
+                .Where(p => features.Contains(p.Name))
+                .ToList();
+
+            foreach (var item in test)
+            {
+                item.SetValue(null, true);
+            }
+
+                
+
             if (features.Any())
             {
                 currentCriteria.Add(categoryName, features);
@@ -229,7 +242,7 @@ namespace MobileWorld.Core.Services
             return result;
         }
 
-        private Car CreateCarEntity(CarModel car, Feature features)
+        private Car CreateCarEntity(CarModel car, FeaturesModel features)
         => new Car()
         {
             Color = car.Color,
@@ -263,16 +276,44 @@ namespace MobileWorld.Core.Services
             AutoGas = model.AutoGas,
         };
 
-        private Feature CreateFeatureEntity(Feature features)
+        private Feature CreateFeatureEntity(FeaturesModel features)
         => new Feature()
         {
-            SafetyDetails = features.SafetyDetails,
-            ProtectionDetails = features.ProtectionDetails,
-            ComfortDetails = features.ComfortDetails,
-            ExteriorDetails = features.ExteriorDetails,
-            OthersDetails = features.OthersDetails,
-            InteriorDetails = features.InteriorDetails,
+            //SafetyDetails = features.SafetyDetails,
+            //ProtectionDetails = features.ProtectionDetails,
+            //ComfortDetails = features.ComfortDetails,
+            //ExteriorDetails = features.ExteriorDetails,
+            //OthersDetails = features.OthersDetails,
+            //InteriorDetails = features.InteriorDetails,
         };
+
+        private void MatchInputFeaturesToFeatureModel(object inputFeature, object featureModel)
+        {
+            Type inputFeatureType = inputFeature
+                .GetType();
+
+            string categoryName = inputFeature.GetType().Name;
+
+            var inputFeaturePoperties = inputFeatureType
+                .GetProperties()
+                .Where(x => x.Name != "Id" && (bool)x.GetValue(inputFeature) == true)
+                .Select(x => x.Name)
+                .ToList();
+
+            Type featureModelType = featureModel
+               .GetType();
+
+            var test = featureModelType.GetProperties()
+                .Where(p => inputFeaturePoperties.Contains(p.Name))
+                .ToList();
+
+
+
+            foreach (var item in test)
+            {
+                item.SetValue(null, true);
+            }
+        }
 
 
         private Ad CreaAdEntity(AdInputModel model, List<Image> images, string ownerId, Car car, Region region)
@@ -333,12 +374,12 @@ namespace MobileWorld.Core.Services
                           },
                           Features = new FeaturesModel()
                           {
-                              OthersDetails = a.Car.Feature.OthersDetails,
-                              ComfortDetails = a.Car.Feature.ComfortDetails,
-                              SafetyDetails = a.Car.Feature.SafetyDetails,
-                              ExteriorDetails = a.Car.Feature.ExteriorDetails,
-                              ProtectionDetails = a.Car.Feature.ProtectionDetails,
-                              InteriorDetails = a.Car.Feature.InteriorDetails,
+                              //OthersDetails = a.Car.Feature.OthersDetails,
+                              //ComfortDetails = a.Car.Feature.ComfortDetails,
+                              //SafetyDetails = a.Car.Feature.SafetyDetails,
+                              //ExteriorDetails = a.Car.Feature.ExteriorDetails,
+                              //ProtectionDetails = a.Car.Feature.ProtectionDetails,
+                              //InteriorDetails = a.Car.Feature.InteriorDetails,
                           }
                       },
                       Owner = new OwnerModel()
