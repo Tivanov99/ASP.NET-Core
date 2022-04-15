@@ -25,7 +25,6 @@ namespace MobileWorld.Controllers
             return View(ad);
         }
 
-
         [Authorize]
         [HttpGet]
         public IActionResult CreateAd()
@@ -55,7 +54,7 @@ namespace MobileWorld.Controllers
                     images.Add(img);
                 }
 
-                this.service.CreateAd((AdInputModel)model, images, userId);
+                this.service.CreateAd(model, images, userId);
 
                 return RedirectToAction("Index", "Home");
             }
@@ -64,6 +63,7 @@ namespace MobileWorld.Controllers
                 var message = string.Join(" | ", ModelState.Values
                  .SelectMany(v => v.Errors)
                  .Select(e => e.ErrorMessage));
+                //TODO; return error to correct view
             }
 
             return View();
@@ -114,7 +114,7 @@ namespace MobileWorld.Controllers
         {
             if (adId == null)
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
             }
 
             try
@@ -130,30 +130,37 @@ namespace MobileWorld.Controllers
         }
         public IActionResult Edit(string adId)
         {
-            var ad = this.service.GetAdById(adId);
+            var ad = this.service
+                .GetAdById(adId);
             return View(ad);
         }
 
 
         [HttpPost]
-        public IActionResult EditPost(AdViewModel updatedModel, string? adId)
+        public IActionResult EditPost(ModelBindingAdModel updatedModel, string? adId)
         {
             if (adId == null)
             {
                 return NotFound();
             }
-            Ad ad = new Ad();
 
-            //if(await TryUpdateModelAsync<Ad>(ad,"",x=>x))
-            //{
-
-            //}
-            bool result = this.service.Update(adId, updatedModel);
-
-            if (!result)
+            if (ModelState.IsValid)
             {
-                //TODO : Return some error
+                 this.service.Update(updatedModel,adId);
             }
+            else
+            {
+                var message = string.Join(" | ", ModelState.Values
+                 .SelectMany(v => v.Errors)
+                 .Select(e => e.ErrorMessage));
+
+            }
+
+
+            //if (!result)
+            //{
+            //    //TODO : Return some error
+            //}
 
 
             return RedirectToAction(actionName: nameof(this.Ad), new { adId = adId });

@@ -1,6 +1,4 @@
-﻿
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace MobileWorld.Core.Models
 {
@@ -14,6 +12,7 @@ namespace MobileWorld.Core.Models
             Owner = new();
             Features = new();
         }
+
         [Required]
         [MinLength(5)]
         [StringLength(50, ErrorMessage = "Заглавието трябва да е меджу 5 и 50 символа.")]

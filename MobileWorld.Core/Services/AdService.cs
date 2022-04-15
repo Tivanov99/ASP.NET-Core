@@ -132,7 +132,7 @@ namespace MobileWorld.Core.Services
             }
         }
 
-        public bool Update(string adId, AdViewModel updatedModel)
+        public bool Update(AdInputModel updatedModel, string adId)
         {
             Ad? ad = this.unitOfWork
                 .AdRepository
@@ -320,7 +320,6 @@ namespace MobileWorld.Core.Services
                 item.SetValue(featureModel,true);
             }
         }
-
 
         private Ad CreaAdEntity(AdInputModel model, List<Image> images, string ownerId, Car car, Region region)
              => new Ad()
