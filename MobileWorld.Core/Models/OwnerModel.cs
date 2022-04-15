@@ -4,7 +4,7 @@ namespace MobileWorld.Core.Models
 {
     public class OwnerModel
     {
-        public string OwnerId { get; set; }
+        public string? OwnerId { get; set; }
 
         [Required]
         public string FirstName { get; set; }

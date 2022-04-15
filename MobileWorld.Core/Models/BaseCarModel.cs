@@ -8,9 +8,9 @@ namespace MobileWorld.Core.Models
         [Required]
         public string Make { get; set; }
 
-        [Required]
-        [StringLength(20)]
-        public string Model { get; set; }
+        //[Required]
+        //[StringLength(20)]
+        //public string Model { get; set; }
 
         [Range(1886,2022,ErrorMessage ="Годината трябва да е между 1886 и 2022")]
         public int Year { get; set; }

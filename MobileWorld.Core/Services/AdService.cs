@@ -79,7 +79,7 @@ namespace MobileWorld.Core.Services
 
             Car car = CreateCarEntity(model.Car, model.Features);
 
-            MatchInputFeaturesToFeatureModel(car.Feature.SafetyDetails, model.Features.SafetyDetails);
+            MatchInputFeaturesToFeatureModel(model.Features.SafetyDetails,car.Feature.SafetyDetails);
 
             Region region = CreateRegionEntity(model.Region, townId);
 
@@ -296,7 +296,7 @@ namespace MobileWorld.Core.Services
 
             var inputFeaturePoperties = inputFeatureType
                 .GetProperties()
-                .Where(x => x.Name != "Id" && (bool)x.GetValue(inputFeature) == true)
+                .Where(x =>(bool)x.GetValue(inputFeature) == true)
                 .Select(x => x.Name)
                 .ToList();
 
@@ -311,7 +311,7 @@ namespace MobileWorld.Core.Services
 
             foreach (var item in test)
             {
-                item.SetValue(null, true);
+                item.SetValue(featureModel,true);
             }
         }
 
@@ -356,7 +356,7 @@ namespace MobileWorld.Core.Services
                           SeatsCount = a.Car.SeatsCount,
                           Year = a.Car.Year,
                           Make = a.Car.Make,
-                          Model = a.Car.Model,
+                          //Model = a.Car.Model,
                           GearType = a.Car.GearType,
                           Color = a.Car.Color,
                           Mileage = a.Car.Mileage,
