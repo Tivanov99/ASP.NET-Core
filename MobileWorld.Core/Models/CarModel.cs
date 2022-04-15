@@ -14,7 +14,6 @@ namespace MobileWorld.Core.Models
         public int SeatsCount { get; set; }
 
         [Required]
-        [Column(TypeName = "decimal(6,3)")]
         public decimal Mileage { get; set; }
 
         [Required]
