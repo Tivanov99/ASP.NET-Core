@@ -80,6 +80,12 @@ namespace MobileWorld.Core.Services
             Car car = CreateCarEntity(model.Car, model.Features);
 
             MatchInputFeaturesToFeatureModel(model.Features.SafetyDetails,car.Feature.SafetyDetails);
+            MatchInputFeaturesToFeatureModel(model.Features.ComfortDetails, car.Feature.ComfortDetails);
+            MatchInputFeaturesToFeatureModel(model.Features.InteriorDetails, car.Feature.InteriorDetails);
+            MatchInputFeaturesToFeatureModel(model.Features.ExteriorDetails, car.Feature.ExteriorDetails);
+            MatchInputFeaturesToFeatureModel(model.Features.OthersDetails, car.Feature.OthersDetails);
+            MatchInputFeaturesToFeatureModel(model.Features.ProtectionDetails, car.Feature.ProtectionDetails);
+
 
             Region region = CreateRegionEntity(model.Region, townId);
 
