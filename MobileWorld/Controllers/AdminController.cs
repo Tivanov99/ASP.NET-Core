@@ -49,6 +49,7 @@ namespace MobileWorld.Controllers
             return View(users);
         }
 
+        [HttpGet]
         public IActionResult EditUser(string userId)
         {
             var user = this._adminService.GetUserAsViewModel(userId);
@@ -58,9 +59,11 @@ namespace MobileWorld.Controllers
             return View(user);
         }
 
+        [HttpPost]
         public IActionResult UpdateUser(UserUpdateModel model, string userId)
         {
-            var user = this._adminService.GetUserAsViewModel(userId);
+            var user = this._adminService.GetApplicationUser(userId);
+
             var rolle = _userManager.GetRolesAsync(
                                                      _userManager.FindByIdAsync(user.Id).Result
                                                   ).Result[0];
@@ -70,7 +73,8 @@ namespace MobileWorld.Controllers
            
             if (!isInRolle)
             {
-                _userManager.RemoveFromRoleAsync(,rolle)
+                _userManager.RemoveFromRoleAsync(user, rolle);
+                _userManager.AddToRolesAsync(user, new List<string>() { model.Role});
             }
 
             //TODO: change user role if is not in rolle
