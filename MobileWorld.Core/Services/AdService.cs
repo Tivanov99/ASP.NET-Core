@@ -405,6 +405,7 @@ namespace MobileWorld.Core.Services
                               AutoGas = a.Car.Engine.AutoGas,
                               Hybrid = a.Car.Engine.Hybrid,
                           },
+                          Features
                       },
                       Owner = new OwnerModel()
                       {
@@ -423,5 +424,25 @@ namespace MobileWorld.Core.Services
             dbModel.AutoGas = updatedModel.AutoGas;
             dbModel.Hybrid=updatedModel.Hybrid;
         }
+
+        //private AdInputModel GetAdForUpdate(string adId)
+        //{
+        //    var result = this.unitOfWork.AdRepository
+        //        .GetAll()
+        //        .Where(x => x.Id == adId)
+        //        .Select(a => new AdInputModel()
+        //        {
+        //            Id = a.Id,
+        //            Title = a.Title,
+        //            Price=a.Price,
+        //            Description=a.Description,
+        //            Car= new CarModel()
+        //            {
+
+        //            }
+        //        })
+        //        .FirstOrDefault();
+                
+        //}
     }
 }
