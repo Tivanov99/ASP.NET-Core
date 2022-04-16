@@ -34,7 +34,7 @@ namespace MobileWorld.Core.Models.InputModels
 
         public RegionInputModel Region { get; set; } 
 
-        public OwnerModel Owner { get; set; } 
+        public OwnerInputModel Owner { get; set; } 
 
         public FeaturesModel Features { get; set; }
     }
