@@ -16,25 +16,23 @@ namespace MobileWorld.Core.Models.InputModels
         public string? Id { get; set; }
 
         [Required]
-        [MinLength(5)]
-        [StringLength(50, ErrorMessage = "Заглавието трябва да е меджу 5 и 50 символа.")]
+        [StringLength(50,MinimumLength =5, ErrorMessage = "Заглавието трябва да е меджу 5 и 50 символа.")]
         public string Title { get; set; }
 
         [Range(0, 2000000)]
         public virtual decimal Price { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Полето 'Телефонен номер' е задължително!")]
         [Phone]
         public string PhoneNumber { get; set; }
 
         [Required]
-        [MaxLength(700)]
-        [MinLength(30)]
+        [StringLength(700,MinimumLength = 30, ErrorMessage = "Описанието трябва да е между 30 и 700 символа!")]
         public string Description { get; set; }
 
-        public CarModel Car { get; set; } 
+        public CarInputModel Car { get; set; } 
 
-        public RegionModel Region { get; set; } 
+        public RegionInputModel Region { get; set; } 
 
         public OwnerModel Owner { get; set; } 
 
