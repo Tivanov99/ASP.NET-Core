@@ -1,4 +1,5 @@
 ﻿using MobileWorld.Core.Models;
+using MobileWorld.Core.Models.InputModels;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Infrastructure.Data.Models;
 

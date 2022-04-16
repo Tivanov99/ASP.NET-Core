@@ -2,7 +2,7 @@
 using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Dto;
 using MobileWorld.Core.Models;
-using MobileWorld.Core.Models.Details;
+using MobileWorld.Core.Models.InputModels;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.Models;

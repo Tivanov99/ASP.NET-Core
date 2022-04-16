@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MobileWorld.Core.Models
+namespace MobileWorld.Core.Models.InputModels
 {
     //TODO : Check fuel type, engines are null
     public class AdInputModel

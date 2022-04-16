@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MobileWorld.Core.Models;
+using MobileWorld.Core.Models.InputModels;
 
 namespace MobileWorld.Models
 {
