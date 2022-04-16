@@ -11,20 +11,18 @@ namespace MobileWorld.ModelBinders
                 .ValueProvider
                 .GetValue(bindingContext.ModelName);
 
-            if(valueResult != ValueProviderResult.None && !String.IsNullOrEmpty(valueResult.FirstValue))
+            if (valueResult != ValueProviderResult.None && !String.IsNullOrEmpty(valueResult.FirstValue))
             {
                 decimal actualValue = 0;
-                bool success=false;
+                bool success = false;
 
                 try
                 {
-                    string decimalValue = valueResult.FirstValue;
-                    decimalValue = decimalValue
-                        .Replace(".", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator);
-                    decimalValue = decimalValue
-                        .Replace(",", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator);
+                    string decValue = valueResult.FirstValue;
+                    decValue = decValue.Replace(".", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator);
+                    decValue = decValue.Replace(",", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator);
 
-                    actualValue = Convert.ToDecimal(decimalValue, CultureInfo.CurrentCulture);
+                    actualValue = Convert.ToDecimal(decValue, CultureInfo.CurrentCulture);
                     success = true;
                 }
                 catch (FormatException fe)
@@ -34,9 +32,10 @@ namespace MobileWorld.ModelBinders
 
                 if (success)
                 {
-
+                    bindingContext.Result = ModelBindingResult.Success(actualValue);
                 }
             }
+
             return Task.CompletedTask;
         }
     }

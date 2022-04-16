@@ -1,9 +1,10 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using MobileWorld.Core.Models.InputModels
 @using MobileWorld.Infrastructure.Data.Identity
+@using MobileWorld.Models
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
-@model AdInputModel
+@model ModelBindingAdModel
 @{
     var user = await UserManager.GetUserAsync(User);
 }
@@ -948,7 +949,7 @@
                 </div>
 
                 <div class="selects">
-                    <input asp-for="Car.Mileage" oninput="javascript: if (this.value.length > this.maxLength)
+                    <input asp-for="@Model.Car.Mileage" oninput="javascript: if (this.value.length > this.maxLength)
                 this.value = this.value.slice(0, this.maxLength);"
                            step="0.1"
                            type="number" maxlength="9" class="form-control selectors" value="" required>

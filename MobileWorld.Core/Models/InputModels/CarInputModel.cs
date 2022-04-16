@@ -8,7 +8,6 @@ namespace MobileWorld.Core.Models.InputModels
         public CarInputModel()
         {
             Images = new();
-            Features = new();
         }
 
         [Required(ErrorMessage = "Полето 'Марка' е задължително!")]
@@ -23,9 +22,6 @@ namespace MobileWorld.Core.Models.InputModels
 
         [Required(ErrorMessage = "Полето 'Скоростна кутия' е задължително!")]
         public GearType GearType { get; set; }
-
-        [Range(0, 2000000, ErrorMessage = "Цената трябва да е в диапазона от 0 до 2000000")]
-        public decimal MaxPrice { get; set; }
 
         public EngineModel Engine { get; set; }
 
@@ -43,7 +39,5 @@ namespace MobileWorld.Core.Models.InputModels
 
         [Required(ErrorMessage ="Снимките са задължителни!")]
         public List<byte[]> Images { get; set; }
-
-        public FeaturesModel Features { get; set; }
     }
 }

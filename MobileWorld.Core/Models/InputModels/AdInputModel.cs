@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Globalization;
 
 namespace MobileWorld.Core.Models.InputModels
 {
@@ -17,7 +19,7 @@ namespace MobileWorld.Core.Models.InputModels
         [StringLength(50,MinimumLength =5, ErrorMessage = "Заглавието трябва да е меджу 5 и 50 символа.")]
         public string Title { get; set; }
 
-        [Required(ErrorMessage ="Полето 'Цена' е задължително!")]
+        [Required(ErrorMessage = "Полето 'Цена' е задължително!")]
         [Range(0, 2000000, ErrorMessage = "Цената трябва да е в диапазона между 0 и 2000000!")]
         public virtual decimal Price { get; set; }
 

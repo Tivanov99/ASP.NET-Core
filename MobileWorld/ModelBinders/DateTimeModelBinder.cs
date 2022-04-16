@@ -24,10 +24,10 @@ namespace MobileWorld.ModelBinders
 
                 try
                 {
-                    actualValue = DateTime.ParseExact(dateValue, _dateTimeFormat, CultureInfo.InvariantCulture);
+                    actualValue = DateTime.ParseExact(dateValue, customDateFormat, CultureInfo.InvariantCulture);
                     success = true;
                 }
-                catch (FormatException fe)
+                catch (FormatException)
                 {
                     try
                     {
@@ -35,15 +35,21 @@ namespace MobileWorld.ModelBinders
                     }
                     catch (Exception e)
                     {
-                        bindingContext.ModelState.AddModelError(bindingContext.ModelName, fe, bindingContext.ModelMetadata);
+                        bindingContext.ModelState.AddModelError(bindingContext.ModelName, e, bindingContext.ModelMetadata);
                     }
+
+                }
+                catch (Exception e)
+                {
+                    bindingContext.ModelState.AddModelError(bindingContext.ModelName, e, bindingContext.ModelMetadata);
                 }
 
                 if (success)
                 {
-
+                    bindingContext.Result = ModelBindingResult.Success(actualValue);
                 }
             }
+
             return Task.CompletedTask;
         }
     }
