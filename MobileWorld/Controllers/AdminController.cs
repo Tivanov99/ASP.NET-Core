@@ -59,25 +59,28 @@ namespace MobileWorld.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateUser(UserUpdateModel model, string userId)
         {
-            try
+            if (ModelState.IsValid)
             {
-                var user = this._adminService.GetApplicationUser(userId);
-
-                var rolle = await _userManager.GetRolesAsync(
-                                                        await _userManager.FindByIdAsync(user.Id)
-                                                      );
-
-                bool isInRolle = rolle[0] == model.Role;
-
-                if (!isInRolle)
+                try
                 {
-                    await _userManager.RemoveFromRoleAsync(user, rolle[0]);
-                    await _userManager.AddToRolesAsync(user, new List<string>() { model.Role });
-                }
-            }
-            catch (Exception)
-            {
+                    var user = this._adminService.GetApplicationUser(userId);
 
+                    var rolle = await _userManager.GetRolesAsync(
+                                                            await _userManager.FindByIdAsync(user.Id)
+                                                          );
+
+                    bool isInRolle = rolle[0] == model.Role;
+
+                    if (!isInRolle)
+                    {
+                        await _userManager.RemoveFromRoleAsync(user, rolle[0]);
+                        await _userManager.AddToRolesAsync(user, new List<string>() { model.Role });
+                    }
+                }
+                catch (Exception)
+                {
+
+                }
             }
 
             return this.RedirectToAction("Index", "Home");
