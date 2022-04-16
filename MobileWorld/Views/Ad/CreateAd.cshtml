@@ -1,7 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@using MobileWorld.Core.Models.InputModels
 @using MobileWorld.Infrastructure.Data.Identity
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
+@model AdInputModel
 @{
     var user = await UserManager.GetUserAsync(User);
 }
@@ -40,7 +42,7 @@
 
             <div class="div-labels">
                 <div>
-                    <select name="Car.Make" class="form-control">
+                    <select asp-for="@Model.Car.Make" class="form-control">
                         <option value="">
                             всички
                         </option>
@@ -492,7 +494,7 @@
                 </div>
 
                 <div class="selects" >
-                    <select name="Region.TownName" class="form-control selectors">
+                    <select asp-for="@Model.Region.TownName" class="form-control selectors">
                         <option value="">
                             всички
                         </option>
@@ -588,13 +590,13 @@
 
 
                 <div class="selects">
-                    <input name="Price"
+                    <input asp-for="@Model.Price"
                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                            type="number" maxlength="9" class="form-control selectors" value="" required>
                 </div>
 
                 <div class="selects">
-                    <input class="form-control selectors" name="Title" required/>
+                    <input class="form-control selectors" asp-for="Title" required/>
                 </div>
             </div>
 
@@ -622,7 +624,7 @@
             <br />
             <div class="div-labels">
                 <div>
-                    <select name="Car.Year" class="form-control">
+                    <select asp-for="Car.Year" class="form-control">
                         <option value="">
                             всички
                         </option>
@@ -909,7 +911,7 @@
                 </div>
 
                 <div class="selects">
-                    <select name="=FuelType" class="form-control">
+                    <select asp-for="@Model.Car.Engine.FuelType" class="form-control">
                         <option value="">
                             всички
                         </option>
@@ -929,7 +931,7 @@
                 </div>
 
                 <div class="selects">
-                    <select name="=GearType" class="form-control">
+                    <select asp-for="@Model.Car.GearType" class="form-control">
                         <option value="">
                             всички
                         </option>
@@ -946,7 +948,7 @@
                 </div>
 
                 <div class="selects">
-                    <input name="Car.Mileage" oninput="javascript: if (this.value.length > this.maxLength)
+                    <input asp-for="Car.Mileage" oninput="javascript: if (this.value.length > this.maxLength)
                 this.value = this.value.slice(0, this.maxLength);"
                            step="0.1"
                            type="number" maxlength="9" class="form-control selectors" value="" required>
@@ -979,25 +981,25 @@
             <div class="div-labels">
 
                 <div>
-                    <input class="form-control selectors" name="Owner.FirstName" value="@user.FirstName"/>
+                    <input class="form-control selectors" asp-for="Owner.FirstName" value="@user.FirstName"/>
                 </div>
 
                 <div class="selects">
-                    <input class="form-control selectors" name="Owner.LastName" value="@user.LastName" />
+                    <input class="form-control selectors" asp-for="Owner.LastName" value="@user.LastName" />
                 </div>
                 <div class="selects">
-                    <input class="form-control selectors" name="Car.Color" required/>
+                    <input class="form-control selectors" asp-for="Car.Color" required/>
                 </div>
 
                 <div class="selects">
-                    <input class="form-control selectors" name="Region.RegionName" />
+                    <input class="form-control selectors" asp-for="Region.RegionName" />
                 </div>
             </div>
 
             <br />
             <div class="div-labels">
                 <div>
-                    <label name="PhoneNumber">Телефонен номер</label>
+                    <label >Телефонен номер</label>
                 </div>
 
                 <div class="labels">
@@ -1017,21 +1019,21 @@
 
             <div class="div-labels">
                 <div>
-                    <input name="PhoneNumber" oninput="javascript: if (this.value.length > this.maxLength)
+                    <input asp-for="PhoneNumber" oninput="javascript: if (this.value.length > this.maxLength)
                 this.value = this.value.slice(0, this.maxLength);"
                            type="number" maxlength="10" class="form-control selectors" value="" required>
                 </div>
 
                 <div class="selects">
-                    <input class="form-control selectors" name="Region.Neiborhood" />
+                    <input class="form-control selectors" asp-for="Region.Neiborhood" />
                 </div>
 
                 <div class="selects">
-                    <input type="number" class="form-control selectors" name="Car.Engine.CubicCapacity" required/>
+                    <input type="number" class="form-control selectors" asp-for="Car.Engine.CubicCapacity" required/>
                 </div class="selects">
 
                 <div class="selects">
-                    <input type="number" class="form-control selectors" name="Car.Engine.HorsePower" required/>
+                    <input type="number" class="form-control selectors" asp-for="Car.Engine.HorsePower" required/>
                 </div>
 
             </div>
@@ -1040,19 +1042,19 @@
 
             <div class="div-labels">
                 <div>
-                    <label name="Car.Engine.FuelConsuption">Среден разход на гориво</label>
+                    <label>Среден разход на гориво</label>
                 </div>
 
                 <div class="labels">
-                    <label style="margin-left: -140px;" name="Car.Engine.NewtonMeter">Нютон-метъри</label>
+                    <label style="margin-left: -140px;">Нютон-метъри</label>
                 </div>
 
                 <div class="labels">
-                    <label style="margin-left: -95px;" name="Car.Engine.EcoLevel">Евро</label>
+                    <label style="margin-left: -95px;" >Евро</label>
                 </div>
 
                 <div class="labels">
-                    <label style="margin-left: -50px;" name="Car.SeatsCount">Брой пасажерски места</label>
+                    <label style="margin-left: -50px;">Брой пасажерски места</label>
                 </div>
             </div>
             <br />
@@ -1060,19 +1062,19 @@
             <div class="div-labels">
 
                 <div>
-                    <input type="number" class="form-control selectors" name="Car.Engine.FuelConsuption" />
+                    <input type="number" class="form-control selectors" asp-for="Car.Engine.FuelConsuption" />
                 </div>
                 
                 <div class="selects">
-                    <input type="number" class="form-control selectors" name="Car.Engine.NewtonMeter" />
+                    <input type="number" class="form-control selectors" asp-for="Car.Engine.NewtonMeter" />
                 </div>
 
                 <div class="selects">
-                    <input type="number" class="form-control selectors" name="Car.Engine.EcoLevel" required/>
+                    <input type="number" class="form-control selectors" asp-for="Car.Engine.EcoLevel" required/>
                 </div>
 
                 <div class="selects">
-                    <input type="number" class="form-control selectors" name="Car.SeatsCount" required/>
+                    <input type="number" class="form-control selectors" asp-for="Car.SeatsCount" required/>
                 </div>
             </div>
             <br />
@@ -1080,7 +1082,7 @@
 
             <div class="form-group purple-border">
                 <label for="exampleFormControlTextarea4">Описание</label>
-                <textarea style="width:400px" class="form-control" id="exampleFormControlTextarea4" name="Description" rows="4" required></textarea>
+                <textarea style="width:400px" class="form-control" id="exampleFormControlTextarea4" asp-for="Description" rows="4" required></textarea>
             </div>
         </div>
         <br />

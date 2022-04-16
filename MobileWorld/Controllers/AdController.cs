@@ -36,6 +36,7 @@ namespace MobileWorld.Controllers
         [HttpPost]
         public IActionResult CreateAd(ModelBindingAdModel model, string userId)
         {
+            //TODO : check Features all are false ?
             if (ModelState.IsValid)
             {
                 List<Image> images = new List<Image>();

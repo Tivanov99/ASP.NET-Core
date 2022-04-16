@@ -22,7 +22,7 @@ namespace MobileWorld.Core.Models.InputModels
         public virtual decimal Price { get; set; }
 
         [Required(ErrorMessage ="Полето 'Телефонен номер' е задължително!")]
-        [Phone]
+        [Phone(ErrorMessage ="Невалиден телефонен номер!")]
         public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "Полето 'Описание' е задължително!")]

@@ -259,7 +259,7 @@ namespace MobileWorld.Core.Services
             return result;
         }
 
-        private Car CreateCarEntity(CarModel car)
+        private Car CreateCarEntity(CarInputModel car)
         => new Car()
         {
             Color = car.Color,
@@ -272,7 +272,7 @@ namespace MobileWorld.Core.Services
             Year = car.Year,
         };
 
-        private Region CreateRegionEntity(RegionModel region, int townId)
+        private Region CreateRegionEntity(RegionInputModel region, int townId)
             => new Region()
             {
                 TownId = townId,
@@ -405,7 +405,8 @@ namespace MobileWorld.Core.Services
                               AutoGas = a.Car.Engine.AutoGas,
                               Hybrid = a.Car.Engine.Hybrid,
                           },
-                          Features
+                          //Features
+                          //TODO: select Features
                       },
                       Owner = new OwnerModel()
                       {
