@@ -1,4 +1,5 @@
 ﻿using MobileWorld.Core.Models.Details;
+using MobileWorld.Infrastructure.Data.Models;
 
 namespace MobileWorld.Core.Models
 {
@@ -12,21 +13,17 @@ namespace MobileWorld.Core.Models
             ExteriorDetails = new();
             ProtectionDetails = new();
             InteriorDetails = new();
-            EngineDetails = new();
         }
-        public SafetyDetailModel SafetyDetails { get; set; }
+        public virtual SafetyDetailModel SafetyDetails { get; set; }
 
-        public ComfortDetailModel ComfortDetails { get; set; }
+        public virtual ComfortDetailModel ComfortDetails { get; set; }
 
-        public OthersDetailModel OthersDetails { get; set; }
+        public virtual OthersDetailModel OthersDetails { get; set; }
 
-        public ExteriorDetailModel ExteriorDetails { get; set; }
+        public virtual ExteriorDetailModel ExteriorDetails { get; set; }
 
-        public ProtectionDetailModel ProtectionDetails { get; set; }
+        public virtual ProtectionDetailModel ProtectionDetails { get; set; }
 
-        public InteriorDetailModel InteriorDetails { get; set; }
-
-        public EngineDetailModel EngineDetails { get; set; }
-
+        public virtual InteriorDetailModel InteriorDetails { get; set; }
     }
 }

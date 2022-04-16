@@ -2,6 +2,7 @@
 using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Dto;
 using MobileWorld.Core.Models;
+using MobileWorld.Core.Models.Details;
 using MobileWorld.Core.Models.InputModels;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Infrastructure.Data.Common;
@@ -36,7 +37,7 @@ namespace MobileWorld.Core.Services
 
             Dictionary<string, List<string>> featuresSearchCriteria = new();
 
-            GetSelectedFeatures(model.Features.EngineDetails, featuresSearchCriteria);
+            //GetSelectedFeatures(model.Features.EngineDetails, featuresSearchCriteria);
             GetSelectedFeatures(model.Features.SafetyDetails, featuresSearchCriteria);
             GetSelectedFeatures(model.Features.ComfortDetails, featuresSearchCriteria);
             GetSelectedFeatures(model.Features.OthersDetails, featuresSearchCriteria);
@@ -319,20 +320,20 @@ namespace MobileWorld.Core.Services
             }
         }
 
-        private object MatchInputFeaturesToNewFeatureModel(object inputData, object modelToBind)
+        private object MatchInputFeaturesToNewFeatureModel(object sourceData, object resultData)
         {
-            Type inputModelType = inputData
+            Type inputModelType = sourceData
                 .GetType();
 
-            string categoryName = inputData.GetType().Name;
+            string categoryName = sourceData.GetType().Name;
 
             var inputDataPoperties = inputModelType
                 .GetProperties()
-                .Where(x => x.PropertyType == typeof(bool) && (bool)x.GetValue(inputData) == true)
+                .Where(x => x.PropertyType == typeof(bool) && (bool)x.GetValue(sourceData) == true)
                 .Select(x => x.Name)
                 .ToList();
 
-            Type bindingModelType = modelToBind
+            Type bindingModelType = resultData
                .GetType();
 
             var modelProperties = bindingModelType.GetProperties()
@@ -341,12 +342,11 @@ namespace MobileWorld.Core.Services
 
             foreach (var item in modelProperties)
             {
-                item.SetValue(modelToBind, true);
+                item.SetValue(resultData, true);
             }
 
 
-
-            return modelToBind;
+            return resultData;
         }
 
         private Ad CreaAdEntity(AdInputModel model, List<Image> images, string ownerId, Car car, Region region)
@@ -368,9 +368,14 @@ namespace MobileWorld.Core.Services
             => this.unitOfWork.AdRepository.GetAllAsQueryable()
                   .AsNoTracking()
                   .Where(a => a.Id == adId)
+                  .Include(c => c.Car.Feature.SafetyDetails)
+                  .Include(c => c.Car.Feature.ProtectionDetails)
+                  .Include(c => c.Car.Feature.ComfortDetails)
+                  .Include(c => c.Car.Feature.ExteriorDetails)
+                  .Include(c => c.Car.Feature.InteriorDetails)
+                  .Include(c => c.Car.Feature.OthersDetails)
                   .Include(a => a.Car)
                         .ThenInclude(c => c.Engine)
-                  .Include(c => c.Car.Feature)
                   .Include(a => a.Images)
                   .Select(a => new AdViewModel()
                   {
@@ -405,8 +410,7 @@ namespace MobileWorld.Core.Services
                               AutoGas = a.Car.Engine.AutoGas,
                               Hybrid = a.Car.Engine.Hybrid,
                           },
-                          //Features
-                          //TODO: select Features
+                          Features = a.Car.Feature
                       },
                       Owner = new OwnerModel()
                       {
