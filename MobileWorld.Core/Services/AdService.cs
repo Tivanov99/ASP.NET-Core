@@ -2,6 +2,7 @@
 using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Dto;
 using MobileWorld.Core.Models;
+using MobileWorld.Core.Models.Details;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.Models;
@@ -78,7 +79,7 @@ namespace MobileWorld.Core.Services
 
                 //TODO : Add seed to Db all Towns
 
-                Car car = CreateCarEntity(model.Car, model.Features);
+                Car car = CreateCarEntity(model.Car);
 
                 MatchInputFeaturesToFeatureModel(model.Features.SafetyDetails, car.Feature.SafetyDetails);
                 MatchInputFeaturesToFeatureModel(model.Features.ComfortDetails, car.Feature.ComfortDetails);
@@ -158,15 +159,20 @@ namespace MobileWorld.Core.Services
                     MatchInputFeaturesToFeatureModel(model.Features.ExteriorDetails, ad.Car.Feature.ExteriorDetails);
                     MatchInputFeaturesToFeatureModel(model.Features.OthersDetails, ad.Car.Feature.OthersDetails);
                     MatchInputFeaturesToFeatureModel(model.Features.ProtectionDetails, ad.Car.Feature.ProtectionDetails);
-                    //ad.Car.Engine = updatedModel.Car.Engine;
+
+                    UpdateEngine(model.Car.Engine, ad.Car.Engine);
+                    
                     ad.Car.SeatsCount = model.Car.SeatsCount;
                     ad.Car.GearType = model.Car.GearType;
                     ad.Car.Year = model.Car.Year;
+                    //TODO: Check model
                     //ad.Car.Model = updatedModel.Car.Model;
                     ad.Car.Color = model.Car.Color;
                     ad.Car.Make = model.Car.Make;
                     ad.Car.Mileage = model.Car.Mileage;
 
+
+                    //TODO: Check Images
                     //ad.Images.ForEach(i=>i.ImageData=updatedModel.Car.Images[i]);
                     ad.Title = model.Title;
                     ad.Price = model.Price;
@@ -253,14 +259,14 @@ namespace MobileWorld.Core.Services
             return result;
         }
 
-        private Car CreateCarEntity(CarModel car, FeaturesModel features)
+        private Car CreateCarEntity(CarModel car)
         => new Car()
         {
             Color = car.Color,
             SeatsCount = car.SeatsCount,
             Mileage = car.Mileage,
+            Feature= new Feature(),
             Engine = CreateEngineEntity(car.Engine),
-            Feature = CreateFeatureEntity(features),
             Model = "e46",
             Make = car.Make,
             Year = car.Year,
@@ -287,43 +293,60 @@ namespace MobileWorld.Core.Services
             AutoGas = model.AutoGas,
         };
 
-        private Feature CreateFeatureEntity(FeaturesModel features)
-        => new Feature()
+        private void MatchInputFeaturesToFeatureModel(object inputData, object modelToBind)
         {
-            //SafetyDetails = features.SafetyDetails,
-            //ProtectionDetails = features.ProtectionDetails,
-            //ComfortDetails = features.ComfortDetails,
-            //ExteriorDetails = features.ExteriorDetails,
-            //OthersDetails = features.OthersDetails,
-            //InteriorDetails = features.InteriorDetails,
-        };
-
-        private void MatchInputFeaturesToFeatureModel(object inputFeature, object featureModel)
-        {
-            Type inputFeatureType = inputFeature
+            Type inputModelType = inputData
                 .GetType();
 
-            string categoryName = inputFeature.GetType().Name;
+            string categoryName = inputData.GetType().Name;
 
-            var inputFeaturePoperties = inputFeatureType
+            var inputDataPoperties = inputModelType
                 .GetProperties()
-                .Where(x => (bool)x.GetValue(inputFeature) == true)
+                .Where(x => x.PropertyType == typeof(bool) && (bool)x.GetValue(inputData) == true)
                 .Select(x => x.Name)
                 .ToList();
 
-            Type featureModelType = featureModel
+            Type bindingModelType = modelToBind
                .GetType();
 
-            var test = featureModelType.GetProperties()
-                .Where(p => inputFeaturePoperties.Contains(p.Name))
+            var test = bindingModelType.GetProperties()
+                .Where(p => inputDataPoperties.Contains(p.Name))
                 .ToList();
-
-
 
             foreach (var item in test)
             {
-                item.SetValue(featureModel, true);
+                item.SetValue(modelToBind, true);
             }
+        }
+
+        private object MatchInputFeaturesToNewFeatureModel(object inputData, object modelToBind)
+        {
+            Type inputModelType = inputData
+                .GetType();
+
+            string categoryName = inputData.GetType().Name;
+
+            var inputDataPoperties = inputModelType
+                .GetProperties()
+                .Where(x => x.PropertyType == typeof(bool) && (bool)x.GetValue(inputData) == true)
+                .Select(x => x.Name)
+                .ToList();
+
+            Type bindingModelType = modelToBind
+               .GetType();
+
+            var modelProperties = bindingModelType.GetProperties()
+                .Where(p => inputDataPoperties.Contains(p.Name))
+                .ToList();
+
+            foreach (var item in modelProperties)
+            {
+                item.SetValue(modelToBind, true);
+            }
+
+
+
+            return modelToBind;
         }
 
         private Ad CreaAdEntity(AdInputModel model, List<Image> images, string ownerId, Car car, Region region)
@@ -382,15 +405,6 @@ namespace MobileWorld.Core.Services
                               AutoGas = a.Car.Engine.AutoGas,
                               Hybrid = a.Car.Engine.Hybrid,
                           },
-                          Features = new FeaturesModel()
-                          {
-                              //OthersDetails = a.Car.Feature.OthersDetails,
-                              //ComfortDetails = a.Car.Feature.ComfortDetails,
-                              //SafetyDetails = a.Car.Feature.SafetyDetails,
-                              //ExteriorDetails = a.Car.Feature.ExteriorDetails,
-                              //ProtectionDetails = a.Car.Feature.ProtectionDetails,
-                              //InteriorDetails = a.Car.Feature.InteriorDetails,
-                          }
                       },
                       Owner = new OwnerModel()
                       {
@@ -398,5 +412,16 @@ namespace MobileWorld.Core.Services
                       },
                   })
                 .FirstOrDefault();
+
+        private void UpdateEngine(EngineModel updatedModel, Engine dbModel)
+        {
+            dbModel.EcoLevel = updatedModel.EcoLevel;
+            dbModel.CubicCapacity = updatedModel.CubicCapacity;
+            dbModel.HorsePower = updatedModel.HorsePower;
+            dbModel.NewtonMeter = updatedModel.NewtonMeter;
+            dbModel.FuelType = updatedModel.FuelType;
+            dbModel.AutoGas = updatedModel.AutoGas;
+            dbModel.Hybrid=updatedModel.Hybrid;
+        }
     }
 }

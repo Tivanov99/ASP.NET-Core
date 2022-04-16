@@ -13,6 +13,8 @@ namespace MobileWorld.Core.Models
             Features = new();
         }
 
+        public string? Id { get; set; }
+
         [Required]
         [MinLength(5)]
         [StringLength(50, ErrorMessage = "Заглавието трябва да е меджу 5 и 50 символа.")]

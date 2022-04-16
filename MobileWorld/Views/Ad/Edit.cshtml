@@ -2,9 +2,10 @@
 @using System.Linq;
 @using Microsoft.AspNetCore.Identity
 @using MobileWorld.Infrastructure.Data.Identity
+@using MobileWorld.Models
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
-@model AdViewModel;
+@model ModelBindingAdModel;
 
 
 <!DOCTYPE html>
@@ -59,7 +60,6 @@
     <form asp-controller="Ad" asp-action="EditPost" asp-route-adId=@Model.Id method="post" enctype="multipart/form-data">
     
             <button type="submit" class="btn btn-block btn-primary">Запази промените</button>
-    
 
     <div id="searchElements">
             <div class="div-labels">
