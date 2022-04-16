@@ -30,7 +30,7 @@ namespace MobileWorld.Core.Models.InputModels
         public string Color { get; set; }
 
         [Required]
-        [Range(2, 12, ErrorMessage = "Трябва да е число в диапазона от 2 до 12.")]
+        [Range(2, 12, ErrorMessage = "Полето 'Брой пасажерски места' трябва да е число в диапазона от 2 до 12.")]
         public int SeatsCount { get; set; }
 
         [Required(ErrorMessage = "Полето 'Пробег' е задължително!")]

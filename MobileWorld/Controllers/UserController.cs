@@ -1,8 +1,6 @@
 ﻿using MobileWorld.Core.Contracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Identity;
-using MobileWorld.Infrastructure.Data.Common;
 
 namespace MobileWorld.Controllers
 {

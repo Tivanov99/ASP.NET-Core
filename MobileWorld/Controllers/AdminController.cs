@@ -82,6 +82,13 @@ namespace MobileWorld.Controllers
 
                 }
             }
+            else
+            {
+                var message = string.Join(" | ", ModelState.Values
+                 .SelectMany(v => v.Errors)
+                 .Select(e => e.ErrorMessage));
+
+            }
 
             return this.RedirectToAction("Index", "Home");
         }

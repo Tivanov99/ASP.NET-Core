@@ -58,15 +58,11 @@ namespace MobileWorld.Controllers
 
                 return RedirectToAction("Index", "Home");
             }
-            else
-            {
                 var message = string.Join(" | ", ModelState.Values
                  .SelectMany(v => v.Errors)
                  .Select(e => e.ErrorMessage));
+                return View("Error", new { ErrorMessage =message});
                 //TODO; return error to correct view
-            }
-
-            return View();
         }
 
         public IActionResult AdsByCriteria(AdvancedSearchCarModel searchModel)
