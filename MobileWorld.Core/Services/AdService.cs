@@ -2,7 +2,6 @@
 using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Dto;
 using MobileWorld.Core.Models;
-using MobileWorld.Core.Models.Details;
 using MobileWorld.Core.Models.InputModels;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Infrastructure.Data.Common;
@@ -17,6 +16,25 @@ namespace MobileWorld.Core.Services
         {
             this.unitOfWork = _unitOfWork;
         }
+        public List<AdCardViewModel> GetAllAds()
+        {
+            var cars = this.unitOfWork.AdRepository
+               .GetAllAsQueryable()
+               .AsNoTracking()
+               .Include(a => a.Images)
+                .Select(a => new AdCardViewModel()
+                {
+                    AdId = a.Id,
+                    Description = a.Description,
+                    Price = a.Price,
+                    Title = a.Title,
+                    ImageData = a.Images[0].ImageData
+                })
+               .ToList();
+
+            return cars;
+        }
+
 
         public AdViewModel GetAdById(string adId)
         {
@@ -37,7 +55,6 @@ namespace MobileWorld.Core.Services
 
             Dictionary<string, List<string>> featuresSearchCriteria = new();
 
-            //GetSelectedFeatures(model.Features.EngineDetails, featuresSearchCriteria);
             GetSelectedFeatures(model.Features.SafetyDetails, featuresSearchCriteria);
             GetSelectedFeatures(model.Features.ComfortDetails, featuresSearchCriteria);
             GetSelectedFeatures(model.Features.OthersDetails, featuresSearchCriteria);
@@ -418,6 +435,7 @@ namespace MobileWorld.Core.Services
                       },
                   })
                 .FirstOrDefault();
+
 
         private void UpdateEngine(EngineModel updatedModel, Engine dbModel)
         {

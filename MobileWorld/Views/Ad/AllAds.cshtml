@@ -11,9 +11,6 @@
     <link asp-append-version="true" rel="stylesheet" href="~/css/CarCard.css">
 </head>
 <body>
-    <form asp-controller="Ad" asp-action="AdsByBaseCriteria" method="get">
-        @await Html.PartialAsync("_SearchPartial")
-    </form>
 
     @foreach (var car in Model)
     {
@@ -22,12 +19,3 @@
 
 </body>
 </html>
-
-@*<script type="text/javascript">
-    function AlertName() {
-    var selectedMake = document.querySelector("#make-input");
-    var value = selectedMake.options[selectedMake.selectedIndex].value;
-    console.log(value)
-    alert('You clicked ');
-    }
-    </script>*@

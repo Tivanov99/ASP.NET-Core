@@ -17,6 +17,12 @@ namespace MobileWorld.Controllers
             this.service = _service;
         }
 
+       public IActionResult GetAllAds()
+        {
+            var cars = this.service.GetAllAds();
+            return View("AllAds",cars);
+        }
+        
         public IActionResult Ad(string adId)
         {
             var ad = this.service
@@ -143,17 +149,14 @@ namespace MobileWorld.Controllers
             if (ModelState.IsValid)
             {
                 this.service.Update(updatedModel, adId);
+                return RedirectToAction(actionName: nameof(this.Ad), new { adId = adId });
+
             }
-            else
-            {
+           
                 var message = string.Join(" | ", ModelState.Values
                  .SelectMany(v => v.Errors)
                  .Select(e => e.ErrorMessage));
-                //    //TODO : Return some error
-
-            }
-
-            return RedirectToAction(actionName: nameof(this.Ad), new { adId = adId });
+                return View("Error", new { ErrorMessage = message });
         }
     }
 }
