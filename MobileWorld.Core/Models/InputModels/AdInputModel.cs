@@ -13,21 +13,20 @@ namespace MobileWorld.Core.Models.InputModels
             Features = new();
         }
 
-        public string? Id { get; set; }
-
-        [Required]
+        [Required(ErrorMessage = "Полето 'Заглавие' е задължително!")]
         [StringLength(50,MinimumLength =5, ErrorMessage = "Заглавието трябва да е меджу 5 и 50 символа.")]
         public string Title { get; set; }
 
-        [Range(0, 2000000)]
+        [Required(ErrorMessage ="Полето 'Цена' е задължително!")]
+        [Range(0, 2000000, ErrorMessage = "Цената трябва да е в диапазона между 0 и 2000000!")]
         public virtual decimal Price { get; set; }
 
         [Required(ErrorMessage ="Полето 'Телефонен номер' е задължително!")]
         [Phone]
         public string PhoneNumber { get; set; }
 
-        [Required]
-        [StringLength(700,MinimumLength = 30, ErrorMessage = "Описанието трябва да е между 30 и 700 символа!")]
+        [Required(ErrorMessage = "Полето 'Описание' е задължително!")]
+        [StringLength(700,MinimumLength = 30, ErrorMessage = "Описанието трябва да е в диапазона между 30 и 700 символа!")]
         public string Description { get; set; }
 
         public CarInputModel Car { get; set; } 
