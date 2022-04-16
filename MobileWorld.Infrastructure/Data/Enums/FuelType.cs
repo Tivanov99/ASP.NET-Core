@@ -2,7 +2,7 @@
 {
     public enum FuelType
     {
-        Безин,
+        Бензин,
         Дизел
     }
 }

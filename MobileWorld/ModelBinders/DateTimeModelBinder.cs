@@ -24,7 +24,7 @@ namespace MobileWorld.ModelBinders
 
                 try
                 {
-                    actualValue = DateTime.ParseExact(dateValue, customDateFormat, CultureInfo.InvariantCulture);
+                    actualValue = DateTime.ParseExact(dateValue, _dateTimeFormat, CultureInfo.InvariantCulture);
                     success = true;
                 }
                 catch (FormatException)
