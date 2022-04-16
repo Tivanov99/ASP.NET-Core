@@ -146,25 +146,18 @@ namespace MobileWorld.Controllers
 
             if (ModelState.IsValid)
             {
-                 this.service.Update(updatedModel,adId);
+                this.service.Update(updatedModel, adId);
             }
             else
             {
                 var message = string.Join(" | ", ModelState.Values
                  .SelectMany(v => v.Errors)
                  .Select(e => e.ErrorMessage));
+                //    //TODO : Return some error
 
             }
 
-
-            //if (!result)
-            //{
-            //    //TODO : Return some error
-            //}
-
-
             return RedirectToAction(actionName: nameof(this.Ad), new { adId = adId });
         }
-
     }
 }

@@ -105,7 +105,7 @@ namespace MobileWorld.Core.Services
             }
             catch (Exception)
             {
-                
+
             }
         }
 
@@ -132,7 +132,7 @@ namespace MobileWorld.Core.Services
             }
         }
 
-        public bool Update(AdInputModel updatedModel, string adId)
+        public bool Update(AdInputModel model, string adId)
         {
             Ad? ad = this.unitOfWork
                 .AdRepository
@@ -146,29 +146,34 @@ namespace MobileWorld.Core.Services
             .FirstOrDefault();
 
 
-            int townId = GetTownIdByName(updatedModel.Region.TownName);
+            int townId = GetTownIdByName(model.Region.TownName);
 
             if (ad != null)
             {
                 try
                 {
+                    MatchInputFeaturesToFeatureModel(model.Features.SafetyDetails, ad.Car.Feature.SafetyDetails);
+                    MatchInputFeaturesToFeatureModel(model.Features.ComfortDetails, ad.Car.Feature.ComfortDetails);
+                    MatchInputFeaturesToFeatureModel(model.Features.InteriorDetails, ad.Car.Feature.InteriorDetails);
+                    MatchInputFeaturesToFeatureModel(model.Features.ExteriorDetails, ad.Car.Feature.ExteriorDetails);
+                    MatchInputFeaturesToFeatureModel(model.Features.OthersDetails, ad.Car.Feature.OthersDetails);
+                    MatchInputFeaturesToFeatureModel(model.Features.ProtectionDetails, ad.Car.Feature.ProtectionDetails);
                     //ad.Car.Engine = updatedModel.Car.Engine;
-                    //ad.Car.SeatsCount = updatedModel.Car.SeatsCount;
-                    //ad.Car.Feature = updatedModel.Car.Features;
-                    //ad.Car.GearType = updatedModel.Car.GearType;
-                    //ad.Car.Year = updatedModel.Car.Year;
-                    ////ad.Car.Model = updatedModel.Car.Model;
-                    //ad.Car.Color = updatedModel.Car.Color;
-                    //ad.Car.Make = updatedModel.Car.Make;
-                    //ad.Car.Mileage = updatedModel.Car.Mileage;
+                    ad.Car.SeatsCount = model.Car.SeatsCount;
+                    ad.Car.GearType = model.Car.GearType;
+                    ad.Car.Year = model.Car.Year;
+                    //ad.Car.Model = updatedModel.Car.Model;
+                    ad.Car.Color = model.Car.Color;
+                    ad.Car.Make = model.Car.Make;
+                    ad.Car.Mileage = model.Car.Mileage;
 
-                    ////ad.Images.ForEach(i=>i.ImageData=updatedModel.Car.Images[i]);
-                    //ad.Title = updatedModel.Title;
-                    //ad.Price = updatedModel.Price;
-                    //ad.PhoneNumber = updatedModel.PhoneNumber;
-                    //ad.Region.TownId = townId;
-                    //ad.Region.RegionName = updatedModel.Region.RegionName;
-                    //ad.Region.Neiborhood = updatedModel.Region.Neiborhood;
+                    //ad.Images.ForEach(i=>i.ImageData=updatedModel.Car.Images[i]);
+                    ad.Title = model.Title;
+                    ad.Price = model.Price;
+                    ad.PhoneNumber = model.PhoneNumber;
+                    ad.Region.TownId = townId;
+                    ad.Region.RegionName = model.Region.RegionName;
+                    ad.Region.Neiborhood = model.Region.Neiborhood;
 
 
                     this.unitOfWork.AdRepository.Update(ad);
@@ -221,7 +226,7 @@ namespace MobileWorld.Core.Services
                 item.SetValue(null, true);
             }
 
-                
+
 
             if (features.Any())
             {
@@ -302,7 +307,7 @@ namespace MobileWorld.Core.Services
 
             var inputFeaturePoperties = inputFeatureType
                 .GetProperties()
-                .Where(x =>(bool)x.GetValue(inputFeature) == true)
+                .Where(x => (bool)x.GetValue(inputFeature) == true)
                 .Select(x => x.Name)
                 .ToList();
 
@@ -317,7 +322,7 @@ namespace MobileWorld.Core.Services
 
             foreach (var item in test)
             {
-                item.SetValue(featureModel,true);
+                item.SetValue(featureModel, true);
             }
         }
 
