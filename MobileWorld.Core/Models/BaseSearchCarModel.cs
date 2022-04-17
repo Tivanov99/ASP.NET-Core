@@ -8,9 +8,9 @@ namespace MobileWorld.Core.Models
 
         public string Model { get; set; }
 
-        public decimal? MaxPrice { get; set; }
+        public decimal? Price { get; set; }
 
-        public int? FromYear { get; set; }
+        public int? Year { get; set; }
 
         public string TownName { get; set; }
 

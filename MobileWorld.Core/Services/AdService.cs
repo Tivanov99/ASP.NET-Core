@@ -216,12 +216,12 @@ namespace MobileWorld.Core.Services
         {
             Type type = model.GetType();
 
-            string featuresType = typeof(FeaturesModel).Name;
+            //string featuresType = typeof(FeaturesModel).Name;
 
             var propertyInfos = type
                 .GetProperties()
                 .Where(x => x.GetValue(model) != null &&
-                        x.PropertyType.Name != featuresType)
+                       x.GetValue(model).ToString()!= "Всички")
                 .Select(x => new PropertyDto(x.Name, x.GetValue(model)))
                 .ToList();
 
