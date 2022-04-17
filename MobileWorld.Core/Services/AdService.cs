@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Dto;
 using MobileWorld.Core.Models;
@@ -51,6 +52,52 @@ namespace MobileWorld.Core.Services
             {
                 return this.GetAllAds();
             }
+
+            using (SqlConnection connection = new SqlConnection(GlobalConstants.sqlConnection))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand(
+                    "Select a.Id, a.Title, a.Description, a.Price, i.ImageData  from [Cars] as [c]"
+                    + "LEFT JOIN[Ads] as [a] on a.Id = c.AdId"
+                    + "LEFT JOIN[Images] as [i] on a.Id = i.AdId"
+                    + "LEFT JOIN[Regions] as [r] on a.RegionId = r.Id"
+                    + "LEFT JOIN[Towns] as [t] on r.TownId = t.Id"
+                    + "LEFT JOIN[Engines] as [e] on e.CarId = c.Id"
+                    + "Where[Name] = @TownName"
+                    + "and GearType = @GearType and [FuelType] = @FuelType and [Make] = @Make"
+                    + "and[Price] >= @Price", connection
+                    );
+                
+                using (command)
+                {
+                    Type modeltype= model.GetType();
+
+                    var modelProperties = modeltype.GetProperties().Select(x=>x).ToList();
+
+                    foreach (var prop in properties)
+                    {
+                        command.Parameters.Add(new SqlParameter(prop.Name, modelProperties.Where(x=>x.Name==prop.Name).Select(x=>x.GetValue(model))));
+                    }
+                    List<AdCardViewModel> result = new();
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        byte[] bytes = new byte[byte.MaxValue];
+                         reader.GetBytes(4, 0,bytes,0,bytes.Length);
+                        result.Add(new AdCardViewModel()
+                        {
+                            AdId=reader.GetString(0),
+                            Title=reader.GetString(1),
+                            Description=reader.GetString(2),
+                            Price=reader.GetDecimal(3),
+                            ImageData= bytes
+                        });
+                    }
+                }
+            }
+
+
 
 
 
@@ -187,7 +234,7 @@ namespace MobileWorld.Core.Services
                     MatchInputFeaturesToFeatureModel(model.Features.ProtectionDetails, ad.Car.Feature.ProtectionDetails);
 
                     UpdateEngine(model.Car.Engine, ad.Car.Engine);
-                    
+
                     ad.Car.SeatsCount = model.Car.SeatsCount;
                     ad.Car.GearType = model.Car.GearType;
                     ad.Car.Year = model.Car.Year;
@@ -229,10 +276,9 @@ namespace MobileWorld.Core.Services
             var propertyInfos = type
                 .GetProperties()
                 .Where(x => x.GetValue(model) != null &&
-                       x.GetValue(model).ToString()!= "Всички")
+                       x.GetValue(model).ToString() != "Всички")
                 .Select(x => new PropertyDto(x.Name, x.GetValue(model)))
                 .ToList();
-
 
             return propertyInfos;
         }
@@ -292,7 +338,7 @@ namespace MobileWorld.Core.Services
             Color = car.Color,
             SeatsCount = car.SeatsCount,
             Mileage = car.Mileage,
-            Feature= new Feature(),
+            Feature = new Feature(),
             Engine = CreateEngineEntity(car.Engine),
             Model = "e46",
             Make = car.Make,
@@ -454,7 +500,7 @@ namespace MobileWorld.Core.Services
             dbModel.NewtonMeter = updatedModel.NewtonMeter;
             dbModel.FuelType = updatedModel.FuelType;
             dbModel.AutoGas = updatedModel.AutoGas;
-            dbModel.Hybrid=updatedModel.Hybrid;
+            dbModel.Hybrid = updatedModel.Hybrid;
         }
 
         //private AdInputModel GetAdForUpdate(string adId)
@@ -474,7 +520,7 @@ namespace MobileWorld.Core.Services
         //            }
         //        })
         //        .FirstOrDefault();
-                
+
         //}
     }
 }
