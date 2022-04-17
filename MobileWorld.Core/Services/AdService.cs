@@ -5,6 +5,7 @@ using MobileWorld.Core.Models;
 using MobileWorld.Core.Models.InputModels;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Infrastructure.Data.Common;
+using MobileWorld.Infrastructure.Data.Enums;
 using MobileWorld.Infrastructure.Data.Models;
 
 namespace MobileWorld.Core.Services
@@ -224,6 +225,7 @@ namespace MobileWorld.Core.Services
                        x.GetValue(model).ToString()!= "Всички")
                 .Select(x => new PropertyDto(x.Name, x.GetValue(model)))
                 .ToList();
+
 
             return propertyInfos;
         }
