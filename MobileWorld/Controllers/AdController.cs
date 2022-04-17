@@ -84,8 +84,6 @@ namespace MobileWorld.Controllers
             var result = this.service
                 .GetAdsByBaseCriteria(searchModel);
 
-
-
             return View();
         }
 

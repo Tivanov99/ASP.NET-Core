@@ -47,6 +47,13 @@ namespace MobileWorld.Core.Services
         {
             List<PropertyDto> properties = GetBaseSearchCriteria(model);
 
+            if (properties.Count == 0)
+            {
+                return this.GetAllAds();
+            }
+
+
+
             return new List<AdCardViewModel>();
         }
 
