@@ -8,7 +8,7 @@ namespace MobileWorld.Infrastructure.Data.Models
 
         public string ImageTitle { get; set; }
 
-        public byte[] ImageData { get; set; }
+        public string ImagePath { get; set; }
 
         [ForeignKey(nameof(Ad))]
         public string AdId { get; set; }
