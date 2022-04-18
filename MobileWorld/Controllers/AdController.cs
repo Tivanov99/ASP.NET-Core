@@ -59,7 +59,7 @@ namespace MobileWorld.Controllers
                 foreach (IFormFile postedFile in Request.Form.Files)
                 {
                     string fileName = Path.GetFileName(postedFile.FileName);
-                    using (FileStream stream = new FileStream(Path.Combine(path, fileName), FileMode.Create))
+                    using (FileStream stream = new FileStream(Path.Combine("Uploads", fileName), FileMode.Create))
                     {
                         postedFile.CopyTo(stream);
                         uploadedFiles.Add(fileName);
@@ -67,7 +67,7 @@ namespace MobileWorld.Controllers
                     }
                 }
 
-                this.service.CreateAd(model, userId, uploadedFiles, path);
+                this.service.CreateAd(model, userId, uploadedFiles, "Uploads");
 
                 return RedirectToAction("Index", "Home");
             }
