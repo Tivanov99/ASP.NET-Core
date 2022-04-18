@@ -486,7 +486,9 @@ namespace MobileWorld.Core.Services
                           Neiborhood = a.Region.Neiborhood,
                           TownName = a.Region.Town.TownName,
                       },
-                      Images =
+                      Images= a.Images
+                      .Select(i=> new ImageDTO(i.ImagePath, i.ImageTitle))
+                      .ToList(),
                       Car = new CarModel()
                       {
                           SeatsCount = a.Car.SeatsCount,
