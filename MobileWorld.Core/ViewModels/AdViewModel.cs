@@ -1,18 +1,20 @@
-﻿using MobileWorld.Core.Models;
-using MobileWorld.Infrastructure.Data.Models;
+﻿using MobileWorld.Core.Dto;
+using MobileWorld.Core.Models;
 using System.ComponentModel.DataAnnotations;
 
 namespace MobileWorld.Core.ViewModels
 {
     public class AdViewModel
     {
+        public AdViewModel()
+        {
+            Images = new();
+        }
+
         public string Id { get; set; }
 
-        [Required]
         public string Title { get; set; }
 
-        [Phone]
-        [Required]
         public string PhoneNumber { get; set; }
 
         public CarModel Car { get; set; }
@@ -23,13 +25,10 @@ namespace MobileWorld.Core.ViewModels
 
         public decimal Price { get; set; }
 
-        [Required]
-        [MaxLength(700)]
         public string Description { get; set; }
-
 
         public OwnerModel Owner { get; set; }
 
-        public List<Image> Images { get; set; } = new();
+        public List<ImageDTO> Images { get; set; }
     }
 }
