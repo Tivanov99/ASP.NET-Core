@@ -35,7 +35,7 @@
 
             @foreach (var image in @Model.Images)
             {
-                @await Html.PartialAsync("_CarImagePartial",image.ImagePath+image.ImageTitle);
+                @await Html.PartialAsync("_CarImagePartial",image);
             }
 
         </div>

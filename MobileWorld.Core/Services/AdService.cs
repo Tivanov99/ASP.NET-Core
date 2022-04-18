@@ -160,7 +160,7 @@ namespace MobileWorld.Core.Services
                     Price = a.Price,
                     Title = a.Title,
                     ImageTitle = a.Images[0].ImageTitle,
-                    ImagePath = a.Images[0].ImagePath+@"\",
+                    ImagePath = a.Images[0].ImagePath + @"\",
                 })
                .Take(6)
                .ToList();
@@ -491,7 +491,7 @@ namespace MobileWorld.Core.Services
                           TownName = a.Region.Town.TownName,
                       },
                       Images= a.Images
-                      .Select(i=> new ImageDTO(i.ImagePath, i.ImageTitle))
+                      .Select(i=> new ImageDTO(i.ImageTitle, i.ImagePath ))
                       .ToList(),
                       Car = new CarModel()
                       {
