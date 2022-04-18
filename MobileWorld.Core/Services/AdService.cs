@@ -31,7 +31,8 @@ namespace MobileWorld.Core.Services
                     Description = a.Description,
                     Price = a.Price,
                     Title = a.Title,
-                    ImageData = a.Images[0].ImageData
+                    ImageTitle = a.Images[0].ImageTitle,
+                    ImagePath = a.Images[0].ImagePath,
                 })
                .ToList();
 
@@ -45,87 +46,87 @@ namespace MobileWorld.Core.Services
             return ad;
         }
 
-        public List<AdCardViewModel> GetAdsByBaseCriteria(BaseSearchCarModel model)
-        {
-            List<PropertyDto> properties = GetBaseSearchCriteria(model);
+        //public List<AdCardViewModel> GetAdsByBaseCriteria(BaseSearchCarModel model)
+        //{
+        //    List<PropertyDto> properties = GetBaseSearchCriteria(model);
 
-            if (properties.Count == 0)
-            {
-                return this.GetAllAds();
-            }
+        //    if (properties.Count == 0)
+        //    {
+        //        return this.GetAllAds();
+        //    }
 
-            //decimal? price = model.Price != null ? model.Price : 0;
+        //    //decimal? price = model.Price != null ? model.Price : 0;
 
-            //var ads = this.unitOfWork.AdRepository
-            //    .GetAllAsQueryable()
-            //    .Include(a => a.Car)
-            //    .ThenInclude(c => c.Engine)
-            //    .Include(a => a.Region)
-            //    .Include(a => a.Images)
-            //    .Where(x => x.Price>=price && )
-            //    .ToList();
-
-
+        //    //var ads = this.unitOfWork.AdRepository
+        //    //    .GetAllAsQueryable()
+        //    //    .Include(a => a.Car)
+        //    //    .ThenInclude(c => c.Engine)
+        //    //    .Include(a => a.Region)
+        //    //    .Include(a => a.Images)
+        //    //    .Where(x => x.Price>=price && )
+        //    //    .ToList();
 
 
-            using (SqlConnection connection = new SqlConnection(GlobalConstants.sqlConnection))
-            {
-                connection.Open();
 
-                SqlCommand command = new SqlCommand(
-                    "SELECT a.Id, a.Title, a.Description, a.Price, i.ImageData  FROM[Cars] AS[c]"
-                     + "LEFT JOIN[Ads] AS[a] ON a.Id = c.AdId"
-                     + "LEFT JOIN[Images] AS[i] ON a.Id = i.AdId"
-                     + "LEFT JOIN[Regions] AS[r] ON a.RegionId = r.Id"
-                     + "LEFT JOIN[Towns] AS[t] ON r.TownId = t.Id"
-                     + "LEFT JOIN[Engines] AS[e] ON e.CarId = c.Id"
-                    , connection
-                    );
 
-                Type modeltype = model.GetType();
+        //    using (SqlConnection connection = new SqlConnection(GlobalConstants.sqlConnection))
+        //    {
+        //        connection.Open();
 
-                var modelProperties = modeltype.GetProperties().Select(x => x).ToList();
+        //        SqlCommand command = new SqlCommand(
+        //            "SELECT a.Id, a.Title, a.Description, a.Price, i.ImageData  FROM[Cars] AS[c]"
+        //             + "LEFT JOIN[Ads] AS[a] ON a.Id = c.AdId"
+        //             + "LEFT JOIN[Images] AS[i] ON a.Id = i.AdId"
+        //             + "LEFT JOIN[Regions] AS[r] ON a.RegionId = r.Id"
+        //             + "LEFT JOIN[Towns] AS[t] ON r.TownId = t.Id"
+        //             + "LEFT JOIN[Engines] AS[e] ON e.CarId = c.Id"
+        //            , connection
+        //            );
 
-                string where = " Where";
-                int count = properties.Count();
-                foreach (var prop in properties)
-                {
-                    count--;
-                    where += $" {prop.Name} = @{prop.Name}";
-                    if (count > 0)
-                    {
-                        where += " AND ";
-                    }
-                }
-                command.CommandText += where;
+        //        Type modeltype = model.GetType();
 
-                foreach (var prop in properties)
-                {
-                    var value = modelProperties.Where(x => x.Name == prop.Name).Select(x => x.GetValue(model)).First();
-                    command.Parameters.Add(new SqlParameter($"@{prop.Name}", value));
-                }
+        //        var modelProperties = modeltype.GetProperties().Select(x => x).ToList();
 
-                using (command)
-                {
-                    List<AdCardViewModel> result = new();
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        byte[] bytes = new byte[byte.MaxValue];
-                        reader.GetBytes(4, 0, bytes, 0, bytes.Length); ;
-                        result.Add(new AdCardViewModel()
-                        {
-                            AdId = reader.GetString(0),
-                            Title = reader.GetString(1),
-                            Description = reader.GetString(2),
-                            Price = reader.GetDecimal(3),
-                            ImageData = bytes
-                        });
-                    }
-                }
-            }
-            return new List<AdCardViewModel>();
-        }
+        //        string where = " Where";
+        //        int count = properties.Count();
+        //        foreach (var prop in properties)
+        //        {
+        //            count--;
+        //            where += $" {prop.Name} = @{prop.Name}";
+        //            if (count > 0)
+        //            {
+        //                where += " AND ";
+        //            }
+        //        }
+        //        command.CommandText += where;
+
+        //        foreach (var prop in properties)
+        //        {
+        //            var value = modelProperties.Where(x => x.Name == prop.Name).Select(x => x.GetValue(model)).First();
+        //            command.Parameters.Add(new SqlParameter($"@{prop.Name}", value));
+        //        }
+
+        //        using (command)
+        //        {
+        //            List<AdCardViewModel> result = new();
+        //            SqlDataReader reader = command.ExecuteReader();
+        //            while (reader.Read())
+        //            {
+        //                byte[] bytes = new byte[byte.MaxValue];
+        //                reader.GetBytes(4, 0, bytes, 0, bytes.Length); ;
+        //                result.Add(new AdCardViewModel()
+        //                {
+        //                    AdId = reader.GetString(0),
+        //                    Title = reader.GetString(1),
+        //                    Description = reader.GetString(2),
+        //                    Price = reader.GetDecimal(3),
+        //                    ImageData = bytes
+        //                });
+        //            }
+        //        }
+        //    }
+        //    return new List<AdCardViewModel>();
+        //}
 
         public List<AdCardViewModel> GetAdsByAdvancedCriteria(AdvancedSearchCarModel model)
         {
@@ -159,7 +160,8 @@ namespace MobileWorld.Core.Services
                     Description = a.Description,
                     Price = a.Price,
                     Title = a.Title,
-                    ImageData = a.Images[0].ImageData
+                    ImageTitle = a.Images[0].ImageTitle,
+                    ImagePath = a.Images[0].ImagePath,
                 })
                .Take(6)
                .ToList();
@@ -484,6 +486,7 @@ namespace MobileWorld.Core.Services
                           Neiborhood = a.Region.Neiborhood,
                           TownName = a.Region.Town.TownName,
                       },
+                      Images =
                       Car = new CarModel()
                       {
                           SeatsCount = a.Car.SeatsCount,
@@ -493,7 +496,6 @@ namespace MobileWorld.Core.Services
                           GearType = a.Car.GearType,
                           Color = a.Car.Color,
                           Mileage = a.Car.Mileage,
-                          Images = a.Images.Select(x => x.ImageData).ToList(),
                           Engine = new EngineModel()
                           {
                               FuelConsuption = a.Car.Engine.FuelConsuption,
