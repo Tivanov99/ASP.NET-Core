@@ -46,7 +46,8 @@ namespace MobileWorld.Core.Services
                        Title=a.Title,
                        Description=a.Description,
                        Price=a.Price,
-                       ImageData=a.Images[0].ImageData
+                       ImagePath=a.Images[0].ImagePath,
+                       ImageTitle=a.Images[0].ImageTitle,
                    })
                    .ToList();
 
