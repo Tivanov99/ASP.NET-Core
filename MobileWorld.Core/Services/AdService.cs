@@ -21,19 +21,20 @@ namespace MobileWorld.Core.Services
         public List<AdCardViewModel> GetAllAds()
         {
             var cars = this.unitOfWork.AdRepository
-               .GetAllAsQueryable()
-               .AsNoTracking()
-               .Include(a => a.Images)
-                .Select(a => new AdCardViewModel()
-                {
-                    AdId = a.Id,
-                    Description = a.Description,
-                    Price = a.Price,
-                    Title = a.Title,
-                    ImageTitle = a.Images[0].ImageTitle,
-                    ImagePath = a.Images[0].ImagePath+@"\",
-                })
-               .ToList();
+                .GetAllAsQueryable()
+                .AsNoTracking()
+                .Include(a => a.Images)
+                 .Select(a => new AdCardViewModel()
+                 {
+                     AdId = a.Id,
+                     Description = a.Description,
+                     Price = a.Price,
+                     Title = a.Title,
+                     ImageTitle = a.Images[0].ImageTitle,
+                     ImagePath = a.Images[0].ImagePath + @"\",
+                 })
+                 .Take(6)
+                .ToList();
 
             return cars;
         }
@@ -491,7 +492,7 @@ namespace MobileWorld.Core.Services
                           TownName = a.Region.Town.TownName,
                       },
                       Images= a.Images
-                      .Select(i=> new ImageDTO(i.ImageTitle, i.ImagePath ))
+                      .Select(i=> new ImageDTO(i.ImageTitle, i.ImagePath + @"\"))
                       .ToList(),
                       Car = new CarModel()
                       {

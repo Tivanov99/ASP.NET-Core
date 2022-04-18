@@ -21,10 +21,11 @@ namespace MobileWorld.Controllers
             this.service = _service;
         }
 
-       public IActionResult GetAllAds()
+       public IActionResult AllAds()
         {
-            var cars = this.service.GetAllAds();
-            return View("AllAds",cars);
+            List<AdCardViewModel> cars = this.service
+                .GetAllAds();
+            return View(cars);
         }
         
         public IActionResult Ad(string adId)
@@ -48,6 +49,9 @@ namespace MobileWorld.Controllers
         {
             if (ModelState.IsValid)
             {
+                string wwwPath = this.Environment.WebRootPath;
+                string contentPath = this.Environment.ContentRootPath;
+
                 string path = Path.Combine(this.Environment.WebRootPath, "Uploads");
 
                 if (!Directory.Exists(path))
@@ -59,11 +63,10 @@ namespace MobileWorld.Controllers
                 foreach (IFormFile postedFile in Request.Form.Files)
                 {
                     string fileName = Path.GetFileName(postedFile.FileName);
-                    using (FileStream stream = new FileStream(Path.Combine("Uploads", fileName), FileMode.Create))
+                    using (FileStream stream = new FileStream(Path.Combine(path, fileName), FileMode.Create))
                     {
                         postedFile.CopyTo(stream);
                         uploadedFiles.Add(fileName);
-                        //ViewBag.Message += string.Format("<b>{0}</b> uploaded.<br />", fileName);
                     }
                 }
 
