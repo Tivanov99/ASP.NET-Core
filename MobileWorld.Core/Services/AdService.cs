@@ -174,6 +174,8 @@ namespace MobileWorld.Core.Services
             {
                 int townId = this.GetTownIdByName(model.Region.TownName);
 
+                var images = uploadedImages.Select(x => new Image() { ImageTitle = x, ImagePath = path }).ToList();
+
                 //TODO : Add seed to Db all Towns
 
                 Car car = CreateCarEntity(model.Car);
@@ -188,7 +190,6 @@ namespace MobileWorld.Core.Services
                 Region region = CreateRegionEntity(model.Region, townId);
 
                 Ad newAd = CreaAdEntity(model, images, ownerId, car, region);
-
                 car.AdId = newAd.Id;
                 car.Ad = newAd;
                 try
