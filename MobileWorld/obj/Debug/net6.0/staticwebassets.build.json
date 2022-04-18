@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "TxNmopbkbEJ18pjaUGNS2E7dUibp/m+TbiZ3FgekaUc=",
+  "Hash": "Ydu0EERvFeEHZ0VDaUisERa6nEPY4N8/YuR7NC6LyFs=",
   "Source": "MobileWorld",
   "BasePath": "_content/MobileWorld",
   "Mode": "Default",
@@ -2259,6 +2259,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld\\wwwroot\\Uploads\\275663461_2449501475186960_3660183882947426873_n.jpg",
+      "SourceId": "MobileWorld",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld\\wwwroot\\",
+      "BasePath": "_content/MobileWorld",
+      "RelativePath": "Uploads/275663461_2449501475186960_3660183882947426873_n.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\275663461_2449501475186960_3660183882947426873_n.jpg"
     },
     {
       "Identity": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld\\wwwroot\\Uploads\\32fc3c87da2834657647bab5753ff228-03-1.jpg",

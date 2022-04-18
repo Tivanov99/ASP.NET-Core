@@ -19,7 +19,6 @@ namespace MobileWorld.Controllers
         {
             Environment = _environment;
             this.service = _service;
-
         }
 
        public IActionResult GetAllAds()

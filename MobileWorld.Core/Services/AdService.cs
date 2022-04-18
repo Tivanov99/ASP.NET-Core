@@ -31,7 +31,7 @@ namespace MobileWorld.Core.Services
                     Price = a.Price,
                     Title = a.Title,
                     ImageTitle = a.Images[0].ImageTitle,
-                    ImagePath = a.Images[0].ImagePath,
+                    ImagePath = a.Images[0].ImagePath+ @"\",
                 })
                .ToList();
 
@@ -160,7 +160,7 @@ namespace MobileWorld.Core.Services
                     Price = a.Price,
                     Title = a.Title,
                     ImageTitle = a.Images[0].ImageTitle,
-                    ImagePath = a.Images[0].ImagePath,
+                    ImagePath = a.Images[0].ImagePath+@"\",
                 })
                .Take(6)
                .ToList();

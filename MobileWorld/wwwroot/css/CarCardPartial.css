@@ -30,9 +30,9 @@
 
 .product-info {
     float: left;
-    height: 270px;
-    width: 643px;
-    border-radius: 0 7px 10px 7px;
+    height: 250px;
+    width: 348px;
+    /*border-radius: 0 7px 10px 7px;*/
     background-color: #ffffff;
 }
 
