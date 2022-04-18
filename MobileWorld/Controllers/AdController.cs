@@ -68,7 +68,7 @@ namespace MobileWorld.Controllers
                     }
                 }
 
-                //this.service.CreateAd(model, images, userId);
+                this.service.CreateAd(model, userId, uploadedFiles, path);
 
                 return RedirectToAction("Index", "Home");
             }

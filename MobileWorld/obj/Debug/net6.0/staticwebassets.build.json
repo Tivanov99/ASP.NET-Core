@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "btPOZOerY4EdDyUDxHzRYOGrz+TiFES0sFZqB2k8Tss=",
+  "Hash": "TxNmopbkbEJ18pjaUGNS2E7dUibp/m+TbiZ3FgekaUc=",
   "Source": "MobileWorld",
   "BasePath": "_content/MobileWorld",
   "Mode": "Default",
@@ -2259,6 +2259,57 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld\\wwwroot\\Uploads\\32fc3c87da2834657647bab5753ff228-03-1.jpg",
+      "SourceId": "MobileWorld",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld\\wwwroot\\",
+      "BasePath": "_content/MobileWorld",
+      "RelativePath": "Uploads/32fc3c87da2834657647bab5753ff228-03-1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\32fc3c87da2834657647bab5753ff228-03-1.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld\\wwwroot\\Uploads\\e5aa5c19-bmw-e46-m3-17.jpg",
+      "SourceId": "MobileWorld",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld\\wwwroot\\",
+      "BasePath": "_content/MobileWorld",
+      "RelativePath": "Uploads/e5aa5c19-bmw-e46-m3-17.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\e5aa5c19-bmw-e46-m3-17.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld\\wwwroot\\Uploads\\hqdefault.jpg",
+      "SourceId": "MobileWorld",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld\\wwwroot\\",
+      "BasePath": "_content/MobileWorld",
+      "RelativePath": "Uploads/hqdefault.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\hqdefault.jpg"
     }
   ]
 }

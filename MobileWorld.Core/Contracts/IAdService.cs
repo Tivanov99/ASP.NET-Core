@@ -16,7 +16,7 @@ namespace MobileWorld.Core.Contracts
 
         List<AdCardViewModel> GetIndexAds();
 
-       void CreateAd(AdInputModel model, List<Image> images, string ownerId);
+       void CreateAd(AdInputModel model, string ownerId, List<string> uploadedImages, string path);
 
         void Delete(string adId);
 

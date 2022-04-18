@@ -1,5 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MobileWorld.Core.Contracts;
 using System.Data;
 using MobileWorld.Core.Dto;
@@ -169,7 +168,7 @@ namespace MobileWorld.Core.Services
             return cars;
         }
 
-        public void CreateAd(AdInputModel model, List<Image> images, string ownerId)
+        public void CreateAd(AdInputModel model,string ownerId, List<string> uploadedImages, string path)
         {
             try
             {
