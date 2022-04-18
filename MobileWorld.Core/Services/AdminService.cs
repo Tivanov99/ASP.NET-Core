@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Models;
 using MobileWorld.Core.ViewModels;
@@ -10,7 +9,6 @@ namespace MobileWorld.Core.Services
 {
     public class AdminService : IAdminService
     {
-       
         private readonly IUnitOfWork unitOfWork;
 
         public AdminService(
@@ -32,7 +30,7 @@ namespace MobileWorld.Core.Services
                 .GetAllAsQueryable()
                 .Include(u => u.Ads)
                 .Where(u => u.Id == userId)
-                .Select(u => new UserViewModel()
+                .Select(u =>  new UserViewModel()
                 {
                     Id = u.Id,
                     UserName = u.UserName,
@@ -43,7 +41,6 @@ namespace MobileWorld.Core.Services
                     UserAds = (List<AdViewModel>)u.Ads.Select(a => new AdViewModel()
                     {
                         Id = a.Id,
-
                     })
                 })
                 .FirstOrDefault();

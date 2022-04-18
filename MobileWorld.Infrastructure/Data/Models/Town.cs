@@ -8,7 +8,7 @@ namespace MobileWorld.Infrastructure.Data.Models
 
         [Required]
         [StringLength(40)]
-        public string Name { get; set; }
+        public string TownName { get; set; }
 
         public int? PostalCode { get; set; }
     }

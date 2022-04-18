@@ -1,6 +1,7 @@
 ﻿@using MobileWorld.Core.Models;
 @using System.Linq;
 @using Microsoft.AspNetCore.Identity
+@using MobileWorld.Infrastructure.Data.Common
 @using MobileWorld.Infrastructure.Data.Identity
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
@@ -49,7 +50,7 @@
         </a>
         <br />
 
-        @if (Model.Owner.OwnerId == UserManager.GetUserId(User))
+        @if (Model.Owner.OwnerId == UserManager.GetUserId(User) || User.IsInRole(GlobalConstants.AdministratorRole))
             {
         <a class="delete-border" asp-action="Delete" asp-route-adId="@Model.Id">Изтрий</a>
         <a class="edit-border" asp-action="Edit" asp-route-adId="@Model.Id">Редактирай</a>

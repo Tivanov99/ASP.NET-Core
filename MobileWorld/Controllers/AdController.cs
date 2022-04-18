@@ -10,11 +10,16 @@ namespace MobileWorld.Controllers
 {
     public class AdController : Controller
     {
+        private Microsoft.AspNetCore.Hosting.IHostingEnvironment Environment;
         private readonly IAdService service;
 
-        public AdController(IAdService _service)
+
+        public AdController(Microsoft.AspNetCore.Hosting.IHostingEnvironment _environment,
+            IAdService _service)
         {
+            Environment = _environment;
             this.service = _service;
+
         }
 
        public IActionResult GetAllAds()
@@ -44,23 +49,26 @@ namespace MobileWorld.Controllers
         {
             if (ModelState.IsValid)
             {
-                List<Image> images = new List<Image>();
+                string path = Path.Combine(this.Environment.WebRootPath, "Uploads");
 
-                foreach (var file in Request.Form.Files)
+                if (!Directory.Exists(path))
                 {
-                    Image img = new Image();
-                    img.ImageTitle = file.FileName;
-
-                    MemoryStream ms = new MemoryStream();
-                    file.CopyTo(ms);
-                    img.ImageData = ms.ToArray();
-
-                    ms.Close();
-                    ms.Dispose();
-                    images.Add(img);
+                    Directory.CreateDirectory(path);
                 }
 
-                this.service.CreateAd(model, images, userId);
+                List<string> uploadedFiles = new List<string>();
+                foreach (IFormFile postedFile in Request.Form.Files)
+                {
+                    string fileName = Path.GetFileName(postedFile.FileName);
+                    using (FileStream stream = new FileStream(Path.Combine(path, fileName), FileMode.Create))
+                    {
+                        postedFile.CopyTo(stream);
+                        uploadedFiles.Add(fileName);
+                        //ViewBag.Message += string.Format("<b>{0}</b> uploaded.<br />", fileName);
+                    }
+                }
+
+                //this.service.CreateAd(model, images, userId);
 
                 return RedirectToAction("Index", "Home");
             }

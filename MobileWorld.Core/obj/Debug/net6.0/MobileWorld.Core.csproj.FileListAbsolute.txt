@@ -13,3 +13,5 @@ C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld.Core\bin\Debug\net6.0\MobileWor
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld.Core\bin\Debug\net6.0\MobileWorld.Infrastructure.pdb
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld.Core\obj\Debug\net6.0\MobileWorld.Core.csproj.CopyComplete
 C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld.Core\obj\Debug\net6.0\refint\MobileWorld.Core.dll
+C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld.Core\bin\Debug\net6.0\MobileWorld.Core.runtimeconfig.json
+C:\Users\Trifon\Desktop\ASP.NET-Core\MobileWorld.Core\obj\Debug\net6.0\MobileWorld.Core.genruntimeconfig.cache

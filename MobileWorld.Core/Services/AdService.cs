@@ -1,13 +1,14 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using MobileWorld.Core.Contracts;
+using System.Data;
 using MobileWorld.Core.Dto;
 using MobileWorld.Core.Models;
 using MobileWorld.Core.Models.InputModels;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Infrastructure.Data.Common;
-using MobileWorld.Infrastructure.Data.Enums;
 using MobileWorld.Infrastructure.Data.Models;
+
 
 namespace MobileWorld.Core.Services
 {
@@ -53,54 +54,76 @@ namespace MobileWorld.Core.Services
                 return this.GetAllAds();
             }
 
+            //decimal? price = model.Price != null ? model.Price : 0;
+
+            //var ads = this.unitOfWork.AdRepository
+            //    .GetAllAsQueryable()
+            //    .Include(a => a.Car)
+            //    .ThenInclude(c => c.Engine)
+            //    .Include(a => a.Region)
+            //    .Include(a => a.Images)
+            //    .Where(x => x.Price>=price && )
+            //    .ToList();
+
+
+
+
             using (SqlConnection connection = new SqlConnection(GlobalConstants.sqlConnection))
             {
                 connection.Open();
 
                 SqlCommand command = new SqlCommand(
-                    "Select a.Id, a.Title, a.Description, a.Price, i.ImageData  from [Cars] as [c]"
-                    + "LEFT JOIN[Ads] as [a] on a.Id = c.AdId"
-                    + "LEFT JOIN[Images] as [i] on a.Id = i.AdId"
-                    + "LEFT JOIN[Regions] as [r] on a.RegionId = r.Id"
-                    + "LEFT JOIN[Towns] as [t] on r.TownId = t.Id"
-                    + "LEFT JOIN[Engines] as [e] on e.CarId = c.Id"
-                    + "Where[Name] = @TownName"
-                    + "and GearType = @GearType and [FuelType] = @FuelType and [Make] = @Make"
-                    + "and[Price] >= @Price", connection
+                    "SELECT a.Id, a.Title, a.Description, a.Price, i.ImageData  FROM[Cars] AS[c]"
+                     + "LEFT JOIN[Ads] AS[a] ON a.Id = c.AdId"
+                     + "LEFT JOIN[Images] AS[i] ON a.Id = i.AdId"
+                     + "LEFT JOIN[Regions] AS[r] ON a.RegionId = r.Id"
+                     + "LEFT JOIN[Towns] AS[t] ON r.TownId = t.Id"
+                     + "LEFT JOIN[Engines] AS[e] ON e.CarId = c.Id"
+                    , connection
                     );
-                
+
+                Type modeltype = model.GetType();
+
+                var modelProperties = modeltype.GetProperties().Select(x => x).ToList();
+
+                string where = " Where";
+                int count = properties.Count();
+                foreach (var prop in properties)
+                {
+                    count--;
+                    where += $" {prop.Name} = @{prop.Name}";
+                    if (count > 0)
+                    {
+                        where += " AND ";
+                    }
+                }
+                command.CommandText += where;
+
+                foreach (var prop in properties)
+                {
+                    var value = modelProperties.Where(x => x.Name == prop.Name).Select(x => x.GetValue(model)).First();
+                    command.Parameters.Add(new SqlParameter($"@{prop.Name}", value));
+                }
+
                 using (command)
                 {
-                    Type modeltype= model.GetType();
-
-                    var modelProperties = modeltype.GetProperties().Select(x=>x).ToList();
-
-                    foreach (var prop in properties)
-                    {
-                        command.Parameters.Add(new SqlParameter(prop.Name, modelProperties.Where(x=>x.Name==prop.Name).Select(x=>x.GetValue(model))));
-                    }
                     List<AdCardViewModel> result = new();
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
                         byte[] bytes = new byte[byte.MaxValue];
-                         reader.GetBytes(4, 0,bytes,0,bytes.Length);
+                        reader.GetBytes(4, 0, bytes, 0, bytes.Length); ;
                         result.Add(new AdCardViewModel()
                         {
-                            AdId=reader.GetString(0),
-                            Title=reader.GetString(1),
-                            Description=reader.GetString(2),
-                            Price=reader.GetDecimal(3),
-                            ImageData= bytes
+                            AdId = reader.GetString(0),
+                            Title = reader.GetString(1),
+                            Description = reader.GetString(2),
+                            Price = reader.GetDecimal(3),
+                            ImageData = bytes
                         });
                     }
                 }
             }
-
-
-
-
-
             return new List<AdCardViewModel>();
         }
 
@@ -325,7 +348,7 @@ namespace MobileWorld.Core.Services
         {
             var result = this.unitOfWork.TownRepository
                 .GetAll()
-                .Where(t => t.Name == townName)
+                .Where(t => t.TownName == townName)
                 .Select(t => t.Id)
                 .FirstOrDefault();
 
@@ -459,7 +482,7 @@ namespace MobileWorld.Core.Services
                       {
                           RegionName = a.Region.RegionName,
                           Neiborhood = a.Region.Neiborhood,
-                          TownName = a.Region.Town.Name,
+                          TownName = a.Region.Town.TownName,
                       },
                       Car = new CarModel()
                       {

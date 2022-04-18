@@ -5,6 +5,7 @@ using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Models;
 using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.Identity;
+using System.Data;
 
 namespace MobileWorld.Controllers
 {
@@ -23,6 +24,8 @@ namespace MobileWorld.Controllers
             _adminService = adminService;
             _userManager = userManager;
             _roleManager = roleManager;
+
+
         }
 
         public IActionResult Delete(string userId)
