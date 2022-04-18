@@ -36,10 +36,9 @@
         </ol>
         <div style="width:80%" class="carousel-inner">
 
-            @foreach (var bytes in Model.Car.Images)
+            @foreach (var image in Model.Images)
             {
-                @await Html.PartialAsync("_CarImagePartial", bytes)
-                ;
+                @await Html.PartialAsync("_CarImagePartial", image.ImagePath+image.ImageTitle);
             }
 
         </div>
