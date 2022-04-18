@@ -174,7 +174,11 @@ namespace MobileWorld.Core.Services
             {
                 int townId = this.GetTownIdByName(model.Region.TownName);
 
-                var images = uploadedImages.Select(x => new Image() { ImageTitle = x, ImagePath = path }).ToList();
+                var images = uploadedImages
+                    .Select( x => new Image() 
+                                     { ImageTitle = x, ImagePath = path }
+                           )
+                    .ToList();
 
                 //TODO : Add seed to Db all Towns
 
