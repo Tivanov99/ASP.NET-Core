@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Models;
 using MobileWorld.Core.ViewModels;
-using MobileWorld.Infrastructure.Data.Models;
 using MobileWorld.Models;
 
 namespace MobileWorld.Controllers
@@ -21,13 +20,13 @@ namespace MobileWorld.Controllers
             this.service = _service;
         }
 
-       public IActionResult AllAds()
+        public IActionResult AllAds()
         {
             List<AdCardViewModel> cars = this.service
                 .GetAllAds();
             return View(cars);
         }
-        
+
         public IActionResult Ad(string adId)
         {
             var ad = this.service
@@ -74,11 +73,11 @@ namespace MobileWorld.Controllers
 
                 return RedirectToAction("Index", "Home");
             }
-                var message = string.Join(" | ", ModelState.Values
-                 .SelectMany(v => v.Errors)
-                 .Select(e => e.ErrorMessage));
-                return View("Error", new { ErrorMessage =message});
-                //TODO; return error to correct view
+            var message = string.Join(" | ", ModelState.Values
+             .SelectMany(v => v.Errors)
+             .Select(e => e.ErrorMessage));
+            return View("Error", new { ErrorMessage = message });
+            //TODO; return error to correct view
         }
 
         public IActionResult AdsByCriteria(AdvancedSearchCarModel searchModel)
@@ -162,11 +161,11 @@ namespace MobileWorld.Controllers
                 return RedirectToAction(actionName: nameof(this.Ad), new { adId = adId });
 
             }
-           
-                var message = string.Join(" | ", ModelState.Values
-                 .SelectMany(v => v.Errors)
-                 .Select(e => e.ErrorMessage));
-                return View("Error", new { ErrorMessage = message });
+
+            var message = string.Join(" | ", ModelState.Values
+             .SelectMany(v => v.Errors)
+             .Select(e => e.ErrorMessage));
+            return View("Error", new { ErrorMessage = message });
         }
     }
 }
