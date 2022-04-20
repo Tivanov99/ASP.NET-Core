@@ -12,7 +12,6 @@ namespace MobileWorld.Controllers
         private Microsoft.AspNetCore.Hosting.IHostingEnvironment Environment;
         private readonly IAdService service;
 
-
         public AdController(Microsoft.AspNetCore.Hosting.IHostingEnvironment _environment,
             IAdService _service)
         {
@@ -20,10 +19,11 @@ namespace MobileWorld.Controllers
             this.service = _service;
         }
 
-        public IActionResult AllAds()
+        public async Task<IActionResult> AllAds()
         {
-            List<AdCardViewModel> cars = this.service
+           var cars = await this.service
                 .GetAllAds();
+
             return View(cars);
         }
 
