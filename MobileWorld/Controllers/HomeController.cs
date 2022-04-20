@@ -18,10 +18,11 @@ namespace MobileWorld.Controllers
             this.adService = _adService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            List<AdCardViewModel> cars = this.adService
-                .GetIndexAds();
+            List<AdCardViewModel> cars = await this.adService
+                .GetIndexAds()
+                ;
             return View(cars);
         }
 

@@ -21,15 +21,15 @@ namespace MobileWorld.Controllers
 
         public async Task<IActionResult> AllAds()
         {
-           var cars = await this.service
+           List<AdCardViewModel> cars = await this.service
                 .GetAllAds();
 
             return View(cars);
         }
 
-        public IActionResult Ad(string adId)
+        public async Task<IActionResult> Ad(string adId)
         {
-            var ad = this.service
+            var ad =await this.service
                 .GetAdById(adId);
 
             return View(ad);

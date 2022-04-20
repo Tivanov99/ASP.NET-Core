@@ -1,20 +1,20 @@
 ﻿using MobileWorld.Core.Models;
 using MobileWorld.Core.Models.InputModels;
 using MobileWorld.Core.ViewModels;
-using MobileWorld.Infrastructure.Data.Models;
 
 namespace MobileWorld.Core.Contracts
 {
     public interface IAdService
     {
         Task<List<AdCardViewModel>> GetAllAds();
-        AdViewModel GetAdById(string adId);
 
-        List<AdCardViewModel> GetAdsByAdvancedCriteria(AdvancedSearchCarModel model);
+       Task<AdViewModel> GetAdById(string adId);
+
+       List<AdCardViewModel> GetAdsByAdvancedCriteria(AdvancedSearchCarModel model);
 
         //List<AdCardViewModel> GetAdsByBaseCriteria(BaseSearchCarModel model);
 
-        List<AdCardViewModel> GetIndexAds();
+        Task<List<AdCardViewModel>> GetIndexAds();
 
        void CreateAd(AdInputModel model, string ownerId, List<string> uploadedImages, string path);
 

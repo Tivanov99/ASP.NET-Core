@@ -40,9 +40,9 @@ namespace MobileWorld.Core.Services
         }
 
 
-        public AdViewModel GetAdById(string adId)
+        public async Task<AdViewModel> GetAdById(string adId)
         {
-            var ad = AdProjection(adId);
+            var ad = await AdProjection(adId);
             return ad;
         }
 
@@ -148,9 +148,9 @@ namespace MobileWorld.Core.Services
             return null;
         }
 
-        public List<AdCardViewModel> GetIndexAds()
+        public async Task<List<AdCardViewModel>> GetIndexAds()
         {
-            var cars = this.unitOfWork.AdRepository
+            var cars = await this.unitOfWork.AdRepository
                .GetAllAsQueryable()
                .AsNoTracking()
                .Include(a => a.Images)
@@ -164,8 +164,7 @@ namespace MobileWorld.Core.Services
                     //ImagePath = a.Images[0].ImagePath + @"\",
                 })
                .Take(6)
-               .ToList();
-
+               .ToListAsync();
             return cars;
         }
 
@@ -466,8 +465,8 @@ namespace MobileWorld.Core.Services
                  OwnerId = ownerId,
              };
 
-        private AdViewModel? AdProjection(string adId)
-            => this.unitOfWork.AdRepository.GetAllAsQueryable()
+        private async Task<AdViewModel?> AdProjection(string adId)
+            =>await this.unitOfWork.AdRepository.GetAllAsQueryable()
                   .AsNoTracking()
                   .Where(a => a.Id == adId)
                   .Include(c => c.Car.Feature.SafetyDetails)
@@ -521,7 +520,7 @@ namespace MobileWorld.Core.Services
                           OwnerId = a.OwnerId,
                       },
                   })
-                .FirstOrDefault();
+                .FirstOrDefaultAsync();
 
 
         private void UpdateEngine(EngineModel updatedModel, Engine dbModel)
