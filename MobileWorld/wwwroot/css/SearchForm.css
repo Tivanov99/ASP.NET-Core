@@ -39,7 +39,12 @@ select {
 .detailed-search {
     position: relative;
     top: 10px;
-    left: 425px;
+    left: 250px;
+}
+
+.all-ads {
+    margin-left: 50px;
+    position: relative;
 }
 
 .hide {
