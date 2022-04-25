@@ -77,7 +77,6 @@ namespace MobileWorld.Controllers
              .SelectMany(v => v.Errors)
              .Select(e => e.ErrorMessage));
             return View("Error", new { ErrorMessage = message });
-            //TODO; return error to correct view
         }
 
         public IActionResult AdsByCriteria(AdvancedSearchCarModel searchModel)

@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MobileWorld.Infrastructure.Data.Models;
-using System.Data.Entity.Core.Objects;
+﻿using MobileWorld.Infrastructure.Data.Models;
 
 namespace MobileWorld.Infrastructure.Data.Common
 {

@@ -35,7 +35,8 @@
 
             @foreach (var image in @Model.Images)
             {
-                @await Html.PartialAsync("_CarImagePartial",image);
+                @await Html.PartialAsync("_CarImagePartial",image)
+                ;
             }
 
         </div>
@@ -50,33 +51,65 @@
         <br />
 
         @if (Model.Owner.OwnerId == UserManager.GetUserId(User) || User.IsInRole(GlobalConstants.AdministratorRole))
-            {
-        <a class="delete-border" asp-action="Delete" asp-route-adId="@Model.Id">Изтрий</a>
-        <a class="edit-border" asp-action="Edit" asp-route-adId="@Model.Id">Редактирай</a>
+        {
+            <a class="delete-border" asp-action="Delete" asp-route-adId="@Model.Id">Изтрий</a>
+            <a class="edit-border" asp-action="Edit" asp-route-adId="@Model.Id">Редактирай</a>
 
         }
     </div>
 
+    <strong style="font-size:21px;color:#333;">@Model.Title</strong>
+    <br>
 
     <div style="width:400px; display:inline-block; float:left; margin-top:15px; overflow: hidden;">
-        <strong style="font-size:21px;color:#333;">@Model.Title</strong><br>
-        <div style="box-sizing: border-box"></div>
-        <ul style="list-style: none; width: 400px; padding: 0;margin: 12px 0 0;" class="dilarData">
-            <li class="dealerData-odd">Дата на производство -</li>
+        <table style="width:360px;" cellspacing="0" cellpadding="0" bgcolor="#EFEFEF">
+            <tbody>
+                <tr>
+                    <td class="owner-info">
+                        <span class="dealerData-odd">Дата на производство -</span>
+                        <span class="dealerData-even">@Model.Car.Year</span><br>
+
+                        <span class="dealerData-odd">Тип двигател -</span>
+                        <span class="dealerData-even">@Model.Car.Engine.FuelType</span><br>
+
+                        <span class="dealerData-odd">Мощност -</span>
+                        <span class="dealerData-even">@Model.Car.Engine.FuelType</span><br>
+
+                        <span class="dealerData-odd">Евростандарт -</span>
+                        <span class="dealerData-even">@Model.Car.Engine.EcoLevel</span><br />
+
+                        <span class="dealerData-odd">Скоростна кутия -</span>
+                        <span class="dealerData-even">@Model.Car.GearType</span><br>
+
+                        <span class="dealerData-odd">Пробег -</span>
+                        <span class="dealerData-even">@Model.Car.Mileage км</span><br>
+
+                        <span class="dealerData-odd">Цвят -</span>
+                        <span class="dealerData-even">@Model.Car.Color.</span><br>
+                        <br>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        @*
+            <strong style="font-size:21px;color:#333;">@Model.Title</strong><br>
+            <div style="box-sizing: border-box"></div>
+            <ul style="list-style: none; width: 400px; padding: 0;margin: 12px 0 0;" class="dilarData">*@
+        @*<li class="dealerData-odd">Дата на производство -</li>
             <li class="dealerData-even">@Model.Car.Year</li>
             <li class="dealerData-odd">Тип двигател -</li>
-            <li class="dealerData-even">@Model.Car.Engine.FuelType</li>
-            <li class="dealerData-odd">Мощност -</li>
-            <li class="dealerData-even">@Model.Car.Engine.HorsePower к.с.</li>
-            <li class="dealerData-odd">Евростандарт -</li>
-            <li class="dealerData-even">Евро @Model.Car.Engine.EcoLevel</li>
-            <li class="dealerData-odd">Скоростна кутия -</li>
-            <li class="dealerData-even">@Model.Car.GearType</li>
-            <li class="dealerData-odd">Пробег -</li>
-            <li class="dealerData-even">@Model.Car.Mileage км</li>
-            <li class="dealerData-odd">Цвят -</li>
-            <li class="dealerData-even">@Model.Car.Color.</li>
-        </ul>
+            <li class="dealerData-even">@Model.Car.Engine.FuelType</li>*@
+        @*<li class="dealerData-odd">Мощност -</li>
+            <li class="dealerData-even">@Model.Car.Engine.HorsePower к.с.</li>*@
+        @* <li class="dealerData-odd">Евростандарт -</li>
+            <li class="dealerData-even">Евро @Model.Car.Engine.EcoLevel</li>*@
+        @*<li class="dealerData-odd">Скоростна кутия -</li>
+            <li class="dealerData-even">@Model.Car.GearType</li>*@
+        @*<li class="dealerData-odd">Пробег -</li>
+            <li class="dealerData-even">@Model.Car.Mileage км</li>*@
+        @*<li class="dealerData-odd">Цвят -</li>
+            <li class="dealerData-even">@Model.Car.Color.</li>*@
+        @*</ul>*@
         <div style="margin-bottom:11px;"></div>
     </div>
     @*//*@
