@@ -66,6 +66,7 @@
             <tbody>
                 <tr>
                     <td class="owner-info">
+                        <strong>За автомобила</strong><br>
                         <span class="dealerData-odd">Дата на производство -</span>
                         <span class="dealerData-even">@Model.Car.Year</span><br>
 
@@ -73,7 +74,7 @@
                         <span class="dealerData-even">@Model.Car.Engine.FuelType</span><br>
 
                         <span class="dealerData-odd">Мощност -</span>
-                        <span class="dealerData-even">@Model.Car.Engine.FuelType</span><br>
+                        <span class="dealerData-even">@Model.Car.Engine.HorsePower к.с.</span><br>
 
                         <span class="dealerData-odd">Евростандарт -</span>
                         <span class="dealerData-even">@Model.Car.Engine.EcoLevel</span><br />
@@ -85,7 +86,7 @@
                         <span class="dealerData-even">@Model.Car.Mileage км</span><br>
 
                         <span class="dealerData-odd">Цвят -</span>
-                        <span class="dealerData-even">@Model.Car.Color.</span><br>
+                        <span class="dealerData-even">@Model.Car.Color</span><br>
                         <br>
                     </td>
                 </tr>
@@ -150,7 +151,7 @@
     </div>
     @*//*@
 
-    <div>
+    <div style="border-top: #CCC 2px solid; margin-top:15px">
         <table id="features">
             <tbody>
                 <tr>
