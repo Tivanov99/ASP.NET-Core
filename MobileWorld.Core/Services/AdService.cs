@@ -518,6 +518,8 @@ namespace MobileWorld.Core.Services
                       Owner = new OwnerModel()
                       {
                           OwnerId = a.OwnerId,
+                          FirstName=a.Owner.FirstName,
+                          LastName=a.Owner.LastName,
                       },
                   })
                 .FirstOrDefaultAsync();
