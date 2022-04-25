@@ -134,8 +134,10 @@
             <tbody>
                 <tr>
                     <td class="owner-info">
-                        <span class="owner-phone">Телефон: @Model.PhoneNumber</span><br><br>
-                        <span class="owner-name">Име - @Model.Owner.FirstName @Model.Owner.LastName</span>
+                        <span class="dealerData-odd">Телефон: </span>
+                        <span class="dealerData-even">@Model.PhoneNumber</span><br>
+                        <span class="dealerData-odd">Име - </span>
+                        <span class="dealerData-even">@Model.Owner.FirstName @Model.Owner.LastName</span><br>
                         <span class="owner-addres">Адрес :</span>
                         Регион: @Model.Region.RegionName<br>
                         <span>гр. @Model.Region.TownName</span><br>

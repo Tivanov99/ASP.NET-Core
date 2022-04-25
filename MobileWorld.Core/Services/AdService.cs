@@ -480,6 +480,7 @@ namespace MobileWorld.Core.Services
                   .Include(a => a.Images)
                   .Select(a => new AdViewModel()
                   {
+                      PhoneNumber = a.PhoneNumber,
                       Id = a.Id,
                       Title = a.Title,
                       Price = a.Price,
