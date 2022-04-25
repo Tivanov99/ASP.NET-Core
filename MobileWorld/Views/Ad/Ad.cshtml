@@ -66,7 +66,7 @@
             <tbody>
                 <tr>
                     <td class="owner-info">
-                        <strong>За автомобила</strong><br>
+                        <strong style="border-bottom: #CCC 2px solid; ">За автомобила</strong><br>
                         <span class="dealerData-odd">Дата на производство -</span>
                         <span class="dealerData-even">@Model.Car.Year</span><br>
 
@@ -135,9 +135,10 @@
                 <tr>
                     <td class="owner-info">
                         <span class="owner-phone">Телефон: @Model.PhoneNumber</span><br><br>
-                        <span class="owner-name">Име - Trifon</span>
+                        <span class="owner-name">Име - @Model.Owner.FirstName @Model.Owner.LastName</span>
                         <span class="owner-addres">Адрес :</span>
-                        Регион: @Model.Region.RegionName<br>гр. @Model.Region.TownName<br>
+                        Регион: @Model.Region.RegionName<br>
+                        <span>гр. @Model.Region.TownName</span><br>
                         @if (Model.Region.Neiborhood != null)
                         {
                             <span>КВ.@Model.Region.Neiborhood</span>
