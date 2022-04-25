@@ -92,28 +92,8 @@
                 </tr>
             </tbody>
         </table>
-        @*
-            <strong style="font-size:21px;color:#333;">@Model.Title</strong><br>
-            <div style="box-sizing: border-box"></div>
-            <ul style="list-style: none; width: 400px; padding: 0;margin: 12px 0 0;" class="dilarData">*@
-        @*<li class="dealerData-odd">Дата на производство -</li>
-            <li class="dealerData-even">@Model.Car.Year</li>
-            <li class="dealerData-odd">Тип двигател -</li>
-            <li class="dealerData-even">@Model.Car.Engine.FuelType</li>*@
-        @*<li class="dealerData-odd">Мощност -</li>
-            <li class="dealerData-even">@Model.Car.Engine.HorsePower к.с.</li>*@
-        @* <li class="dealerData-odd">Евростандарт -</li>
-            <li class="dealerData-even">Евро @Model.Car.Engine.EcoLevel</li>*@
-        @*<li class="dealerData-odd">Скоростна кутия -</li>
-            <li class="dealerData-even">@Model.Car.GearType</li>*@
-        @*<li class="dealerData-odd">Пробег -</li>
-            <li class="dealerData-even">@Model.Car.Mileage км</li>*@
-        @*<li class="dealerData-odd">Цвят -</li>
-            <li class="dealerData-even">@Model.Car.Color.</li>*@
-        @*</ul>*@
-        <div style="margin-bottom:11px;"></div>
     </div>
-    @*//*@
+
     @if (Model.Description != null)
     {
         <br>
@@ -126,37 +106,9 @@
             </table>
         </div>
     }
+    <br />
 
-    <br>
-    <div>
-        <p class="contacts">За контакти:</p>
-        <table style="width:360px;" cellspacing="0" cellpadding="0" bgcolor="#EFEFEF">
-            <tbody>
-                <tr>
-                    <td class="owner-info">
-                        <span class="dealerData-odd">Телефон: </span>
-                        <span class="dealerData-even">@Model.PhoneNumber</span><br>
-                        <span class="dealerData-odd">Име - </span>
-                        <span class="dealerData-even">@Model.Owner.FirstName @Model.Owner.LastName</span><br>
-                        <span class="dealerData-odd">Регион :</span>
-                        <span class="dealerData-even">@Model.Region.RegionName</span><br>
-                        <span class="dealerData-odd">гр. </span>
-                        <span class="dealerData-even">@Model.Region.TownName</span><br>
-                        @if (Model.Region.Neiborhood != null)
-                        {
-                            <span class="dealerData-odd">КВ.</span>
-                            <span class="dealerData-even">@Model.Region.Neiborhood</span>
-                            <br>
-                        }
-                        <br>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    @*//*@
-
-    <div style="border-top: #CCC 2px solid; margin-top:15px">
+    <div style="border-top: #CCC 2px solid; border-bottom: #CCC 2px solid; margin-top:15px; float:left">
         <table id="features">
             <tbody>
                 <tr>
@@ -517,7 +469,35 @@
             </tbody>
         </table>
     </div>
-    @*//*@
+    <br />
+
+    
+
+
+       @* <table style="width:360px;" cellspacing="0" cellpadding="0" bgcolor="#EFEFEF">
+            <tbody>
+                <tr>
+                    <td class="owner-info">
+                        <strong style="border-bottom: #CCC 2px solid;">За контакти</strong><br>
+                        <span class="dealerData-odd">Телефон: </span>
+                        <span class="dealerData-even">@Model.PhoneNumber</span><br>
+                        <span class="dealerData-odd">Име - </span>
+                        <span class="dealerData-even">@Model.Owner.FirstName @Model.Owner.LastName</span><br>
+                        <span class="dealerData-odd">Регион :</span>
+                        <span class="dealerData-even">@Model.Region.RegionName</span><br>
+                        <span class="dealerData-odd">гр. </span>
+                        <span class="dealerData-even">@Model.Region.TownName</span><br>
+                        @if (Model.Region.Neiborhood != null)
+                        {
+                            <span class="dealerData-odd">КВ.</span>
+                            <span class="dealerData-even">@Model.Region.Neiborhood</span>
+                            <br>
+                        }
+                        <br>
+                    </td>
+                </tr>
+            </tbody>
+        </table>*@
 
     <div style="float:left; margin-top:10px;">
         <span style="color:#999999">Създадена на @Model.CreatedOn</span><br>
