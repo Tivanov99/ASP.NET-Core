@@ -138,12 +138,14 @@
                         <span class="dealerData-even">@Model.PhoneNumber</span><br>
                         <span class="dealerData-odd">Име - </span>
                         <span class="dealerData-even">@Model.Owner.FirstName @Model.Owner.LastName</span><br>
-                        <span class="owner-addres">Адрес :</span>
-                        Регион: @Model.Region.RegionName<br>
-                        <span>гр. @Model.Region.TownName</span><br>
+                        <span class="dealerData-odd">Регион :</span>
+                        <span class="dealerData-even">@Model.Region.RegionName</span><br>
+                        <span class="dealerData-odd">гр. </span>
+                        <span class="dealerData-even">@Model.Region.TownName</span><br>
                         @if (Model.Region.Neiborhood != null)
                         {
-                            <span>КВ.@Model.Region.Neiborhood</span>
+                            <span class="dealerData-odd">КВ.</span>
+                            <span class="dealerData-even">@Model.Region.Neiborhood</span>
                             <br>
                         }
                         <br>
