@@ -50,15 +50,16 @@
         </a>
         <br />
 
-        @if (Model.Owner.OwnerId == UserManager.GetUserId(User) || User.IsInRole(GlobalConstants.AdministratorRole))
-        {
-            <a class="delete-border" asp-action="Delete" asp-route-adId="@Model.Id">Изтрий</a>
-            <a class="edit-border" asp-action="Edit" asp-route-adId="@Model.Id">Редактирай</a>
-
-        }
     </div>
 
     <strong style="font-size:21px;color:#333;">@Model.Title</strong>
+     @if (Model.Owner.OwnerId == UserManager.GetUserId(User) || User.IsInRole(GlobalConstants.AdministratorRole))
+        {
+            <a class="delete-border" asp-action="Delete" asp-route-adId="@Model.Id">Изтрий</a>
+            <a class="edit-border" asp-action="Edit" asp-route-adId="@Model.Id">Редактирай</a>
+            <a class="edit-border" asp-action="Edit" asp-route-adId="@Model.Id">Добави в любими</a>
+
+        }
     <br>
 
     <div style="width:400px; display:inline-block; float:left; margin-top:15px; overflow: hidden;">
@@ -494,10 +495,6 @@
         </table>
     </div>
     <br />
-
-
-
-
 
     <div style="float:left; margin-top:10px;">
         <span style="color:#999999">Създадена на @Model.CreatedOn</span><br>
