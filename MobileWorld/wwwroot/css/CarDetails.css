@@ -102,3 +102,10 @@
     color: white;
     padding: 5px;
 }
+
+.fav-border {
+    border: 3px solid #ccc;
+    background-color: forestgreen;
+    color: white;
+    padding: 5px;
+}
