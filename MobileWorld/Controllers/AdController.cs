@@ -138,9 +138,9 @@ namespace MobileWorld.Controllers
                 return RedirectToAction(nameof(Delete), new { id = adId, saveChangesError = true });
             }
         }
-        public IActionResult Edit(string adId)
+        public async Task<ActionResult> Edit(string adId)
         {
-            var ad = this.service
+            var ad =await this.service
                 .GetAdById(adId);
             return View(ad);
         }
