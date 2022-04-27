@@ -11,7 +11,7 @@ namespace MobileWorld.Core.Contracts
 
         bool AddToFavorites(string adId, string userId);
 
-        bool RemoveFromFavorites(string adId, string userId)
+        bool RemoveFromFavorites(string adId, string userId);
 
         //List<UserViewModel> GetUsers();
     }

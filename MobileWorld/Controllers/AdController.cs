@@ -177,7 +177,7 @@ namespace MobileWorld.Controllers
 
         public IActionResult UnFav(string adId, string userId)
         {
-            bool result = this.userService.AddToFavorites(adId, userId);
+            bool result = this.userService.RemoveFromFavorites(adId, userId);
             return View();
         }
     }

@@ -40,19 +40,19 @@ namespace MobileWorld.Core.Services
                     .AsNoTracking()
                     .Include(u => u.Ads)
                    .Where(u => u.Id == userId)
-                   .SelectMany(u=>u.Ads)
-                   .Select(a=> new AdCardViewModel()
+                   .SelectMany(u => u.Ads)
+                   .Select(a => new AdCardViewModel()
                    {
-                       AdId=a.Id,
-                       Title=a.Title,
-                       Description=a.Description,
-                       Price=a.Price,
-                       ImagePath=a.Images[0].ImagePath,
-                       ImageTitle=a.Images[0].ImageTitle,
+                       AdId = a.Id,
+                       Title = a.Title,
+                       Description = a.Description,
+                       Price = a.Price,
+                       ImagePath = a.Images[0].ImagePath,
+                       ImageTitle = a.Images[0].ImageTitle,
                    })
                    .ToList();
 
-                return  userAds;
+                return userAds;
             }
             catch (KeyNotFoundException)
             {
@@ -84,8 +84,8 @@ namespace MobileWorld.Core.Services
 
             user.FavoriteAds.Add(new FavoriteAd()
             {
-                AdId=adId,
-                UserId=userId,
+                AdId = adId,
+                UserId = userId,
             });
 
             try
@@ -101,16 +101,16 @@ namespace MobileWorld.Core.Services
 
         public bool RemoveFromFavorites(string adId, string userId)
         {
-            var user = this.unitOfWork.UserRepository.GetById(userId);
-
-            user.FavoriteAds.Add(new FavoriteAd()
-            {
-                AdId = adId,
-                UserId = userId,
-            });
+            var user = this.unitOfWork.UserRepository
+                .GetAllAsQueryable()
+                .Where(u => u.Id == userId)
+                .Include(u => u.FavoriteAds)
+                .FirstOrDefault();
 
             try
             {
+                var da = user.FavoriteAds.Where(fa => fa.AdId == adId).FirstOrDefault();
+                user.FavoriteAds.Remove(da);
                 this.unitOfWork.Save();
                 return true;
             }
