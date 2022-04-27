@@ -64,7 +64,16 @@
     }
     @*TODO: Fix button*@
 
-    <button class="fav-borderd" onclick="Fav('@Model.Id','@Model.Owner.OwnerId')">Добави в любими</button>
+    @if(UserManager.GetUserId(User)!=null){
+        @if (Model.Owner.IsFavoriteAd)
+        {
+        <button class="fav-borderd" onclick="Fav('@Model.Id','@Model.Owner.OwnerId')">Премахни от любими</button>
+        }
+        else
+        {
+        <button class="fav-borderd" onclick="Fav('@Model.Id','@Model.Owner.OwnerId')">Добави в любими</button>
+        }
+    }
     
 
 

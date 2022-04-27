@@ -521,6 +521,7 @@ namespace MobileWorld.Core.Services
                           OwnerId = a.OwnerId,
                           FirstName=a.Owner.FirstName,
                           LastName=a.Owner.LastName,
+                          IsFavoriteAd= a.Owner.FavoriteAds.Any(a=>a.AdId==adId),
                       },
                   })
                 .FirstOrDefaultAsync();

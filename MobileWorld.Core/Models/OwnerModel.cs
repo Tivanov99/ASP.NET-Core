@@ -11,5 +11,7 @@ namespace MobileWorld.Core.Models
 
         [Required]
         public string LastName { get; set; }
+
+        public bool IsFavoriteAd { get; set; }
     }
 }
