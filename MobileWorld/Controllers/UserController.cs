@@ -35,7 +35,17 @@ namespace MobileWorld.Controllers
         //    var users = this.userService.GetUsers();
         //    return Ok(users);
         //}
+        public IActionResult Fav(string adId, string userId)
+        {
+            bool result = this.userService.AddToFavorites(adId, userId);
+            return View();
+        }
 
+        public IActionResult UnFav(string adId, string userId)
+        {
+            bool result = this.userService.RemoveFromFavorites(adId, userId);
+            return View();
+        }
 
     }
 }

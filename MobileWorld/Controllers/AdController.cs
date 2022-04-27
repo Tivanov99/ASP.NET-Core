@@ -169,16 +169,5 @@ namespace MobileWorld.Controllers
              .Select(e => e.ErrorMessage));
             return View("Error", new { ErrorMessage = message });
         }
-        public IActionResult Fav(string adId,string userId)
-        {
-            bool result = this.userService.AddToFavorites(adId, userId);
-            return View();
-        }
-
-        public IActionResult UnFav(string adId, string userId)
-        {
-            bool result = this.userService.RemoveFromFavorites(adId, userId);
-            return View();
-        }
     }
 }

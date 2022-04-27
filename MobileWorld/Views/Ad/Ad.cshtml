@@ -538,7 +538,7 @@
     }
 
     function Fav(Id, UserId){
-        let url = '@Url.Action("Fav","Ad")';
+        let url = '@Url.Action("Fav","Home")';
 
         $.ajax({
             url: url,
@@ -559,7 +559,7 @@
     }
 
     function UnFav(Id, UserId){
-        let url = '@Url.Action("UnFav","Ad")';
+        let url = '@Url.Action("UnFav","Home")';
 
         $.ajax({
             url: url,
