@@ -171,7 +171,13 @@ namespace MobileWorld.Controllers
         }
         public IActionResult Fav(string adId,string userId)
         {
-            bool result = this.userService.UpdateFavoritesAds(adId, userId);
+            bool result = this.userService.AddToFavorites(adId, userId);
+            return View();
+        }
+
+        public IActionResult UnFav(string adId, string userId)
+        {
+            bool result = this.userService.AddToFavorites(adId, userId);
             return View();
         }
     }

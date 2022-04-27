@@ -67,7 +67,7 @@
     @if(UserManager.GetUserId(User)!=null){
         @if (Model.Owner.IsFavoriteAd)
         {
-        <button class="fav-borderd" onclick="Fav('@Model.Id','@Model.Owner.OwnerId')">Премахни от любими</button>
+        <button class="fav-borderd" onclick="UnFav('@Model.Id','@Model.Owner.OwnerId')">Премахни от любими</button>
         }
         else
         {
@@ -550,6 +550,27 @@
             success: function (data) {
                 if(data.length == 0) // No errors
                     alert("Успешно добавихте обятава в любими!");
+            },
+            error: function (jqXHR) { // Http Status is not 200
+            },
+            complete: function (jqXHR, status) { // Whether success or error it enters here
+            }
+        }); 
+    }
+
+    function UnFav(Id, UserId){
+        let url = '@Url.Action("UnFav","Ad")';
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: {
+                adId: Id,
+                userId : UserId
+            },
+            success: function (data) {
+                if(data.length == 0) // No errors
+                    alert("Успешно премахнахте обятава от любими!");
             },
             error: function (jqXHR) { // Http Status is not 200
             },

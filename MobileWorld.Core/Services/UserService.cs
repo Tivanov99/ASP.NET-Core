@@ -78,7 +78,7 @@ namespace MobileWorld.Core.Services
             return result;
         }
 
-        public bool UpdateFavoritesAds(string adId, string userId)
+        public bool AddToFavorites(string adId, string userId)
         {
             var user = this.unitOfWork.UserRepository.GetById(userId);
 
@@ -86,6 +86,27 @@ namespace MobileWorld.Core.Services
             {
                 AdId=adId,
                 UserId=userId,
+            });
+
+            try
+            {
+                this.unitOfWork.Save();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool RemoveFromFavorites(string adId, string userId)
+        {
+            var user = this.unitOfWork.UserRepository.GetById(userId);
+
+            user.FavoriteAds.Add(new FavoriteAd()
+            {
+                AdId = adId,
+                UserId = userId,
             });
 
             try

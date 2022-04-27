@@ -9,7 +9,9 @@ namespace MobileWorld.Core.Contracts
 
         List<AdCardViewModel> UserAds(string userId);
 
-        bool UpdateFavoritesAds(string adId, string userId);
+        bool AddToFavorites(string adId, string userId);
+
+        bool RemoveFromFavorites(string adId, string userId)
 
         //List<UserViewModel> GetUsers();
     }
