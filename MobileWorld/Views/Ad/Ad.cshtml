@@ -64,17 +64,18 @@
     }
     @*TODO: Fix button*@
 
-    @if(UserManager.GetUserId(User)!=null){
+    @if (UserManager.GetUserId(User) != null)
+    {
         @if (Model.Owner.IsFavoriteAd)
         {
-        <button class="fav-borderd" onclick="UnFav('@Model.Id','@Model.Owner.OwnerId')">Премахни от любими</button>
+            <button class="fav-borderd" id="UnBtn">Премахни от любими</button>
         }
         else
         {
-        <button class="fav-borderd" onclick="Fav('@Model.Id','@Model.Owner.OwnerId')">Добави в любими</button>
+            <button class="fav-borderd" id="FavBtn">Добави в любими</button>
         }
     }
-    
+
 
 
 
@@ -537,15 +538,15 @@
         element.parentElement.classList="hiden";
     }
 
-    function Fav(Id, UserId){
+    function Fav(){
         let url = '@Url.Action("Fav","User")';
 
         $.ajax({
             url: url,
             type: 'POST',
             data: {
-                adId: Id,
-                userId : UserId
+                adId: '@Model.Id',
+                userId : '@Model.Owner.OwnerId'
             },
             success: function (data) {
                 if(data.length == 0) // No errors
@@ -555,18 +556,29 @@
             },
             complete: function (jqXHR, status) { // Whether success or error it enters here
             }
-        }); 
+        });
     }
+     let favBtn= document.querySelector('#FavBtn');
 
-    function UnFav(Id, UserId){
+     if(favBtn!=null){
+     favBtn.addEventListener("click",Fav)
+     }
+
+
+
+
+
+
+
+    function UnFav(){
         let url = '@Url.Action("UnFav","User")';
 
         $.ajax({
             url: url,
             type: 'POST',
             data: {
-                adId: Id,
-                userId : UserId
+                adId: '@Model.Id',
+                userId : '@Model.Owner.OwnerId'
             },
             success: function (data) {
                 if(data.length == 0) // No errors
@@ -576,11 +588,11 @@
             },
             complete: function (jqXHR, status) { // Whether success or error it enters here
             }
-        }); 
+        });
     }
 
-
-
-
-
+    let unBtn= document.querySelector('#UnBtn');
+    if(unBtn!=null){
+     unBtn.addEventListener("click",UnFav)
+    }
 </script>
