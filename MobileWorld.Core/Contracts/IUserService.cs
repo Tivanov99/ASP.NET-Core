@@ -9,6 +9,8 @@ namespace MobileWorld.Core.Contracts
 
         List<AdCardViewModel> UserAds(string userId);
 
+        bool UpdateFavoritesAds(string adId, string userId);
+
         //List<UserViewModel> GetUsers();
     }
 }

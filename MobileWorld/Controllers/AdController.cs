@@ -11,25 +11,28 @@ namespace MobileWorld.Controllers
     {
         private Microsoft.AspNetCore.Hosting.IHostingEnvironment Environment;
         private readonly IAdService service;
+        private readonly IUserService userService;
 
         public AdController(Microsoft.AspNetCore.Hosting.IHostingEnvironment _environment,
-            IAdService _service)
+            IAdService _service,
+            IUserService _userService)
         {
             Environment = _environment;
             this.service = _service;
+            userService = _userService;
         }
 
         public async Task<IActionResult> AllAds()
         {
-           List<AdCardViewModel> cars = await this.service
-                .GetAllAds();
+            List<AdCardViewModel> cars = await this.service
+                 .GetAllAds();
 
             return View(cars);
         }
 
         public async Task<IActionResult> Ad(string adId)
         {
-            var ad =await this.service
+            var ad = await this.service
                 .GetAdById(adId);
 
             return View(ad);
@@ -140,7 +143,7 @@ namespace MobileWorld.Controllers
         }
         public async Task<ActionResult> Edit(string adId)
         {
-            var ad =await this.service
+            var ad = await this.service
                 .GetAdById(adId);
             return View(ad);
         }
@@ -166,8 +169,9 @@ namespace MobileWorld.Controllers
              .Select(e => e.ErrorMessage));
             return View("Error", new { ErrorMessage = message });
         }
-        public IActionResult Fav(string Id)
+        public IActionResult Fav(string adId,string userId)
         {
+            bool result = this.userService.UpdateFavoritesAds(adId, userId);
             return View();
         }
     }

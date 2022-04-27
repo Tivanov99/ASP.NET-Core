@@ -3,7 +3,7 @@ using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Core.Models;
 using Microsoft.EntityFrameworkCore;
-
+using MobileWorld.Infrastructure.Data.Models;
 
 namespace MobileWorld.Core.Services
 {
@@ -37,6 +37,7 @@ namespace MobileWorld.Core.Services
                 var userAds = this.unitOfWork
                     .UserRepository
                     .GetAllAsQueryable()
+                    .AsNoTracking()
                     .Include(u => u.Ads)
                    .Where(u => u.Id == userId)
                    .SelectMany(u=>u.Ads)
@@ -61,8 +62,9 @@ namespace MobileWorld.Core.Services
 
         public List<AdCardViewModel> UserFavourites(string userId)
         {
-            var result = this.unitOfWork.UserRepository.GetAll()
-                //.AsNoTracking()
+            var result = this.unitOfWork.UserRepository
+                .GetAllAsQueryable()
+                .AsNoTracking()
                 .Where(u => u.Id == userId)
                 .SelectMany(u => u.FavoriteAds)
                 .Select(fv => new AdCardViewModel()
@@ -76,7 +78,26 @@ namespace MobileWorld.Core.Services
             return result;
         }
 
+        public bool UpdateFavoritesAds(string adId, string userId)
+        {
+            var user = this.unitOfWork.UserRepository.GetById(userId);
 
+            user.FavoriteAds.Add(new FavoriteAd()
+            {
+                AdId=adId,
+                UserId=userId,
+            });
 
+            try
+            {
+                this.unitOfWork.Save();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+        }
     }
 }
