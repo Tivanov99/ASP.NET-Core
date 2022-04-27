@@ -166,5 +166,9 @@ namespace MobileWorld.Controllers
              .Select(e => e.ErrorMessage));
             return View("Error", new { ErrorMessage = message });
         }
+        public IActionResult Fav(string Id)
+        {
+            return View();
+        }
     }
 }
