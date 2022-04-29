@@ -73,6 +73,7 @@ namespace MobileWorld.Core.Services
                     Title = fv.Ad.Title,
                     Description = fv.Ad.Description,
                     Price = fv.Ad.Price,
+                    ImageTitle=fv.Ad.Images[0].ImageTitle
                 })
                 .ToList();
             return result;

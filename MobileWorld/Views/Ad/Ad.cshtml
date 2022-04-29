@@ -63,9 +63,11 @@
         <a class="edit-border" asp-action="Edit" asp-route-adId="@Model.Id">Редактирай</a>
     }
 
-    @*TODO: Fix button*@
-    <button class="fav-borderd hiden" id="UnBtn">Премахни от любими</button>
-    <button class="fav-borderd hiden" id="FavBtn">Добави в любими</button>
+    @if (UserManager.GetUserId(User) != null)
+    {
+        <button class="fav-borderd hiden" id="UnBtn">Премахни от любими</button>
+        <button class="fav-borderd hiden" id="FavBtn">Добави в любими</button>
+    }
 
 
     <br>
@@ -540,7 +542,7 @@
             type: 'POST',
             data: {
                 adId: '@Model.Id',
-                userId : '@Model.Owner.OwnerId'
+                userId : '@UserManager.GetUserId(User)'
             },
             success: function (data) {
                 if(data.length == 0) // No errors
@@ -567,7 +569,7 @@
             type: 'POST',
             data: {
                 adId: '@Model.Id',
-                userId : '@Model.Owner.OwnerId'
+                userId : '@UserManager.GetUserId(User)'
             },
             success: function (data) {
                 if(data.length == 0) // No errors
@@ -585,8 +587,8 @@
 
 
      if('@Model.Owner.IsFavoriteAd'=='True'){
-         favBtn.classList.remove("hiden")
+         unBtn.classList.remove("hiden");
      }else{
-         unBtn.classList.remove("hiden")
+         favBtn.classList.remove("hiden");
      }
 </script>
