@@ -62,21 +62,10 @@
         <a class="delete-border" asp-action="Delete" asp-route-adId="@Model.Id">Изтрий</a>
         <a class="edit-border" asp-action="Edit" asp-route-adId="@Model.Id">Редактирай</a>
     }
+
     @*TODO: Fix button*@
-
-    @if (UserManager.GetUserId(User) != null)
-    {
-        @if (Model.Owner.IsFavoriteAd)
-        {
-            <button class="fav-borderd" id="UnBtn">Премахни от любими</button>
-        }
-        else
-        {
-            <button class="fav-borderd" id="FavBtn">Добави в любими</button>
-        }
-    }
-
-
+    <button class="fav-borderd hiden" id="UnBtn">Премахни от любими</button>
+    <button class="fav-borderd hiden" id="FavBtn">Добави в любими</button>
 
 
     <br>
@@ -523,6 +512,7 @@
 </html>
 
 <script>
+
      let image = document.querySelector(".carousel-item");
      image.classList.add("active");
 
@@ -537,6 +527,10 @@
      for(let element of unCheckedBoxex){
         element.parentElement.classList="hiden";
     }
+
+    let unBtn= document.querySelector('#UnBtn');
+     let favBtn= document.querySelector('#FavBtn');
+
 
     function Fav(){
         let url = '@Url.Action("Fav","User")';
@@ -557,15 +551,10 @@
             complete: function (jqXHR, status) { // Whether success or error it enters here
             }
         });
+        favBtn.classList.add("hiden")
+         unBtn.classList.remove("hiden")
     }
-     let favBtn= document.querySelector('#FavBtn');
-
-     if(favBtn!=null){
      favBtn.addEventListener("click",Fav)
-     }
-
-
-
 
 
 
@@ -589,10 +578,16 @@
             complete: function (jqXHR, status) { // Whether success or error it enters here
             }
         });
+         unBtn.classList.add("hiden")
+         favBtn.classList.remove("hiden")
     }
+     unBtn.addEventListener("click",UnFav);
 
-    let unBtn= document.querySelector('#UnBtn');
-    if(unBtn!=null){
-     unBtn.addEventListener("click",UnFav)
-    }
+
+     if('@Model.Owner.IsFavoriteAd'=='True'){
+         favBtn.classList.remove("hiden")
+     }else{
+         unBtn.classList.remove("hiden")
+     }
+
 </script>
