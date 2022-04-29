@@ -36,14 +36,14 @@ namespace MobileWorld.Controllers
         //    return Ok(users);
         //}
         [HttpPost]
-        public IActionResult Fav(string adId, string userId)
+        public IActionResult Favorite(string adId, string userId)
         {
             bool result = this.userService.AddToFavorites(adId, userId);
             return Ok();
         }
 
         [HttpPost]
-        public IActionResult UnFav(string adId, string userId)
+        public IActionResult UnFavorite(string adId, string userId)
         {
             bool result = this.userService.RemoveFromFavorites(adId, userId);
             return Ok();
