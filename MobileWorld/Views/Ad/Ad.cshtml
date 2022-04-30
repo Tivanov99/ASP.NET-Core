@@ -63,13 +63,9 @@
         <a class="edit-border" asp-action="Edit" asp-route-adId="@Model.Id">Редактирай</a>
     }
 
-    @if (UserManager.GetUserId(User) != null)
-    {
-        <button class="fav-borderd hiden" id="UnBtn">Премахни от любими</button>
-        <button class="fav-borderd hiden" id="FavBtn">Добави в любими</button>
-    }
-
-
+    <a class="fav-borderd hiden" id="UnBtn" asp-controller="User" asp-action="UnFavorite" asp-route-adId="@Model.Id" asp-route-userId="@UserManager.GetUserId(User)">Премахни от любими</a>
+    <a class="fav-borderd hiden" id="FavBtn" asp-controller="User" asp-action="Favorite" asp-route-adId="@Model.Id" asp-route-userId="@UserManager.GetUserId(User)">Добави в любими</a>
+    
     <br>
 
     <div style="width:400px; display:inline-block; float:left; margin-top:15px; overflow: hidden;">
@@ -533,53 +529,17 @@
     let unBtn= document.querySelector('#UnBtn');
     let favBtn= document.querySelector('#FavBtn');
 
+    console.log(unBtn);
+    console.log(favBtn);
 
     function Fav(){
-        let url = '@Url.Action("Favorite","User")';
-
-        $.ajax({
-            url: url,
-            type: 'POST',
-            data: {
-                adId: '@Model.Id',
-                userId : '@UserManager.GetUserId(User)'
-            },
-            success: function (data) {
-                if(data.length == 0) // No errors
-                    alert("Успешно добавихте обятава в любими!");
-            },
-            error: function (jqXHR) { // Http Status is not 200
-            },
-            complete: function (jqXHR, status) { // Whether success or error it enters here
-            }
-        });
         favBtn.classList.add("hiden")
          unBtn.classList.remove("hiden")
     }
      favBtn.addEventListener("click",Fav)
 
 
-
-
     function UnFav(){
-        let url = '@Url.Action("UnFavorite","User")';
-
-        $.ajax({
-            url: url,
-            type: 'POST',
-            data: {
-                adId: '@Model.Id',
-                userId : '@UserManager.GetUserId(User)'
-            },
-            success: function (data) {
-                if(data.length == 0) // No errors
-                    alert("Успешно премахнахте обятава от любими!");
-            },
-            error: function (jqXHR) { // Http Status is not 200
-            },
-            complete: function (jqXHR, status) { // Whether success or error it enters here
-            }
-        });
          unBtn.classList.add("hiden")
          favBtn.classList.remove("hiden")
     }
