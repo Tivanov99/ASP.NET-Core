@@ -19,12 +19,12 @@ namespace MobileWorld.Infrastructure.Data.Common
 
         public IQueryable GetAsQueryable<TEntity>() where TEntity : class
         {
-            throw new NotImplementedException();
+            return DbSet<TEntity>().AsQueryable();
         }
 
         public IEnumerable<TEntity> GetAll<TEntity>() where TEntity : class
         {
-            throw new NotImplementedException();
+            return DbSet<TEntity>();
         }
 
         public TEntity? GetById<TEntity>(object id) where TEntity : class
