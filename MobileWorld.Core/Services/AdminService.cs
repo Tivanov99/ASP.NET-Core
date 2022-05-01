@@ -4,23 +4,24 @@ using MobileWorld.Core.Models;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.Identity;
+using MobileWorld.Infrastructure.Data.Repositories;
 
 namespace MobileWorld.Core.Services
 {
     public class AdminService : IAdminService
     {
-        private readonly IUnitOfWork unitOfWork;
+        private readonly IApplicatioDbRepository _repo;
 
         public AdminService(
-            IUnitOfWork _unitOfWork
+            IApplicatioDbRepository repo
             )
         {
-            unitOfWork = _unitOfWork;
+            _repo = repo;
         }
 
         public void DeleteUser(string userId)
         {
-            this.unitOfWork.AdminRepository.Delete(userId);
+            this.unitOfWork.Delete(userId);
             this.unitOfWork.Save();
         }
 
