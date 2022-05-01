@@ -3,7 +3,7 @@ using System;
 
 namespace MobileWorld.Infrastructure.Data.Common
 {
-    public class Repository<TEntity> : IRepository<TEntity>, IDisposable where TEntity : class
+    public class Repository<TEntity> : IGenericRepository<TEntity>, IDisposable where TEntity : class
     {
         private ApplicationDbContext context;
         private DbSet<TEntity> dbSet;

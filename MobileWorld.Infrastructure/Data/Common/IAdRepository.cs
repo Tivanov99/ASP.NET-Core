@@ -2,7 +2,7 @@
 
 namespace MobileWorld.Infrastructure.Data.Common
 {
-    public interface IAdRepository : IRepository<Ad>
+    public interface IAdRepository : IGenericRepository<Ad>
     {
     }
 }

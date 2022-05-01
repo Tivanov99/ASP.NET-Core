@@ -2,7 +2,7 @@
 
 namespace MobileWorld.Infrastructure.Data.Common
 {
-    public interface IUserRepository : IRepository<ApplicationUser>
+    public interface IUserRepository : IGenericRepository<ApplicationUser>
     {
     }
 }

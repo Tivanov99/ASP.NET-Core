@@ -2,7 +2,7 @@
 
 namespace MobileWorld.Infrastructure.Data.Common
 {
-    public interface ICarRepository: IRepository<Car>
+    public interface ICarRepository: IGenericRepository<Car>
     {
     }
 }

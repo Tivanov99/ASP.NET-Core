@@ -2,7 +2,7 @@
 
 namespace MobileWorld.Infrastructure.Data.Common
 {
-    public interface ITownRepository : IRepository<Town>
+    public interface ITownRepository : IGenericRepository<Town>
     {
 
     }
