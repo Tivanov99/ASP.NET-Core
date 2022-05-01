@@ -73,6 +73,16 @@ namespace MobileWorld.Infrastructure.Data.Common
             }
         }
 
+        public int SaveChanges()
+        {
+            return this.Context.SaveChanges();
+        }
+
+        public async Task<int> SaveChangesAsync()
+        {
+            return await this.Context.SaveChangesAsync();
+        }
+
 
         public void Dispose()
         {

@@ -7,21 +7,21 @@ using MobileWorld.Core.Models.InputModels;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.Models;
-
+using MobileWorld.Infrastructure.Data.Repositories;
 
 namespace MobileWorld.Core.Services
 {
     public class AdService : IAdService
     {
-        private readonly IUnitOfWork unitOfWork;
-        public AdService(IUnitOfWork _unitOfWork)
+        private readonly IApplicatioDbRepository _repo;
+        public AdService(IApplicatioDbRepository repo)
         {
-            this.unitOfWork = _unitOfWork;
+            this._repo = repo;
         }
         public Task<List<AdCardViewModel>> GetAllAds()
         {
-            var cars = this.unitOfWork.AdRepository
-                .GetAsQueryable()
+            var cars = this._repo
+                .GetAsQueryable<Ad>()
                 .AsNoTracking()
                 .Include(a => a.Images)
                  .Select(a => new AdCardViewModel()
@@ -150,8 +150,8 @@ namespace MobileWorld.Core.Services
 
         public async Task<List<AdCardViewModel>> GetIndexAds()
         {
-            var cars = await this.unitOfWork.AdRepository
-               .GetAsQueryable()
+            var cars = await this._repo
+               .GetAsQueryable<Ad>()
                .AsNoTracking()
                .Include(a => a.Images)
                 .Select(a => new AdCardViewModel()
@@ -198,8 +198,8 @@ namespace MobileWorld.Core.Services
                 car.Ad = newAd;
                 try
                 {
-                    this.unitOfWork.AdRepository.Insert(newAd);
-                    this.unitOfWork.Save();
+                    this._repo.AddAsync<Ad>(newAd);
+                    this._repo.SaveChanges();
                 }
                 catch (Exception)
                 {
@@ -214,9 +214,8 @@ namespace MobileWorld.Core.Services
 
         public void Delete(string adId)
         {
-            Ad ad = this.unitOfWork
-                .AdRepository
-                .GetAsQueryable()
+            Ad ad = this._repo
+                .GetAsQueryable<Ad>()
                 .AsNoTracking()
                 .Include(a => a.Images)
                 .Include(a => a.Car)
@@ -227,19 +226,17 @@ namespace MobileWorld.Core.Services
 
             if (ad != null)
             {
-                this.unitOfWork
-                .AdRepository
-                .Delete(ad);
+                this._repo
+                .Delete<Ad>(ad);
 
-                this.unitOfWork.Save();
+                this._repo.SaveChanges();
             }
         }
 
         public bool Update(AdInputModel model, string adId)
         {
-            Ad? ad = this.unitOfWork
-                .AdRepository
-            .GetAsQueryable()
+            Ad? ad = this._repo
+            .GetAsQueryable<Ad>()
             .AsNoTracking()
             .Where(a => a.Id == adId)
             .Include(a => a.Region)
@@ -284,8 +281,8 @@ namespace MobileWorld.Core.Services
                     ad.Region.Neiborhood = model.Region.Neiborhood;
 
 
-                    this.unitOfWork.AdRepository.Update(ad);
-                    this.unitOfWork.Save();
+                    this._repo.Update(ad);
+                    this._repo.SaveChanges();
                     return true;
                 }
                 catch (Exception)
@@ -352,8 +349,8 @@ namespace MobileWorld.Core.Services
 
         private int GetTownIdByName(string townName)
         {
-            var result = this.unitOfWork.TownRepository
-                .GetAll()
+            var result = this._repo
+                .GetAll<Town>()
                 .Where(t => t.TownName == townName)
                 .Select(t => t.Id)
                 .FirstOrDefault();
@@ -466,7 +463,7 @@ namespace MobileWorld.Core.Services
              };
 
         private async Task<AdViewModel?> AdProjection(string adId)
-            =>await this.unitOfWork.AdRepository.GetAsQueryable()
+            =>await this._repo.GetAsQueryable<Ad>()
                   .AsNoTracking()
                   .Where(a => a.Id == adId)
                   .Include(c => c.Car.Feature.SafetyDetails)

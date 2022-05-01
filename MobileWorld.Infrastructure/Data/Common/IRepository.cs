@@ -18,5 +18,9 @@
 
         Task DeleteAsync<TEntity>(object id) where TEntity : class;
 
+        int SaveChanges();
+
+        Task<int> SaveChangesAsync();
+
     }
 }
