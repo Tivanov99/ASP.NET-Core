@@ -27,7 +27,7 @@ namespace MobileWorld.Core.Services
         public UserViewModel GetUserAsViewModel(string userId)
         {
             var user = this.unitOfWork.AdminRepository
-                .GetAllAsQueryable()
+                .GetAsQueryable()
                 .Include(u => u.Ads)
                 .Where(u => u.Id == userId)
                 .Select(u =>  new UserViewModel()

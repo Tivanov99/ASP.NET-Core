@@ -36,7 +36,7 @@ namespace MobileWorld.Core.Services
             {
                 var userAds = this.unitOfWork
                     .UserRepository
-                    .GetAllAsQueryable()
+                    .GetAsQueryable()
                     .AsNoTracking()
                     .Include(u => u.Ads)
                    .Where(u => u.Id == userId)
@@ -63,7 +63,7 @@ namespace MobileWorld.Core.Services
         public List<AdCardViewModel> UserFavourites(string userId)
         {
             var result = this.unitOfWork.UserRepository
-                .GetAllAsQueryable()
+                .GetAsQueryable()
                 .AsNoTracking()
                 .Where(u => u.Id == userId)
                 .SelectMany(u => u.FavoriteAds)
@@ -103,7 +103,7 @@ namespace MobileWorld.Core.Services
         public bool RemoveFromFavorites(string adId, string userId)
         {
             var user = this.unitOfWork.UserRepository
-                .GetAllAsQueryable()
+                .GetAsQueryable()
                 .Where(u => u.Id == userId)
                 .Include(u => u.FavoriteAds)
                 .FirstOrDefault();

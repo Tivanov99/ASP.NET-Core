@@ -21,7 +21,7 @@ namespace MobileWorld.Core.Services
         public Task<List<AdCardViewModel>> GetAllAds()
         {
             var cars = this.unitOfWork.AdRepository
-                .GetAllAsQueryable()
+                .GetAsQueryable()
                 .AsNoTracking()
                 .Include(a => a.Images)
                  .Select(a => new AdCardViewModel()
@@ -151,7 +151,7 @@ namespace MobileWorld.Core.Services
         public async Task<List<AdCardViewModel>> GetIndexAds()
         {
             var cars = await this.unitOfWork.AdRepository
-               .GetAllAsQueryable()
+               .GetAsQueryable()
                .AsNoTracking()
                .Include(a => a.Images)
                 .Select(a => new AdCardViewModel()
@@ -216,7 +216,7 @@ namespace MobileWorld.Core.Services
         {
             Ad ad = this.unitOfWork
                 .AdRepository
-                .GetAllAsQueryable()
+                .GetAsQueryable()
                 .AsNoTracking()
                 .Include(a => a.Images)
                 .Include(a => a.Car)
@@ -239,7 +239,7 @@ namespace MobileWorld.Core.Services
         {
             Ad? ad = this.unitOfWork
                 .AdRepository
-            .GetAllAsQueryable()
+            .GetAsQueryable()
             .AsNoTracking()
             .Where(a => a.Id == adId)
             .Include(a => a.Region)
@@ -466,7 +466,7 @@ namespace MobileWorld.Core.Services
              };
 
         private async Task<AdViewModel?> AdProjection(string adId)
-            =>await this.unitOfWork.AdRepository.GetAllAsQueryable()
+            =>await this.unitOfWork.AdRepository.GetAsQueryable()
                   .AsNoTracking()
                   .Where(a => a.Id == adId)
                   .Include(c => c.Car.Feature.SafetyDetails)

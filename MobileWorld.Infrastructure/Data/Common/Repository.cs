@@ -70,7 +70,7 @@ namespace MobileWorld.Infrastructure.Data.Common
             GC.SuppressFinalize(this);
         }
 
-        public IQueryable<TEntity> GetAllAsQueryable()
+        public IQueryable<TEntity> GetAsQueryable()
         {
             return this.dbSet.AsQueryable();
         }
