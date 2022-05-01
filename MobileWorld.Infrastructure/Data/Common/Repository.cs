@@ -12,9 +12,10 @@ namespace MobileWorld.Infrastructure.Data.Common
             return this.Context.Set<T>();
         }
 
-        public async Task<TEntity> GetByIdAsync<TEntity>(object id) where TEntity : class
+        public async Task<TEntity?> GetByIdAsync<TEntity>(object id) where TEntity : class
         {
-            return await DbSet<TEntity>().FindAsync(id);
+            return await DbSet<TEntity>()
+                .FindAsync(id);
         }
 
         public IQueryable GetAsQueryable<TEntity>() where TEntity : class
@@ -31,17 +32,17 @@ namespace MobileWorld.Infrastructure.Data.Common
         {
             if (id != null)
             {
-                return DbSet<TEntity>().Find(id);
+                return DbSet<TEntity>()
+                    .Find(id);
             }
 
             return null;
         }
-
-        public void Insert<TEntity>(TEntity obj) where TEntity : class
+        public async Task AddAsync<TEntity>(TEntity entity) where TEntity : class
         {
-            if (obj != null)
+            if (entity != null)
             {
-                DbSet<TEntity>().Add(obj);
+                await DbSet<TEntity>().AddAsync(entity);
             }
         }
        
@@ -64,9 +65,12 @@ namespace MobileWorld.Infrastructure.Data.Common
 
         public async Task DeleteAsync<TEntity>(TEntity id) where TEntity : class
         {
-            TEntity entity = await GetByIdAsync<TEntity>(id);
+            TEntity? entity = await GetByIdAsync<TEntity>(id);
 
-            Delete<TEntity>(entity);
+            if(entity!=null)
+            {
+                Delete<TEntity>(entity);
+            }
         }
 
 
