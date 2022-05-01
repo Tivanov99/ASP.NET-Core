@@ -4,19 +4,7 @@ namespace MobileWorld.Infrastructure.Data.Common
 {
     public interface IUnitOfWork : IDisposable
     {
-        IAdRepository AdRepository { get;  }
-
-        ICarRepository CarRepository { get;  }
-
-        IUserRepository UserRepository { get; }
-
-        ITownRepository TownRepository { get; }
-
-        IAdminRepository AdminRepository { get; }
-
         void Save();
-
-        //IRepository<Engine> EngineRepository { get; set; }
 
     }
 }

@@ -1,19 +1,17 @@
-﻿using System.Linq;
-
-namespace MobileWorld.Infrastructure.Data.Common
+﻿namespace MobileWorld.Infrastructure.Data.Common
 {
-    public interface IGenericRepository<TEntity> where TEntity : class
+    public interface IGenericRepository
     {
-        IQueryable<TEntity> GetAsQueryable();
+        IQueryable GetAsQueryable<TEntity>() where TEntity : class;
 
-        IEnumerable<TEntity> GetAll();
+        IEnumerable<TEntity> GetAll<TEntity>() where TEntity : class;
 
-        TEntity GetById(object id);
+        TEntity GetById<TEntity>(object id) where TEntity : class;
 
-        void Insert(TEntity obj);
+        void Insert<TEntity>(TEntity obj) where TEntity : class;
 
-        void Update(TEntity obj);
+        void Update<TEntity>(TEntity entity) where TEntity : class;
 
-        void Delete(object id);
+        void Delete<TEntity>(object id) where TEntity : class;
     }
 }

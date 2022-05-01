@@ -6,31 +6,11 @@
         private bool disposed = false;
 
 
-        public UnitOfWork(ApplicationDbContext _context,
-            IAdRepository _adRepository,
-            ICarRepository _carRepository,
-            IUserRepository _userRepository,
-            ITownRepository _townRepository,
-            IAdminRepository _adminRepository
+        public UnitOfWork(ApplicationDbContext _context
             )
         {
             this.context = _context;
-            this.AdRepository = _adRepository;
-            this.CarRepository = _carRepository;
-            this.UserRepository = _userRepository;
-            this.TownRepository = _townRepository;
-            this.AdminRepository = _adminRepository;
         }
-
-        public IAdRepository AdRepository { get; }
-
-        public ICarRepository CarRepository { get; }
-
-        public IUserRepository UserRepository { get; }
-
-        public ITownRepository TownRepository { get; }
-
-        public IAdminRepository AdminRepository { get; }
 
         public void Save()
         {

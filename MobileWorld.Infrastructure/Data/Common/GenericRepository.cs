@@ -1,49 +1,23 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace MobileWorld.Infrastructure.Data.Common
 {
-    public class GenericRepository<TEntity> : IGenericRepository<TEntity>, IDisposable where TEntity : class
+    public class GenericRepository : IGenericRepository, IDisposable 
     {
         private ApplicationDbContext context;
-        private DbSet<TEntity> dbSet;
 
-        public GenericRepository(ApplicationDbContext _context)
+        public GenericRepository()
         {
-            this.context = _context;
-            this.dbSet = context.Set<TEntity>();
+            
         }
 
-        public void Delete(object id)
-        {
-            TEntity entity = dbSet.Find(id);
-
-            if (entity != null)
-            {
-                Delete(entity);
-            }
-        }
+        protected DbContext Context { get; set; }
 
         public IEnumerable<TEntity> GetAll()
         {
             return this.dbSet.ToList();
         }
 
-        public TEntity GetById(object id)
-        {
-            return this.dbSet.Find(id);
-        }
-
-        public void Insert(TEntity entity)
-        {
-            this.dbSet.Add(entity);
-        }
-
-        public void Update(TEntity entityToUpdate)
-        {
-            dbSet.Attach(entityToUpdate);
-            this.context.Entry(entityToUpdate).State = EntityState.Modified;
-        }
 
         private bool disposed = false;
 
@@ -68,6 +42,56 @@ namespace MobileWorld.Infrastructure.Data.Common
         public IQueryable<TEntity> GetAsQueryable()
         {
             return this.dbSet.AsQueryable();
+        }
+
+        public IQueryable GetAsQueryable<TEntity>() where TEntity : class
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<TEntity> GetAll<TEntity>() where TEntity : class
+        {
+            throw new NotImplementedException();
+        }
+
+        public TEntity? GetById<TEntity>(object id) where TEntity : class
+        {
+            if (id != null)
+            {
+                return DbSet<TEntity>().Find(id);
+            }
+
+            return null;
+        }
+
+        public void Insert<TEntity>(TEntity obj) where TEntity : class
+        {
+            if (obj != null)
+            {
+                DbSet<TEntity>().Add(obj);
+            }
+        }
+
+        public void Update<TEntity>(TEntity entity) where TEntity : class
+        {
+            DbSet<TEntity>().Attach(entity);
+           context.Entry(entity).State = EntityState.Modified;
+        }
+
+        public void Delete<TEntity>(object id) where TEntity : class
+        {
+            TEntity entity = DbSet<TEntity>()
+                .Find(id);
+
+            if (entity != null)
+            {
+                DbSet<TEntity>().Remove(entity);
+            }
+        }
+
+        private DbSet<TEntity> DbSet<TEntity>() where TEntity : class
+        {
+            return context.Set<TEntity>();
         }
     }
 }
