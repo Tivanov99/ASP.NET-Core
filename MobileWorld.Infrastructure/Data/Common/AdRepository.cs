@@ -2,7 +2,7 @@
 
 namespace MobileWorld.Infrastructure.Data.Common
 {
-    public class AdRepository : Repository<Ad>, IAdRepository
+    public class AdRepository : GenericRepository<Ad>, IAdRepository
     {
         private ApplicationDbContext context;
         public AdRepository(ApplicationDbContext _context)

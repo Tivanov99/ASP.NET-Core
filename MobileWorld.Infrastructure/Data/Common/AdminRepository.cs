@@ -2,7 +2,7 @@
 
 namespace MobileWorld.Infrastructure.Data.Common
 {
-    public class AdminRepository : Repository<ApplicationUser>, IAdminRepository
+    public class AdminRepository : GenericRepository<ApplicationUser>, IAdminRepository
     {
         private ApplicationDbContext context;
 

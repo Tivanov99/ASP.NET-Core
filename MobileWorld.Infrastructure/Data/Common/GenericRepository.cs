@@ -3,12 +3,12 @@ using System;
 
 namespace MobileWorld.Infrastructure.Data.Common
 {
-    public class Repository<TEntity> : IGenericRepository<TEntity>, IDisposable where TEntity : class
+    public class GenericRepository<TEntity> : IGenericRepository<TEntity>, IDisposable where TEntity : class
     {
         private ApplicationDbContext context;
         private DbSet<TEntity> dbSet;
 
-        public Repository(ApplicationDbContext _context)
+        public GenericRepository(ApplicationDbContext _context)
         {
             this.context = _context;
             this.dbSet = context.Set<TEntity>();
