@@ -21,14 +21,13 @@ namespace MobileWorld.Core.Services
 
         public void DeleteUser(string userId)
         {
-            this.unitOfWork.Delete(userId);
-            this.unitOfWork.Save();
+            _repo.DeleteAsync<ApplicationUser>(userId);
         }
 
         public UserViewModel GetUserAsViewModel(string userId)
         {
-            var user = this.unitOfWork.AdminRepository
-                .GetAsQueryable()
+            var user = this._repo
+                .GetAsQueryable<ApplicationUser>()
                 .Include(u => u.Ads)
                 .Where(u => u.Id == userId)
                 .Select(u =>  new UserViewModel()
@@ -50,9 +49,8 @@ namespace MobileWorld.Core.Services
         }
 
         public IEnumerable<UserViewModel> Users()
-        => unitOfWork
-                .AdminRepository
-                .GetAll()
+        => this._repo
+                .GetAll<ApplicationUser>()
                 .Select(u => new UserViewModel()
                 {
                     Id = u.Id,
@@ -60,9 +58,15 @@ namespace MobileWorld.Core.Services
                 })
                 .ToList();
 
-        public ApplicationUser GetApplicationUser(string userId)
-        => this.unitOfWork.UserRepository.GetAll()
-                .Where(u => u.Id == userId)
-                .First();
+        public async void GetApplicationUser(string userId)
+        {
+            var result = await this._repo.GetByIdAsync<ApplicationUser>(userId);
+            ApplicationUser(result);
+        }
+
+        private ApplicationUser ApplicationUser(ApplicationUser user)
+        {
+            return user;
+        }
     }
 }

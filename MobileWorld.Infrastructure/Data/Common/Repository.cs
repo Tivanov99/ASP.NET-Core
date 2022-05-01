@@ -18,7 +18,7 @@ namespace MobileWorld.Infrastructure.Data.Common
                 .FindAsync(id);
         }
 
-        public IQueryable GetAsQueryable<TEntity>() where TEntity : class
+        public IQueryable<TEntity> GetAsQueryable<TEntity>() where TEntity : class
         {
             return DbSet<TEntity>().AsQueryable();
         }
@@ -63,7 +63,7 @@ namespace MobileWorld.Infrastructure.Data.Common
             entry.State = EntityState.Deleted;
         }
 
-        public async Task DeleteAsync<TEntity>(TEntity id) where TEntity : class
+        public async Task DeleteAsync<TEntity>(object id) where TEntity : class
         {
             TEntity? entity = await GetByIdAsync<TEntity>(id);
 

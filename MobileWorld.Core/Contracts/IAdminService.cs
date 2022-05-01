@@ -11,6 +11,6 @@ namespace MobileWorld.Core.Contracts
 
         void DeleteUser(string userId);
 
-        ApplicationUser GetApplicationUser(string userId);
+        void GetApplicationUser(string userId);
     }
 }

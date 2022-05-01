@@ -4,7 +4,7 @@
     {
         Task<TEntity?> GetByIdAsync<TEntity>(object id) where TEntity : class;
 
-        IQueryable GetAsQueryable<TEntity>() where TEntity : class;
+        IQueryable<TEntity> GetAsQueryable<TEntity>() where TEntity : class;
 
         IEnumerable<TEntity> GetAll<TEntity>() where TEntity : class;
 
@@ -16,7 +16,7 @@
 
         void Delete<TEntity>(TEntity id) where TEntity : class;
 
-        Task DeleteAsync<TEntity>(TEntity id) where TEntity : class;
+        Task DeleteAsync<TEntity>(object id) where TEntity : class;
 
     }
 }
