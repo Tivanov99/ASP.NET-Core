@@ -44,17 +44,10 @@ namespace MobileWorld.Infrastructure.Data.Common
                 DbSet<TEntity>().Add(obj);
             }
         }
-
+       
         public void Update<TEntity>(TEntity entity) where TEntity : class
         {
             this.DbSet<TEntity>().Update(entity);
-        }
-
-        public async Task DeleteAsync<T>(object id) where T : class
-        {
-            T entity = await GetByIdAsync<T>(id);
-
-            Delete<T>(entity);
         }
 
         public void Delete<TEntity>(TEntity entity) where TEntity : class
@@ -69,9 +62,19 @@ namespace MobileWorld.Infrastructure.Data.Common
             entry.State = EntityState.Deleted;
         }
 
+        public async Task DeleteAsync<TEntity>(TEntity id) where TEntity : class
+        {
+            TEntity entity = await GetByIdAsync<TEntity>(id);
+
+            Delete<TEntity>(entity);
+        }
+
+
         public void Dispose()
         {
             this.Context.Dispose();
         }
+
+        
     }
 }

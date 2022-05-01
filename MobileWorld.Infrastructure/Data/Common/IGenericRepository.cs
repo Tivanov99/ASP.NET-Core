@@ -15,5 +15,8 @@
         void Update<TEntity>(TEntity entity) where TEntity : class;
 
         void Delete<TEntity>(TEntity id) where TEntity : class;
+
+        Task DeleteAsync<TEntity>(TEntity id) where TEntity : class;
+
     }
 }
