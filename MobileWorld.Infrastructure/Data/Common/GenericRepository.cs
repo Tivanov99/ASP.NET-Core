@@ -1,47 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace MobileWorld.Infrastructure.Data.Common
 {
     public class GenericRepository : IGenericRepository, IDisposable 
     {
-        private ApplicationDbContext context;
-
-        public GenericRepository()
-        {
-            
-        }
-
         protected DbContext Context { get; set; }
 
-        public IEnumerable<TEntity> GetAll()
+        protected DbSet<T> DbSet<T>() where T : class
         {
-            return this.dbSet.ToList();
-        }
-
-
-        private bool disposed = false;
-
-        protected void Dispose(bool disposing)
-        {
-            if (!this.disposed)
-            {
-                if (disposing)
-                {
-                    context.Dispose();
-                }
-            }
-            this.disposed = true;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        public IQueryable<TEntity> GetAsQueryable()
-        {
-            return this.dbSet.AsQueryable();
+            return this.Context.Set<T>();
         }
 
         public IQueryable GetAsQueryable<TEntity>() where TEntity : class
@@ -74,24 +42,24 @@ namespace MobileWorld.Infrastructure.Data.Common
 
         public void Update<TEntity>(TEntity entity) where TEntity : class
         {
-            DbSet<TEntity>().Attach(entity);
-           context.Entry(entity).State = EntityState.Modified;
+            this.DbSet<TEntity>().Update(entity);
         }
 
-        public void Delete<TEntity>(object id) where TEntity : class
+        public void Delete<TEntity>(TEntity entity) where TEntity : class
         {
-            TEntity entity = DbSet<TEntity>()
-                .Find(id);
+            EntityEntry entry =
+                this.Context.Entry(entity);
 
-            if (entity != null)
+            if (entity != null && entry.State == EntityState.Detached)
             {
-                DbSet<TEntity>().Remove(entity);
+                this.DbSet<TEntity>().Attach(entity);
             }
+            entry.State = EntityState.Deleted;
         }
 
-        private DbSet<TEntity> DbSet<TEntity>() where TEntity : class
+        public void Dispose()
         {
-            return context.Set<TEntity>();
+            this.Context.Dispose();
         }
     }
 }
