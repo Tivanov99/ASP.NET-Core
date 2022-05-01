@@ -14,37 +14,32 @@ namespace MobileWorld.Infrastructure.Data.Common
             this.dbSet = context.Set<TEntity>();
         }
 
-        public virtual void Delete(object id)
+        public void Delete(object id)
         {
             TEntity entity = dbSet.Find(id);
-            Delete(entity);
-        }
 
-        public void Delete(TEntity entityToDelete)
-        {
-            if (this.context.Entry(entityToDelete).State == EntityState.Detached)
+            if (entity != null)
             {
-                this.dbSet.Attach(entityToDelete);
+                Delete(entity);
             }
-            this.context.Remove(entityToDelete);
         }
 
-        public virtual IEnumerable<TEntity> GetAll()
+        public IEnumerable<TEntity> GetAll()
         {
             return this.dbSet.ToList();
         }
 
-        public virtual TEntity GetById(object id)
+        public TEntity GetById(object id)
         {
             return this.dbSet.Find(id);
         }
 
-        public virtual void Insert(TEntity entity)
+        public void Insert(TEntity entity)
         {
             this.dbSet.Add(entity);
         }
 
-        public virtual void Update(TEntity entityToUpdate)
+        public void Update(TEntity entityToUpdate)
         {
             dbSet.Attach(entityToUpdate);
             this.context.Entry(entityToUpdate).State = EntityState.Modified;
@@ -52,7 +47,7 @@ namespace MobileWorld.Infrastructure.Data.Common
 
         private bool disposed = false;
 
-        protected virtual void Dispose(bool disposing)
+        protected void Dispose(bool disposing)
         {
             if (!this.disposed)
             {

@@ -15,7 +15,5 @@ namespace MobileWorld.Infrastructure.Data.Common
         void Update(TEntity obj);
 
         void Delete(object id);
-
-        void Delete(TEntity entityToDelete);
     }
 }
