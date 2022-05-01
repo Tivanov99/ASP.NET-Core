@@ -58,15 +58,10 @@ namespace MobileWorld.Core.Services
                 })
                 .ToList();
 
-        public async void GetApplicationUser(string userId)
+        public async Task<ApplicationUser> GetApplicationUser(string userId)
         {
             var result = await this._repo.GetByIdAsync<ApplicationUser>(userId);
-            ApplicationUser(result);
-        }
-
-        private ApplicationUser ApplicationUser(ApplicationUser user)
-        {
-            return user;
+            return result;
         }
     }
 }

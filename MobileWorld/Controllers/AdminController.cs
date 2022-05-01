@@ -66,7 +66,7 @@ namespace MobileWorld.Controllers
             {
                 try
                 {
-                    var user = this._adminService.GetApplicationUser(userId);
+                    var user = await this._adminService.GetApplicationUser(userId);
 
                     var rolle = await _userManager.GetRolesAsync(
                                                             await _userManager.FindByIdAsync(user.Id)

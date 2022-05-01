@@ -43,19 +43,20 @@ namespace MobileWorld.Controllers
             }
 
             bool result = this.userService.AddToFavorites(adId, userId);
-            return Ok();
+            return RedirectToAction("Ad", "Ad", new { adId = adId });
         }
         public IActionResult UnFavorite(string adId, string userId)
         {
-            if(adId == null || adId == null)
+            if(adId == null || userId == null)
             {
                 return Redirect("~/Identity/Account/Login");
             }
+
             bool result = this.userService.RemoveFromFavorites(adId, userId);
-            return Ok();
+            return RedirectToAction("Ad", "Ad", new { adId = adId });
         }
 
-        
+
 
     }
 }
