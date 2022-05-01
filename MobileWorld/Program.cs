@@ -39,7 +39,7 @@ builder.Services
 .AddScoped<ICarService, CarService>()
 .AddScoped<IAdminService, AdminService>()
 .AddScoped<IAdService, AdService>()
-.AddScoped<IApplicatioDbRepository, ApplicatioDbRepository>()
+.AddScoped<IApplicationDbRepository, ApplicatioDbRepository>()
 .AddScoped<DbContext, ApplicationDbContext>();
 
 

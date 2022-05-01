@@ -2,7 +2,7 @@
 
 namespace MobileWorld.Infrastructure.Data.Repositories
 {
-    public class ApplicatioDbRepository : Repository, IApplicatioDbRepository
+    public class ApplicatioDbRepository : Repository, IApplicationDbRepository
     {
         public ApplicatioDbRepository(ApplicationDbContext context)
         {

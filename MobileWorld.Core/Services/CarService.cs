@@ -1,15 +1,15 @@
 ﻿using MobileWorld.Core.Contracts;
-using MobileWorld.Infrastructure.Data.Common;
+using MobileWorld.Infrastructure.Data.Repositories;
 
 namespace MobileWorld.Core.Services
 {
     public class CarService : ICarService
     {
-        private readonly IUnitOfWork unitOfWork;
+        private readonly IApplicationDbRepository _reop;
 
-        public CarService(IUnitOfWork _unitOfWork)
+        public CarService(IApplicationDbRepository repo)
         {
-            this.unitOfWork = _unitOfWork;
+            this._reop = repo;
         }
     }
 }

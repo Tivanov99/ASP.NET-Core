@@ -5,7 +5,6 @@ using MobileWorld.Core.Dto;
 using MobileWorld.Core.Models;
 using MobileWorld.Core.Models.InputModels;
 using MobileWorld.Core.ViewModels;
-using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.Models;
 using MobileWorld.Infrastructure.Data.Repositories;
 
@@ -13,8 +12,8 @@ namespace MobileWorld.Core.Services
 {
     public class AdService : IAdService
     {
-        private readonly IApplicatioDbRepository _repo;
-        public AdService(IApplicatioDbRepository repo)
+        private readonly IApplicationDbRepository _repo;
+        public AdService(IApplicationDbRepository repo)
         {
             this._repo = repo;
         }

@@ -10,10 +10,10 @@ namespace MobileWorld.Core.Services
 {
     public class AdminService : IAdminService
     {
-        private readonly IApplicatioDbRepository _repo;
+        private readonly IApplicationDbRepository _repo;
 
         public AdminService(
-            IApplicatioDbRepository repo
+            IApplicationDbRepository repo
             )
         {
             _repo = repo;
