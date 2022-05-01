@@ -12,6 +12,11 @@ namespace MobileWorld.Infrastructure.Data.Common
             return this.Context.Set<T>();
         }
 
+        public async Task<TEntity> GetByIdAsync<TEntity>(object id) where TEntity : class
+        {
+            return await DbSet<TEntity>().FindAsync(id);
+        }
+
         public IQueryable GetAsQueryable<TEntity>() where TEntity : class
         {
             throw new NotImplementedException();
@@ -43,6 +48,13 @@ namespace MobileWorld.Infrastructure.Data.Common
         public void Update<TEntity>(TEntity entity) where TEntity : class
         {
             this.DbSet<TEntity>().Update(entity);
+        }
+
+        public async Task DeleteAsync<T>(object id) where T : class
+        {
+            T entity = await GetByIdAsync<T>(id);
+
+            Delete<T>(entity);
         }
 
         public void Delete<TEntity>(TEntity entity) where TEntity : class
