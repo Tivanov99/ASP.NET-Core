@@ -5,6 +5,7 @@ using MobileWorld.Core.Services;
 using MobileWorld.Infrastructure.Data;
 using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.Identity;
+using MobileWorld.Infrastructure.Data.Repositories;
 using MobileWorld.ModelBinders;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -37,13 +38,8 @@ builder.Services
     .AddScoped<IUserService, UserService>()
 .AddScoped<ICarService, CarService>()
 .AddScoped<IAdminService, AdminService>()
-.AddScoped<IAdminRepository, AdminRepository>()
-.AddScoped<IUnitOfWork, UnitOfWork>()
-.AddScoped<IAdRepository, AdRepository>()
-.AddScoped<ICarRepository, CarRepository>()
 .AddScoped<IAdService, AdService>()
-.AddScoped<ITownRepository, TownRepository>()
-.AddScoped<IUserRepository, UserRepository>()
+.AddScoped<IApplicatioDbRepository, ApplicatioDbRepository>()
 .AddScoped<DbContext, ApplicationDbContext>();
 
 
