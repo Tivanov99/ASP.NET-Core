@@ -1,6 +1,6 @@
 ﻿namespace MobileWorld.Infrastructure.Data.Common
 {
-    public interface IGenericRepository
+    public interface IRepository
     {
         Task<TEntity> GetByIdAsync<TEntity>(object id) where TEntity : class;
 

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace MobileWorld.Infrastructure.Data.Common
 {
-    public class GenericRepository : IGenericRepository, IDisposable 
+    public abstract class Repository : IRepository, IDisposable 
     {
         protected DbContext Context { get; set; }
 
