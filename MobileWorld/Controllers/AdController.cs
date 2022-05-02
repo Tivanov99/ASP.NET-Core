@@ -4,6 +4,7 @@ using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Models;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Models;
+using System.Runtime.CompilerServices;
 
 namespace MobileWorld.Controllers
 {
@@ -17,6 +18,8 @@ namespace MobileWorld.Controllers
             IAdService _service,
             IUserService _userService)
         {
+
+            Console.WriteLine($"------------------- SERVICE { RuntimeHelpers.GetHashCode(_service)} -----------------------");
             Environment = _environment;
             this.service = _service;
             userService = _userService;
@@ -150,7 +153,7 @@ namespace MobileWorld.Controllers
 
 
         [HttpPost]
-        public IActionResult EditPost(ModelBindingAdModel updatedModel, string? adId)
+        public IActionResult EditPost(ModelBindingAdModel updatedModel, string adId)
         {
             if (adId == null)
             {

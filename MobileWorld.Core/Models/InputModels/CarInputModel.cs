@@ -7,7 +7,7 @@ namespace MobileWorld.Core.Models.InputModels
     {
         public CarInputModel()
         {
-            Images = new();
+            //Images = new();
         }
 
         [Required(ErrorMessage = "Полето 'Марка' е задължително!")]
@@ -38,6 +38,6 @@ namespace MobileWorld.Core.Models.InputModels
         public decimal Mileage { get; set; }
 
         //[Required(ErrorMessage ="Снимките са задължителни!")]
-        public List<byte[]> Images { get; set; }
+        //public List<byte[]> Images { get; set; }
     }
 }
