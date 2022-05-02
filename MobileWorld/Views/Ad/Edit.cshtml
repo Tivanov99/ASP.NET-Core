@@ -631,7 +631,7 @@
                 <div class="selects">
                     <input asp-for="Price"
                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                           type="number" maxlength="9" class="form-control selectors" value="Price" required>
+                           type="number" maxlength="9" class="form-control selectors" value="@Model.Price" required>
                 </div>
 
                 <div class="selects">
@@ -952,19 +952,19 @@
                 <div class="selects">
                     <select asp-for="Car.Engine.FuelType" class="form-control">
                         <option value="">
-                            Car.Engine.FuelType
+                            @Model.Car.Engine.FuelType
                         </option>
-                        <option value="Бензинов">
-                            Бензинов
+                        <option value="Бензин">
+                            Бензин
                         </option>
-                        <option value="Дизелов">
-                            Дизелов
+                        <option value="Дизел">
+                            Дизел
                         </option>
                         <option value="Електрически">
                             Електрически
                         </option>
                         <option value="Хибриден">
-                            Хибриден
+                            Хибрид
                         </option>
                     </select>
                 </div>
@@ -972,7 +972,7 @@
                 <div class="selects">
                     <select asp-for="Car.GearType" class="form-control">
                         <option value="">
-                            Car.GearType
+                            @Model.Car.GearType
                         </option>
                         <option value="Ръчна">
                             Ръчна
@@ -990,7 +990,7 @@
                     <input asp-for="Car.Mileage" oninput="javascript: if (this.value.length > this.maxLength)
                 this.value = this.value.slice(0, this.maxLength);"
                            step="0.1"
-                           type="number" maxlength="9" class="form-control selectors" value="Car.Mileage" required>
+                           type="number" maxlength="9" class="form-control selectors" value="@Model.Car.Mileage" required>
                 </div>
             </div>
             <br />
@@ -1019,18 +1019,18 @@
             <div class="div-labels">
 
                 <div>
-                    <input value="Owner.FirstName" class="form-control selectors" asp-for="Owner.FirstName" />
+                    <input value="@Model.Owner.FirstName" class="form-control selectors" asp-for="Owner.FirstName" />
                 </div>
 
                 <div class="selects">
-                    <input value="Owner.LastName" class="form-control selectors" asp-for="Owner.LastName" />
+                    <input value="@Model.Owner.LastName" class="form-control selectors" asp-for="Owner.LastName" />
                 </div>
                 <div class="selects">
-                    <input value="Car.Color" class="form-control selectors" asp-for="Car.Color" required/>
+                    <input value="@Model.Car.Color" class="form-control selectors" asp-for="Car.Color" required/>
                 </div>
 
                 <div class="selects">
-                    <input value="Region.RegionName" class="form-control selectors" asp-for="Region.RegionName" />
+                    <input value="@Model.Region.RegionName" class="form-control selectors" asp-for="Region.RegionName" />
                 </div>
             </div>
 
@@ -1063,15 +1063,15 @@
                 </div>
 
                 <div class="selects">
-                    <input value="Region.Neiborhood" class="form-control selectors" asp-for="Region.Neiborhood" />
+                    <input value="@Model.Region.Neiborhood" class="form-control selectors" asp-for="Region.Neiborhood" />
                 </div>
 
                 <div class="selects">
-                    <input value="Car.Engine.CubicCapacity" type="number" class="form-control selectors" asp-for="Car.Engine.CubicCapacity" required/>
+                    <input value="@Model.Car.Engine.CubicCapacity" type="number" class="form-control selectors" asp-for="Car.Engine.CubicCapacity" required/>
                 </div class="selects">
 
                 <div class="selects">
-                    <input value ="Car.Engine.HorsePower" type="number" class="form-control selectors" asp-for="Car.Engine.HorsePower" required/>
+                    <input value ="@Model.Car.Engine.HorsePower" type="number" class="form-control selectors" asp-for="Car.Engine.HorsePower" required/>
                 </div>
             </div>
 
@@ -1099,19 +1099,19 @@
             <div class="div-labels">
 
                 <div>
-                    <input value="Car.Engine.FuelConsuption" type="number" class="form-control selectors" asp-for="Car.Engine.FuelConsuption" />
+                    <input value="@Model.Car.Engine.FuelConsuption" type="number" class="form-control selectors" asp-for="Car.Engine.FuelConsuption" />
                 </div>
                 
                 <div class="selects">
-                    <input value="Car.Engine.NewtonMeter" type="number" class="form-control selectors" asp-for="Car.Engine.NewtonMeter" />
+                    <input value="@Model.Car.Engine.NewtonMeter" type="number" class="form-control selectors" asp-for="Car.Engine.NewtonMeter" />
                 </div>
 
                 <div class="selects">
-                    <input value="Car.Engine.EcoLevel" type="number" class="form-control selectors" asp-for="Car.Engine.EcoLevel" required/>
+                    <input value="@Model.Car.Engine.EcoLevel" type="number" class="form-control selectors" asp-for="Car.Engine.EcoLevel" required/>
                 </div>
 
                 <div class="selects">
-                    <input value="Car.SeatsCount" type="number" class="form-control selectors" asp-for="Car.SeatsCount" required/>
+                    <input value="@Model.Car.SeatsCount" type="number" class="form-control selectors" asp-for="Car.SeatsCount" required/>
                 </div>
             </div>
             <br />

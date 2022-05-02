@@ -92,7 +92,7 @@
     border: 3px solid #ccc;
     background-color: red;
     color: white;
-    padding: 5px;
+    padding: 6px;
     margin-right: 20px
 }
 
@@ -100,12 +100,13 @@
     border: 3px solid #ccc;
     background-color: orange;
     color: white;
-    padding: 5px;
+    padding: 6px;
 }
 
 .fav-border {
     border: 3px solid #ccc;
-    background-color: forestgreen;
+    background-color : orangered;
     color: white;
-    padding: 5px;
+    margin-left:15px;
+    padding :6px;
 }

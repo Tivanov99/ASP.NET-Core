@@ -37,7 +37,7 @@ namespace MobileWorld.Core.Models.InputModels
         [Range(0,double.MaxValue, ErrorMessage = "Пробегът трябва да е в диапазона от 0 до {2}")]
         public decimal Mileage { get; set; }
 
-        [Required(ErrorMessage ="Снимките са задължителни!")]
+        //[Required(ErrorMessage ="Снимките са задължителни!")]
         public List<byte[]> Images { get; set; }
     }
 }
