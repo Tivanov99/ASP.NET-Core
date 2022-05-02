@@ -529,9 +529,6 @@
     let unBtn= document.querySelector('#UnBtn');
     let favBtn= document.querySelector('#FavBtn');
 
-    console.log(unBtn);
-    console.log(favBtn);
-
     function Fav(){
         favBtn.classList.add("hiden")
          unBtn.classList.remove("hiden")
@@ -545,10 +542,16 @@
     }
      unBtn.addEventListener("click",UnFav);
 
+     //TODO: Check whether user are logged in 
 
-     if('@Model.Owner.IsFavoriteAd'=='True'){
+
+     if('@User.Identity.IsAuthenticated'=='True' && '@Model.Owner.IsFavoriteAd'=='True'){
          unBtn.classList.remove("hiden");
+     }
+     else if('@User.Identity.IsAuthenticated'=='True' && '@Model.Owner.IsFavoriteAd'=='False'){
+         favBtn.classList.remove("hiden");
      }else{
+         console.log("dadadada ne sum lognat jivottnoooo")
          favBtn.classList.remove("hiden");
      }
 </script>
