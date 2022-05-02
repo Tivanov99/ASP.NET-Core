@@ -288,8 +288,7 @@ namespace MobileWorld.Core.Services
                     this._unitOfWork
                 .AdRepository
                 .Update(ad);
-                    Console.WriteLine();
-                    //this._unitOfWork.Save();
+                    this._unitOfWork.Save();
                     return true;
                 }
                 catch (Exception)

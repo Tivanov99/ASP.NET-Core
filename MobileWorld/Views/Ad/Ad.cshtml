@@ -56,6 +56,7 @@
     </div>
 
     <strong style="font-size:21px;color:#333;">@Model.Title</strong>
+
     @if (Model.Owner.OwnerId == UserManager.GetUserId(User) || User.IsInRole(GlobalConstants.AdministratorRole))
     {
         <a class="delete-border" asp-action="Delete" asp-route-adId="@Model.Id">Изтрий</a>
@@ -93,6 +94,9 @@
 
                         <span class="dealerData-odd">Цвят -</span>
                         <span class="dealerData-even">@Model.Car.Color</span><br>
+
+                        <span class="dealerData-odd">Цена -</span>
+                        <span class="dealerData-even">@Model.Price</span><br>
                         <br>
                     </td>
                 </tr>

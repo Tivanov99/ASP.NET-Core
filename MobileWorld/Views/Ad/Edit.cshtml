@@ -67,14 +67,14 @@
                 </div>
 
                 <div class="labels">
-                    <label  style="margin-left: -53px">Локация</label>
+                    <label  style="margin-left: 14px">Локация</label>
                 </div>
 
                 <div class="labels">
-                    <label style="margin-left: -62px" >Цена</label>
+                    <label style="margin-left: 2px" >Цена</label>
                 </div>
                  <div class="labels">
-                    <label >Заглавие</label>
+                    <label style="margin-left: 23px">Заглавие</label>
                 </div>
             </div>
 
@@ -532,7 +532,7 @@
                 </div>
 
 
-                <div class="selects">
+                <div class="selects" style="margin-left:71px">
                     <select asp-for="Region.TownName" class="form-control selectors">
                         <option value="">
                            Region.TownName
@@ -628,14 +628,14 @@
                 </div>
 
 
-                <div class="selects">
+                <div class="selects" style="margin-left:51px">
                     <input asp-for="Price"
                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                            type="number" maxlength="9" class="form-control selectors" value="@Model.Price" required>
                 </div>
 
                 <div class="selects">
-                    <input value="Title" class="form-control selectors" asp-for="Title" required/>
+                    <input value="@Model.Title" class="form-control selectors" asp-for="Title" required/>
                 </div>
             </div>
 
@@ -648,21 +648,21 @@
 
 
                 <div class="labels">
-                    <label style="margin-left: -132px">Двигател</label>
+                    <label style="margin-left:17px">Двигател</label>
                 </div>
 
                 <div class="labels">
-                    <label style="margin-left: -151px" >Скоростна кутия</label>
+                    <label style="margin-left: -8px" >Скоростна кутия</label>
                 </div >
 
                  <div class="labels">
-                    <label style="margin-left: -140px">Пробег</label>
+                    <label style="margin-left: -60px">Пробег</label>
                 </div>
             </div>
 
             <br />
             <div class="div-labels" >
-                <div>
+                <div >
                     <select style="width:160%" asp-for="Car.Year" class="form-control">
                         <option value="">
                             Car.Year
@@ -949,7 +949,7 @@
                     </select>
                 </div>
 
-                <div class="selects">
+                <div style="margin-left: 195px;">
                     <select asp-for="Car.Engine.FuelType" class="form-control">
                         <option value="">
                             @Model.Car.Engine.FuelType
@@ -969,7 +969,7 @@
                     </select>
                 </div>
 
-                <div class="selects">
+                <div class="selects" style="margin-left: 79px;">
                     <select asp-for="Car.GearType" class="form-control">
                         <option value="">
                             @Model.Car.GearType
@@ -986,13 +986,14 @@
                     </select>
                 </div>
 
-                <div class="selects">
+                <div class="selects" style="margin-left: 50px;">
                     <input asp-for="Car.Mileage" oninput="javascript: if (this.value.length > this.maxLength)
                 this.value = this.value.slice(0, this.maxLength);"
                            step="0.1"
                            type="number" maxlength="9" class="form-control selectors" value="@Model.Car.Mileage" required>
                 </div>
             </div>
+            <br />
             <br />
 
     </div>
@@ -1012,7 +1013,7 @@
                 </div>
 
                 <div class="labels">
-                    <label style="padding-left: 20px" >Област</label>
+                    <label style="padding-left: 25px" >Област</label>
                 </div>
             </div>
 
@@ -1033,6 +1034,7 @@
                     <input value="@Model.Region.RegionName" class="form-control selectors" asp-for="Region.RegionName" />
                 </div>
             </div>
+            <br />
 
             <br />
             <div class="div-labels">
@@ -1045,11 +1047,11 @@
                 </div>
 
                  <div class="labels">
-                    <label  style="margin-left: -10px" >Кубични сантиметри</label>
+                    <label  style="margin-left: -6px" >Кубични сантиметри</label>
                 </div>
 
                 <div class="labels">
-                    <label style="margin-left: -87px" >Конски сили</label>
+                    <label style="margin-left: -91px" >Конски сили</label>
                 </div>
             </div>
 
@@ -1074,6 +1076,7 @@
                     <input value ="@Model.Car.Engine.HorsePower" type="number" class="form-control selectors" asp-for="Car.Engine.HorsePower" required/>
                 </div>
             </div>
+            <br />
 
             <br />
 
@@ -1114,6 +1117,7 @@
                     <input value="@Model.Car.SeatsCount" type="number" class="form-control selectors" asp-for="Car.SeatsCount" required/>
                 </div>
             </div>
+            <br />
             <br />
 
 
