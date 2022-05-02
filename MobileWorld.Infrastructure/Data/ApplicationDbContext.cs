@@ -11,6 +11,33 @@ namespace MobileWorld.Infrastructure.Data
             : base(options)
         {
         }
+        public DbSet<Ad> Ads { get; set; }
+
+        public DbSet<Car> Cars { get; set; }
+
+        public DbSet<Engine> Engines { get; set; }
+
+        public DbSet<Region> Regions { get; set; }
+
+        public DbSet<Town> Towns { get; set; }
+
+        public DbSet<FavoriteAd> FavoriteAds { get; set; }
+
+        public DbSet<Image> Images { get; set; }
+
+        public DbSet<Feature> Features { get; set; }
+
+        public DbSet<ComfortDetail> ComfortDetails { get; set; }
+
+        public DbSet<ExteriorDetail> ExteriorDetails { get; set; }
+
+        public DbSet<InteriorDetail> InteriorDetails { get; set; }
+
+        public DbSet<OthersDetail> OthersDetails { get; set; }
+
+        public DbSet<ProtectionDetail> ProtectionDetails { get; set; }
+
+        public DbSet<SafetyDetail> SafetyDetails { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -86,32 +113,6 @@ namespace MobileWorld.Infrastructure.Data
             base.OnModelCreating(builder);
         }
 
-        public DbSet<Ad> Ads { get; set; }
-
-        public DbSet<Car> Cars { get; set; }
-
-        public DbSet<Engine> Engines { get; set; }
-
-        public DbSet<Region> Regions { get; set; }
-
-        public DbSet<Town> Towns { get; set; }
-
-        public DbSet<FavoriteAd> FavoriteAds { get; set; }
-
-        public DbSet<Image> Images { get; set; }
-
-        public DbSet<Feature> Features { get; set; }
-
-        public DbSet<ComfortDetail> ComfortDetails { get; set; }
-
-        public DbSet<ExteriorDetail> ExteriorDetails { get; set; }
-
-        public DbSet<InteriorDetail> InteriorDetails { get; set; }
-
-        public DbSet<OthersDetail> OthersDetails { get; set; }
-
-        public DbSet<ProtectionDetail> ProtectionDetails { get; set; }
-
-        public DbSet<SafetyDetail> SafetyDetails { get; set; }
+        
     }
 }

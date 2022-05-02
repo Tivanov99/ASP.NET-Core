@@ -10,27 +10,30 @@ namespace MobileWorld.Core.Services
 {
     public class AdminService : IAdminService
     {
-        private readonly IApplicationDbRepository _repo;
+        private readonly IUnitOfWork _unitOfWork;
 
         public AdminService(
-            IApplicationDbRepository repo
+            IUnitOfWork unit
             )
         {
-            _repo = repo;
+            _unitOfWork = unit;
         }
 
         public void DeleteUser(string userId)
         {
-            _repo.DeleteAsync<ApplicationUser>(userId);
+            _unitOfWork
+                .UserRepository
+                .Delete(userId);
         }
 
         public UserViewModel GetUserAsViewModel(string userId)
         {
-            var user = this._repo
-                .GetAsQueryable<ApplicationUser>()
+            var user = this._unitOfWork
+                .UserRepository
+                .GetAsQueryable()
                 .Include(u => u.Ads)
                 .Where(u => u.Id == userId)
-                .Select(u =>  new UserViewModel()
+                .Select(u => new UserViewModel()
                 {
                     Id = u.Id,
                     UserName = u.UserName,
@@ -49,8 +52,9 @@ namespace MobileWorld.Core.Services
         }
 
         public IEnumerable<UserViewModel> Users()
-        => this._repo
-                .GetAll<ApplicationUser>()
+        => this._unitOfWork
+                .UserRepository
+                .Get()
                 .Select(u => new UserViewModel()
                 {
                     Id = u.Id,
@@ -60,7 +64,10 @@ namespace MobileWorld.Core.Services
 
         public async Task<ApplicationUser> GetApplicationUser(string userId)
         {
-            var result = await this._repo.GetByIdAsync<ApplicationUser>(userId);
+            var result = this._unitOfWork
+                .UserRepository
+                .GetById(userId);
+
             return result;
         }
     }

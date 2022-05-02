@@ -1,26 +1,24 @@
-﻿namespace MobileWorld.Infrastructure.Data.Common
+﻿using System.Linq.Expressions;
+
+namespace MobileWorld.Infrastructure.Data.Common
 {
-    public interface IRepository
+    public interface IRepository<TEntity> where TEntity : class
     {
-        Task<TEntity?> GetByIdAsync<TEntity>(object id) where TEntity : class;
+        TEntity GetById(object id);
 
-        IQueryable<TEntity> GetAsQueryable<TEntity>() where TEntity : class;
+        IQueryable<TEntity> GetAsQueryable();
 
-        IEnumerable<TEntity> GetAll<TEntity>() where TEntity : class;
+        void Update(TEntity entityToUpdate);
 
-        TEntity? GetById<TEntity>(object id) where TEntity : class;
+        void Delete(TEntity entityToDelete);
 
-        Task AddAsync<TEntity>(TEntity entity) where TEntity : class;
+        void Delete(object id);
 
-        void Update<TEntity>(TEntity entity) where TEntity : class;
+        void Insert(TEntity entity);
 
-        void Delete<TEntity>(TEntity id) where TEntity : class;
-
-        Task DeleteAsync<TEntity>(object id) where TEntity : class;
-
-        int SaveChanges();
-
-        Task<int> SaveChangesAsync();
-
+        IEnumerable<TEntity> Get(
+            Expression<Func<TEntity, bool>> filter = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            string includeProperties = "");
     }
 }

@@ -5,6 +5,7 @@ using MobileWorld.Core.Services;
 using MobileWorld.Infrastructure.Data;
 using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.Identity;
+using MobileWorld.Infrastructure.Data.Models;
 using MobileWorld.Infrastructure.Data.Repositories;
 using MobileWorld.ModelBinders;
 
@@ -39,7 +40,10 @@ builder.Services
 .AddScoped<ICarService, CarService>()
 .AddScoped<IAdminService, AdminService>()
 .AddScoped<IAdService, AdService>()
-.AddScoped<IApplicationDbRepository, ApplicatioDbRepository>()
+.AddTransient<IApplicationDbRepository<Ad>, ApplicationDbRepository<Ad>>()
+.AddTransient<IApplicationDbRepository<ApplicationUser>, ApplicationDbRepository<ApplicationUser>>()
+.AddTransient<IApplicationDbRepository<Town>, ApplicationDbRepository<Town>>()
+.AddTransient<IUnitOfWork, UnitOfWork>()
 .AddScoped<DbContext, ApplicationDbContext>();
 
 

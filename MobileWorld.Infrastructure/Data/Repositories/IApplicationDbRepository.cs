@@ -2,7 +2,7 @@
 
 namespace MobileWorld.Infrastructure.Data.Repositories
 {
-    public interface IApplicationDbRepository : IRepository
+    public interface IApplicationDbRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
     }
 }

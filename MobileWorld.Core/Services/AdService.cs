@@ -6,21 +6,22 @@ using MobileWorld.Core.Models;
 using MobileWorld.Core.Models.InputModels;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Infrastructure.Data.Models;
-using MobileWorld.Infrastructure.Data.Repositories;
+using MobileWorld.Infrastructure.Data.Common;
 
 namespace MobileWorld.Core.Services
 {
     public class AdService : IAdService
     {
-        private readonly IApplicationDbRepository _repo;
-        public AdService(IApplicationDbRepository repo)
+        private readonly IUnitOfWork _unitOfWork;
+        public AdService(IUnitOfWork unit)
         {
-            this._repo = repo;
+            this._unitOfWork = unit;
         }
         public Task<List<AdCardViewModel>> GetAllAds()
         {
-            var cars = this._repo
-                .GetAsQueryable<Ad>()
+            var cars = this._unitOfWork
+                .AdRepository
+                .GetAsQueryable()
                 .AsNoTracking()
                 .Include(a => a.Images)
                  .Select(a => new AdCardViewModel()
@@ -149,8 +150,9 @@ namespace MobileWorld.Core.Services
 
         public async Task<List<AdCardViewModel>> GetIndexAds()
         {
-            var cars = await this._repo
-               .GetAsQueryable<Ad>()
+            var cars = await this._unitOfWork
+                .AdRepository
+               .GetAsQueryable()
                .AsNoTracking()
                .Include(a => a.Images)
                 .Select(a => new AdCardViewModel()
@@ -167,15 +169,15 @@ namespace MobileWorld.Core.Services
             return cars;
         }
 
-        public void CreateAd(AdInputModel model,string ownerId, List<string> uploadedImages, string path)
+        public void CreateAd(AdInputModel model, string ownerId, List<string> uploadedImages, string path)
         {
             try
             {
                 int townId = this.GetTownIdByName(model.Region.TownName);
 
                 var images = uploadedImages
-                    .Select( x => new Image() 
-                                     { ImageTitle = x, ImagePath = path }
+                    .Select(x => new Image()
+                    { ImageTitle = x, ImagePath = path }
                            )
                     .ToList();
 
@@ -197,8 +199,8 @@ namespace MobileWorld.Core.Services
                 car.Ad = newAd;
                 try
                 {
-                    this._repo.AddAsync<Ad>(newAd);
-                    this._repo.SaveChanges();
+                    this._unitOfWork.AdRepository.Insert(newAd);
+                    this._unitOfWork.Save();
                 }
                 catch (Exception)
                 {
@@ -213,8 +215,9 @@ namespace MobileWorld.Core.Services
 
         public void Delete(string adId)
         {
-            Ad ad = this._repo
-                .GetAsQueryable<Ad>()
+            Ad ad = this._unitOfWork
+                .AdRepository
+                .GetAsQueryable()
                 .AsNoTracking()
                 .Include(a => a.Images)
                 .Include(a => a.Car)
@@ -225,18 +228,20 @@ namespace MobileWorld.Core.Services
 
             if (ad != null)
             {
-                this._repo
-                .Delete<Ad>(ad);
+                this._unitOfWork
+                .AdRepository
+                .Delete(ad);
 
-                this._repo.SaveChanges();
+                this._unitOfWork
+                .Save();
             }
         }
 
         public bool Update(AdInputModel model, string adId)
         {
-            Ad? ad = this._repo
-            .GetAsQueryable<Ad>()
-            .AsNoTracking()
+            Ad? ad = this._unitOfWork
+            .AdRepository
+            .GetAsQueryable()
             .Where(a => a.Id == adId)
             .Include(a => a.Region)
             .Include(a => a.Car)
@@ -280,8 +285,11 @@ namespace MobileWorld.Core.Services
                     ad.Region.Neiborhood = model.Region.Neiborhood;
 
 
-                    this._repo.Update(ad);
-                    this._repo.SaveChanges();
+                    this._unitOfWork
+                .AdRepository
+                .Update(ad);
+                    Console.WriteLine();
+                    //this._unitOfWork.Save();
                     return true;
                 }
                 catch (Exception)
@@ -348,8 +356,9 @@ namespace MobileWorld.Core.Services
 
         private int GetTownIdByName(string townName)
         {
-            var result = this._repo
-                .GetAll<Town>()
+            var result = this._unitOfWork
+                .TownRepository
+                .GetAsQueryable()
                 .Where(t => t.TownName == townName)
                 .Select(t => t.Id)
                 .FirstOrDefault();
@@ -462,7 +471,8 @@ namespace MobileWorld.Core.Services
              };
 
         private async Task<AdViewModel?> AdProjection(string adId)
-            =>await this._repo.GetAsQueryable<Ad>()
+            => await this._unitOfWork.AdRepository
+                  .GetAsQueryable()
                   .AsNoTracking()
                   .Where(a => a.Id == adId)
                   .Include(c => c.Car.Feature.SafetyDetails)
@@ -487,8 +497,8 @@ namespace MobileWorld.Core.Services
                           Neiborhood = a.Region.Neiborhood,
                           TownName = a.Region.Town.TownName,
                       },
-                      Images= a.Images
-                      .Select(i=> new ImageDTO(i.ImageTitle, i.ImagePath + @"\"))
+                      Images = a.Images
+                      .Select(i => new ImageDTO(i.ImageTitle, i.ImagePath + @"\"))
                       .ToList(),
                       Car = new CarModel()
                       {
@@ -515,9 +525,9 @@ namespace MobileWorld.Core.Services
                       Owner = new OwnerModel()
                       {
                           OwnerId = a.OwnerId,
-                          FirstName=a.Owner.FirstName,
-                          LastName=a.Owner.LastName,
-                          IsFavoriteAd= a.Owner.FavoriteAds.Any(a=>a.AdId==adId),
+                          FirstName = a.Owner.FirstName,
+                          LastName = a.Owner.LastName,
+                          IsFavoriteAd = a.Owner.FavoriteAds.Any(a => a.AdId == adId),
                       },
                   })
                 .FirstOrDefaultAsync();

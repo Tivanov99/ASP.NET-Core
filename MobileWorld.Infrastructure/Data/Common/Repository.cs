@@ -1,93 +1,82 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
+using System.Linq.Expressions;
 
 namespace MobileWorld.Infrastructure.Data.Common
 {
-    public abstract class Repository : IRepository, IDisposable 
+    public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        protected DbContext Context { get; set; }
+        internal ApplicationDbContext context;
+        internal DbSet<TEntity> dbSet;
 
-        protected DbSet<T> DbSet<T>() where T : class
+        public Repository(ApplicationDbContext context)
         {
-            return this.Context.Set<T>();
+            this.context = context;
+            this.dbSet = context.Set<TEntity>();
         }
 
-        public async Task<TEntity?> GetByIdAsync<TEntity>(object id) where TEntity : class
-        {
-            return await DbSet<TEntity>()
-                .FindAsync(id);
-        }
 
-        public IQueryable<TEntity> GetAsQueryable<TEntity>() where TEntity : class
+        public virtual IEnumerable<TEntity> Get(
+            Expression<Func<TEntity, bool>> filter = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            string includeProperties = "")
         {
-            return DbSet<TEntity>().AsQueryable();
-        }
+            IQueryable<TEntity> query = dbSet;
 
-        public IEnumerable<TEntity> GetAll<TEntity>() where TEntity : class
-        {
-            return DbSet<TEntity>();
-        }
-
-        public TEntity? GetById<TEntity>(object id) where TEntity : class
-        {
-            if (id != null)
+            if (filter != null)
             {
-                return DbSet<TEntity>()
-                    .Find(id);
+                query = query.Where(filter);
             }
 
-            return null;
-        }
-        public async Task AddAsync<TEntity>(TEntity entity) where TEntity : class
-        {
-            if (entity != null)
+            foreach (var includeProperty in includeProperties.Split
+                (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
             {
-                await DbSet<TEntity>().AddAsync(entity);
+                query = query.Include(includeProperty);
             }
-        }
-       
-        public void Update<TEntity>(TEntity entity) where TEntity : class
-        {
-            this.DbSet<TEntity>().Update(entity);
-        }
 
-        public void Delete<TEntity>(TEntity entity) where TEntity : class
-        {
-            EntityEntry entry =
-                this.Context.Entry(entity);
-
-            if (entity != null && entry.State == EntityState.Detached)
+            if (orderBy != null)
             {
-                this.DbSet<TEntity>().Attach(entity);
+                return orderBy(query).ToList();
             }
-            entry.State = EntityState.Deleted;
-        }
-
-        public async Task DeleteAsync<TEntity>(object id) where TEntity : class
-        {
-            TEntity? entity = await GetByIdAsync<TEntity>(id);
-
-            if(entity!=null)
+            else
             {
-                Delete<TEntity>(entity);
+                return query.ToList();
             }
         }
 
-        public int SaveChanges()
+        public virtual void Insert(TEntity entity)
         {
-            return this.Context.SaveChanges();
+            dbSet.Add(entity);
         }
 
-        public async Task<int> SaveChangesAsync()
+        public virtual void Delete(object id)
         {
-            return await this.Context.SaveChangesAsync();
+            TEntity entityToDelete = dbSet.Find(id);
+            Delete(entityToDelete);
         }
 
-
-        public void Dispose()
+        public virtual void Delete(TEntity entityToDelete)
         {
-            this.Context.Dispose();
+            if (context.Entry(entityToDelete).State == EntityState.Detached)
+            {
+                dbSet.Attach(entityToDelete);
+            }
+            dbSet.Remove(entityToDelete);
         }
-        
+
+        public virtual void Update(TEntity entityToUpdate)
+        {
+            dbSet.Attach(entityToUpdate);
+            context.Entry(entityToUpdate).State = EntityState.Modified;
+        }
+
+        public virtual TEntity GetById(object id)
+        {
+            return dbSet.Find(id);
+        }
+
+        public IQueryable<TEntity> GetAsQueryable()
+        {
+            return context.Set<TEntity>().AsQueryable();
+        }
     }
 }

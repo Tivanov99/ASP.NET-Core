@@ -11,11 +11,11 @@ namespace MobileWorld.Core.Services
 {
     public class UserService : IUserService
     {
-        private readonly IApplicationDbRepository _repo;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public UserService(IApplicationDbRepository repo)
+        public UserService(IUnitOfWork unit)
         {
-            this._repo = repo;
+            _unitOfWork = unit;
         }
 
         //public List<UserViewModel> GetUsers()
@@ -36,8 +36,9 @@ namespace MobileWorld.Core.Services
         {
             try
             {
-                var userAds = this._repo
-                    .GetAsQueryable<ApplicationUser>()
+                var userAds = this._unitOfWork
+                    .UserRepository
+                    .GetAsQueryable()
                     .AsNoTracking()
                     .Include(u => u.Ads)
                    .Where(u => u.Id == userId)
@@ -63,8 +64,9 @@ namespace MobileWorld.Core.Services
 
         public List<AdCardViewModel> UserFavourites(string userId)
         {
-            var result = this._repo
-                .GetAsQueryable<ApplicationUser>()
+            var result = this._unitOfWork
+                    .UserRepository
+                .GetAsQueryable()
                 .AsNoTracking()
                 .Where(u => u.Id == userId)
                 .SelectMany(u => u.FavoriteAds)
@@ -74,7 +76,7 @@ namespace MobileWorld.Core.Services
                     Title = fv.Ad.Title,
                     Description = fv.Ad.Description,
                     Price = fv.Ad.Price,
-                    ImageTitle=fv.Ad.Images[0].ImageTitle
+                    ImageTitle = fv.Ad.Images[0].ImageTitle
                 })
                 .ToList();
             return result;
@@ -82,7 +84,9 @@ namespace MobileWorld.Core.Services
 
         public bool AddToFavorites(string adId, string userId)
         {
-            var user = this._repo.GetById<ApplicationUser>(userId);
+            var user = this._unitOfWork
+                    .UserRepository
+                .GetById(userId);
 
             user.FavoriteAds.Add(new FavoriteAd()
             {
@@ -92,7 +96,7 @@ namespace MobileWorld.Core.Services
 
             try
             {
-                this._repo.SaveChanges();
+                this._unitOfWork.Save();
                 return true;
             }
             catch (Exception)
@@ -103,8 +107,9 @@ namespace MobileWorld.Core.Services
 
         public bool RemoveFromFavorites(string adId, string userId)
         {
-            var user = this._repo
-                .GetAsQueryable<ApplicationUser>()
+            var user = this._unitOfWork
+                    .UserRepository
+                .GetAsQueryable()
                 .Where(u => u.Id == userId)
                 .Include(u => u.FavoriteAds)
                 .FirstOrDefault();
@@ -113,7 +118,7 @@ namespace MobileWorld.Core.Services
             {
                 var da = user.FavoriteAds.Where(fa => fa.AdId == adId).FirstOrDefault();
                 user.FavoriteAds.Remove(da);
-                this._repo.SaveChanges();
+                this._unitOfWork.Save();
                 return true;
             }
             catch (Exception)
