@@ -57,9 +57,8 @@ namespace MobileWorld.Controllers
             {
                 List<Image> images = _imageBinding
                     .BindImages(Request.Form.Files);
-                
 
-                this._service.CreateAd(model, userId, images, "Uploads");
+                this._service.CreateAd(model, userId, images);
 
                 return RedirectToAction("Index", "Home");
             }

@@ -169,7 +169,7 @@ namespace MobileWorld.Core.Services
             return cars;
         }
 
-        public void CreateAd(AdInputModel model, string ownerId, List<Image> images, string path)
+        public void CreateAd(AdInputModel model, string ownerId, List<Image> images)
         {
             try
             {
@@ -213,11 +213,11 @@ namespace MobileWorld.Core.Services
             Ad ad = this._unitOfWork
                 .AdRepository
                 .GetAsQueryable()
-                .AsNoTracking()
-                .Include(a => a.Images)
-                .Include(a => a.Car)
-                .ThenInclude(c => c.Engine)
-                .Include(a => a.Car.Feature)
+                //.AsNoTracking()
+                //.Include(a => a.Images)
+                //.Include(a => a.Car)
+                //.ThenInclude(c => c.Engine)
+                //.Include(a => a.Car.Feature)
                 .Where(ad => ad.Id == adId)
                 .First();
 
