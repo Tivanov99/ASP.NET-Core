@@ -1,33 +1,34 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MobileWorld.ControllerHelper.Contracts;
 using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Models;
 using MobileWorld.Core.ViewModels;
+using MobileWorld.Infrastructure.Data.Models;
 using MobileWorld.Models;
-using System.Runtime.CompilerServices;
 
 namespace MobileWorld.Controllers
 {
     public class AdController : Controller
     {
-        private Microsoft.AspNetCore.Hosting.IHostingEnvironment Environment;
-        private readonly IAdService service;
-        private readonly IUserService userService;
+        private readonly IAdService _service;
+        private readonly IUserService _userService;
+        private readonly IImageBinding _imageBinding;
 
-        public AdController(Microsoft.AspNetCore.Hosting.IHostingEnvironment _environment,
-            IAdService _service,
-            IUserService _userService)
+        public AdController(
+            IAdService service,
+            IUserService userService,
+            IImageBinding imageBinding)
         {
 
-            Console.WriteLine($"------------------- SERVICE { RuntimeHelpers.GetHashCode(_service)} -----------------------");
-            Environment = _environment;
-            this.service = _service;
-            userService = _userService;
+            this._service = service;
+            this._userService = userService;
+            _imageBinding = imageBinding;
         }
 
         public async Task<IActionResult> AllAds()
         {
-            List<AdCardViewModel> cars = await this.service
+            List<AdCardViewModel> cars = await this._service
                  .GetAllAds();
 
             return View(cars);
@@ -35,7 +36,7 @@ namespace MobileWorld.Controllers
 
         public async Task<IActionResult> Ad(string adId)
         {
-            var ad = await this.service
+            var ad = await this._service
                 .GetAdById(adId);
 
             return View(ad);
@@ -54,28 +55,11 @@ namespace MobileWorld.Controllers
         {
             if (ModelState.IsValid)
             {
-                string wwwPath = this.Environment.WebRootPath;
-                string contentPath = this.Environment.ContentRootPath;
+                List<Image> images = _imageBinding
+                    .BindImages(Request.Form.Files);
+                
 
-                string path = Path.Combine(this.Environment.WebRootPath, "Uploads");
-
-                if (!Directory.Exists(path))
-                {
-                    Directory.CreateDirectory(path);
-                }
-
-                List<string> uploadedFiles = new List<string>();
-                foreach (IFormFile postedFile in Request.Form.Files)
-                {
-                    string fileName = Path.GetFileName(postedFile.FileName);
-                    using (FileStream stream = new FileStream(Path.Combine(path, fileName), FileMode.Create))
-                    {
-                        postedFile.CopyTo(stream);
-                        uploadedFiles.Add(fileName);
-                    }
-                }
-
-                this.service.CreateAd(model, userId, uploadedFiles, "Uploads");
+                this._service.CreateAd(model, userId, images, "Uploads");
 
                 return RedirectToAction("Index", "Home");
             }
@@ -87,7 +71,7 @@ namespace MobileWorld.Controllers
 
         public IActionResult AdsByCriteria(AdvancedSearchCarModel searchModel)
         {
-            List<AdCardViewModel> cars = this.service
+            List<AdCardViewModel> cars = this._service
                 .GetAdsByAdvancedCriteria(searchModel);
 
             return View(cars);
@@ -113,7 +97,7 @@ namespace MobileWorld.Controllers
                 return NotFound();
             }
 
-            var ad = this.service
+            var ad = this._service
                 .GetAdById(adId);
 
             if (ad == null)
@@ -135,7 +119,7 @@ namespace MobileWorld.Controllers
 
             try
             {
-                this.service.Delete(adId);
+                this._service.Delete(adId);
                 return RedirectToAction("Index", "Home");
             }
             catch (Exception /* ex */)
@@ -146,7 +130,7 @@ namespace MobileWorld.Controllers
         }
         public async Task<ActionResult> Edit(string adId)
         {
-            var ad = await this.service
+            var ad = await this._service
                 .GetAdById(adId);
             return View(ad);
         }
@@ -162,7 +146,7 @@ namespace MobileWorld.Controllers
 
             if (ModelState.IsValid)
             {
-                this.service.Update(updatedModel, adId);
+                this._service.Update(updatedModel, adId);
                 return RedirectToAction(actionName: nameof(this.Ad), new { adId = adId });
 
             }

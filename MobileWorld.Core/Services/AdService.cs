@@ -169,17 +169,12 @@ namespace MobileWorld.Core.Services
             return cars;
         }
 
-        public void CreateAd(AdInputModel model, string ownerId, List<string> uploadedImages, string path)
+        public void CreateAd(AdInputModel model, string ownerId, List<Image> images, string path)
         {
             try
             {
                 int townId = this.GetTownIdByName(model.Region.TownName);
 
-                var images = uploadedImages
-                    .Select(x => new Image()
-                    { ImageTitle = x, ImagePath = path }
-                           )
-                    .ToList();
 
                 //TODO : Add seed to Db all Towns
 

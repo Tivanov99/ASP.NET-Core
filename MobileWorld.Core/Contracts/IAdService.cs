@@ -1,6 +1,7 @@
 ﻿using MobileWorld.Core.Models;
 using MobileWorld.Core.Models.InputModels;
 using MobileWorld.Core.ViewModels;
+using MobileWorld.Infrastructure.Data.Models;
 
 namespace MobileWorld.Core.Contracts
 {
@@ -16,7 +17,7 @@ namespace MobileWorld.Core.Contracts
 
         Task<List<AdCardViewModel>> GetIndexAds();
 
-       void CreateAd(AdInputModel model, string ownerId, List<string> uploadedImages, string path);
+       void CreateAd(AdInputModel model, string ownerId, List<Image> uploadedImages, string path);
 
         void Delete(string adId);
 

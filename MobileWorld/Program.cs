@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using MobileWorld.ControllerHelper;
+using MobileWorld.ControllerHelper.Contracts;
 using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Services;
 using MobileWorld.Infrastructure.Data;
@@ -40,6 +42,7 @@ builder.Services
 .AddScoped<ICarService, CarService>()
 .AddScoped<IAdminService, AdminService>()
 .AddScoped<IAdService, AdService>()
+.AddScoped<IImageBinding, ImageBinding>()
 .AddTransient<IApplicationDbRepository<Ad>, ApplicationDbRepository<Ad>>()
 .AddTransient<IApplicationDbRepository<ApplicationUser>, ApplicationDbRepository<ApplicationUser>>()
 .AddTransient<IApplicationDbRepository<Town>, ApplicationDbRepository<Town>>()

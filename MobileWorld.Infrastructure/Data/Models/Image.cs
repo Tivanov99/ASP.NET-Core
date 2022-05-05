@@ -12,6 +12,7 @@ namespace MobileWorld.Infrastructure.Data.Models
 
         [ForeignKey(nameof(Ad))]
         public string AdId { get; set; }
+
         public Ad Ad { get; set; }
     }
 }
