@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MobileWorld.Core.Contracts;
 using MobileWorld.Core.ViewModels;
-using System.Diagnostics;
 
 namespace MobileWorld.Controllers
 {
@@ -21,8 +19,7 @@ namespace MobileWorld.Controllers
         public async Task<IActionResult> Index()
         {
             List<AdCardViewModel> cars = await this.adService
-                .GetIndexAds()
-                ;
+                .GetIndexAds();
             return View(cars);
         }
 
@@ -31,10 +28,5 @@ namespace MobileWorld.Controllers
             return Redirect("~/Identity/Account/Login");
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }

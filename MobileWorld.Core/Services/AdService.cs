@@ -13,10 +13,12 @@ namespace MobileWorld.Core.Services
     public class AdService : IAdService
     {
         private readonly IUnitOfWork _unitOfWork;
+
         public AdService(IUnitOfWork unit)
         {
             this._unitOfWork = unit;
         }
+
         public Task<List<AdCardViewModel>> GetAllAds()
         {
             var cars = this._unitOfWork
@@ -175,17 +177,11 @@ namespace MobileWorld.Core.Services
             {
                 int townId = this.GetTownIdByName(model.Region.TownName);
 
-
                 //TODO : Add seed to Db all Towns
 
                 Car car = CreateCarEntity(model.Car);
 
-                MatchInputFeaturesToFeatureModel(model.Features.SafetyDetails, car.Feature.SafetyDetails);
-                MatchInputFeaturesToFeatureModel(model.Features.ComfortDetails, car.Feature.ComfortDetails);
-                MatchInputFeaturesToFeatureModel(model.Features.InteriorDetails, car.Feature.InteriorDetails);
-                MatchInputFeaturesToFeatureModel(model.Features.ExteriorDetails, car.Feature.ExteriorDetails);
-                MatchInputFeaturesToFeatureModel(model.Features.OthersDetails, car.Feature.OthersDetails);
-                MatchInputFeaturesToFeatureModel(model.Features.ProtectionDetails, car.Feature.ProtectionDetails);
+                MatchFeatures(car.Feature, model.Features);
 
                 Region region = CreateRegionEntity(model.Region, townId);
 
@@ -251,12 +247,7 @@ namespace MobileWorld.Core.Services
             {
                 try
                 {
-                    MatchInputFeaturesToFeatureModel(model.Features.SafetyDetails, ad.Car.Feature.SafetyDetails);
-                    MatchInputFeaturesToFeatureModel(model.Features.ComfortDetails, ad.Car.Feature.ComfortDetails);
-                    MatchInputFeaturesToFeatureModel(model.Features.InteriorDetails, ad.Car.Feature.InteriorDetails);
-                    MatchInputFeaturesToFeatureModel(model.Features.ExteriorDetails, ad.Car.Feature.ExteriorDetails);
-                    MatchInputFeaturesToFeatureModel(model.Features.OthersDetails, ad.Car.Feature.OthersDetails);
-                    MatchInputFeaturesToFeatureModel(model.Features.ProtectionDetails, ad.Car.Feature.ProtectionDetails);
+                    MatchFeatures(ad.Car.Feature, model.Features);
 
                     UpdateEngine(model.Car.Engine, ad.Car.Engine);
 
@@ -420,33 +411,14 @@ namespace MobileWorld.Core.Services
             }
         }
 
-        private object MatchInputFeaturesToNewFeatureModel(object sourceData, object resultData)
+        private void MatchFeatures(Feature feature,FeaturesModel model)
         {
-            Type inputModelType = sourceData
-                .GetType();
-
-            string categoryName = sourceData.GetType().Name;
-
-            var inputDataPoperties = inputModelType
-                .GetProperties()
-                .Where(x => x.PropertyType == typeof(bool) && (bool)x.GetValue(sourceData) == true)
-                .Select(x => x.Name)
-                .ToList();
-
-            Type bindingModelType = resultData
-               .GetType();
-
-            var modelProperties = bindingModelType.GetProperties()
-                .Where(p => inputDataPoperties.Contains(p.Name))
-                .ToList();
-
-            foreach (var item in modelProperties)
-            {
-                item.SetValue(resultData, true);
-            }
-
-
-            return resultData;
+            MatchInputFeaturesToFeatureModel(model.SafetyDetails, feature.SafetyDetails);
+            MatchInputFeaturesToFeatureModel(model.ComfortDetails, feature.ComfortDetails);
+            MatchInputFeaturesToFeatureModel(model.InteriorDetails, feature.InteriorDetails);
+            MatchInputFeaturesToFeatureModel(model.ExteriorDetails, feature.ExteriorDetails);
+            MatchInputFeaturesToFeatureModel(model.OthersDetails, feature.OthersDetails);
+            MatchInputFeaturesToFeatureModel(model.ProtectionDetails, feature.ProtectionDetails);
         }
 
         private Ad CreaAdEntity(AdInputModel model, List<Image> images, string ownerId, Car car, Region region)
@@ -537,25 +509,5 @@ namespace MobileWorld.Core.Services
             dbModel.AutoGas = updatedModel.AutoGas;
             dbModel.Hybrid = updatedModel.Hybrid;
         }
-
-        //private AdInputModel GetAdForUpdate(string adId)
-        //{
-        //    var result = this.unitOfWork.AdRepository
-        //        .GetAll()
-        //        .Where(x => x.Id == adId)
-        //        .Select(a => new AdInputModel()
-        //        {
-        //            Id = a.Id,
-        //            Title = a.Title,
-        //            Price=a.Price,
-        //            Description=a.Description,
-        //            Car= new CarModel()
-        //            {
-
-        //            }
-        //        })
-        //        .FirstOrDefault();
-
-        //}
     }
 }
