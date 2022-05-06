@@ -172,31 +172,27 @@ namespace MobileWorld.Core.Services
             return cars;
         }
 
-        public void CreateAd(AdInputModel model, string ownerId, List<Image> images)
+        public bool CreateAd(AdInputModel model, string ownerId, List<Image> images)
         {
             //TODO : Add seed to Db all Towns
 
             try
             {
 
-                var da = _unitOfWork
+                var townId = _unitOfWork
                     .TownRepository
                     .UseSqlRaw("Select * From [Towns] Where [TownName] = ({0})", model.Region.TownName)
                     .Select(x=>x.Id)
                     .FirstOrDefault();
 
-               
+
+                if (townId == 0)
+                {
+                    return false;
+                }
 
 
-               //int townId = this.GetTownIdByName(model.Region.TownName);
-
-               //if(townId == 0)
-               //{
-
-               //}
-
-
-               Car car = CreateCarEntity(model.Car);
+                Car car = CreateCarEntity(model.Car);
 
                 MatchFeatures(car.Feature, model.Features);
 
@@ -212,13 +208,15 @@ namespace MobileWorld.Core.Services
                 }
                 catch (Exception)
                 {
+                    return false;
                     //TODO: what if transaction throws ?
                 }
             }
             catch (Exception)
             {
-
+                return false;
             }
+            return true;
         }
 
         public void Delete(string adId)
