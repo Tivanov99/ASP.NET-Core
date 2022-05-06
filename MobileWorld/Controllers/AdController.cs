@@ -58,7 +58,12 @@ namespace MobileWorld.Controllers
                 List<Image> images = _imageBinding
                     .BindImages(Request.Form.Files);
 
-                this._service.CreateAd(model, userId, images);
+                bool isCreated = this._service.CreateAd(model, userId, images);
+
+                if (!isCreated)
+                {
+                    return View("Error", new { ErrorMessage = "Нещо се обърка! Опитайте отново." });
+                }
 
                 return RedirectToAction("Index", "Home");
             }
