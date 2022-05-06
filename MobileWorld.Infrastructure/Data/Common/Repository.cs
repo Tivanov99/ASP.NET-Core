@@ -6,21 +6,21 @@ namespace MobileWorld.Infrastructure.Data.Common
     public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         private readonly ApplicationDbContext context;
-        internal DbSet<TEntity> dbSet;
 
         public Repository(ApplicationDbContext context)
         {
             this.context = context;
-            this.dbSet = context.Set<TEntity>();
+            this.DbSet = context.Set<TEntity>();
         }
 
+        public DbSet<TEntity> DbSet { get; private set; }
 
         public virtual IEnumerable<TEntity> Get(
             Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             string includeProperties = "")
         {
-            IQueryable<TEntity> query = dbSet;
+            IQueryable<TEntity> query = DbSet;
 
             if (filter != null)
             {
@@ -45,12 +45,12 @@ namespace MobileWorld.Infrastructure.Data.Common
 
         public virtual void Insert(TEntity entity)
         {
-            dbSet.Add(entity);
+            DbSet.Add(entity);
         }
 
         public virtual void Delete(object id)
         {
-            TEntity entityToDelete = dbSet.Find(id);
+            TEntity entityToDelete = DbSet.Find(id);
             Delete(entityToDelete);
         }
 
@@ -58,20 +58,20 @@ namespace MobileWorld.Infrastructure.Data.Common
         {
             if (context.Entry(entityToDelete).State == EntityState.Detached)
             {
-                dbSet.Attach(entityToDelete);
+                DbSet.Attach(entityToDelete);
             }
-            dbSet.Remove(entityToDelete);
+            DbSet.Remove(entityToDelete);
         }
 
         public virtual void Update(TEntity entityToUpdate)
         {
-            dbSet.Attach(entityToUpdate);
+            DbSet.Attach(entityToUpdate);
             context.Entry(entityToUpdate).State = EntityState.Modified;
         }
 
         public virtual TEntity GetById(object id)
         {
-            return dbSet.Find(id);
+            return DbSet.Find(id);
         }
 
         public IQueryable<TEntity> GetAsQueryable()
