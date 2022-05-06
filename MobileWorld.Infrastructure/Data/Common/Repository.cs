@@ -5,7 +5,7 @@ namespace MobileWorld.Infrastructure.Data.Common
 {
     public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        internal ApplicationDbContext context;
+        private readonly ApplicationDbContext context;
         internal DbSet<TEntity> dbSet;
 
         public Repository(ApplicationDbContext context)

@@ -1,9 +1,12 @@
-﻿using System.Linq.Expressions;
+﻿using System.Data.Entity;
+using System.Linq.Expressions;
 
 namespace MobileWorld.Infrastructure.Data.Common
 {
     public interface IRepository<TEntity> where TEntity : class
     {
+        DbSet<TEntity> DbSet { get; }
+
         TEntity GetById(object id);
 
         IQueryable<TEntity> GetAsQueryable();

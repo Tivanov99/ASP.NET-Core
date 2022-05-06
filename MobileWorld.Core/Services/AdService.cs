@@ -7,6 +7,7 @@ using MobileWorld.Core.Models.InputModels;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Infrastructure.Data.Models;
 using MobileWorld.Infrastructure.Data.Common;
+using System.Data.SqlClient;
 
 namespace MobileWorld.Core.Services
 {
@@ -173,12 +174,23 @@ namespace MobileWorld.Core.Services
 
         public void CreateAd(AdInputModel model, string ownerId, List<Image> images)
         {
+            //TODO : Add seed to Db all Towns
+
+            //_unitOfWork.UserRepository.GetAsQueryable()
+            //    .FromSql()
+            _unitOfWork.UserRepository.FromSqlRaw()
+            SqlParameter town = new SqlParameter("id", 12);
+
             try
             {
                 int townId = this.GetTownIdByName(model.Region.TownName);
 
-                //TODO : Add seed to Db all Towns
+                if(townId == 0)
+                {
 
+                }
+
+                
                 Car car = CreateCarEntity(model.Car);
 
                 MatchFeatures(car.Feature, model.Features);
@@ -341,6 +353,7 @@ namespace MobileWorld.Core.Services
 
         private int GetTownIdByName(string townName)
         {
+
             var result = this._unitOfWork
                 .TownRepository
                 .GetAsQueryable()

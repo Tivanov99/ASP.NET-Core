@@ -1,4 +1,5 @@
-﻿using MobileWorld.Infrastructure.Data.Identity;
+﻿using Microsoft.EntityFrameworkCore;
+using MobileWorld.Infrastructure.Data.Identity;
 using MobileWorld.Infrastructure.Data.Models;
 using MobileWorld.Infrastructure.Data.Repositories;
 
@@ -20,6 +21,9 @@ namespace MobileWorld.Infrastructure.Data.Common
             AdRepository = adRepository;
             UserRepository = userRepository;
             TownRepository = townRepository;
+
+            context.Ads.FromSqlRaw("");
+
         }
 
 
