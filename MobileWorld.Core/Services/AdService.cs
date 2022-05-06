@@ -176,26 +176,31 @@ namespace MobileWorld.Core.Services
         {
             //TODO : Add seed to Db all Towns
 
-            //_unitOfWork.UserRepository.GetAsQueryable()
-            //    .FromSql()
-            _unitOfWork.UserRepository.FromSqlRaw()
-            SqlParameter town = new SqlParameter("id", 12);
-
             try
             {
-                int townId = this.GetTownIdByName(model.Region.TownName);
 
-                if(townId == 0)
-                {
+                var da = _unitOfWork
+                    .TownRepository
+                    .UseSqlRaw("Select * From [Towns] Where [TownName] = ({0})", model.Region.TownName)
+                    .Select(x=>x.Id)
+                    .FirstOrDefault();
 
-                }
+               
 
-                
-                Car car = CreateCarEntity(model.Car);
+
+               //int townId = this.GetTownIdByName(model.Region.TownName);
+
+               //if(townId == 0)
+               //{
+
+               //}
+
+
+               Car car = CreateCarEntity(model.Car);
 
                 MatchFeatures(car.Feature, model.Features);
 
-                Region region = CreateRegionEntity(model.Region, townId);
+                Region region = CreateRegionEntity(model.Region, 1);
 
                 Ad newAd = CreaAdEntity(model, images, ownerId, car, region);
                 car.AdId = newAd.Id;

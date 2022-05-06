@@ -1,10 +1,11 @@
-﻿using System.Linq.Expressions;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace MobileWorld.Infrastructure.Data.Common
 {
     public interface IRepository<TEntity> where TEntity : class
     {
-        DbSet<TEntity> DbSet { get;}
+        IQueryable<TEntity> UseSqlRaw(string sqlCommand, params object[] parameters);
 
         TEntity GetById(object id);
 

@@ -20,10 +20,7 @@ namespace MobileWorld.Infrastructure.Data.Common
             _context = context;
             AdRepository = adRepository;
             UserRepository = userRepository;
-            TownRepository = townRepository;
-
-            context.Ads.FromSqlRaw("");
-
+            TownRepository = townRepository;           
         }
 
 

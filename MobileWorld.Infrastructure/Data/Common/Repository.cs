@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Data.SqlClient;
 using System.Linq.Expressions;
 
 namespace MobileWorld.Infrastructure.Data.Common
@@ -6,21 +7,26 @@ namespace MobileWorld.Infrastructure.Data.Common
     public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         private readonly ApplicationDbContext context;
+        private readonly DbSet<TEntity> dbSet;
 
         public Repository(ApplicationDbContext context)
         {
             this.context = context;
-            this.DbSet = context.Set<TEntity>();
+            this.dbSet = context.Set<TEntity>();
         }
 
-        public DbSet<TEntity> DbSet { get; private set; }
+        public IQueryable<TEntity> UseSqlRaw(string sqlCommand, object[] parameters)
+        {
+            return dbSet.FromSqlRaw(sqlCommand, parameters);
+        }
+
 
         public virtual IEnumerable<TEntity> Get(
             Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             string includeProperties = "")
         {
-            IQueryable<TEntity> query = DbSet;
+            IQueryable<TEntity> query = dbSet;
 
             if (filter != null)
             {
@@ -45,12 +51,12 @@ namespace MobileWorld.Infrastructure.Data.Common
 
         public virtual void Insert(TEntity entity)
         {
-            DbSet.Add(entity);
+            dbSet.Add(entity);
         }
 
         public virtual void Delete(object id)
         {
-            TEntity entityToDelete = DbSet.Find(id);
+            TEntity entityToDelete = dbSet.Find(id);
             Delete(entityToDelete);
         }
 
@@ -58,20 +64,20 @@ namespace MobileWorld.Infrastructure.Data.Common
         {
             if (context.Entry(entityToDelete).State == EntityState.Detached)
             {
-                DbSet.Attach(entityToDelete);
+                dbSet.Attach(entityToDelete);
             }
-            DbSet.Remove(entityToDelete);
+            dbSet.Remove(entityToDelete);
         }
 
         public virtual void Update(TEntity entityToUpdate)
         {
-            DbSet.Attach(entityToUpdate);
+            dbSet.Attach(entityToUpdate);
             context.Entry(entityToUpdate).State = EntityState.Modified;
         }
 
         public virtual TEntity GetById(object id)
         {
-            return DbSet.Find(id);
+            return dbSet.Find(id);
         }
 
         public IQueryable<TEntity> GetAsQueryable()
