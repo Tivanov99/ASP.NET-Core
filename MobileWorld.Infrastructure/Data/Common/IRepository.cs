@@ -4,7 +4,9 @@ namespace MobileWorld.Infrastructure.Data.Common
 {
     public interface IRepository<TEntity> where TEntity : class
     {
-        IQueryable<TEntity> UseSqlRaw(string sqlCommand, params object[] parameters);
+        IQueryable<TEntity> UseSqlQuery(string sqlCommand, params object[] parameters);
+
+        void UserStoredProdecude(string sqlCommand, params object[] parameters);
 
         TEntity GetById(object id);
 

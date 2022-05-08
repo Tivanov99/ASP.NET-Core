@@ -8,6 +8,8 @@ using MobileWorld.Infrastructure.Data;
 using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.Identity;
 using MobileWorld.Infrastructure.Data.Models;
+using MobileWorld.Infrastructure.Data.QueriesAndSP.Sp;
+using MobileWorld.Infrastructure.Data.QueriesAndSP.Sp.Contracts;
 using MobileWorld.Infrastructure.Data.Repositories;
 using MobileWorld.ModelBinders;
 
@@ -43,6 +45,7 @@ builder.Services
 .AddScoped<IAdminService, AdminService>()
 .AddScoped<IAdService, AdService>()
 .AddScoped<IImageBinding, ImageBinding>()
+.AddScoped<IStoredProdecuresCollection, StoredProdecuresCollection>()
 .AddTransient<IApplicationDbRepository<Ad>, ApplicationDbRepository<Ad>>()
 .AddTransient<IApplicationDbRepository<ApplicationUser>, ApplicationDbRepository<ApplicationUser>>()
 .AddTransient<IApplicationDbRepository<Town>, ApplicationDbRepository<Town>>()

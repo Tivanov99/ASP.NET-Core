@@ -7,17 +7,20 @@ using MobileWorld.Core.Models.InputModels;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Infrastructure.Data.Models;
 using MobileWorld.Infrastructure.Data.Common;
-using System.Data.SqlClient;
+using MobileWorld.Infrastructure.Data.QueriesAndSP.Sp.Contracts;
 
 namespace MobileWorld.Core.Services
 {
     public class AdService : IAdService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IStoredProdecuresCollection _storedProdecuresCollection;
 
-        public AdService(IUnitOfWork unit)
+        public AdService(IUnitOfWork unit,
+            IStoredProdecuresCollection storedProdecuresCollection)
         {
             this._unitOfWork = unit;
+            _storedProdecuresCollection = storedProdecuresCollection;
         }
 
         public Task<List<AdCardViewModel>> GetAllAds()
@@ -175,15 +178,18 @@ namespace MobileWorld.Core.Services
         public bool CreateAd(AdInputModel model, string ownerId, List<Image> images)
         {
             //TODO : Add seed to Db all Towns
-
             try
             {
 
-                var townId = _unitOfWork
+                var result = _storedProdecuresCollection.GetTownIdByTownName(model.Region.TownName);
+                _unitOfWork
                     .TownRepository
-                    .UseSqlRaw("Select * From [Towns] Where [TownName] = ({0})", model.Region.TownName)
-                    .Select(x=>x.Id)
-                    .FirstOrDefault();
+                    .UserStoredProdecude(result.Item1,
+                        result.Item2
+                    );
+
+
+                int townId = Convert.ToInt32(Convert.ToString(result.Item2[1].Value));
 
 
                 if (townId == 0)

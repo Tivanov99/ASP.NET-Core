@@ -1,0 +1,9 @@
+﻿using Microsoft.Data.SqlClient;
+
+namespace MobileWorld.Infrastructure.Data.QueriesAndSP.Sp.Contracts
+{
+    public interface IStoredProdecuresCollection
+    {
+         (string, SqlParameter[]) GetTownIdByTownName(string townName);
+    }
+}

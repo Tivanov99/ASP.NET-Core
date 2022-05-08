@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MobileWorld.Infrastructure.Data.Models;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq.Expressions;
 
@@ -15,9 +17,14 @@ namespace MobileWorld.Infrastructure.Data.Common
             this.dbSet = context.Set<TEntity>();
         }
 
-        public IQueryable<TEntity> UseSqlRaw(string sqlCommand, object[] parameters)
+        public IQueryable<TEntity> UseSqlQuery(string sqlCommand, object[] parameters)
         {
             return dbSet.FromSqlRaw(sqlCommand, parameters);
+        }
+
+        public void UserStoredProdecude(string sqlCommand, object[] parameters)
+        {
+            context.Database.ExecuteSqlRaw(sqlCommand, parameters);
         }
 
 
