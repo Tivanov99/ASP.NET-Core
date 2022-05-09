@@ -39,7 +39,6 @@ namespace MobileWorld.Core.Services
                      ImageTitle = a.Images[0].ImageTitle,
                      //ImagePath = a.Images[0].ImagePath + @"\",
                  })
-                 .Take(6)
                 .ToListAsync();
 
             return cars;
