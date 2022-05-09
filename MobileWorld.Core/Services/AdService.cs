@@ -229,25 +229,22 @@ namespace MobileWorld.Core.Services
             var result = _storedProdecuresCollection
                 .DeleteAd(adId);
 
-            int affectedRows = 0;
-
             try
             {
                 _unitOfWork.AdRepository
                 .UserStoredProdecude(result.Item1, result.Item2);
 
-                 affectedRows = Convert
-                        .ToInt32(Convert
-                                        .ToString(result.Item2[1].Value)
-                                );
+               int affectedRows = Convert
+                       .ToInt32(Convert
+                                       .ToString(result.Item2[1].Value)
+                               );
+
+                return affectedRows > 0 ? true : false;
             }
             catch (Exception)
             {
                 return false;
             }
-           
-
-            return affectedRows > 0 ? true : false;
         }
 
         public bool Update(AdInputModel model, string adId)
@@ -263,7 +260,15 @@ namespace MobileWorld.Core.Services
             .FirstOrDefault();
 
 
-            int townId = GetTownIdByName(model.Region.TownName);
+            var result = _storedProdecuresCollection
+                 .GetTownIdByTownName(model.Region.TownName);
+
+            _unitOfWork.TownRepository.UserStoredProdecude(result.Item1, result.Item2);
+
+            int townId = Convert
+                    .ToInt32(Convert
+                                    .ToString(result.Item2[1].Value)
+                            );
 
             if (ad != null)
             {
@@ -359,19 +364,6 @@ namespace MobileWorld.Core.Services
             string queryString = "Select * From";
 
             return queryString;
-        }
-
-        private int GetTownIdByName(string townName)
-        {
-
-            var result = this._unitOfWork
-                .TownRepository
-                .GetAsQueryable()
-                .Where(t => t.TownName == townName)
-                .Select(t => t.Id)
-                .FirstOrDefault();
-
-            return result;
         }
 
         private Car CreateCarEntity(CarInputModel car)
