@@ -8,7 +8,7 @@ namespace MobileWorld.Infrastructure.Data.QueriesAndSP.Sp
     {
         public (string, SqlParameter[]) DeleteAd(string adId)
         {
-            string sql = "EXEC [DeleteAd] @AdId";
+            string sql = "EXEC [dbo].[DeleteAd] @AdId, @AfectedRowls out";
 
             var adIdParam = new SqlParameter()
             {
@@ -17,7 +17,14 @@ namespace MobileWorld.Infrastructure.Data.QueriesAndSP.Sp
                 Value = adId
             };
 
-            return (sql, new SqlParameter[] { adIdParam });
+            var result = new SqlParameter()
+            {
+                ParameterName= "@AfectedRowls",
+                SqlDbType= SqlDbType.Int,
+                Direction = ParameterDirection.Output,
+            };
+
+            return (sql, new SqlParameter[] { adIdParam, result });
         }
 
         public (string, SqlParameter[]) GetTownIdByTownName(string townName)

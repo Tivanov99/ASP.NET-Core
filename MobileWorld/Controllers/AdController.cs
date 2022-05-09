@@ -120,17 +120,13 @@ namespace MobileWorld.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+            bool result = this._service.Delete(adId);
 
-            try
+            if (result == true)
             {
-                this._service.Delete(adId);
                 return RedirectToAction("Index", "Home");
             }
-            catch (Exception /* ex */)
-            {
-                //Log the error(uncomment ex variable name and write a log.)
-                return RedirectToAction(nameof(Delete), new { id = adId, saveChangesError = true });
-            }
+            return View("Error", new { ErrorMessage = "Нещо се обърка! Опитайте отново." });
         }
         public async Task<ActionResult> Edit(string adId)
         {

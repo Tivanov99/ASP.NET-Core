@@ -224,28 +224,30 @@ namespace MobileWorld.Core.Services
             return true;
         }
 
-        public void Delete(string adId)
+        public bool Delete(string adId)
         {
-            Ad ad = this._unitOfWork
-                .AdRepository
-                .GetAsQueryable()
-                //.AsNoTracking()
-                //.Include(a => a.Images)
-                //.Include(a => a.Car)
-                //.ThenInclude(c => c.Engine)
-                //.Include(a => a.Car.Feature)
-                .Where(ad => ad.Id == adId)
-                .First();
+            var result = _storedProdecuresCollection
+                .DeleteAd(adId);
 
-            if (ad != null)
+            int affectedRows = 0;
+
+            try
             {
-                this._unitOfWork
-                .AdRepository
-                .Delete(ad);
+                _unitOfWork.AdRepository
+                .UserStoredProdecude(result.Item1, result.Item2);
 
-                this._unitOfWork
-                .Save();
+                 affectedRows = Convert
+                        .ToInt32(Convert
+                                        .ToString(result.Item2[1].Value)
+                                );
             }
+            catch (Exception)
+            {
+                return false;
+            }
+           
+
+            return affectedRows > 0 ? true : false;
         }
 
         public bool Update(AdInputModel model, string adId)

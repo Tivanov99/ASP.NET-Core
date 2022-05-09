@@ -19,7 +19,7 @@ namespace MobileWorld.Core.Contracts
 
        bool CreateAd(AdInputModel model, string ownerId, List<Image> uploadedImages);
 
-        void Delete(string adId);
+        bool Delete(string adId);
 
         bool Update(AdInputModel updatedModel,string adId);
     }
