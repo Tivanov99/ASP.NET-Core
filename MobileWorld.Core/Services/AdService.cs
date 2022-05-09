@@ -180,17 +180,17 @@ namespace MobileWorld.Core.Services
             //TODO : Add seed to Db all Towns
             try
             {
+                var result = _storedProdecuresCollection
+                    .GetTownIdByTownName(model.Region.TownName);
 
-                var result = _storedProdecuresCollection.GetTownIdByTownName(model.Region.TownName);
                 _unitOfWork
                     .TownRepository
-                    .UserStoredProdecude(result.Item1,
-                        result.Item2
-                    );
+                    .UserStoredProdecude(result.Item1, result.Item2);
 
-
-                int townId = Convert.ToInt32(Convert.ToString(result.Item2[1].Value));
-
+                int townId = Convert
+                    .ToInt32(Convert
+                                    .ToString(result.Item2[1].Value)
+                            );
 
                 if (townId == 0)
                 {
@@ -215,7 +215,6 @@ namespace MobileWorld.Core.Services
                 catch (Exception)
                 {
                     return false;
-                    //TODO: what if transaction throws ?
                 }
             }
             catch (Exception)
@@ -433,7 +432,7 @@ namespace MobileWorld.Core.Services
             }
         }
 
-        private void MatchFeatures(Feature feature,FeaturesModel model)
+        private void MatchFeatures(Feature feature, FeaturesModel model)
         {
             MatchInputFeaturesToFeatureModel(model.SafetyDetails, feature.SafetyDetails);
             MatchInputFeaturesToFeatureModel(model.ComfortDetails, feature.ComfortDetails);
