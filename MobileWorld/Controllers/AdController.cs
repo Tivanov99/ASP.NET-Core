@@ -131,7 +131,8 @@ namespace MobileWorld.Controllers
         public async Task<ActionResult> Edit(string adId)
         {
             var ad = await this._service
-                .GetAdById(adId);
+                .GetAdForUpdate(adId);
+
             return View(ad);
         }
 

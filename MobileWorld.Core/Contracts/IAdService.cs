@@ -9,9 +9,11 @@ namespace MobileWorld.Core.Contracts
     {
         Task<List<AdCardViewModel>> GetAllAds();
 
-       Task<AdViewModel> GetAdById(string adId);
+        Task<AdViewModel> GetAdById(string adId);
 
-       List<AdCardViewModel> GetAdsByAdvancedCriteria(AdvancedSearchCarModel model);
+        Task<AdInputModel> GetAdForUpdate(string adId);
+
+        List<AdCardViewModel> GetAdsByAdvancedCriteria(AdvancedSearchCarModel model);
 
         //List<AdCardViewModel> GetAdsByBaseCriteria(BaseSearchCarModel model);
 

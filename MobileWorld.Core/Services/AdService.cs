@@ -59,6 +59,13 @@ namespace MobileWorld.Core.Services
             return ad;
         }
 
+        public async Task<AdInputModel> GetAdForUpdate(string adId)
+        {
+            var ad = await EditAdProjection(adId);
+
+            return ad;
+        }
+
         //public List<AdCardViewModel> GetAdsByBaseCriteria(BaseSearchCarModel model)
         //{
         //    List<PropertyDto> properties = GetBaseSearchCriteria(model);
@@ -536,6 +543,7 @@ namespace MobileWorld.Core.Services
                   .Select(a => new AdInputModel()
                   {
                       PhoneNumber = a.PhoneNumber,
+                      Id = a.Id,
                       Title = a.Title,
                       Price = a.Price,
                       Description = a.Description,

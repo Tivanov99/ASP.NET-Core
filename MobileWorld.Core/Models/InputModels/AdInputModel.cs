@@ -14,6 +14,7 @@ namespace MobileWorld.Core.Models.InputModels
             Features = new();
             Images = new();
         }
+        public string? Id { get; set; }
 
         [Required(ErrorMessage = "Полето 'Заглавие' е задължително!")]
         [StringLength(50,MinimumLength =5, ErrorMessage = "Заглавието трябва да е меджу 5 и 50 символа.")]
