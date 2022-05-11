@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using MobileWorld.Infrastructure.Data.Identity;
 using MobileWorld.Infrastructure.Data.Models;
-
+using MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels;
 
 namespace MobileWorld.Infrastructure.Data
 {
@@ -43,8 +43,10 @@ namespace MobileWorld.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<AdViewModelSP>().HasNoKey().ToView(null);
-            
+            builder.Entity<AdSpModel>()
+                .HasNoKey()
+                .ToView(null);
+
             builder.Entity<FavoriteAd>()
                 .HasKey(f => new { f.AdId, f.UserId });
 

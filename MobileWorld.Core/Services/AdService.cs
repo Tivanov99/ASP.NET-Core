@@ -8,6 +8,7 @@ using MobileWorld.Core.ViewModels;
 using MobileWorld.Infrastructure.Data.Models;
 using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.QueriesAndSP.Sp.Contracts;
+using MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels;
 
 namespace MobileWorld.Core.Services
 {
@@ -30,14 +31,13 @@ namespace MobileWorld.Core.Services
                 .GetAsQueryable()
                 .AsNoTracking()
                 .Include(a => a.Images)
-                 .Select(a => new AdCardViewModel()
+                .Select(a => new AdCardViewModel()
                  {
                      AdId = a.Id,
                      Description = a.Description,
                      Price = a.Price,
                      Title = a.Title,
                      ImageTitle = a.Images[0].ImageTitle,
-                     //ImagePath = a.Images[0].ImagePath + @"\",
                  })
                 .ToListAsync();
 
@@ -47,13 +47,13 @@ namespace MobileWorld.Core.Services
 
         public async Task<AdViewModel> GetAdById(string adId)
         {
-            var sPItems = _storedProdecuresCollection
-                .GetAdById(adId);
+            //var sPItems = _storedProdecuresCollection
+            //    .GetAdById(adId);
 
-            var result = this._unitOfWork.AdRepository
-                .Set<AdViewModelSP>()
-                .FromSqlRaw(sPItems.Item1,sPItems.Item2[0])
-                .ToList();
+            //var result = this._unitOfWork.AdRepository
+            //    .Set<AdSpModel>()
+            //    .FromSqlRaw(sPItems.Item1,sPItems.Item2[0])
+            //    .ToList();
 
             var ad = await AdProjection(adId);
             return ad;
@@ -303,7 +303,6 @@ namespace MobileWorld.Core.Services
                     ad.Region.TownId = townId;
                     ad.Region.RegionName = model.Region.RegionName;
                     ad.Region.Neiborhood = model.Region.Neiborhood;
-
 
                     this._unitOfWork
                 .AdRepository
