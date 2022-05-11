@@ -1,10 +1,11 @@
-﻿using System.Linq.Expressions;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace MobileWorld.Infrastructure.Data.Common
 {
     public interface IRepository<TEntity> where TEntity : class
     {
-        IQueryable<TEntity> UseSqlQuery(string sqlCommand, params object[] parameters);
+        DbSet<WantedEntity> Set<WantedEntity>() where WantedEntity : class;
 
         void UserStoredProdecude(string sqlCommand, params object[] parameters);
 

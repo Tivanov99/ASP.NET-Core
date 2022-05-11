@@ -27,6 +27,20 @@ namespace MobileWorld.Infrastructure.Data.QueriesAndSP.Sp
             return (sql, new SqlParameter[] { adIdParam, result });
         }
 
+        public (string, SqlParameter[]) GetAdById(string adId)
+        {
+            var adIdParam = new SqlParameter()
+            {
+                ParameterName = "@AdId",
+                SqlDbType = SqlDbType.NVarChar,
+                Value = adId
+            };
+
+            string sql = "exec [GetAdById] @AdId";
+
+            return (sql, new SqlParameter[] { adIdParam });
+        }
+
         public (string, SqlParameter[]) GetTownIdByTownName(string townName)
         {
             string sql = "EXEC [dbo].[GetTownIdByTownName] @TownName, @Id out";

@@ -17,9 +17,9 @@ namespace MobileWorld.Infrastructure.Data.Common
             this.dbSet = context.Set<TEntity>();
         }
 
-        public IQueryable<TEntity> UseSqlQuery(string sqlCommand, object[] parameters)
+        public DbSet<WantedEntity> Set<WantedEntity>() where WantedEntity : class
         {
-            return dbSet.FromSqlRaw(sqlCommand, parameters);
+            return context.Set<WantedEntity>();
         }
 
         public void UserStoredProdecude(string sqlCommand, object[] parameters)

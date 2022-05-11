@@ -47,6 +47,14 @@ namespace MobileWorld.Core.Services
 
         public async Task<AdViewModel> GetAdById(string adId)
         {
+            var sPItems = _storedProdecuresCollection
+                .GetAdById(adId);
+
+            var result = this._unitOfWork.AdRepository
+                .Set<AdViewModelSP>()
+                .FromSqlRaw(sPItems.Item1,sPItems.Item2[0])
+                .ToList();
+
             var ad = await AdProjection(adId);
             return ad;
         }

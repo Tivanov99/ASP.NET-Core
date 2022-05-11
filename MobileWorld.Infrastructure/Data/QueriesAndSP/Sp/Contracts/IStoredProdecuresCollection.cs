@@ -8,5 +8,7 @@ namespace MobileWorld.Infrastructure.Data.QueriesAndSP.Sp.Contracts
 
 
         (string, SqlParameter[]) DeleteAd(string adId);
+
+        (string, SqlParameter[]) GetAdById(string adId);
     }
 }

@@ -40,8 +40,11 @@ namespace MobileWorld.Infrastructure.Data
 
         public DbSet<SafetyDetail> SafetyDetails { get; set; }
 
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<AdViewModelSP>().HasNoKey().ToView(null);
+            
             builder.Entity<FavoriteAd>()
                 .HasKey(f => new { f.AdId, f.UserId });
 
