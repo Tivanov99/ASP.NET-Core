@@ -55,7 +55,7 @@ namespace MobileWorld.Core.Services
             //    .FromSqlRaw(sPItems.Item1,sPItems.Item2[0])
             //    .ToList();
 
-            var ad = await AdProjection(adId);
+            var ad = await AdViewProjection(adId);
             return ad;
         }
 
@@ -457,7 +457,7 @@ namespace MobileWorld.Core.Services
                  OwnerId = ownerId,
              };
 
-        private async Task<AdViewModel?> AdProjection(string adId)
+        private async Task<AdViewModel?> AdViewProjection(string adId)
             => await this._unitOfWork.AdRepository
                   .GetAsQueryable()
                   .AsNoTracking()
@@ -515,6 +515,64 @@ namespace MobileWorld.Core.Services
                           FirstName = a.Owner.FirstName,
                           LastName = a.Owner.LastName,
                           IsFavoriteAd = a.Owner.FavoriteAds.Any(a => a.AdId == adId),
+                      },
+                  })
+                .FirstOrDefaultAsync();
+
+        private async Task<AdInputModel?> EditAdProjection(string adId)
+            => await this._unitOfWork.AdRepository
+                  .GetAsQueryable()
+                  .AsNoTracking()
+                  .Where(a => a.Id == adId)
+                  .Include(c => c.Car.Feature.SafetyDetails)
+                  .Include(c => c.Car.Feature.ProtectionDetails)
+                  .Include(c => c.Car.Feature.ComfortDetails)
+                  .Include(c => c.Car.Feature.ExteriorDetails)
+                  .Include(c => c.Car.Feature.InteriorDetails)
+                  .Include(c => c.Car.Feature.OthersDetails)
+                  .Include(a => a.Car)
+                        .ThenInclude(c => c.Engine)
+                  .Include(a => a.Images)
+                  .Select(a => new AdInputModel()
+                  {
+                      PhoneNumber = a.PhoneNumber,
+                      Title = a.Title,
+                      Price = a.Price,
+                      Description = a.Description,
+                      Region = new RegionInputModel()
+                      {
+                          RegionName = a.Region.RegionName,
+                          Neiborhood = a.Region.Neiborhood,
+                          TownName = a.Region.Town.TownName,
+                      },
+                      Images = a.Images
+                      .Select(i => new ImageDTO(i.ImageTitle, i.ImagePath + @"\"))
+                      .ToList(),
+                      Car = new CarInputModel()
+                      {
+                          SeatsCount = a.Car.SeatsCount,
+                          Year = a.Car.Year,
+                          Make = a.Car.Make,
+                          //Model = a.Car.Model,
+                          GearType = a.Car.GearType,
+                          Color = a.Car.Color,
+                          Mileage = a.Car.Mileage,
+                          Engine = new EngineModel()
+                          {
+                              FuelConsuption = a.Car.Engine.FuelConsuption,
+                              FuelType = a.Car.Engine.FuelType,
+                              EcoLevel = a.Car.Engine.EcoLevel,
+                              CubicCapacity = a.Car.Engine.CubicCapacity,
+                              NewtonMeter = a.Car.Engine.NewtonMeter,
+                              HorsePower = a.Car.Engine.HorsePower,
+                              AutoGas = a.Car.Engine.AutoGas,
+                              Hybrid = a.Car.Engine.Hybrid,
+                          },                     
+                      },
+                      Owner = new OwnerInputModel()
+                      {
+                          FirstName = a.Owner.FirstName,
+                          LastName = a.Owner.LastName,
                       },
                   })
                 .FirstOrDefaultAsync();

@@ -1,6 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Globalization;
+﻿using MobileWorld.Core.Dto;
+using System.ComponentModel.DataAnnotations;
 
 namespace MobileWorld.Core.Models.InputModels
 {
@@ -13,6 +12,7 @@ namespace MobileWorld.Core.Models.InputModels
             Region = new();
             Owner = new();
             Features = new();
+            Images = new();
         }
 
         [Required(ErrorMessage = "Полето 'Заглавие' е задължително!")]
@@ -38,5 +38,7 @@ namespace MobileWorld.Core.Models.InputModels
         public OwnerInputModel Owner { get; set; } 
 
         public FeaturesModel Features { get; set; }
+
+        public List<ImageDTO> Images { get; set; }
     }
 }

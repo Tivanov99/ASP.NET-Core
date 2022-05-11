@@ -56,7 +56,7 @@ namespace MobileWorld.Controllers
             if (ModelState.IsValid)
             {
                 List<Image> images = _imageBinding
-                    .BindImages(Request.Form.Files);
+                  .BindImages(Request.Form.Files);
 
                 bool isCreated = this._service.CreateAd(model, userId, images);
 

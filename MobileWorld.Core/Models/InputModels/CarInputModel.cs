@@ -1,4 +1,5 @@
 ﻿using MobileWorld.Infrastructure.Data.Enums;
+using MobileWorld.Infrastructure.Data.Models;
 using System.ComponentModel.DataAnnotations;
 
 namespace MobileWorld.Core.Models.InputModels
@@ -37,7 +38,6 @@ namespace MobileWorld.Core.Models.InputModels
         [Range(0,double.MaxValue, ErrorMessage = "Пробегът трябва да е в диапазона от 0 до {2}")]
         public decimal Mileage { get; set; }
 
-        //[Required(ErrorMessage ="Снимките са задължителни!")]
-        //public List<byte[]> Images { get; set; }
+        //public List<Image> Images { get; set; }
     }
 }
