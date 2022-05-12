@@ -1,7 +1,13 @@
-﻿namespace MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels
 {
     public class AdSpModel
     {
+        //[Key]
+        //public string? Id { get; set; }
+
         public string Title { get; set; }
 
         public decimal Price { get; set; }
@@ -10,34 +16,22 @@
 
         public string Description { get; set; }
 
-        public int NewtonMeter { get; set; }
+        //[ForeignKey(nameof(Car))]
+        //public int? CarId { get; set; }
+        //public CarSpModel Car { get; set; }
 
-        public string Model { get; set; }
+        //public bool AutoGas { get; set; }
 
-        public int SeatsCount { get; set; }
+        //public int CubicCapacity { get; set; }
 
-        public int Year { get; set; }
+        //public int EcoLevel { get; set; }
 
-        public string Color { get; set; }
+        //public double FuelConsuption { get; set; }
 
-        public int GearType { get; set; }
+        //public int FuelType { get; set; }
 
-        public string Make { get; set; }
+        //public int HorsePower { get; set; }
 
-        public decimal Mileage { get; set; }
-
-        public bool AutoGas { get; set; }
-
-        public int CubicCapacity { get; set; }
-
-        public int EcoLevel { get; set; }
-
-        public double FuelConsuption { get; set; }
-
-        public int FuelType { get; set; }
-
-        public int HorsePower { get; set; }
-
-        public bool Hybrid { get; set; }
+        //public bool Hybrid { get; set; }
     }
 }

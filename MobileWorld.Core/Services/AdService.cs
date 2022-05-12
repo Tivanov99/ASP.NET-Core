@@ -9,6 +9,7 @@ using MobileWorld.Infrastructure.Data.Models;
 using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.QueriesAndSP.Sp.Contracts;
 using MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels;
+using MobileWorld.Core.Models.Details;
 
 namespace MobileWorld.Core.Services
 {
@@ -61,6 +62,31 @@ namespace MobileWorld.Core.Services
 
         public async Task<AdInputModel> GetAdForUpdate(string adId)
         {
+            try
+            {
+                var items = _storedProdecuresCollection
+                                .GetAd(adId);
+
+                var result = _unitOfWork.AdRepository.Set<AdSpModel>()
+                    .FromSqlRaw(items.Item1, items.Item2)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                int da = 0;
+
+                throw;
+            }
+            
+
+
+
+            var features = _unitOfWork.AdRepository
+                .GetAsQueryable()
+                .Where(x => x.Id == adId)
+                .Select(x => x.Car.Feature)
+                .FirstOrDefault();
+
             var ad = await EditAdProjection(adId);
 
             return ad;
@@ -513,7 +539,13 @@ namespace MobileWorld.Core.Services
                               AutoGas = a.Car.Engine.AutoGas,
                               Hybrid = a.Car.Engine.Hybrid,
                           },
-                          Features = a.Car.Feature
+                          Features = new FeaturesModel()
+                          {
+                              ComfortDetails= new ComfortDetailModel()
+                              {
+
+                              }
+                          }
                       },
                       Owner = new OwnerModel()
                       {

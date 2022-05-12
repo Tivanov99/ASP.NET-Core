@@ -9,7 +9,6 @@ namespace MobileWorld.Core.Models
         public int SeatsCount { get; set; }
 
         public decimal Mileage { get; set; }
-
-        public Feature Features { get; set; }
+        public FeaturesModel Features { get; set; }
     }
 }
