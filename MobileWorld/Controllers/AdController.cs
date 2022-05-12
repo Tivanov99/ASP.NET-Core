@@ -138,7 +138,7 @@ namespace MobileWorld.Controllers
 
 
         [HttpPost]
-        public IActionResult EditPost(ModelBindingAdModel updatedModel, string adId)
+        public IActionResult EditPost(ModelBindingAdEditModel updatedModel, string adId)
         {
             if (adId == null)
             {

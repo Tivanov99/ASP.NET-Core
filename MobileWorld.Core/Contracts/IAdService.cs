@@ -23,6 +23,6 @@ namespace MobileWorld.Core.Contracts
 
         bool Delete(string adId);
 
-        bool Update(AdInputModel updatedModel,string adId);
+        bool Update(AdEditModel updatedModel,string adId);
     }
 }

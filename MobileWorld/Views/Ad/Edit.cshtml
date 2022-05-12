@@ -6,7 +6,7 @@
 @using MobileWorld.Models
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
-@model AdInputModel;
+@model AdEditModel;
 
 
 <!DOCTYPE html>
@@ -57,7 +57,7 @@
     </div>
 
    
-    <form asp-controller="Ad" asp-action="EditPost" asp-route-adId=@Model.Id method="post" enctype="multipart/form-data">
+    <form asp-controller="Ad" asp-action="EditPost" asp-route-adId=@Model.AdId method="post" enctype="multipart/form-data">
     
             <button type="submit" class="btn btn-block btn-primary">Запази промените</button>
 

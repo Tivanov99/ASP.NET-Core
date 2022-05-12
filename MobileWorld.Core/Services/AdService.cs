@@ -261,7 +261,7 @@ namespace MobileWorld.Core.Services
             }
         }
 
-        public bool Update(AdInputModel model, string adId)
+        public bool Update(AdEditModel model, string adId)
         {
             Ad? ad = this._unitOfWork
             .AdRepository
@@ -526,7 +526,7 @@ namespace MobileWorld.Core.Services
                 .FirstOrDefaultAsync();
 
         //TODO: Just Use AdViewModel and when send AdViewModel to controller bind to AdInputModel
-        private async Task<AdInputModel?> EditAdProjection(string adId)
+        private async Task<AdEditModel?> EditAdProjection(string adId)
             => await this._unitOfWork.AdRepository
                   .GetAsQueryable()
                   .AsNoTracking()
@@ -540,10 +540,10 @@ namespace MobileWorld.Core.Services
                   .Include(a => a.Car)
                         .ThenInclude(c => c.Engine)
                   .Include(a => a.Images)
-                  .Select(a => new AdInputModel()
+                  .Select(a => new AdEditModel()
                   {
                       PhoneNumber = a.PhoneNumber,
-                      Id = a.Id,
+                      AdId = a.Id,
                       Title = a.Title,
                       Price = a.Price,
                       Description = a.Description,
@@ -577,7 +577,6 @@ namespace MobileWorld.Core.Services
                               Hybrid = a.Car.Engine.Hybrid,
                           },
                       },
-                      DbFeature = a.Car.Feature,
                       Owner = new OwnerInputModel()
                       {
                           FirstName = a.Owner.FirstName,

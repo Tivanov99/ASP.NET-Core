@@ -14,9 +14,8 @@ namespace MobileWorld.Core.Models.InputModels
             Owner = new();
             Features = new();
             Images = new();
-            DbFeature = new();
         }
-        public string? Id { get; set; }
+
 
         [Required(ErrorMessage = "Полето 'Заглавие' е задължително!")]
         [StringLength(50,MinimumLength =5, ErrorMessage = "Заглавието трябва да е меджу 5 и 50 символа.")]
@@ -44,6 +43,5 @@ namespace MobileWorld.Core.Models.InputModels
 
         public List<ImageDTO> Images { get; set; }
 
-        public Feature DbFeature { get; set; }
     }
 }
