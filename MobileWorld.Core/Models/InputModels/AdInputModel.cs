@@ -1,4 +1,5 @@
 ﻿using MobileWorld.Core.Dto;
+using MobileWorld.Infrastructure.Data.Models;
 using System.ComponentModel.DataAnnotations;
 
 namespace MobileWorld.Core.Models.InputModels
@@ -13,6 +14,7 @@ namespace MobileWorld.Core.Models.InputModels
             Owner = new();
             Features = new();
             Images = new();
+            DbFeature = new();
         }
         public string? Id { get; set; }
 
@@ -41,5 +43,7 @@ namespace MobileWorld.Core.Models.InputModels
         public FeaturesModel Features { get; set; }
 
         public List<ImageDTO> Images { get; set; }
+
+        public Feature DbFeature { get; set; }
     }
 }

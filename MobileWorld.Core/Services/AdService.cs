@@ -32,13 +32,13 @@ namespace MobileWorld.Core.Services
                 .AsNoTracking()
                 .Include(a => a.Images)
                 .Select(a => new AdCardViewModel()
-                 {
-                     AdId = a.Id,
-                     Description = a.Description,
-                     Price = a.Price,
-                     Title = a.Title,
-                     ImageTitle = a.Images[0].ImageTitle,
-                 })
+                {
+                    AdId = a.Id,
+                    Description = a.Description,
+                    Price = a.Price,
+                    Title = a.Title,
+                    ImageTitle = a.Images[0].ImageTitle,
+                })
                 .ToListAsync();
 
             return cars;
@@ -175,17 +175,17 @@ namespace MobileWorld.Core.Services
                .GetAsQueryable()
                .AsNoTracking()
                .Include(a => a.Images)
-                .Select(a => new AdCardViewModel()
+               .Select(a => new AdCardViewModel()
                 {
                     AdId = a.Id,
                     Description = a.Description,
                     Price = a.Price,
                     Title = a.Title,
                     ImageTitle = a.Images[0].ImageTitle,
-                    //ImagePath = a.Images[0].ImagePath + @"\",
                 })
                .Take(6)
                .ToListAsync();
+
             return cars;
         }
 
@@ -248,10 +248,10 @@ namespace MobileWorld.Core.Services
                 _unitOfWork.AdRepository
                 .UserStoredProdecude(result.Item1, result.Item2);
 
-               int affectedRows = Convert
-                       .ToInt32(Convert
-                                       .ToString(result.Item2[1].Value)
-                               );
+                int affectedRows = Convert
+                        .ToInt32(Convert
+                                        .ToString(result.Item2[1].Value)
+                                );
 
                 return affectedRows > 0 ? true : false;
             }
@@ -413,7 +413,7 @@ namespace MobileWorld.Core.Services
             AutoGas = model.AutoGas,
         };
 
-        private void MatchInputFeaturesToFeatureModel(object inputData, object modelToBind)
+        private void MatchInputFeaturesToFeatureDbModel(object inputData, object modelToBind)
         {
             Type inputModelType = inputData
                 .GetType();
@@ -439,14 +439,14 @@ namespace MobileWorld.Core.Services
             }
         }
 
-        private void MatchFeatures(Feature feature, FeaturesModel model)
+        private void MatchFeatures(Feature dbFeature, FeaturesModel model)
         {
-            MatchInputFeaturesToFeatureModel(model.SafetyDetails, feature.SafetyDetails);
-            MatchInputFeaturesToFeatureModel(model.ComfortDetails, feature.ComfortDetails);
-            MatchInputFeaturesToFeatureModel(model.InteriorDetails, feature.InteriorDetails);
-            MatchInputFeaturesToFeatureModel(model.ExteriorDetails, feature.ExteriorDetails);
-            MatchInputFeaturesToFeatureModel(model.OthersDetails, feature.OthersDetails);
-            MatchInputFeaturesToFeatureModel(model.ProtectionDetails, feature.ProtectionDetails);
+            MatchInputFeaturesToFeatureDbModel(model.SafetyDetails, dbFeature.SafetyDetails);
+            MatchInputFeaturesToFeatureDbModel(model.ComfortDetails, dbFeature.ComfortDetails);
+            MatchInputFeaturesToFeatureDbModel(model.InteriorDetails, dbFeature.InteriorDetails);
+            MatchInputFeaturesToFeatureDbModel(model.ExteriorDetails, dbFeature.ExteriorDetails);
+            MatchInputFeaturesToFeatureDbModel(model.OthersDetails, dbFeature.OthersDetails);
+            MatchInputFeaturesToFeatureDbModel(model.ProtectionDetails, dbFeature.ProtectionDetails);
         }
 
         private Ad CreaAdEntity(AdInputModel model, List<Image> images, string ownerId, Car car, Region region)
@@ -463,7 +463,6 @@ namespace MobileWorld.Core.Services
                  Region = region,
                  OwnerId = ownerId,
              };
-
         private async Task<AdViewModel?> AdViewProjection(string adId)
             => await this._unitOfWork.AdRepository
                   .GetAsQueryable()
@@ -526,6 +525,7 @@ namespace MobileWorld.Core.Services
                   })
                 .FirstOrDefaultAsync();
 
+        //TODO: Just Use AdViewModel and when send AdViewModel to controller bind to AdInputModel
         private async Task<AdInputModel?> EditAdProjection(string adId)
             => await this._unitOfWork.AdRepository
                   .GetAsQueryable()
@@ -575,8 +575,9 @@ namespace MobileWorld.Core.Services
                               HorsePower = a.Car.Engine.HorsePower,
                               AutoGas = a.Car.Engine.AutoGas,
                               Hybrid = a.Car.Engine.Hybrid,
-                          },                     
+                          },
                       },
+                      DbFeature = a.Car.Feature,
                       Owner = new OwnerInputModel()
                       {
                           FirstName = a.Owner.FirstName,

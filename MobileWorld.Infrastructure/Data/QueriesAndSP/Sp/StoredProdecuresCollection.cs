@@ -27,6 +27,7 @@ namespace MobileWorld.Infrastructure.Data.QueriesAndSP.Sp
             return (sql, new SqlParameter[] { adIdParam, result });
         }
 
+
         public (string, SqlParameter[]) GetAdById(string adId)
         {
             var adIdParam = new SqlParameter()
