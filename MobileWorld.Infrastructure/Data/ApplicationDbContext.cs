@@ -40,12 +40,17 @@ namespace MobileWorld.Infrastructure.Data
 
         public DbSet<SafetyDetail> SafetyDetails { get; set; }
 
+        //public DbSet<AdSpModel> AdSpModels { get; set; }
+
+        public DbSet<AdSpViewModel> AdSpViewModels { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<AdSpModel>()
-                .HasNoKey()
-                .ToView(null);
+            builder.Entity<AdSpViewModel>()
+            .HasNoKey();
+            //builder.Entity<AdSpModel>()
+            //.HasNoKey();
+
 
             builder.Entity<FavoriteAd>()
                 .HasKey(f => new { f.AdId, f.UserId });
@@ -119,6 +124,6 @@ namespace MobileWorld.Infrastructure.Data
             base.OnModelCreating(builder);
         }
 
-        
+
     }
 }

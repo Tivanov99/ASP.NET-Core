@@ -2,6 +2,7 @@
 using MobileWorld.Core.Models.InputModels;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Infrastructure.Data.Models;
+using MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels;
 
 namespace MobileWorld.Core.Contracts
 {
@@ -17,7 +18,7 @@ namespace MobileWorld.Core.Contracts
 
         //List<AdCardViewModel> GetAdsByBaseCriteria(BaseSearchCarModel model);
 
-        Task<List<AdCardViewModel>> GetIndexAds();
+        Task<List<AdSpViewModel>> GetIndexAds();
 
        bool CreateAd(AdInputModel model, string ownerId, List<Image> uploadedImages);
 

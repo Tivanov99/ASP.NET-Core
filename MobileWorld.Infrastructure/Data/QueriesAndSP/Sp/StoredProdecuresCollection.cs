@@ -54,6 +54,11 @@ namespace MobileWorld.Infrastructure.Data.QueriesAndSP.Sp
             return (sql, new SqlParameter[] { adIdParam });
         }
 
+        public string GetIndexAds()
+        {
+            return "EXEC [IndexAds]";
+        }
+
         public (string, SqlParameter[]) GetTownIdByTownName(string townName)
         {
             string sql = "EXEC [dbo].[GetTownIdByTownName] @TownName, @Id out";

@@ -1,24 +1,44 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels
 {
     public class AdSpModel
     {
-        //[Key]
-        //public string? Id { get; set; }
+        [Column("AdId")]
+        public string Id { get; set; }
 
+        [Column("Title")]
         public string Title { get; set; }
 
+        [Column("Price")]
         public decimal Price { get; set; }
 
+        [Column("PhoneNumber")]
         public string PhoneNumber { get; set; }
 
+        [Column("Description")]
         public string Description { get; set; }
 
-        //[ForeignKey(nameof(Car))]
-        //public int? CarId { get; set; }
-        //public CarSpModel Car { get; set; }
+        //[Column("Model")]
+        //public string Model { get; set; }
+
+        [Column("Year")]
+        public int Year { get; set; }
+
+        [Column("GearType")]
+        public int GearType { get; set; }
+
+        [Column("Color")]
+        public string Color { get; set; }
+
+        [Column("Make")]
+        public string Make { get; set; }
+
+        [Column("SeatsCount")]
+        public int SeatsCount { get; set; }
+
+        [Column("Mileage")]
+        public decimal Mileage { get; set; }
 
         //public bool AutoGas { get; set; }
 

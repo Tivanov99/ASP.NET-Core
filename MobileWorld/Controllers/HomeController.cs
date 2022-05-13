@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MobileWorld.Core.Contracts;
 using MobileWorld.Core.ViewModels;
+using MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels;
 
 namespace MobileWorld.Controllers
 {
@@ -18,7 +19,7 @@ namespace MobileWorld.Controllers
 
         public async Task<IActionResult> Index()
         {
-            List<AdCardViewModel> cars = await this.adService
+            List<AdSpViewModel> cars = await this.adService
                 .GetIndexAds();
             return View(cars);
         }

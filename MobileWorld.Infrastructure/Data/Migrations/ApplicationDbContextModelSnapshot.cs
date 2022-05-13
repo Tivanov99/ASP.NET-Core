@@ -824,6 +824,60 @@ namespace MobileWorld.Infrastructure.Data.Migrations
                     b.ToTable("Towns");
                 });
 
+            modelBuilder.Entity("MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels.AdSpModel", b =>
+                {
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Color");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Description");
+
+                    b.Property<int>("GearType")
+                        .HasColumnType("int")
+                        .HasColumnName("GearType");
+
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("AdId");
+
+                    b.Property<string>("Make")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Make");
+
+                    b.Property<decimal>("Mileage")
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("Mileage");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("PhoneNumber");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("Price");
+
+                    b.Property<int>("SeatsCount")
+                        .HasColumnType("int")
+                        .HasColumnName("SeatsCount");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Title");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int")
+                        .HasColumnName("Year");
+
+                    b.ToTable("AdSpModels");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)

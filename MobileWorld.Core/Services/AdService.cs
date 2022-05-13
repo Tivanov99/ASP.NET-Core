@@ -48,39 +48,13 @@ namespace MobileWorld.Core.Services
 
         public async Task<AdViewModel> GetAdById(string adId)
         {
-            //var sPItems = _storedProdecuresCollection
-            //    .GetAdById(adId);
-
-            //var result = this._unitOfWork.AdRepository
-            //    .Set<AdSpModel>()
-            //    .FromSqlRaw(sPItems.Item1,sPItems.Item2[0])
-            //    .ToList();
-
             var ad = await AdViewProjection(adId);
             return ad;
         }
 
         public async Task<AdInputModel> GetAdForUpdate(string adId)
         {
-            try
-            {
-                var items = _storedProdecuresCollection
-                                .GetAd(adId);
-
-                var result = _unitOfWork.AdRepository.Set<AdSpModel>()
-                    .FromSqlRaw(items.Item1, items.Item2)
-                    .ToList();
-            }
-            catch (Exception ex)
-            {
-                int da = 0;
-
-                throw;
-            }
-            
-
-
-
+           
             var features = _unitOfWork.AdRepository
                 .GetAsQueryable()
                 .Where(x => x.Id == adId)
@@ -194,25 +168,16 @@ namespace MobileWorld.Core.Services
             return null;
         }
 
-        public async Task<List<AdCardViewModel>> GetIndexAds()
+        public async Task<List<AdSpViewModel>> GetIndexAds()
         {
-            var cars = await this._unitOfWork
+            var ads = _unitOfWork
                 .AdRepository
-               .GetAsQueryable()
-               .AsNoTracking()
-               .Include(a => a.Images)
-               .Select(a => new AdCardViewModel()
-                {
-                    AdId = a.Id,
-                    Description = a.Description,
-                    Price = a.Price,
-                    Title = a.Title,
-                    ImageTitle = a.Images[0].ImageTitle,
-                })
-               .Take(6)
-               .ToListAsync();
+                .Set<AdSpViewModel>()
+                .FromSqlRaw(_storedProdecuresCollection.GetIndexAds())
+                .AsNoTracking()
+                .ToListAsync();
 
-            return cars;
+            return await ads;
         }
 
         public bool CreateAd(AdInputModel model, string ownerId, List<Image> images)
