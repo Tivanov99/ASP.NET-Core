@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileWorld.Core", "..\Mobi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileWorld.Infrastructure", "..\MobileWorld.Infrastructure\MobileWorld.Infrastructure.csproj", "{CA8074EA-2880-49A1-9DF3-9214865050FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComplexModels", "..\ComplexModels\ComplexModels.csproj", "{5AA0A6B4-257D-4268-B819-DDAFF26C3445}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{CA8074EA-2880-49A1-9DF3-9214865050FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA8074EA-2880-49A1-9DF3-9214865050FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA8074EA-2880-49A1-9DF3-9214865050FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AA0A6B4-257D-4268-B819-DDAFF26C3445}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AA0A6B4-257D-4268-B819-DDAFF26C3445}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AA0A6B4-257D-4268-B819-DDAFF26C3445}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AA0A6B4-257D-4268-B819-DDAFF26C3445}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
