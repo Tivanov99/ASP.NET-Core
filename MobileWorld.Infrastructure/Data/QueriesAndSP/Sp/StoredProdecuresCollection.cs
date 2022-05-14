@@ -82,5 +82,19 @@ namespace MobileWorld.Infrastructure.Data.QueriesAndSP.Sp
             };
             return (sql, new SqlParameter[] { param, result });
         }
+
+        public (string, SqlParameter[]) GetAdFeatures(string adId)
+        {
+            string sql = "EXEC GetCarFeatures @AdId";
+
+            SqlParameter idParam = new SqlParameter()
+            {
+                ParameterName = "@AdId",
+                Value = adId,
+                Direction = ParameterDirection.Input,
+            };
+
+            return (sql, new SqlParameter[] { idParam });
+        }
     }
 }

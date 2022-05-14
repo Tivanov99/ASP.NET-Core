@@ -72,15 +72,14 @@ namespace MobileWorld.Core.Services
         {
             var spResult = _storedProdecuresCollection.GetAdById(adId);
 
-            var sqlResult = _unitOfWork
+            var sqlResult = await _unitOfWork
                 .AdRepository
                 .Set<AdSpModel>()
                 .FromSqlRaw(spResult.Item1,spResult.Item2[0])
-                .ToList();
+                .ToListAsync();
 
             var result = _mapper.Map<AdViewModel>(sqlResult[0]);
 
-            //var ad = await AdViewProjection(adId);
             return result;
         }
 
@@ -540,6 +539,7 @@ namespace MobileWorld.Core.Services
         //        .FirstOrDefaultAsync();
 
         //TODO: Just Use AdViewModel and when send AdViewModel to controller bind to AdInputModel
+
         private async Task<AdEditModel?> EditAdProjection(string adId)
             => await this._unitOfWork.AdRepository
                   .GetAsQueryable()

@@ -1,8 +1,4 @@
-﻿using MobileWorld.Core.Dto;
-using MobileWorld.Core.Models;
-using System.ComponentModel.DataAnnotations;
-
-namespace MobileWorld.Core.ViewModels
+﻿namespace MobileWorld.Core.ViewModels
 {
     public class AdViewModel
     {
@@ -17,8 +13,6 @@ namespace MobileWorld.Core.ViewModels
 
         public string PhoneNumber { get; set; }
 
-        //public RegionModel Region { get; set; }
-
         public DateTime CreatedOn { get; set; }
 
         public decimal Price { get; set; }
@@ -27,6 +21,7 @@ namespace MobileWorld.Core.ViewModels
 
         public CarViewModel Car { get; set; }
 
+        //public RegionModel Region { get; set; }
 
         //public OwnerModel Owner { get; set; }
 
