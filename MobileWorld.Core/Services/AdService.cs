@@ -74,11 +74,11 @@ namespace MobileWorld.Core.Services
 
             var sqlResult = _unitOfWork
                 .AdRepository
-                .Set<AdViewModel>()
+                .Set<AdSpModel>()
                 .FromSqlRaw(spResult.Item1,spResult.Item2[0])
-                .FirstOrDefault();
+                .ToList();
 
-            var result = _mapper.Map<AdViewModel>(sqlResult);
+            var result = _mapper.Map<AdViewModel>(sqlResult[0]);
 
             //var ad = await AdViewProjection(adId);
             return result;

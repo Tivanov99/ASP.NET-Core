@@ -9,7 +9,7 @@
 
         public string PhoneNumber { get; set; }
 
-        public string CreatedOn { get; set; }
+        public DateTime CreatedOn { get; set; }
 
         public decimal Price { get; set; }
 

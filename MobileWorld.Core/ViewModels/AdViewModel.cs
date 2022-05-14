@@ -19,7 +19,7 @@ namespace MobileWorld.Core.ViewModels
 
         //public RegionModel Region { get; set; }
 
-        public string CreatedOn { get; set; }
+        public DateTime CreatedOn { get; set; }
 
         public decimal Price { get; set; }
 

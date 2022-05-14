@@ -1,7 +1,9 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MobileWorld.ControllerHelper;
 using MobileWorld.ControllerHelper.Contracts;
+using MobileWorld.Core;
 using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Services;
 using MobileWorld.Infrastructure.Data;
@@ -39,8 +41,15 @@ builder.Services.AddControllersWithViews()
      options.ModelBinderProviders.Insert(1, new DateTimeModelBinderProvider(GlobalConstants.dateTimeFormat));
  });
 
+var mapperConfig = new MapperConfiguration(mc =>
+{
+    mc.AddProfile(new UserProfile());
+});
+IMapper mapper = mapperConfig.CreateMapper();
+
+
 builder.Services
-.AddAutoMapper(typeof(Program))
+.AddSingleton(mapper)
 .AddScoped<IUserService, UserService>()
 .AddScoped<ICarService, CarService>()
 .AddScoped<IAdminService, AdminService>()
