@@ -40,7 +40,8 @@ builder.Services.AddControllersWithViews()
  });
 
 builder.Services
-    .AddScoped<IUserService, UserService>()
+.AddAutoMapper(typeof(Program))
+.AddScoped<IUserService, UserService>()
 .AddScoped<ICarService, CarService>()
 .AddScoped<IAdminService, AdminService>()
 .AddScoped<IAdService, AdService>()

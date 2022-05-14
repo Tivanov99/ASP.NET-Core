@@ -23,6 +23,8 @@ namespace MobileWorld.Infrastructure.Data.Models
 
         public bool AutoGas { get; set; }
 
+        public bool Hybrid { get; set; }
+
         public bool Long { get; set; }
 
         public bool Catastrophic { get; set; }

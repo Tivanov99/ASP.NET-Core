@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "yiF8BQOV9DvQnsErWowa5+CoIcObQDv4WXceM+1vfL0roYOc9ocg1Cp40wexWyBuQbR7dW+YEE+JeRcEvxqKhQ==",
+  "dgSpecHash": "d72zcyoG9wQNmjlNqFqAGf1UWTaA6pmhnKAuaZkn3knh0WkdEmuxTtvtVWYqiffKZI0O1RJ6MYfW8SNne1HRuQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld\\MobileWorld.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Trifon\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
+    "C:\\Users\\Trifon\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "C:\\Users\\Trifon\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\Trifon\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Trifon\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",

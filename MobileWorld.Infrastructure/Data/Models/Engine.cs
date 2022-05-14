@@ -20,14 +20,8 @@ namespace MobileWorld.Infrastructure.Data.Models
         public int? NewtonMeter { get; set; }
 
         [Required]
-        public bool Hybrid { get; set; }
-
-        [Required]
         [Range(1, 7)]
         public int EcoLevel { get; set; }
-
-        [Required]
-        public bool AutoGas { get; set; }
 
         [Required]
         [Range(900, 9000)]

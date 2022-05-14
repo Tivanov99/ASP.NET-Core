@@ -72,7 +72,6 @@ namespace MobileWorld.Core.Services
 
         public async Task<AdInputModel> GetAdForUpdate(string adId)
         {
-
             var features = _unitOfWork.AdRepository
                 .GetAsQueryable()
                 .Where(x => x.Id == adId)
@@ -408,8 +407,6 @@ namespace MobileWorld.Core.Services
             HorsePower = model.HorsePower,
             NewtonMeter = model.NewtonMeter,
             EcoLevel = model.EcoLevel,
-            Hybrid = model.Hybrid,
-            AutoGas = model.AutoGas,
         };
 
         private void MatchInputFeaturesToFeatureDbModel(object inputData, object modelToBind)
@@ -509,8 +506,6 @@ namespace MobileWorld.Core.Services
                               CubicCapacity = a.Car.Engine.CubicCapacity,
                               NewtonMeter = a.Car.Engine.NewtonMeter,
                               HorsePower = a.Car.Engine.HorsePower,
-                              AutoGas = a.Car.Engine.AutoGas,
-                              Hybrid = a.Car.Engine.Hybrid,
                           },
                           Features = new FeaturesModel()
                           {
@@ -578,8 +573,6 @@ namespace MobileWorld.Core.Services
                               CubicCapacity = a.Car.Engine.CubicCapacity,
                               NewtonMeter = a.Car.Engine.NewtonMeter,
                               HorsePower = a.Car.Engine.HorsePower,
-                              AutoGas = a.Car.Engine.AutoGas,
-                              Hybrid = a.Car.Engine.Hybrid,
                           },
                       },
                       Owner = new OwnerInputModel()
@@ -598,8 +591,6 @@ namespace MobileWorld.Core.Services
             dbModel.HorsePower = updatedModel.HorsePower;
             dbModel.NewtonMeter = updatedModel.NewtonMeter;
             dbModel.FuelType = updatedModel.FuelType;
-            dbModel.AutoGas = updatedModel.AutoGas;
-            dbModel.Hybrid = updatedModel.Hybrid;
         }
     }
 }

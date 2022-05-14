@@ -40,7 +40,7 @@ namespace MobileWorld.Infrastructure.Data
 
         public DbSet<SafetyDetail> SafetyDetails { get; set; }
 
-        //public DbSet<AdSpModel> AdSpModels { get; set; }
+        public DbSet<AdSpModel> AdSpModels { get; set; }
 
         public DbSet<AdCardSpViewModel> AdSpViewModels { get; set; }
 
@@ -48,8 +48,9 @@ namespace MobileWorld.Infrastructure.Data
         {
             builder.Entity<AdCardSpViewModel>()
             .HasNoKey();
-            //builder.Entity<AdSpModel>()
-            //.HasNoKey();
+
+            builder.Entity<AdSpModel>()
+            .HasNoKey();
 
             builder.Entity<FavoriteAd>()
                 .HasKey(f => new { f.AdId, f.UserId });

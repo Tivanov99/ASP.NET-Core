@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MobileWorld.Infrastructure.Data;
 
@@ -11,9 +12,10 @@ using MobileWorld.Infrastructure.Data;
 namespace MobileWorld.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220514105348_UpdateSp")]
+    partial class UpdateSp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -442,6 +444,9 @@ namespace MobileWorld.Infrastructure.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<bool>("AutoGas")
+                        .HasColumnType("bit");
+
                     b.Property<int>("CarId")
                         .HasColumnType("int");
 
@@ -459,6 +464,9 @@ namespace MobileWorld.Infrastructure.Data.Migrations
 
                     b.Property<int>("HorsePower")
                         .HasColumnType("int");
+
+                    b.Property<bool>("Hybrid")
+                        .HasColumnType("bit");
 
                     b.Property<int?>("NewtonMeter")
                         .HasColumnType("int");
@@ -642,9 +650,6 @@ namespace MobileWorld.Infrastructure.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<bool>("FullyServed")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Hybrid")
                         .HasColumnType("bit");
 
                     b.Property<bool>("InPieces")
@@ -846,75 +851,6 @@ namespace MobileWorld.Infrastructure.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.ToTable("AdSpViewModels");
-                });
-
-            modelBuilder.Entity("MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels.AdSpModel", b =>
-                {
-                    b.Property<string>("Color")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CreatedOn")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("CubicCapacity")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("EcoLevel")
-                        .HasColumnType("int");
-
-                    b.Property<double>("FuelConsuption")
-                        .HasColumnType("float");
-
-                    b.Property<int>("FuelType")
-                        .HasColumnType("int");
-
-                    b.Property<int>("GearType")
-                        .HasColumnType("int");
-
-                    b.Property<int>("HorsePower")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Make")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Mileage")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Model")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("NewtonMeter")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("SeatsCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Year")
-                        .HasColumnType("int");
-
-                    b.ToTable("AdSpModels");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
