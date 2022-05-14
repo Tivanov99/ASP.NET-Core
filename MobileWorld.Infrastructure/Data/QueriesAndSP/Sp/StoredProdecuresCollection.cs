@@ -56,7 +56,7 @@ namespace MobileWorld.Infrastructure.Data.QueriesAndSP.Sp
 
         public string AllAds()
         {
-            return "EXEC [AllAds]";
+            return "EXEC [GetAllAds]";
         }
 
         public string GetIndexAds()

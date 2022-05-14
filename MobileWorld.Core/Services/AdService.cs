@@ -29,7 +29,7 @@ namespace MobileWorld.Core.Services
             var ads = _unitOfWork
                 .AdRepository
                 .Set<AdCardSpViewModel>()
-                .FromSqlRaw(_storedProdecuresCollection.AllAds())
+                .FromSqlRaw(_storedProdecuresCollection.GetIndexAds())
                 .AsNoTracking()
                 .ToListAsync();
 
