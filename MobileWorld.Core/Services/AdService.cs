@@ -24,25 +24,28 @@ namespace MobileWorld.Core.Services
             this._unitOfWork = unit;
             _storedProdecuresCollection = storedProdecuresCollection;
         }
-
-        public Task<List<AdCardViewModel>> GetAllAds()
+        public async Task<List<AdCardSpViewModel>> GetIndexAds()
         {
-            var cars = this._unitOfWork
+            var ads = _unitOfWork
                 .AdRepository
-                .GetAsQueryable()
+                .Set<AdCardSpViewModel>()
+                .FromSqlRaw(_storedProdecuresCollection.AllAds())
                 .AsNoTracking()
-                .Include(a => a.Images)
-                .Select(a => new AdCardViewModel()
-                {
-                    AdId = a.Id,
-                    Description = a.Description,
-                    Price = a.Price,
-                    Title = a.Title,
-                    ImageTitle = a.Images[0].ImageTitle,
-                })
                 .ToListAsync();
 
-            return cars;
+            return await ads;
+        }
+
+        public async Task<List<AdCardSpViewModel>> GetAllAds()
+        {
+            var ads = _unitOfWork
+                .AdRepository
+                .Set<AdCardSpViewModel>()
+                .FromSqlRaw(_storedProdecuresCollection.GetIndexAds())
+                .AsNoTracking()
+                .ToListAsync();
+
+            return await ads;
         }
 
 
@@ -168,17 +171,7 @@ namespace MobileWorld.Core.Services
             return null;
         }
 
-        public async Task<List<AdCardSpViewModel>> GetIndexAds()
-        {
-            var ads = _unitOfWork
-                .AdRepository
-                .Set<AdCardSpViewModel>()
-                .FromSqlRaw(_storedProdecuresCollection.GetIndexAds())
-                .AsNoTracking()
-                .ToListAsync();
-
-            return await ads;
-        }
+       
 
         public bool CreateAd(AdInputModel model, string ownerId, List<Image> images)
         {

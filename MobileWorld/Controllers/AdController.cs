@@ -5,6 +5,7 @@ using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Models;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Infrastructure.Data.Models;
+using MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels;
 using MobileWorld.Models;
 
 namespace MobileWorld.Controllers
@@ -28,9 +29,8 @@ namespace MobileWorld.Controllers
 
         public async Task<IActionResult> AllAds()
         {
-            List<AdCardViewModel> cars = await this._service
-                 .GetAllAds();
-
+            List<AdCardSpViewModel> cars = await this._service
+                .GetAllAds();
             return View(cars);
         }
 

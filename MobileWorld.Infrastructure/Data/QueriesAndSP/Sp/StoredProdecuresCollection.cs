@@ -54,6 +54,11 @@ namespace MobileWorld.Infrastructure.Data.QueriesAndSP.Sp
             return (sql, new SqlParameter[] { adIdParam });
         }
 
+        public string AllAds()
+        {
+            return "EXEC [AllAds]";
+        }
+
         public string GetIndexAds()
         {
             return "EXEC [IndexAds]";

@@ -1,4 +1,6 @@
-﻿namespace MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels
 {
     public class AdCardSpViewModel
     {

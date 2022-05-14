@@ -14,5 +14,8 @@ namespace MobileWorld.Infrastructure.Data.QueriesAndSP.Sp.Contracts
 
         string GetIndexAds();
 
+        string AllAds();
+
+
     }
 }
