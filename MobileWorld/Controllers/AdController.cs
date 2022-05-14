@@ -31,6 +31,11 @@ namespace MobileWorld.Controllers
         {
             List<AdCardSpViewModel> cars = await this._service
                 .GetAllAds();
+
+            if(cars == null)
+            {
+                return View("Error", new { ErrorMessage = "Нещо се обърка! Опитайте отново." });
+            }
             return View(cars);
         }
 

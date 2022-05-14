@@ -824,58 +824,31 @@ namespace MobileWorld.Infrastructure.Data.Migrations
                     b.ToTable("Towns");
                 });
 
-            modelBuilder.Entity("MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels.AdSpModel", b =>
+            modelBuilder.Entity("MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels.AdCardSpViewModel", b =>
                 {
-                    b.Property<string>("Color")
+                    b.Property<string>("AdId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("Color");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("Description");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("GearType")
-                        .HasColumnType("int")
-                        .HasColumnName("GearType");
-
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("AdId");
-
-                    b.Property<string>("Make")
+                    b.Property<string>("ImageTitle")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("Make");
-
-                    b.Property<decimal>("Mileage")
-                        .HasColumnType("decimal(18,2)")
-                        .HasColumnName("Mileage");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("PhoneNumber");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)")
-                        .HasColumnName("Price");
-
-                    b.Property<int>("SeatsCount")
-                        .HasColumnType("int")
-                        .HasColumnName("SeatsCount");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("Title");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Year")
-                        .HasColumnType("int")
-                        .HasColumnName("Year");
-
-                    b.ToTable("AdSpModels");
+                    b.ToTable("AdSpViewModels");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

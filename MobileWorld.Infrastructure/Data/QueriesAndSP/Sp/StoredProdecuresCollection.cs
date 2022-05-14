@@ -44,7 +44,7 @@ namespace MobileWorld.Infrastructure.Data.QueriesAndSP.Sp
         {
             var adIdParam = new SqlParameter()
             {
-                ParameterName = "@AdId",              
+                ParameterName = "@AdId",
                 Value = adId,
                 Direction = ParameterDirection.Input,
             };
@@ -56,7 +56,7 @@ namespace MobileWorld.Infrastructure.Data.QueriesAndSP.Sp
 
         public string AllAds()
         {
-            return "EXEC [GetAllAds]";
+            return "EXEC [AdsAll]";
         }
 
         public string GetIndexAds()

@@ -26,26 +26,41 @@ namespace MobileWorld.Core.Services
         }
         public async Task<List<AdCardSpViewModel>> GetIndexAds()
         {
-            var ads = _unitOfWork
-                .AdRepository
-                .Set<AdCardSpViewModel>()
-                .FromSqlRaw(_storedProdecuresCollection.GetIndexAds())
-                .AsNoTracking()
-                .ToListAsync();
+            try
+            {
+                var ads = _unitOfWork
+                                .AdRepository
+                                .Set<AdCardSpViewModel>()
+                                .FromSqlRaw(_storedProdecuresCollection.GetIndexAds())
+                                .AsNoTracking()
+                                .ToListAsync();
+                return await ads;
 
-            return await ads;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         public async Task<List<AdCardSpViewModel>> GetAllAds()
         {
-            var ads = _unitOfWork
-                .AdRepository
-                .Set<AdCardSpViewModel>()
-                .FromSqlRaw(_storedProdecuresCollection.GetIndexAds())
-                .AsNoTracking()
-                .ToListAsync();
+            try
+            {
+                var ads = _unitOfWork
+                               .AdRepository
+                               .Set<AdCardSpViewModel>()
+                               .FromSqlRaw(_storedProdecuresCollection.AllAds())
+                               .AsNoTracking()
+                               .ToListAsync();
 
-            return await ads;
+                return await ads;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
         }
 
 
@@ -57,7 +72,7 @@ namespace MobileWorld.Core.Services
 
         public async Task<AdInputModel> GetAdForUpdate(string adId)
         {
-           
+
             var features = _unitOfWork.AdRepository
                 .GetAsQueryable()
                 .Where(x => x.Id == adId)
@@ -171,7 +186,7 @@ namespace MobileWorld.Core.Services
             return null;
         }
 
-       
+
 
         public bool CreateAd(AdInputModel model, string ownerId, List<Image> images)
         {
@@ -499,7 +514,7 @@ namespace MobileWorld.Core.Services
                           },
                           Features = new FeaturesModel()
                           {
-                              ComfortDetails= new ComfortDetailModel()
+                              ComfortDetails = new ComfortDetailModel()
                               {
 
                               }
