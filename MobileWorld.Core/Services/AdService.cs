@@ -1,15 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MobileWorld.Core.Contracts;
-using System.Data;
 using MobileWorld.Core.Dto;
 using MobileWorld.Core.Models;
+using MobileWorld.Core.Models.Details;
 using MobileWorld.Core.Models.InputModels;
 using MobileWorld.Core.ViewModels;
-using MobileWorld.Infrastructure.Data.Models;
 using MobileWorld.Infrastructure.Data.Common;
+using MobileWorld.Infrastructure.Data.Models;
 using MobileWorld.Infrastructure.Data.QueriesAndSP.Sp.Contracts;
 using MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels;
-using MobileWorld.Core.Models.Details;
+using System.Data;
 
 namespace MobileWorld.Core.Services
 {
@@ -168,11 +168,11 @@ namespace MobileWorld.Core.Services
             return null;
         }
 
-        public async Task<List<AdSpViewModel>> GetIndexAds()
+        public async Task<List<AdCardSpViewModel>> GetIndexAds()
         {
             var ads = _unitOfWork
                 .AdRepository
-                .Set<AdSpViewModel>()
+                .Set<AdCardSpViewModel>()
                 .FromSqlRaw(_storedProdecuresCollection.GetIndexAds())
                 .AsNoTracking()
                 .ToListAsync();

@@ -44,9 +44,9 @@ namespace MobileWorld.Infrastructure.Data.QueriesAndSP.Sp
         {
             var adIdParam = new SqlParameter()
             {
-                ParameterName = "@AdId",
-                SqlDbType = SqlDbType.NVarChar,
-                Value = adId
+                ParameterName = "@AdId",              
+                Value = adId,
+                Direction = ParameterDirection.Input,
             };
 
             string sql = "exec [GetAdById] @AdId";

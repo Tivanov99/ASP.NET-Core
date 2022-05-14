@@ -42,15 +42,14 @@ namespace MobileWorld.Infrastructure.Data
 
         //public DbSet<AdSpModel> AdSpModels { get; set; }
 
-        public DbSet<AdSpViewModel> AdSpViewModels { get; set; }
+        public DbSet<AdCardSpViewModel> AdSpViewModels { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<AdSpViewModel>()
+            builder.Entity<AdCardSpViewModel>()
             .HasNoKey();
             //builder.Entity<AdSpModel>()
             //.HasNoKey();
-
 
             builder.Entity<FavoriteAd>()
                 .HasKey(f => new { f.AdId, f.UserId });

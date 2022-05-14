@@ -1,6 +1,6 @@
 ﻿namespace MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels
 {
-    public class AdSpViewModel
+    public class AdCardSpViewModel
     {
         public string AdId { get; set; }
 

@@ -19,7 +19,7 @@ namespace MobileWorld.Controllers
 
         public async Task<IActionResult> Index()
         {
-            List<AdSpViewModel> cars = await this.adService
+            List<AdCardSpViewModel> cars = await this.adService
                 .GetIndexAds();
             return View(cars);
         }

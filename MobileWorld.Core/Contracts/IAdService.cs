@@ -18,7 +18,7 @@ namespace MobileWorld.Core.Contracts
 
         //List<AdCardViewModel> GetAdsByBaseCriteria(BaseSearchCarModel model);
 
-        Task<List<AdSpViewModel>> GetIndexAds();
+        Task<List<AdCardSpViewModel>> GetIndexAds();
 
        bool CreateAd(AdInputModel model, string ownerId, List<Image> uploadedImages);
 
