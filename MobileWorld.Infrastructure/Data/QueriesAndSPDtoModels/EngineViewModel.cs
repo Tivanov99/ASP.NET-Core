@@ -6,7 +6,7 @@
 
         public int HorsePower { get; set; }
 
-        public int? NewtonMeter { get; set; }
+        public int NewtonMeter { get; set; }
 
         public int EcoLevel { get; set; }
 

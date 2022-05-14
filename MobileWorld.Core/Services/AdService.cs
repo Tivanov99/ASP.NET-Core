@@ -70,8 +70,18 @@ namespace MobileWorld.Core.Services
 
         public async Task<AdViewModel> GetAdById(string adId)
         {
-            var ad = await AdViewProjection(adId);
-            return ad;
+            var spResult = _storedProdecuresCollection.GetAdById(adId);
+
+            var sqlResult = _unitOfWork
+                .AdRepository
+                .Set<AdViewModel>()
+                .FromSqlRaw(spResult.Item1,spResult.Item2[0])
+                .FirstOrDefault();
+
+            var result = _mapper.Map<AdViewModel>(sqlResult);
+
+            //var ad = await AdViewProjection(adId);
+            return result;
         }
 
         public async Task<AdInputModel> GetAdForUpdate(string adId)
