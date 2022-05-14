@@ -6,10 +6,10 @@ namespace MobileWorld.Core.ViewModels
 {
     public class AdViewModel
     {
-        //public AdViewModel()
-        //{
-        //Images = new();
-        //}
+        public AdViewModel()
+        {
+            Car = new CarViewModel();
+        }
 
         public string Id { get; set; }
 

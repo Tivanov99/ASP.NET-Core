@@ -4,6 +4,10 @@ namespace MobileWorld.Core.ViewModels
 {
     public class CarViewModel
     {
+        public CarViewModel()
+        {
+            Engine = new EngineViewModel();
+        }
         public string Make { get; set; }
 
         public string Color { get; set; }
