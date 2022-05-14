@@ -1,10 +1,8 @@
-﻿using MobileWorld.Infrastructure.Data.Enums;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels
+﻿namespace MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels
 {
     public class AdSpModel
     {
+        //Ad
         public string Id { get; set; }
 
         public string Title { get; set; }
@@ -34,7 +32,6 @@ namespace MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels
         //CarModel ends
 
         //EngineModel starts
-
         public int FuelType { get; set; }
 
         public int HorsePower { get; set; }
