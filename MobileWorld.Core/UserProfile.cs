@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using MobileWorld.Core.ViewModels;
+using MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,7 @@ namespace MobileWorld.Core
     {
         public UserProfile()
         {
-            CreateMap<>
+            CreateMap<AdSpModel, AdViewModel>();
         }
     }
 }

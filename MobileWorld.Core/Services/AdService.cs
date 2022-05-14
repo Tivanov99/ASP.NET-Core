@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Dto;
 using MobileWorld.Core.Models;
@@ -17,12 +18,15 @@ namespace MobileWorld.Core.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IStoredProdecuresCollection _storedProdecuresCollection;
+        private readonly IMapper _mapper;
 
         public AdService(IUnitOfWork unit,
-            IStoredProdecuresCollection storedProdecuresCollection)
+            IStoredProdecuresCollection storedProdecuresCollection,
+            IMapper mapper)
         {
-            this._unitOfWork = unit;
+            _unitOfWork = unit;
             _storedProdecuresCollection = storedProdecuresCollection;
+            _mapper = mapper;
         }
         public async Task<List<AdCardSpViewModel>> GetIndexAds()
         {
@@ -459,71 +463,71 @@ namespace MobileWorld.Core.Services
                  Region = region,
                  OwnerId = ownerId,
              };
-        private async Task<AdViewModel?> AdViewProjection(string adId)
-            => await this._unitOfWork.AdRepository
-                  .GetAsQueryable()
-                  .AsNoTracking()
-                  .Where(a => a.Id == adId)
-                  .Include(c => c.Car.Feature.SafetyDetails)
-                  .Include(c => c.Car.Feature.ProtectionDetails)
-                  .Include(c => c.Car.Feature.ComfortDetails)
-                  .Include(c => c.Car.Feature.ExteriorDetails)
-                  .Include(c => c.Car.Feature.InteriorDetails)
-                  .Include(c => c.Car.Feature.OthersDetails)
-                  .Include(a => a.Car)
-                        .ThenInclude(c => c.Engine)
-                  .Include(a => a.Images)
-                  .Select(a => new AdViewModel()
-                  {
-                      PhoneNumber = a.PhoneNumber,
-                      Id = a.Id,
-                      Title = a.Title,
-                      Price = a.Price,
-                      Description = a.Description,
-                      Region = new RegionModel()
-                      {
-                          RegionName = a.Region.RegionName,
-                          Neiborhood = a.Region.Neiborhood,
-                          TownName = a.Region.Town.TownName,
-                      },
-                      Images = a.Images
-                      .Select(i => new ImageDTO(i.ImageTitle, i.ImagePath + @"\"))
-                      .ToList(),
-                      Car = new CarModel()
-                      {
-                          SeatsCount = a.Car.SeatsCount,
-                          Year = a.Car.Year,
-                          Make = a.Car.Make,
-                          //Model = a.Car.Model,
-                          GearType = a.Car.GearType,
-                          Color = a.Car.Color,
-                          Mileage = a.Car.Mileage,
-                          Engine = new EngineModel()
-                          {
-                              FuelConsuption = a.Car.Engine.FuelConsuption,
-                              FuelType = a.Car.Engine.FuelType,
-                              EcoLevel = a.Car.Engine.EcoLevel,
-                              CubicCapacity = a.Car.Engine.CubicCapacity,
-                              NewtonMeter = a.Car.Engine.NewtonMeter,
-                              HorsePower = a.Car.Engine.HorsePower,
-                          },
-                          Features = new FeaturesModel()
-                          {
-                              ComfortDetails = new ComfortDetailModel()
-                              {
+        //private async Task<AdViewModel?> AdViewProjection(string adId)
+        //    => await this._unitOfWork.AdRepository
+        //          .GetAsQueryable()
+        //          .AsNoTracking()
+        //          .Where(a => a.Id == adId)
+        //          .Include(c => c.Car.Feature.SafetyDetails)
+        //          .Include(c => c.Car.Feature.ProtectionDetails)
+        //          .Include(c => c.Car.Feature.ComfortDetails)
+        //          .Include(c => c.Car.Feature.ExteriorDetails)
+        //          .Include(c => c.Car.Feature.InteriorDetails)
+        //          .Include(c => c.Car.Feature.OthersDetails)
+        //          .Include(a => a.Car)
+        //                .ThenInclude(c => c.Engine)
+        //          .Include(a => a.Images)
+        //          .Select(a => new AdViewModel()
+        //          {
+        //              PhoneNumber = a.PhoneNumber,
+        //              Id = a.Id,
+        //              Title = a.Title,
+        //              Price = a.Price,
+        //              Description = a.Description,
+        //              Region = new RegionModel()
+        //              {
+        //                  RegionName = a.Region.RegionName,
+        //                  Neiborhood = a.Region.Neiborhood,
+        //                  TownName = a.Region.Town.TownName,
+        //              },
+        //              Images = a.Images
+        //              .Select(i => new ImageDTO(i.ImageTitle, i.ImagePath + @"\"))
+        //              .ToList(),
+        //              Car = new CarModel()
+        //              {
+        //                  SeatsCount = a.Car.SeatsCount,
+        //                  Year = a.Car.Year,
+        //                  Make = a.Car.Make,
+        //                  //Model = a.Car.Model,
+        //                  GearType = a.Car.GearType,
+        //                  Color = a.Car.Color,
+        //                  Mileage = a.Car.Mileage,
+        //                  Engine = new EngineModel()
+        //                  {
+        //                      FuelConsuption = a.Car.Engine.FuelConsuption,
+        //                      FuelType = a.Car.Engine.FuelType,
+        //                      EcoLevel = a.Car.Engine.EcoLevel,
+        //                      CubicCapacity = a.Car.Engine.CubicCapacity,
+        //                      NewtonMeter = a.Car.Engine.NewtonMeter,
+        //                      HorsePower = a.Car.Engine.HorsePower,
+        //                  },
+        //                  Features = new FeaturesModel()
+        //                  {
+        //                      ComfortDetails = new ComfortDetailModel()
+        //                      {
 
-                              }
-                          }
-                      },
-                      Owner = new OwnerModel()
-                      {
-                          OwnerId = a.OwnerId,
-                          FirstName = a.Owner.FirstName,
-                          LastName = a.Owner.LastName,
-                          IsFavoriteAd = a.Owner.FavoriteAds.Any(a => a.AdId == adId),
-                      },
-                  })
-                .FirstOrDefaultAsync();
+        //                      }
+        //                  }
+        //              },
+        //              Owner = new OwnerModel()
+        //              {
+        //                  OwnerId = a.OwnerId,
+        //                  FirstName = a.Owner.FirstName,
+        //                  LastName = a.Owner.LastName,
+        //                  IsFavoriteAd = a.Owner.FavoriteAds.Any(a => a.AdId == adId),
+        //              },
+        //          })
+        //        .FirstOrDefaultAsync();
 
         //TODO: Just Use AdViewModel and when send AdViewModel to controller bind to AdInputModel
         private async Task<AdEditModel?> EditAdProjection(string adId)

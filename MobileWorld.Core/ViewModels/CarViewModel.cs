@@ -1,4 +1,6 @@
-﻿namespace MobileWorld.Core.ViewModels
+﻿using MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels;
+
+namespace MobileWorld.Core.ViewModels
 {
     public class CarViewModel
     {
@@ -13,5 +15,7 @@
         public int Year { get; set; }
 
         public int GearType { get; set; }
+
+        public EngineViewModel Engine { get; set; }
     }
 }
