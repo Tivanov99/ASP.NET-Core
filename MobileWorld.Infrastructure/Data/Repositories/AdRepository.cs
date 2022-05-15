@@ -24,15 +24,6 @@ namespace MobileWorld.Infrastructure.Data.Repositories
 
             using (_context)
             {
-                AdInfoSpModel adMidel = new();
-                CarSpModel carModel = new CarSpModel();
-                EngineSpModel engineModel = new EngineSpModel();
-                List<string> images = new List<string>();
-
-                //SqlCommand sqlCommand = new SqlCommand(sql);
-                //sqlCommand.Parameters.Add(parameters[0]);
-
-
                 DbCommand command;
                 DbDataReader dbReader;
 
@@ -46,48 +37,59 @@ namespace MobileWorld.Infrastructure.Data.Repositories
 
                 while (dbReader.Read())
                 {
-                    adMidel.Id = dbReader.GetString(0);
-                    adMidel.Title = dbReader.GetString(1);
-                    adMidel.Price = dbReader.GetDecimal(2);
-                    adMidel.PhoneNumber = dbReader.GetString(3);
-                    adMidel.Description = dbReader.GetString(4);
-                    adMidel.CreatedOn = dbReader.GetDateTime(5);
-                    adMidel.RegionName = dbReader.GetString(6);
-                    adMidel.Neiborhood = dbReader.GetString(7);
-                    adMidel.TownName = dbReader.GetString(8);
-                }
-                    resultModel.AdInfo = adMidel;
+                    resultModel.AdInfo = new AdInfoSpModel()
+                    {
+                        Id = dbReader.GetString(0),
+                        Title = dbReader.GetString(1),
+                        Price = dbReader.GetDecimal(2),
+                        PhoneNumber = dbReader.GetString(3),
+                        Description = dbReader.GetString(4),
+                        CreatedOn = dbReader.GetDateTime(5),
+                        RegionName = dbReader.GetString(6),
+                        Neiborhood = dbReader.GetString(7),
+                        TownName = dbReader.GetString(8)
+                    };
 
-                dbReader.NextResult();
-
-                while (dbReader.Read())
-                {
-                    carModel.Model=dbReader.GetString(0);
-                    carModel.SeatsCount=dbReader.GetInt32(1);
-                    carModel.Year = dbReader.GetInt32(2);
-                    carModel.Color = dbReader.GetString(3);
-                    carModel.GearType = dbReader.GetInt32(4);
-                    carModel.Make = dbReader.GetString(5);
-                    carModel.Mileage = dbReader.GetDecimal(6);
                 }
 
                 dbReader.NextResult();
 
                 while (dbReader.Read())
                 {
-                    engineModel.CubicCapacity=dbReader.GetInt32(0);
-                    engineModel.EcoLevel=dbReader.GetInt32(1);
-                    engineModel.FuelConsuption=dbReader.GetDouble(2);
-                    engineModel.FuelType=dbReader.GetInt32(3);
-                    engineModel.HorsePower=dbReader.GetInt32(4);
-                    engineModel.NewtonMeter=dbReader.GetInt32(5);
+                    resultModel.Car = new CarSpModel()
+                    {
+                        Model = dbReader.GetString(0),
+                        SeatsCount = dbReader.GetInt32(1),
+                        Year = dbReader.GetInt32(2),
+                        Color = dbReader.GetString(3),
+                        GearType = dbReader.GetInt32(4),
+                        Make = dbReader.GetString(5),
+                        Mileage = dbReader.GetDecimal(6)
+                    };
+
                 }
 
                 dbReader.NextResult();
 
                 while (dbReader.Read())
                 {
-                    images.Add(dbReader.GetString(0));
+                    resultModel.Engine = new EngineSpModel()
+                    {
+                        CubicCapacity = dbReader.GetInt32(0),
+                        EcoLevel = dbReader.GetInt32(1),
+                        FuelConsuption = dbReader.GetDouble(2),
+                        FuelType = dbReader.GetInt32(3),
+                        HorsePower = dbReader.GetInt32(4),
+                        NewtonMeter = dbReader.GetInt32(5)
+                    };
+
+                }
+
+                dbReader.NextResult();
+
+                while (dbReader.Read())
+                {
+                    resultModel.Images.Add(dbReader.GetString(0));
                 }
 
                 dbReader.Close();

@@ -2,6 +2,10 @@
 {
     public class AdSpModel
     {
+        public AdSpModel()
+        {
+            Images = new();
+        }
         public AdInfoSpModel AdInfo { get; set; }
 
         public CarSpModel Car { get; set; }
