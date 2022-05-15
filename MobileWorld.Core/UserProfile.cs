@@ -15,7 +15,7 @@ namespace MobileWorld.Core
                 .ForMember(pts => pts.Neiborhood, opt => opt.MapFrom(ps => ps.Neiborhood))
                   .ForMember(pts => pts.TownName, opt => opt.MapFrom(ps => ps.TownName))
                   .ForMember(pts => pts.RegionName, opt => opt.MapFrom(ps => ps.RegionName));
-
+            
             //CreateMap<AdSpModel, AdViewModel>()
             //    .ForMember(pts => pts.Car, opt => opt.MapFrom(ps => ps.Car))
             //    .ForMember(pts => pts.Car.Engine, opt => opt.MapFrom(ps => ps.Engine))
