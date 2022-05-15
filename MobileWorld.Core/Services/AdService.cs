@@ -72,23 +72,23 @@ namespace MobileWorld.Core.Services
         {
             var spResult = _storedProdecuresCollection.GetAdById(adId);
 
-            var adModel = await _unitOfWork
-                .AdRepository
-                .Set<AdInfoSpModel>()
-                .FromSqlRaw(spResult.Item1,spResult.Item2[0])
-                .ToListAsync();
+            //var adModel = await _unitOfWork
+            //    .AdRepository
+            //    .Set<AdInfoSpModel>()
+            //    .FromSqlRaw(spResult.Item1,spResult.Item2[0])
+            //    .ToListAsync();
 
             var featureModel = _unitOfWork
                 .AdRepository
                 .GetAdById(spResult.Item1, spResult.Item2);
 
-                //TODO : CREATE MAPPING BETWEEN AdSpModel and AdViewModel
+            //TODO : CREATE MAPPING BETWEEN AdSpModel and AdViewModel
 
-            var result = _mapper.Map<AdViewModel>(adModel[0]);
+            //var result = _mapper.Map<AdViewModel>(adModel[0]);
+            int da = 0;
 
 
-
-            return result;
+            return null;
         }
 
         public async Task<AdInputModel> GetAdForUpdate(string adId)
