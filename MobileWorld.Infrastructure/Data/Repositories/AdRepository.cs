@@ -24,8 +24,10 @@ namespace MobileWorld.Infrastructure.Data.Repositories
 
             using (_context)
             {
-                AdInfoSpModel model = new();
-                CarSpModel car = new CarSpModel();
+                AdInfoSpModel adMidel = new();
+                CarSpModel carModel = new CarSpModel();
+                EngineSpModel engineModel = new EngineSpModel();
+                List<string> images = new List<string>();
 
                 //SqlCommand sqlCommand = new SqlCommand(sql);
                 //sqlCommand.Parameters.Add(parameters[0]);
@@ -44,31 +46,51 @@ namespace MobileWorld.Infrastructure.Data.Repositories
 
                 while (dbReader.Read())
                 {
-                    model.Id = dbReader.GetString(0);
-                    model.Title = dbReader.GetString(1);
-                    model.Price = dbReader.GetDecimal(2);
-                    model.PhoneNumber = dbReader.GetString(3);
-                    model.Description = dbReader.GetString(4);
-                    model.CreatedOn = dbReader.GetDateTime(5);
-                    model.RegionName = dbReader.GetString(6);
-                    model.Neiborhood = dbReader.GetString(7);
-                    model.TownName = dbReader.GetString(8);
+                    adMidel.Id = dbReader.GetString(0);
+                    adMidel.Title = dbReader.GetString(1);
+                    adMidel.Price = dbReader.GetDecimal(2);
+                    adMidel.PhoneNumber = dbReader.GetString(3);
+                    adMidel.Description = dbReader.GetString(4);
+                    adMidel.CreatedOn = dbReader.GetDateTime(5);
+                    adMidel.RegionName = dbReader.GetString(6);
+                    adMidel.Neiborhood = dbReader.GetString(7);
+                    adMidel.TownName = dbReader.GetString(8);
                 }
-                    resultModel.AdInfo = model;
+                    resultModel.AdInfo = adMidel;
 
                 dbReader.NextResult();
 
                 while (dbReader.Read())
                 {
-                    car.Model=dbReader.GetString(0);
-                    car.SeatsCount=dbReader.GetInt32(1);
-                    car.Year = dbReader.GetInt32(2);
-                    car.Color = dbReader.GetString(3);
-                    car.GearType = dbReader.GetInt32(4);
-                    car.Make = dbReader.GetString(5);
-                    car.Mileage = dbReader.GetDecimal(6);
+                    carModel.Model=dbReader.GetString(0);
+                    carModel.SeatsCount=dbReader.GetInt32(1);
+                    carModel.Year = dbReader.GetInt32(2);
+                    carModel.Color = dbReader.GetString(3);
+                    carModel.GearType = dbReader.GetInt32(4);
+                    carModel.Make = dbReader.GetString(5);
+                    carModel.Mileage = dbReader.GetDecimal(6);
                 }
 
+                dbReader.NextResult();
+
+                while (dbReader.Read())
+                {
+                    engineModel.CubicCapacity=dbReader.GetInt32(0);
+                    engineModel.EcoLevel=dbReader.GetInt32(1);
+                    engineModel.FuelConsuption=dbReader.GetDouble(2);
+                    engineModel.FuelType=dbReader.GetInt32(3);
+                    engineModel.HorsePower=dbReader.GetInt32(4);
+                    engineModel.NewtonMeter=dbReader.GetInt32(5);
+                }
+
+                dbReader.NextResult();
+
+                while (dbReader.Read())
+                {
+                    images.Add(dbReader.GetString(0));
+                }
+
+                dbReader.Close();
             }
 
             return resultModel;
