@@ -48,7 +48,11 @@ namespace MobileWorld.Infrastructure.Data.Repositories
                             CreatedOn = dbReader.GetDateTime(5),
                             RegionName = dbReader.GetString(6),
                             Neiborhood = dbReader.GetString(7),
-                            TownName = dbReader.GetString(8)
+                            TownName = dbReader.GetString(8),
+                            OwnerId = dbReader.GetString(9),
+                            FirstName = dbReader.GetString(10),
+                            LastName = dbReader.GetString(11),
+                            IsFavoriteAd = dbReader[12]!=DBNull.Value
                         };
 
                     }

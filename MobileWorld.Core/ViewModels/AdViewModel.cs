@@ -23,7 +23,7 @@
 
         public RegionViewModel Region { get; set; }
 
-        public OwnerModel Owner { get; set; }
+        public OwnerViewModel Owner { get; set; }
 
         public List<string> Images { get; set; }
 

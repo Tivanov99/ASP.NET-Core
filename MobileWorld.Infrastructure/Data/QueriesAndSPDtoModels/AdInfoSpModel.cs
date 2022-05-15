@@ -1,4 +1,6 @@
-﻿namespace MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels
 {
     public class AdInfoSpModel
     {
@@ -19,5 +21,13 @@
         public string Neiborhood { get; set; }
 
         public string TownName { get; set; }
+
+        public string OwnerId { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public bool IsFavoriteAd { get; set; }
     }
 }
