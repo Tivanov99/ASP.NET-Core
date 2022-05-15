@@ -11,6 +11,7 @@ namespace MobileWorld.Infrastructure.Data.Models
         public int FeatureId { get; set; }
 
         public Feature Feature { get; set; }
+
         public bool Alarm { get; set; }
 
         public bool Armored { get; set; }
