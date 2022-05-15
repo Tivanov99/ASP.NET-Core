@@ -1,5 +1,5 @@
 ﻿using MobileWorld.Core.Dto;
-using MobileWorld.Infrastructure.Data.Models;
+using MobileWorld.Core.ViewModels;
 using System.ComponentModel.DataAnnotations;
 
 namespace MobileWorld.Core.Models.InputModels
@@ -39,9 +39,8 @@ namespace MobileWorld.Core.Models.InputModels
 
         public OwnerInputModel Owner { get; set; } 
 
-        public FeaturesModel Features { get; set; }
+        public FeatureViewModel Features { get; set; }
 
         public List<ImageDTO> Images { get; set; }
-
     }
 }

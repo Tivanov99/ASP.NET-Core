@@ -44,7 +44,7 @@ builder.Services.AddControllersWithViews()
 
 var mapperConfig = new MapperConfiguration(mc =>
 {
-    mc.AddProfile(new UserProfile());
+    mc.AddProfile(new ApplicationProfile());
 });
 IMapper mapper = mapperConfig.CreateMapper();
 

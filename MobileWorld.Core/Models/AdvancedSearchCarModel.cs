@@ -1,10 +1,11 @@
 ﻿using MobileWorld.Core.Models;
+using MobileWorld.Core.ViewModels;
 
 namespace MobileWorld.Core.Models
 {
     public class AdvancedSearchCarModel : BaseSearchCarModel
     {
-        public FeaturesModel Features { get; set; } = new();
+        public FeatureViewModel Features { get; set; } = new();
 
         public int? ToYear { get; set; }
 

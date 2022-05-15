@@ -1,16 +1,11 @@
-﻿using MobileWorld.Infrastructure.Data.Enums;
-using MobileWorld.Infrastructure.Data.Models;
+﻿using MobileWorld.Core.Models.Contracts;
+using MobileWorld.Infrastructure.Data.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace MobileWorld.Core.Models.InputModels
 {
-    public class CarInputModel
+    public class CarInputModel : ICarModel
     {
-        public CarInputModel()
-        {
-            //Images = new();
-        }
-
         [Required(ErrorMessage = "Полето 'Марка' е задължително!")]
         public string Make { get; set; }
 
@@ -37,7 +32,5 @@ namespace MobileWorld.Core.Models.InputModels
         [Required(ErrorMessage = "Полето 'Пробег' е задължително!")]
         [Range(0,double.MaxValue, ErrorMessage = "Пробегът трябва да е в диапазона от 0 до {2}")]
         public decimal Mileage { get; set; }
-
-        //public List<Image> Images { get; set; }
     }
 }

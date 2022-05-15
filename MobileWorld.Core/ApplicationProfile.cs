@@ -5,12 +5,14 @@ using MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels;
 
 namespace MobileWorld.Core
 {
-    public class UserProfile : Profile
+    public class ApplicationProfile : Profile
     {
-        public UserProfile()
+        public ApplicationProfile()
         {
             CreateMap<EngineSpModel , EngineViewModel>();
-            CreateMap<CarSpModel,CarViewModel>();
+            CreateMap<CarSpModel, CarViewModel>()
+             .ForMember(pts => pts.GearType, opt => opt.MapFrom(ps => ps.GearType));
+
             CreateMap<AdInfoSpModel, AdViewModel>();
             CreateMap<AdInfoSpModel, OwnerViewModel>();
 

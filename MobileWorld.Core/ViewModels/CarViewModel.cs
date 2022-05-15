@@ -1,13 +1,11 @@
-﻿using MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels;
+﻿using MobileWorld.Core.Models.Contracts;
+using MobileWorld.Infrastructure.Data.Enums;
+using MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels;
 
 namespace MobileWorld.Core.ViewModels
 {
-    public class CarViewModel
+    public class CarViewModel : ICarModel
     {
-        public CarViewModel()
-        {
-            Engine = new EngineViewModel();
-        }
         public string Make { get; set; }
 
         public string Color { get; set; }
@@ -18,7 +16,7 @@ namespace MobileWorld.Core.ViewModels
 
         public int Year { get; set; }
 
-        public int GearType { get; set; }
+        public GearType GearType { get; set; }
 
         public EngineViewModel Engine { get; set; }
 

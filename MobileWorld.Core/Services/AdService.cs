@@ -94,9 +94,8 @@ namespace MobileWorld.Core.Services
             }
             catch (Exception)
             {
+                return null;
             }
-
-            return null;
         }
 
         public async Task<AdInputModel> GetAdForUpdate(string adId)
@@ -400,7 +399,7 @@ namespace MobileWorld.Core.Services
             }
         }
 
-        private void MatchFeatures(Feature dbFeature, FeaturesModel model)
+        private void MatchFeatures(Feature dbFeature, FeatureViewModel model)
         {
             MatchInputFeaturesToFeatureDbModel(model.SafetyDetails, dbFeature.SafetyDetails);
             MatchInputFeaturesToFeatureDbModel(model.ComfortDetails, dbFeature.ComfortDetails);

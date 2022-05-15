@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using MobileWorld.Infrastructure.Data.Common;
+using MobileWorld.Infrastructure.Data.Enums;
 using MobileWorld.Infrastructure.Data.Models;
 using MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels;
 using MobileWorld.Infrastructure.Data.Repositories.Contracts;
@@ -66,7 +67,7 @@ namespace MobileWorld.Infrastructure.Data.Repositories
                             SeatsCount = dbReader.GetInt32(1),
                             Year = dbReader.GetInt32(2),
                             Color = dbReader.GetString(3),
-                            GearType = dbReader.GetInt32(4),
+                            GearType = (GearType)dbReader.GetInt32(4),
                             Make = dbReader.GetString(5),
                             Mileage = dbReader.GetDecimal(6)
                         };
