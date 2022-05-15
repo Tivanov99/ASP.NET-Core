@@ -12,6 +12,8 @@ namespace MobileWorld.Core
             CreateMap<EngineSpModel , EngineViewModel>();
             CreateMap<CarSpModel,CarViewModel>();
             CreateMap<AdInfoSpModel, AdViewModel>();
+            CreateMap<AdInfoSpModel, OwnerViewModel>();
+
             CreateMap<AdInfoSpModel, RegionViewModel>()
                 .ForMember(pts => pts.Neiborhood, opt => opt.MapFrom(ps => ps.Neiborhood))
                 .ForMember(pts => pts.TownName, opt => opt.MapFrom(ps => ps.TownName))
@@ -23,6 +25,7 @@ namespace MobileWorld.Core
             CreateMap<FeatureSpModel, OthersDetailViewModel>();
             CreateMap<FeatureSpModel, ProtectionDetailViewModel>();
             CreateMap<FeatureSpModel, SafetyDetailViewModel>();
+
 
 
             //CreateMap<AdSpModel, AdViewModel>()

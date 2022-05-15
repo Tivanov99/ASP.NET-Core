@@ -89,6 +89,8 @@ namespace MobileWorld.Core.Services
                     .ToList();
 
                 adViewModel.Car.Features = MapToFeatureViewModel(features[0]);
+
+                return adViewModel;
             }
             catch (Exception)
             {
@@ -264,6 +266,7 @@ namespace MobileWorld.Core.Services
             }
             return false;
         }
+
         private AdViewModel MapToAdViewModel(AdSpModel soursce)
         {
             AdViewModel adResult = _mapper.Map<AdViewModel>(soursce.AdInfo);
@@ -271,6 +274,8 @@ namespace MobileWorld.Core.Services
             adResult.Car.Engine = _mapper.Map<EngineViewModel>(soursce.Engine);
             adResult.Region = _mapper.Map<RegionViewModel>(soursce.AdInfo);
             adResult.Images = soursce.Images;
+            OwnerViewModel owner  = _mapper.Map<OwnerViewModel>(soursce.AdInfo);
+            adResult.Owner = owner;
             return adResult;
         }
 

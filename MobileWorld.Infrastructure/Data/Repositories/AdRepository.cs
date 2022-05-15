@@ -54,7 +54,6 @@ namespace MobileWorld.Infrastructure.Data.Repositories
                             LastName = dbReader.GetString(11),
                             IsFavoriteAd = dbReader[12]!=DBNull.Value
                         };
-
                     }
 
                     dbReader.NextResult();

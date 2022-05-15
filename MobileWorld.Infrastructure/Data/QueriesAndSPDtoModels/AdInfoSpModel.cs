@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels
+﻿namespace MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels
 {
     public class AdInfoSpModel
     {
