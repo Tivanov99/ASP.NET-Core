@@ -2,7 +2,6 @@
 {
     public class AdInfoSpModel
     {
-        //Ad
         public string Id { get; set; }
 
         public string Title { get; set; }
@@ -14,5 +13,11 @@
         public decimal Price { get; set; }
 
         public string Description { get; set; }
+
+        public string RegionName { get; set; }
+
+        public string Neiborhood { get; set; }
+
+        public string TownName { get; set; }
     }
 }
