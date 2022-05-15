@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MobileWorld.Infrastructure.Data.Models
 {
@@ -22,8 +21,6 @@ namespace MobileWorld.Infrastructure.Data.Models
         public bool Exchange { get; set; }
 
         public bool AutoGas { get; set; }
-
-        public bool Hybrid { get; set; }
 
         public bool Long { get; set; }
 

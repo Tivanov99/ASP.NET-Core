@@ -24,8 +24,7 @@ namespace MobileWorld.Infrastructure.Data.Repositories
 
             try
             {
-                using (_context)
-                {
+               
                     DbCommand command;
                     DbDataReader dbReader;
 
@@ -93,7 +92,6 @@ namespace MobileWorld.Infrastructure.Data.Repositories
                     }
 
                     dbReader.Close();
-                }
 
                 return resultModel;
             }
