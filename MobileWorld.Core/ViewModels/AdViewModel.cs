@@ -27,6 +27,8 @@
 
         public List<string> Images { get; set; }
 
+        public FeatureViewModel Features { get; set; }
+
         //public List<ImageDTO> Images { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿namespace MobileWorld.Core.ViewModels
+﻿namespace MobileWorld.Core.ViewModels.FeatureDetailModels
+
 {
     public class ComfortDetailViewModel
     {

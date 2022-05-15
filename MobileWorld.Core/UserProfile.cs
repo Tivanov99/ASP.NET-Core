@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MobileWorld.Core.ViewModels;
+using MobileWorld.Core.ViewModels.FeatureDetailModels;
 using MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels;
 
 namespace MobileWorld.Core

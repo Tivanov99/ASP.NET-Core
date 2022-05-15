@@ -1,4 +1,6 @@
-﻿namespace MobileWorld.Core.ViewModels
+﻿using MobileWorld.Core.ViewModels.FeatureDetailModels;
+
+namespace MobileWorld.Core.ViewModels
 {
     public class FeatureViewModel
     {

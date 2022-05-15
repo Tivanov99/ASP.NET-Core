@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Dto;
 using MobileWorld.Core.Models;
-using MobileWorld.Core.Models.Details;
 using MobileWorld.Core.Models.InputModels;
 using MobileWorld.Core.ViewModels;
+using MobileWorld.Core.ViewModels.FeatureDetailModels;
 using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.Models;
 using MobileWorld.Infrastructure.Data.QueriesAndSP.Sp.Contracts;
@@ -67,6 +67,7 @@ namespace MobileWorld.Core.Services
             }
         }
 
+        
 
         public async Task<AdViewModel> GetAdById(string adId)
         {
@@ -76,11 +77,7 @@ namespace MobileWorld.Core.Services
                 .AdRepository
                 .GetAdById(adSpResources.Item1, adSpResources.Item2);
 
-            AdViewModel adResult = _mapper.Map<AdViewModel>(dbAdModel.AdInfo);
-            adResult.Car= _mapper.Map<CarViewModel>(dbAdModel.Car);
-            adResult.Car.Engine = _mapper.Map<EngineViewModel>(dbAdModel.Engine);
-            adResult.Region = _mapper.Map<RegionViewModel>(dbAdModel.AdInfo);
-            adResult.Images= dbAdModel.Images;
+            AdViewModel adViewModel = MapToAdViewModel(dbAdModel);
 
             var featuresSpResources = _storedProdecuresCollection
                 .GetAdFeatures(adId);
@@ -90,10 +87,9 @@ namespace MobileWorld.Core.Services
                 .FromSqlRaw(featuresSpResources.Item1, featuresSpResources.Item2[0])
                 .ToList();
 
-            ComfortDetailViewModel
+            adViewModel.Features = MapToFeatureViewModel(features[0]);
 
-
-            return adResult;
+            return adViewModel;
         }
 
         public async Task<AdInputModel> GetAdForUpdate(string adId)
@@ -190,9 +186,7 @@ namespace MobileWorld.Core.Services
                 .UserStoredProdecude(result.Item1, result.Item2);
 
                 int affectedRows = Convert
-                        .ToInt32(Convert
-                                        .ToString(result.Item2[1].Value)
-                                );
+                        .ToInt32(Convert.ToString(result.Item2[1].Value));
 
                 return affectedRows > 0 ? true : false;
             }
@@ -265,6 +259,26 @@ namespace MobileWorld.Core.Services
             }
             return false;
         }
+        private AdViewModel MapToAdViewModel(AdSpModel soursce)
+        {
+            AdViewModel adResult = _mapper.Map<AdViewModel>(soursce.AdInfo);
+            adResult.Car = _mapper.Map<CarViewModel>(soursce.Car);
+            adResult.Car.Engine = _mapper.Map<EngineViewModel>(soursce.Engine);
+            adResult.Region = _mapper.Map<RegionViewModel>(soursce.AdInfo);
+            adResult.Images = soursce.Images;
+            return adResult;
+        }
+
+        private FeatureViewModel MapToFeatureViewModel(FeatureSpModel source)
+            => new FeatureViewModel
+            {
+                ComfortDetail = _mapper.Map<ComfortDetailViewModel>(source),
+                ExteriorDetail = _mapper.Map<ExteriorDetailViewModel>(source),
+                InteriorDetail = _mapper.Map<InteriorDetailViewModel>(source),
+                OthersDetail = _mapper.Map<OthersDetailViewModel>(source),
+                ProtectionDetail = _mapper.Map<ProtectionDetailViewModel>(source),
+                SafetyDetail = _mapper.Map<SafetyDetailViewModel>(source),
+            };
 
         private List<PropertyDto> GetBaseSearchCriteria(object model)
         {
