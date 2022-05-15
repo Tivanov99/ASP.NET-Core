@@ -25,6 +25,7 @@ namespace MobileWorld.Infrastructure.Data.Repositories
             using (_context)
             {
                 AdInfoSpModel model = new();
+                CarSpModel car = new CarSpModel();
 
                 //SqlCommand sqlCommand = new SqlCommand(sql);
                 //sqlCommand.Parameters.Add(parameters[0]);
@@ -53,7 +54,20 @@ namespace MobileWorld.Infrastructure.Data.Repositories
                     model.Neiborhood = dbReader.GetString(7);
                     model.TownName = dbReader.GetString(8);
                 }
-                resultModel.AdInfo = model;
+                    resultModel.AdInfo = model;
+
+                dbReader.NextResult();
+
+                while (dbReader.Read())
+                {
+                    car.Model=dbReader.GetString(0);
+                    car.SeatsCount=dbReader.GetInt32(1);
+                    car.Year = dbReader.GetInt32(2);
+                    car.Color = dbReader.GetString(3);
+                    car.GearType = dbReader.GetInt32(4);
+                    car.Make = dbReader.GetString(5);
+                    car.Mileage = dbReader.GetDecimal(6);
+                }
 
             }
 
