@@ -21,6 +21,7 @@ namespace MobileWorld.Core
                 .ForPath(pts => pts.Car.Engine.EcoLevel, opt => opt.MapFrom(ps => ps.EcoLevel))
                 .ForPath(pts => pts.Car.Engine.FuelConsuption, opt => opt.MapFrom(ps => ps.FuelConsuption))
                 .ForPath(pts => pts.Car.Engine.HorsePower, opt => opt.MapFrom(ps => ps.HorsePower));
+
         }
     }
 }
