@@ -48,8 +48,13 @@ namespace MobileWorld.Infrastructure.Data
 
         public DbSet<EngineSpModel> EngineSpModels { get; set; }
 
+        public DbSet<FeatureSpModel> FeatureSpModels { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<FeatureSpModel>()
+            .HasNoKey();
+
             builder.Entity<CarSpModel>()
             .HasNoKey();
 
