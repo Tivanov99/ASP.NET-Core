@@ -1,6 +1,7 @@
 ﻿using MobileWorld.Infrastructure.Data.Identity;
 using MobileWorld.Infrastructure.Data.Models;
 using MobileWorld.Infrastructure.Data.Repositories;
+using MobileWorld.Infrastructure.Data.Repositories.Contracts;
 
 namespace MobileWorld.Infrastructure.Data.Common
 {
@@ -8,7 +9,7 @@ namespace MobileWorld.Infrastructure.Data.Common
     {
         void Save();
 
-        public IApplicationDbRepository<Ad> AdRepository { get; }
+        public IAdRepository AdRepository { get; }
 
         public IApplicationDbRepository<ApplicationUser> UserRepository { get; }
 

@@ -10,8 +10,6 @@ namespace MobileWorld.Infrastructure.Data.QueriesAndSP.Sp.Contracts
 
         (string, SqlParameter[]) GetAdById(string adId);
 
-        (string, SqlParameter[]) GetAd(string adId);
-
         string GetIndexAds();
 
         string AllAds();

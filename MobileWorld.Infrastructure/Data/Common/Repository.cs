@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MobileWorld.Infrastructure.Data.Models;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq.Expressions;
 
 namespace MobileWorld.Infrastructure.Data.Common

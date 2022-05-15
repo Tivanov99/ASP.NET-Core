@@ -78,10 +78,11 @@ namespace MobileWorld.Core.Services
                 .FromSqlRaw(spResult.Item1,spResult.Item2[0])
                 .ToListAsync();
 
-            var featureModel = await _unitOfWork
+            var featureModel = _unitOfWork
                 .AdRepository
-                //TODO : Create new class which shoud contains all properties for SP result
-                // and then create new Feature View Model
+                .GetAdById(spResult.Item1, spResult.Item2);
+
+                //TODO : CREATE MAPPING BETWEEN AdSpModel and AdViewModel
 
             var result = _mapper.Map<AdViewModel>(adModel[0]);
 

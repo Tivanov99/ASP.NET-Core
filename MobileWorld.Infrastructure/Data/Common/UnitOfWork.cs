@@ -2,17 +2,16 @@
 using MobileWorld.Infrastructure.Data.Identity;
 using MobileWorld.Infrastructure.Data.Models;
 using MobileWorld.Infrastructure.Data.Repositories;
+using MobileWorld.Infrastructure.Data.Repositories.Contracts;
 
 namespace MobileWorld.Infrastructure.Data.Common
 {
     public class UnitOfWork : IUnitOfWork
     {
         private ApplicationDbContext _context;
-        //private IApplicationDbRepository<Ad> _adRepository;
-        //private IApplicationDbRepository<ApplicationUser> _userRepository;
 
         public UnitOfWork(ApplicationDbContext context,
-            IApplicationDbRepository<Ad> adRepository,
+           IAdRepository adRepository,
             IApplicationDbRepository<ApplicationUser> userRepository,
             IApplicationDbRepository<Town> townRepository
             )
@@ -24,7 +23,7 @@ namespace MobileWorld.Infrastructure.Data.Common
         }
 
 
-        public IApplicationDbRepository<Ad> AdRepository
+        public IAdRepository AdRepository
         {
             get;
             //{

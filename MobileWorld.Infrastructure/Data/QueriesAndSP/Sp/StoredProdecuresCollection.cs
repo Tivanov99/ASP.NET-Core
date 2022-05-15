@@ -27,19 +27,6 @@ namespace MobileWorld.Infrastructure.Data.QueriesAndSP.Sp
             return (sql, new SqlParameter[] { adIdParam, result });
         }
 
-        public (string, SqlParameter[]) GetAd(string adId)
-        {
-            SqlParameter param = new SqlParameter()
-            {
-                ParameterName = "@AdId",
-                Value = adId,
-                Direction = ParameterDirection.Input,
-            };
-
-            string sql = "EXEC GetAd @AdId";
-            return (sql, new SqlParameter[] { param });
-        }
-
         public (string, SqlParameter[]) GetAdById(string adId)
         {
             var adIdParam = new SqlParameter()

@@ -13,6 +13,7 @@ using MobileWorld.Infrastructure.Data.Models;
 using MobileWorld.Infrastructure.Data.QueriesAndSP.Sp;
 using MobileWorld.Infrastructure.Data.QueriesAndSP.Sp.Contracts;
 using MobileWorld.Infrastructure.Data.Repositories;
+using MobileWorld.Infrastructure.Data.Repositories.Contracts;
 using MobileWorld.ModelBinders;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -56,7 +57,7 @@ builder.Services
 .AddScoped<IAdService, AdService>()
 .AddScoped<IImageBinding, ImageBinding>()
 .AddScoped<IStoredProdecuresCollection, StoredProdecuresCollection>()
-.AddTransient<IApplicationDbRepository<Ad>, ApplicationDbRepository<Ad>>()
+.AddTransient<IAdRepository, AdRepository>()
 .AddTransient<IApplicationDbRepository<ApplicationUser>, ApplicationDbRepository<ApplicationUser>>()
 .AddTransient<IApplicationDbRepository<Town>, ApplicationDbRepository<Town>>()
 .AddTransient<IUnitOfWork, UnitOfWork>()
