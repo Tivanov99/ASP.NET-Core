@@ -83,7 +83,6 @@ namespace MobileWorld.Infrastructure.Data.Repositories
                             HorsePower = dbReader.GetInt32(4),
                             NewtonMeter = dbReader.GetInt32(5)
                         };
-
                     }
 
                     dbReader.NextResult();

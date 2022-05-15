@@ -8,6 +8,20 @@ namespace MobileWorld.Core
     {
         public UserProfile()
         {
+            CreateMap<EngineSpModel , EngineViewModel>();
+            CreateMap<CarSpModel,CarViewModel>();
+            CreateMap<AdInfoSpModel, AdViewModel>();
+            //CreateMap<AdSpModel, AdViewModel>()
+            //    .ForMember(pts => pts.Car, opt => opt.MapFrom(ps => ps.Car))
+            //    .ForMember(pts => pts.Car.Engine, opt => opt.MapFrom(ps => ps.Engine))
+            //    .ForMember(pts => pts.PhoneNumber, opt => opt.MapFrom(ps => ps.AdInfo.PhoneNumber))
+            //    .ForMember(pts => pts.Title, opt => opt.MapFrom(ps => ps.AdInfo.Title))
+            //    .ForMember(pts => pts.Price, opt => opt.MapFrom(ps => ps.AdInfo.Price))
+            //    .ForMember(pts => pts.CreatedOn, opt => opt.MapFrom(ps => ps.AdInfo.CreatedOn))
+            //    .ForMember(pts => pts.Description, opt => opt.MapFrom(ps => ps.AdInfo.Description))
+            //    .ForMember(pts => pts.Id, opt => opt.MapFrom(ps => ps.AdInfo.Id));
+
+
             //CreateMap<AdInfoSpModel, AdViewModel>()
             //    .ForPath(pts => pts.Car.Color, opt => opt.MapFrom(ps => ps.Color))
             //    .ForPath(pts => pts.Car.GearType, opt => opt.MapFrom(ps => ps.GearType))

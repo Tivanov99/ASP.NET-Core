@@ -4,7 +4,7 @@
     {
         public AdViewModel()
         {
-            Car = new CarViewModel();
+            Images = new();
         }
 
         public string Id { get; set; }
@@ -24,6 +24,8 @@
         //public RegionModel Region { get; set; }
 
         //public OwnerModel Owner { get; set; }
+
+        public List<string> Images { get; set; }
 
         //public List<ImageDTO> Images { get; set; }
     }
