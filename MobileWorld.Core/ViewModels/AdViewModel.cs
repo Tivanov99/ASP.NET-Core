@@ -21,7 +21,7 @@
 
         public CarViewModel Car { get; set; }
 
-        //public RegionModel Region { get; set; }
+        public RegionViewModel Region { get; set; }
 
         //public OwnerModel Owner { get; set; }
 

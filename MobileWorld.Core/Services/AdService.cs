@@ -79,6 +79,8 @@ namespace MobileWorld.Core.Services
             AdViewModel adResult = _mapper.Map<AdViewModel>(dbAdModel.AdInfo);
             adResult.Car= _mapper.Map<CarViewModel>(dbAdModel.Car);
             adResult.Car.Engine = _mapper.Map<EngineViewModel>(dbAdModel.Engine);
+            adResult.Region = _mapper.Map<RegionViewModel>(dbAdModel.AdInfo);
+            adResult.Images= dbAdModel.Images;
 
             return adResult;
         }
