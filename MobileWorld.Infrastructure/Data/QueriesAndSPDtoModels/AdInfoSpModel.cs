@@ -1,6 +1,6 @@
 ﻿namespace MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels
 {
-    public class AdSpModel
+    public class AdInfoSpModel
     {
         //Ad
         public string Id { get; set; }
@@ -14,13 +14,5 @@
         public decimal Price { get; set; }
 
         public string Description { get; set; }
-
-        //CarModel Starts
-        
-        //CarModel ends
-
-        //EngineModel starts
-        
-        //EngineModel ends
     }
 }

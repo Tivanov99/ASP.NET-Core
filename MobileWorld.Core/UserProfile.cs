@@ -8,7 +8,7 @@ namespace MobileWorld.Core
     {
         public UserProfile()
         {
-            CreateMap<AdSpModel, AdViewModel>()
+            CreateMap<AdInfoSpModel, AdViewModel>()
                 .ForPath(pts => pts.Car.Color, opt => opt.MapFrom(ps => ps.Color))
                 .ForPath(pts => pts.Car.GearType, opt => opt.MapFrom(ps => ps.GearType))
                 .ForPath(pts => pts.Car.Make, opt => opt.MapFrom(ps => ps.Make))

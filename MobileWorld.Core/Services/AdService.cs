@@ -74,7 +74,7 @@ namespace MobileWorld.Core.Services
 
             var adModel = await _unitOfWork
                 .AdRepository
-                .Set<AdSpModel>()
+                .Set<AdInfoSpModel>()
                 .FromSqlRaw(spResult.Item1,spResult.Item2[0])
                 .ToListAsync();
 

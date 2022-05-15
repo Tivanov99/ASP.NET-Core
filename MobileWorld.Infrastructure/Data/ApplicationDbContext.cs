@@ -40,16 +40,26 @@ namespace MobileWorld.Infrastructure.Data
 
         public DbSet<SafetyDetail> SafetyDetails { get; set; }
 
-        public DbSet<AdSpModel> AdSpModels { get; set; }
+        public DbSet<AdInfoSpModel> AdSpModels { get; set; }
 
         public DbSet<AdCardSpViewModel> AdSpViewModels { get; set; }
 
+        public DbSet<CarSpModel> CarSpModels { get; set; }
+
+        public DbSet<EngineSpModel> EngineSpModels { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<CarSpModel>()
+            .HasNoKey();
+
+            builder.Entity<EngineSpModel>()
+            .HasNoKey();
+
             builder.Entity<AdCardSpViewModel>()
             .HasNoKey();
 
-            builder.Entity<AdSpModel>()
+            builder.Entity<AdInfoSpModel>()
             .HasNoKey();
 
             builder.Entity<FavoriteAd>()
