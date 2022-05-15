@@ -4,16 +4,16 @@ namespace MobileWorld.Core.ViewModels
 {
     public class FeatureViewModel
     {
-        public ComfortDetailViewModel ComfortDetail { get; set; }
+        public ComfortDetailViewModel ComfortDetails { get; set; }
 
-        public ExteriorDetailViewModel ExteriorDetail { get; set; }
+        public ExteriorDetailViewModel ExteriorDetails { get; set; }
 
-        public InteriorDetailViewModel InteriorDetail { get; set; }
+        public InteriorDetailViewModel InteriorDetails { get; set; }
 
-        public OthersDetailViewModel OthersDetail { get; set; }
+        public OthersDetailViewModel OthersDetails { get; set; }
 
-        public ProtectionDetailViewModel ProtectionDetail { get; set; }
+        public ProtectionDetailViewModel ProtectionDetails { get; set; }
 
-        public SafetyDetailViewModel SafetyDetail { get; set; }
+        public SafetyDetailViewModel SafetyDetails { get; set; }
     }
 }

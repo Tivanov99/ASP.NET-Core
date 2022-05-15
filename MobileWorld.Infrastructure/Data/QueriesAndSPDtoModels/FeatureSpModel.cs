@@ -65,6 +65,8 @@
 
         public bool RefrigerationFrog { get; set; }
         //ExteriorDetail
+        public bool HalogenHeadlights { get; set; }
+
         public bool Coupe { get; set; }
 
         public bool Sedan { get; set; }
@@ -83,7 +85,6 @@
 
         public bool Shibedah { get; set; }
 
-        public bool HalogenHeadlights { get; set; }
         //InteriorDetail
         public bool SuedeSaloon { get; set; }
 

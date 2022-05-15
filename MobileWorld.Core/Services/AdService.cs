@@ -28,6 +28,7 @@ namespace MobileWorld.Core.Services
             _storedProdecuresCollection = storedProdecuresCollection;
             _mapper = mapper;
         }
+
         public async Task<List<AdCardSpViewModel>> GetIndexAds()
         {
             try
@@ -67,29 +68,33 @@ namespace MobileWorld.Core.Services
             }
         }
 
-        
-
         public async Task<AdViewModel> GetAdById(string adId)
         {
-            var adSpResources = _storedProdecuresCollection.GetAdById(adId);
+            try
+            {
+                var adSpResources = _storedProdecuresCollection.GetAdById(adId);
 
-            var dbAdModel = _unitOfWork
-                .AdRepository
-                .GetAdById(adSpResources.Item1, adSpResources.Item2);
+                var dbAdModel = _unitOfWork
+                    .AdRepository
+                    .GetAdById(adSpResources.Item1, adSpResources.Item2);
 
-            AdViewModel adViewModel = MapToAdViewModel(dbAdModel);
+                AdViewModel adViewModel = MapToAdViewModel(dbAdModel);
 
-            var featuresSpResources = _storedProdecuresCollection
-                .GetAdFeatures(adId);
+                var featuresSpResources = _storedProdecuresCollection
+                    .GetAdFeatures(adId);
 
-            var features = _unitOfWork
-                .AdRepository.Set<FeatureSpModel>()
-                .FromSqlRaw(featuresSpResources.Item1, featuresSpResources.Item2[0])
-                .ToList();
+                var features = _unitOfWork
+                    .AdRepository.Set<FeatureSpModel>()
+                    .FromSqlRaw(featuresSpResources.Item1, featuresSpResources.Item2[0])
+                    .ToList();
 
-            adViewModel.Features = MapToFeatureViewModel(features[0]);
+                adViewModel.Car.Features = MapToFeatureViewModel(features[0]);
+            }
+            catch (Exception)
+            {
+            }
 
-            return adViewModel;
+            return null;
         }
 
         public async Task<AdInputModel> GetAdForUpdate(string adId)
@@ -272,12 +277,12 @@ namespace MobileWorld.Core.Services
         private FeatureViewModel MapToFeatureViewModel(FeatureSpModel source)
             => new FeatureViewModel
             {
-                ComfortDetail = _mapper.Map<ComfortDetailViewModel>(source),
-                ExteriorDetail = _mapper.Map<ExteriorDetailViewModel>(source),
-                InteriorDetail = _mapper.Map<InteriorDetailViewModel>(source),
-                OthersDetail = _mapper.Map<OthersDetailViewModel>(source),
-                ProtectionDetail = _mapper.Map<ProtectionDetailViewModel>(source),
-                SafetyDetail = _mapper.Map<SafetyDetailViewModel>(source),
+                ComfortDetails = _mapper.Map<ComfortDetailViewModel>(source),
+                ExteriorDetails = _mapper.Map<ExteriorDetailViewModel>(source),
+                InteriorDetails = _mapper.Map<InteriorDetailViewModel>(source),
+                OthersDetails = _mapper.Map<OthersDetailViewModel>(source),
+                ProtectionDetails = _mapper.Map<ProtectionDetailViewModel>(source),
+                SafetyDetails = _mapper.Map<SafetyDetailViewModel>(source),
             };
 
         private List<PropertyDto> GetBaseSearchCriteria(object model)

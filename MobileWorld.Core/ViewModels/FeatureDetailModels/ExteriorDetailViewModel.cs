@@ -2,6 +2,8 @@
 {
     public class ExteriorDetailViewModel
     {
+        public bool HalogenHeadlights { get; set; }
+
         public bool Coupe { get; set; }
 
         public bool Sedan { get; set; }

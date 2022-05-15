@@ -21,5 +21,7 @@ namespace MobileWorld.Core.ViewModels
         public int GearType { get; set; }
 
         public EngineViewModel Engine { get; set; }
+
+        public FeatureViewModel Features { get; set; }
     }
 }
