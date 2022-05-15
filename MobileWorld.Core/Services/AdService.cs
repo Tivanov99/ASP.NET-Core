@@ -90,6 +90,8 @@ namespace MobileWorld.Core.Services
                 .FromSqlRaw(featuresSpResources.Item1, featuresSpResources.Item2[0])
                 .ToList();
 
+            ComfortDetailViewModel
+
 
             return adResult;
         }
