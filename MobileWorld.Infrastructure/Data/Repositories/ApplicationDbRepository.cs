@@ -7,6 +7,7 @@ namespace MobileWorld.Infrastructure.Data.Repositories
         public ApplicationDbRepository(ApplicationDbContext context)
             :base(context)
         {
+
         }
     }
 }
