@@ -2,9 +2,9 @@
 using MobileWorld.Infrastructure.Data.Enums;
 using System.ComponentModel.DataAnnotations;
 
-namespace MobileWorld.Core.Models
+namespace MobileWorld.Core.Models.InputModels
 {
-    public class EngineModel : IEngineViewModel
+    public class EngineInputModel : IEngineViewModel
     {
         [Required]
         public FuelType FuelType { get; set; }

@@ -1,4 +1,5 @@
-﻿using MobileWorld.Core.ViewModels.Contacts;
+﻿using MobileWorld.Core.ViewModels;
+using MobileWorld.Core.ViewModels.Contacts;
 using MobileWorld.Infrastructure.Data.Enums;
 using System.ComponentModel.DataAnnotations;
 
@@ -8,7 +9,8 @@ namespace MobileWorld.Core.Models.InputModels
     {
         public CarInputModel()
         {
-
+            Engine = new EngineInputModel();
+            Features = new FeatureViewModel();
         }
         [Required(ErrorMessage = "Полето 'Марка' е задължително!")]
         public string Make { get; set; }

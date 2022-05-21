@@ -393,7 +393,7 @@ namespace MobileWorld.Core.Services
                 Neiborhood = region.Neiborhood,
             };
 
-        private Engine CreateEngineEntity(EngineModel model)
+        private Engine CreateEngineEntity(EngineInputModel model)
         => new Engine()
         {
             FuelConsuption = model.FuelConsuption,
@@ -455,7 +455,7 @@ namespace MobileWorld.Core.Services
                  OwnerId = ownerId,
              };
 
-        private void UpdateEngine(EngineModel updatedModel, Engine dbModel)
+        private void UpdateEngine(EngineInputModel updatedModel, Engine dbModel)
         {
             dbModel.EcoLevel = updatedModel.EcoLevel;
             dbModel.CubicCapacity = updatedModel.CubicCapacity;

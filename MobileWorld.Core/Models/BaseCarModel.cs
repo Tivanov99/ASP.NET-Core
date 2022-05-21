@@ -1,4 +1,5 @@
-﻿using MobileWorld.Infrastructure.Data.Enums;
+﻿using MobileWorld.Core.Models.InputModels;
+using MobileWorld.Infrastructure.Data.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace MobileWorld.Core.Models
@@ -21,6 +22,6 @@ namespace MobileWorld.Core.Models
         [Range(0, 2000000)]
         public decimal MaxPrice { get; set; }
 
-        public EngineModel Engine { get; set; }
+        public EngineInputModel Engine { get; set; }
     }
 }
