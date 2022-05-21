@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MobileWorld.Core.ViewModels.Contacts
+﻿namespace MobileWorld.Core.ViewModels.Contacts
 {
     internal interface IFeatureViewModel
     {
+        public IComfortDetailViewModel ComfortDetails { get; set; }
+
     }
 }

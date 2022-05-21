@@ -1,7 +1,9 @@
-﻿namespace MobileWorld.Core.ViewModels.FeatureDetailModels
+﻿using MobileWorld.Core.ViewModels.Contacts;
+
+namespace MobileWorld.Core.ViewModels.FeatureDetailModels
 
 {
-    public class ComfortDetailViewModel
+    public class ComfortDetailViewModel : IComfortDetailViewModel
     {
         public bool AutoStartStop { get; set; }
 
