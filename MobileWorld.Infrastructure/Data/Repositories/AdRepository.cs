@@ -25,77 +25,76 @@ namespace MobileWorld.Infrastructure.Data.Repositories
 
             try
             {
-               
-                    DbCommand command;
-                    DbDataReader dbReader;
+                DbCommand command;
+                DbDataReader dbReader;
 
-                    command = _context.Database.GetDbConnection().CreateCommand();
-                    command.CommandText = sql;
-                    command.Parameters.Add(parameters[0]);
+                command = _context.Database.GetDbConnection().CreateCommand();
+                command.CommandText = sql;
+                command.Parameters.Add(parameters[0]);
 
-                    _context.Database.OpenConnection();
+                _context.Database.OpenConnection();
 
-                    dbReader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                dbReader = command.ExecuteReader(CommandBehavior.CloseConnection);
 
-                    while (dbReader.Read())
+                while (dbReader.Read())
+                {
+                    resultModel.AdInfo = new AdInfoSpModel()
                     {
-                        resultModel.AdInfo = new AdInfoSpModel()
-                        {
-                            Id = dbReader.GetString(0),
-                            Title = dbReader.GetString(1),
-                            Price = dbReader.GetDecimal(2),
-                            PhoneNumber = dbReader.GetString(3),
-                            Description = dbReader.GetString(4),
-                            CreatedOn = dbReader.GetDateTime(5),
-                            RegionName = dbReader.GetString(6),
-                            Neiborhood = dbReader.GetString(7),
-                            TownName = dbReader.GetString(8),
-                            OwnerId = dbReader.GetString(9),
-                            FirstName = dbReader.GetString(10),
-                            LastName = dbReader.GetString(11),
-                            IsFavoriteAd = dbReader[12]!=DBNull.Value
-                        };
-                    }
+                        Id = dbReader.GetString(0),
+                        Title = dbReader.GetString(1),
+                        Price = dbReader.GetDecimal(2),
+                        PhoneNumber = dbReader.GetString(3),
+                        Description = dbReader.GetString(4),
+                        CreatedOn = dbReader.GetDateTime(5),
+                        RegionName = dbReader.GetString(6),
+                        Neiborhood = dbReader.GetString(7),
+                        TownName = dbReader.GetString(8),
+                        OwnerId = dbReader.GetString(9),
+                        FirstName = dbReader.GetString(10),
+                        LastName = dbReader.GetString(11),
+                        IsFavoriteAd = dbReader[12] != DBNull.Value
+                    };
+                }
 
-                    dbReader.NextResult();
+                dbReader.NextResult();
 
-                    while (dbReader.Read())
+                while (dbReader.Read())
+                {
+                    resultModel.Car = new CarSpModel()
                     {
-                        resultModel.Car = new CarSpModel()
-                        {
-                            Model = dbReader.GetString(0),
-                            SeatsCount = dbReader.GetInt32(1),
-                            Year = dbReader.GetInt32(2),
-                            Color = dbReader.GetString(3),
-                            GearType = (GearType)dbReader.GetInt32(4),
-                            Make = dbReader.GetString(5),
-                            Mileage = dbReader.GetDecimal(6)
-                        };
-                    }
+                        Model = dbReader.GetString(0),
+                        SeatsCount = dbReader.GetInt32(1),
+                        Year = dbReader.GetInt32(2),
+                        Color = dbReader.GetString(3),
+                        GearType = (GearType)dbReader.GetInt32(4),
+                        Make = dbReader.GetString(5),
+                        Mileage = dbReader.GetDecimal(6)
+                    };
+                }
 
-                    dbReader.NextResult();
+                dbReader.NextResult();
 
-                    while (dbReader.Read())
+                while (dbReader.Read())
+                {
+                    resultModel.Engine = new EngineSpModel()
                     {
-                        resultModel.Engine = new EngineSpModel()
-                        {
-                            CubicCapacity = dbReader.GetInt32(0),
-                            EcoLevel = dbReader.GetInt32(1),
-                            FuelConsuption = dbReader.GetDouble(2),
-                            FuelType = dbReader.GetInt32(3),
-                            HorsePower = dbReader.GetInt32(4),
-                            NewtonMeter = dbReader.GetInt32(5)
-                        };
-                    }
+                        CubicCapacity = dbReader.GetInt32(0),
+                        EcoLevel = dbReader.GetInt32(1),
+                        FuelConsuption = dbReader.GetDouble(2),
+                        FuelType = dbReader.GetInt32(3),
+                        HorsePower = dbReader.GetInt32(4),
+                        NewtonMeter = dbReader.GetInt32(5)
+                    };
+                }
 
-                    dbReader.NextResult();
+                dbReader.NextResult();
 
-                    while (dbReader.Read())
-                    {
-                        resultModel.Images.Add(dbReader.GetString(0));
-                    }
+                while (dbReader.Read())
+                {
+                    resultModel.Images.Add(dbReader.GetString(0));
+                }
 
-                    dbReader.Close();
+                dbReader.Close();
 
                 return resultModel;
             }

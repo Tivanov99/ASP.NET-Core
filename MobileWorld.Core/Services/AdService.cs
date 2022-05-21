@@ -72,7 +72,8 @@ namespace MobileWorld.Core.Services
         {
             try
             {
-                var adSpResources = _storedProdecuresCollection.GetAdById(adId);
+                var adSpResources = _storedProdecuresCollection
+                    .GetAdById(adId);
 
                 var dbAdModel = _unitOfWork
                     .AdRepository
@@ -100,15 +101,34 @@ namespace MobileWorld.Core.Services
 
         public async Task<AdInputModel> GetAdForUpdate(string adId)
         {
-            var features = _unitOfWork.AdRepository
-                .GetAsQueryable()
-                .Where(x => x.Id == adId)
-                .Select(x => x.Car.Feature)
-                .FirstOrDefault();
+            try
+            {
+                var adSpResources = _storedProdecuresCollection
+                        .GetAdById(adId);
 
-            var ad = new AdInputModel();
+                var dbAdModel = _unitOfWork
+                    .AdRepository
+                    .GetAdById(adSpResources.Item1, adSpResources.Item2);
 
-            return ad;
+                AdInputModel adViewModel = MapToAdInputModel(dbAdModel);
+
+                var featuresSpResources = _storedProdecuresCollection
+                    .GetAdFeatures(adId);
+
+                var features = _unitOfWork
+                    .AdRepository.Set<FeatureSpModel>()
+                    .FromSqlRaw(featuresSpResources.Item1, featuresSpResources.Item2[0])
+                    .ToList();
+
+                adViewModel.Car.Features = MapToFeatureViewModel(features[0]);
+
+                return adViewModel;
+            }
+            catch (Exception)
+            {
+
+            }
+            return null;
         }
 
         public List<AdCardViewModel> GetAdsByAdvancedCriteria(AdvancedSearchCarModel model)
@@ -129,8 +149,6 @@ namespace MobileWorld.Core.Services
 
             return null;
         }
-
-
 
         public bool CreateAd(AdInputModel model, string ownerId, List<Image> images)
         {
@@ -273,7 +291,19 @@ namespace MobileWorld.Core.Services
             adResult.Car.Engine = _mapper.Map<EngineViewModel>(soursce.Engine);
             adResult.Region = _mapper.Map<RegionViewModel>(soursce.AdInfo);
             adResult.Images = soursce.Images;
-            OwnerViewModel owner  = _mapper.Map<OwnerViewModel>(soursce.AdInfo);
+            OwnerViewModel owner = _mapper.Map<OwnerViewModel>(soursce.AdInfo);
+            adResult.Owner = owner;
+            return adResult;
+        }
+
+        private AdInputModel MapToAdInputModel(AdSpModel soursce)
+        {
+            AdInputModel adResult = _mapper.Map<AdInputModel>(soursce.AdInfo);
+            adResult.Car = _mapper.Map<CarViewModel>(soursce.Car);
+            adResult.Car.Engine = _mapper.Map<EngineViewModel>(soursce.Engine);
+            adResult.Region = _mapper.Map<RegionViewModel>(soursce.AdInfo);
+            adResult.Images = soursce.Images;
+            OwnerViewModel owner = _mapper.Map<OwnerViewModel>(soursce.AdInfo);
             adResult.Owner = owner;
             return adResult;
         }
@@ -423,7 +453,7 @@ namespace MobileWorld.Core.Services
                  Region = region,
                  OwnerId = ownerId,
              };
-        
+
         private void UpdateEngine(EngineModel updatedModel, Engine dbModel)
         {
             dbModel.EcoLevel = updatedModel.EcoLevel;

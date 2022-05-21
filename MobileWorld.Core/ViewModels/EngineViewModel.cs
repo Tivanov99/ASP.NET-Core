@@ -1,6 +1,8 @@
-﻿namespace MobileWorld.Core.ViewModels;
+﻿using MobileWorld.Core.ViewModels.Contacts;
 
-public class EngineViewModel
+namespace MobileWorld.Core.ViewModels;
+
+public class EngineViewModel : IEngineViewModel
 {
     public int FuelType { get; set; }
 
