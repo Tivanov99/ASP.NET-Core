@@ -1,8 +1,6 @@
-﻿using MobileWorld.Core.ViewModels.Contacts;
-
-namespace MobileWorld.Core.ViewModels.FeatureDetailModels
+﻿namespace MobileWorld.Core.ViewModels.Contacts
 {
-    public class SafetyDetailViewModel : ISafetyDetailViewModel
+    public interface ISafetyDetailViewModel
     {
         public bool Gps { get; set; }
 
