@@ -1,6 +1,6 @@
 ﻿namespace MobileWorld.Core.Models.Contracts
 {
-    public interface IOwnerModel
+    public interface IOwnerViewModel
     {
         public string OwnerId { get; set; }
 

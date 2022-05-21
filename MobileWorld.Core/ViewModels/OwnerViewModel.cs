@@ -2,7 +2,7 @@
 
 namespace MobileWorld.Core.ViewModels
 {
-    public class OwnerViewModel :IOwnerModel
+    public class OwnerViewModel :IOwnerViewModel
     {
         public string OwnerId { get; set; }
 

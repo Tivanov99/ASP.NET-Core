@@ -1,4 +1,6 @@
-﻿namespace MobileWorld.Core.ViewModels.Contacts
+﻿using MobileWorld.Core.Models.Contracts;
+
+namespace MobileWorld.Core.ViewModels.Contacts
 {
     public interface IAdViewModel
     {
@@ -14,11 +16,11 @@
 
         public string Description { get; set; }
 
-        public CarViewModel Car { get; set; }
+        public ICarViewModel Car { get; set; }
 
-        public RegionViewModel Region { get; set; }
+        public IRegionViewModel Region { get; set; }
 
-        public OwnerViewModel Owner { get; set; }
+        public IOwnerViewModel Owner { get; set; }
 
         public List<string> Images { get; set; }
     }

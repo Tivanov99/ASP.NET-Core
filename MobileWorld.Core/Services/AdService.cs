@@ -5,6 +5,7 @@ using MobileWorld.Core.Dto;
 using MobileWorld.Core.Models;
 using MobileWorld.Core.Models.InputModels;
 using MobileWorld.Core.ViewModels;
+using MobileWorld.Core.ViewModels.Contacts;
 using MobileWorld.Core.ViewModels.FeatureDetailModels;
 using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.Models;
@@ -68,7 +69,7 @@ namespace MobileWorld.Core.Services
             }
         }
 
-        public async Task<AdViewModel> GetAdById(string adId)
+        public async Task<IAdViewModel> GetAdById(string adId)
         {
             try
             {
@@ -79,7 +80,7 @@ namespace MobileWorld.Core.Services
                     .AdRepository
                     .GetAdById(adSpResources.Item1, adSpResources.Item2);
 
-                AdViewModel adViewModel = MapToAdViewModel(dbAdModel);
+                IAdViewModel adViewModel = MapToAdViewModel(dbAdModel);
 
                 var featuresSpResources = _storedProdecuresCollection
                     .GetAdFeatures(adId);
@@ -284,10 +285,10 @@ namespace MobileWorld.Core.Services
             return false;
         }
 
-        private AdViewModel MapToAdViewModel(AdSpModel soursce)
+        private IAdViewModel MapToAdViewModel(AdSpModel soursce)
         {
-            AdViewModel adResult = _mapper.Map<AdViewModel>(soursce.AdInfo);
-            adResult.Car = _mapper.Map<CarViewModel>(soursce.Car);
+            IAdViewModel adResult = _mapper.Map<IAdViewModel>(soursce.AdInfo);
+            adResult.Car = _mapper.Map<ICarViewModel>(soursce.Car);
             adResult.Car.Engine = _mapper.Map<EngineViewModel>(soursce.Engine);
             adResult.Region = _mapper.Map<RegionViewModel>(soursce.AdInfo);
             adResult.Images = soursce.Images;
@@ -296,10 +297,10 @@ namespace MobileWorld.Core.Services
             return adResult;
         }
 
-        private AdInputModel MapToAdInputModel(AdSpModel soursce)
+        private IAdInputModel MapToAdInputModel(AdSpModel soursce)
         {
-            AdInputModel adResult = _mapper.Map<AdInputModel>(soursce.AdInfo);
-            adResult.Car = _mapper.Map<CarViewModel>(soursce.Car);
+            IAdInputModel adResult = _mapper.Map<IAdInputModel>(soursce.AdInfo);
+            adResult.Car = _mapper.Map<ICarViewModel>(soursce.Car);
             adResult.Car.Engine = _mapper.Map<EngineViewModel>(soursce.Engine);
             adResult.Region = _mapper.Map<RegionViewModel>(soursce.AdInfo);
             adResult.Images = soursce.Images;

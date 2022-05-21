@@ -1,11 +1,12 @@
 ﻿using MobileWorld.Core.Dto;
 using MobileWorld.Core.ViewModels;
+using MobileWorld.Core.ViewModels.Contacts;
 using System.ComponentModel.DataAnnotations;
 
 namespace MobileWorld.Core.Models.InputModels
 {
     //TODO : Check fuel type, engines are null
-    public class AdInputModel
+    public class AdInputModel : IAdInputModel
     {
         public AdInputModel()
         {

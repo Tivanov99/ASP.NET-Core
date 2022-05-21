@@ -1,9 +1,10 @@
-﻿using MobileWorld.Infrastructure.Data.Enums;
+﻿using MobileWorld.Core.ViewModels.Contacts;
+using MobileWorld.Infrastructure.Data.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace MobileWorld.Core.Models
 {
-    public class EngineModel 
+    public class EngineModel : IEngineViewModel 
     {
         [Required]
         public FuelType FuelType { get; set; }
