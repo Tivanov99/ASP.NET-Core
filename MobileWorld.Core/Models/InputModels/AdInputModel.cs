@@ -16,7 +16,6 @@ namespace MobileWorld.Core.Models.InputModels
             Images = new();
         }
         public string Id { get; set; }
-
         public DateTime CreatedOn { get; set; }
 
         [Required(ErrorMessage = "Полето 'Заглавие' е задължително!")]

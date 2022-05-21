@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MobileWorld.ControllerHelper.Contracts;
 using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Models;
+using MobileWorld.Core.Models.InputModels;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Infrastructure.Data.Models;
 using MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels;
@@ -136,7 +137,7 @@ namespace MobileWorld.Controllers
         public async Task<ActionResult> Edit(string adId)
         {
             var ad = await this._service
-                .GetAdForUpdate(adId);
+                .GetAdById(adId);
 
             return View(ad);
         }
@@ -152,7 +153,7 @@ namespace MobileWorld.Controllers
 
             if (ModelState.IsValid)
             {
-                this._service.Update(updatedModel, adId);
+                this._service.Update((AdInputModel)updatedModel, adId);
                 return RedirectToAction(actionName: nameof(this.Ad), new { adId = adId });
 
             }

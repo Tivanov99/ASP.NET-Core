@@ -3,7 +3,7 @@ using MobileWorld.Core.Models.InputModels;
 
 namespace MobileWorld.Models
 {
-    public class ModelBindingAdModel : AdEditModel
+    public class ModelBindingAdModel : AdInputModel
     {
         [BindProperty]
         public override decimal Price { get => base.Price; set => base.Price = value; }

@@ -111,7 +111,7 @@ namespace MobileWorld.Core.Services
                     .AdRepository
                     .GetAdById(adSpResources.Item1, adSpResources.Item2);
 
-                AdInputModel adViewModel = MapToAdInputModel(dbAdModel);
+                AdInputModel inputModel = MapToAdInputModel(dbAdModel);
 
                 var featuresSpResources = _storedProdecuresCollection
                     .GetAdFeatures(adId);
@@ -121,9 +121,9 @@ namespace MobileWorld.Core.Services
                     .FromSqlRaw(featuresSpResources.Item1, featuresSpResources.Item2[0])
                     .ToList();
 
-                adViewModel.Car.Features = MapToFeatureViewModel(features[0]);
+                inputModel.Car.Features = MapToFeatureViewModel(features[0]);
 
-                return adViewModel;
+                return inputModel;
             }
             catch (Exception)
             {
@@ -221,7 +221,7 @@ namespace MobileWorld.Core.Services
             }
         }
 
-        public bool Update(AdEditModel model, string adId)
+        public bool Update(AdInputModel model, string adId)
         {
             Ad? ad = this._unitOfWork
             .AdRepository

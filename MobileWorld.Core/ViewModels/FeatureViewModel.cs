@@ -1,9 +1,19 @@
 ﻿using MobileWorld.Core.ViewModels.Contacts;
+using MobileWorld.Core.ViewModels.FeatureDetailModels;
 
 namespace MobileWorld.Core.ViewModels
 {
     public class FeatureViewModel : IFeatureViewModel
     {
+        public FeatureViewModel()
+        {
+            ComfortDetails = new ComfortDetailViewModel();
+            ExteriorDetails = new ExteriorDetailViewModel();
+            InteriorDetails = new InteriorDetailViewModel();
+            OthersDetails = new OthersDetailViewModel();
+            ProtectionDetails = new ProtectionDetailViewModel();
+            SafetyDetails = new SafetyDetailViewModel();
+        }
         public IComfortDetailViewModel ComfortDetails { get; set; }
 
         public IExteriorDetailViewModel ExteriorDetails { get; set; }
