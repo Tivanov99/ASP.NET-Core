@@ -1,8 +1,6 @@
-﻿using MobileWorld.Core.ViewModels.Contacts;
-
-namespace MobileWorld.Core.ViewModels.FeatureDetailModels
+﻿namespace MobileWorld.Core.ViewModels.Contacts
 {
-    public class ProtectionDetailViewModel : IProtectionDetailViewModel
+    public interface IProtectionDetailViewModel
     {
         public bool Alarm { get; set; }
 
