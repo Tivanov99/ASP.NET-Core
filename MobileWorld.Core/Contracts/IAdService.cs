@@ -13,7 +13,7 @@ namespace MobileWorld.Core.Contracts
 
         Task<AdViewModel> GetAdById(string adId);
 
-        Task<IAdInputModel> GetAdForUpdate(string adId);
+        Task<AdInputModel> GetAdForUpdate(string adId);
 
         List<AdCardViewModel> GetAdsByAdvancedCriteria(AdvancedSearchCarModel model);
 

@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
-using MobileWorld.Core.Models.Contracts;
+using MobileWorld.Core.Models.InputModels;
 using MobileWorld.Core.ViewModels;
-using MobileWorld.Core.ViewModels.Contacts;
 using MobileWorld.Core.ViewModels.FeatureDetailModels;
 using MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels;
 
@@ -12,13 +11,26 @@ namespace MobileWorld.Core
         public ApplicationProfile()
         {
             CreateMap<EngineSpModel , EngineViewModel>();
+            CreateMap<EngineSpModel, EngineInputModel>();
+
             CreateMap<CarSpModel, CarViewModel>()
              .ForMember(pts => pts.GearType, opt => opt.MapFrom(ps => ps.GearType));
 
+            CreateMap<CarSpModel, CarInputModel>()
+             .ForMember(pts => pts.GearType, opt => opt.MapFrom(ps => ps.GearType));
+
             CreateMap<AdInfoSpModel, AdViewModel>();
+            CreateMap<AdInfoSpModel, AdInputModel>();
             CreateMap<AdInfoSpModel, OwnerViewModel>();
+            CreateMap<AdInfoSpModel, OwnerInputModel>();
+
 
             CreateMap<AdInfoSpModel, RegionViewModel>()
+                .ForMember(pts => pts.Neiborhood, opt => opt.MapFrom(ps => ps.Neiborhood))
+                .ForMember(pts => pts.TownName, opt => opt.MapFrom(ps => ps.TownName))
+                .ForMember(pts => pts.RegionName, opt => opt.MapFrom(ps => ps.RegionName));
+
+            CreateMap<AdInfoSpModel, RegionInputModel>()
                 .ForMember(pts => pts.Neiborhood, opt => opt.MapFrom(ps => ps.Neiborhood))
                 .ForMember(pts => pts.TownName, opt => opt.MapFrom(ps => ps.TownName))
                 .ForMember(pts => pts.RegionName, opt => opt.MapFrom(ps => ps.RegionName));

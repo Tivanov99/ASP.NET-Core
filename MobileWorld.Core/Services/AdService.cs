@@ -100,7 +100,7 @@ namespace MobileWorld.Core.Services
             }
         }
 
-        public async Task<IAdInputModel> GetAdForUpdate(string adId)
+        public async Task<AdInputModel> GetAdForUpdate(string adId)
         {
             try
             {
@@ -111,7 +111,7 @@ namespace MobileWorld.Core.Services
                     .AdRepository
                     .GetAdById(adSpResources.Item1, adSpResources.Item2);
 
-                IAdInputModel adViewModel = MapToAdInputModel(dbAdModel);
+                AdInputModel adViewModel = MapToAdInputModel(dbAdModel);
 
                 var featuresSpResources = _storedProdecuresCollection
                     .GetAdFeatures(adId);
@@ -297,14 +297,14 @@ namespace MobileWorld.Core.Services
             return adResult;
         }
 
-        private IAdInputModel MapToAdInputModel(AdSpModel soursce)
+        private AdInputModel MapToAdInputModel(AdSpModel soursce)
         {
-            IAdInputModel adResult = _mapper.Map<IAdInputModel>(soursce.AdInfo);
-            adResult.Car = _mapper.Map<ICarViewModel>(soursce.Car);
-            adResult.Car.Engine = _mapper.Map<EngineViewModel>(soursce.Engine);
-            adResult.Region = _mapper.Map<RegionViewModel>(soursce.AdInfo);
+            AdInputModel adResult = _mapper.Map<AdInputModel>(soursce.AdInfo);
+            adResult.Car = _mapper.Map<CarInputModel>(soursce.Car);
+            adResult.Car.Engine = _mapper.Map<EngineInputModel>(soursce.Engine);
+            adResult.Region = _mapper.Map<RegionInputModel>(soursce.AdInfo);
             adResult.Images = soursce.Images;
-            OwnerViewModel owner = _mapper.Map<OwnerViewModel>(soursce.AdInfo);
+            OwnerInputModel owner = _mapper.Map<OwnerInputModel>(soursce.AdInfo);
             adResult.Owner = owner;
             return adResult;
         }
