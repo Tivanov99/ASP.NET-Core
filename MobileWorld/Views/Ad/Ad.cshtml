@@ -478,30 +478,30 @@
                 </tr>
             </tbody>
         </table>
-        @*<table style="width:360px;" cellspacing="0" cellpadding="0" bgcolor="#EFEFEF">
+        <table style="width:360px;" cellspacing="0" cellpadding="0" bgcolor="#efefef">
             <tbody>
                 <tr>
                     <td class="owner-info">
-                        <strong style="border-bottom: #CCC 2px solid;">За контакти</strong><br>
-                        <span class="dealerData-odd">Телефон: </span>
-                        <span class="dealerData-even">@Model.PhoneNumber</span><br>
-                        <span class="dealerData-odd">Име - </span>
-                        <span class="dealerData-even">@Model.Owner.FirstName @Model.Owner.LastName</span><br>
-                        <span class="dealerData-odd">Регион :</span>
-                        <span class="dealerData-even">@Model.Region.RegionName</span><br>
-                        <span class="dealerData-odd">гр. </span>
-                        <span class="dealerData-even">@Model.Region.TownName</span><br>
-                        @if (Model.Region.Neiborhood != null)
+                        <strong style="border-bottom: #ccc 2px solid;">за контакти</strong><br>
+                        <span class="dealerdata-odd">телефон: </span>
+                        <span class="dealerdata-even">@Model.PhoneNumber</span><br>
+                        <span class="dealerdata-odd">име - </span>
+                        <span class="dealerdata-even">@Model.Owner.FirstName @Model.Owner.LastName</span><br>
+                        <span class="dealerdata-odd">регион :</span>
+                        <span class="dealerdata-even">@Model.Region.RegionName</span><br>
+                        <span class="dealerdata-odd">гр. </span>
+                        <span class="dealerdata-even">@Model.Region.TownName</span><br>
+                        @if (@Model.Region.Neiborhood != null)
                         {
-                            <span class="dealerData-odd">КВ.</span>
-                            <span class="dealerData-even">@Model.Region.Neiborhood</span>
+                            <span class="dealerdata-odd">кв.</span>
+                            <span class="dealerdata-even">@Model.Region.Neiborhood</span>
                             <br>
                         }
                         <br>
                     </td>
                 </tr>
             </tbody>
-        </table>*@
+        </table>
     </div>
     <br />
     <table style="width: 280px;float: left;position: left;" cellspacing="0" cellpadding="0" bgcolor="#EFEFEF">
