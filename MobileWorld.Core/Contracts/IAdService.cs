@@ -11,7 +11,7 @@ namespace MobileWorld.Core.Contracts
     {
         Task<List<AdCardSpViewModel>> GetAllAds();
 
-        Task<IAdViewModel> GetAdById(string adId);
+        Task<AdViewModel> GetAdById(string adId);
 
         Task<IAdInputModel> GetAdForUpdate(string adId);
 
@@ -21,7 +21,7 @@ namespace MobileWorld.Core.Contracts
 
         Task<List<AdCardSpViewModel>> GetIndexAds();
 
-        bool CreateAd(AdInputModel model, string ownerId, List<Image> uploadedImages);
+        bool CreateAd(IAdInputModel model, string ownerId, List<Image> uploadedImages);
 
         bool Delete(string adId);
 

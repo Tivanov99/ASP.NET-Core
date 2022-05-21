@@ -11,24 +11,24 @@ namespace MobileWorld.Core
     {
         public ApplicationProfile()
         {
-            CreateMap<EngineSpModel , IEngineViewModel>();
-            CreateMap<CarSpModel, ICarViewModel>()
+            CreateMap<EngineSpModel , EngineViewModel>();
+            CreateMap<CarSpModel, CarViewModel>()
              .ForMember(pts => pts.GearType, opt => opt.MapFrom(ps => ps.GearType));
 
-            CreateMap<AdInfoSpModel, IAdViewModel>();
-            CreateMap<AdInfoSpModel, IOwnerViewModel>();
+            CreateMap<AdInfoSpModel, AdViewModel>();
+            CreateMap<AdInfoSpModel, OwnerViewModel>();
 
             CreateMap<AdInfoSpModel, RegionViewModel>()
                 .ForMember(pts => pts.Neiborhood, opt => opt.MapFrom(ps => ps.Neiborhood))
                 .ForMember(pts => pts.TownName, opt => opt.MapFrom(ps => ps.TownName))
                 .ForMember(pts => pts.RegionName, opt => opt.MapFrom(ps => ps.RegionName));
 
-            CreateMap<FeatureSpModel, IComfortDetailViewModel>();
-            CreateMap<FeatureSpModel, IExteriorDetailViewModel>();
-            CreateMap<FeatureSpModel, IInteriorDetailViewModel>();
-            CreateMap<FeatureSpModel, IOthersDetailViewModel>();
-            CreateMap<FeatureSpModel, IProtectionDetailViewModel>();
-            CreateMap<FeatureSpModel, ISafetyDetailViewModel>();
+            CreateMap<FeatureSpModel, ComfortDetailViewModel>();
+            CreateMap<FeatureSpModel, ExteriorDetailViewModel>();
+            CreateMap<FeatureSpModel, InteriorDetailViewModel>();
+            CreateMap<FeatureSpModel, OthersDetailViewModel>();
+            CreateMap<FeatureSpModel, ProtectionDetailViewModel>();
+            CreateMap<FeatureSpModel, SafetyDetailViewModel>();
 
 
 

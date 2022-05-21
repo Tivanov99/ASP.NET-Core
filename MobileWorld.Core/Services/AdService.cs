@@ -69,7 +69,7 @@ namespace MobileWorld.Core.Services
             }
         }
 
-        public async Task<IAdViewModel> GetAdById(string adId)
+        public async Task<AdViewModel> GetAdById(string adId)
         {
             try
             {
@@ -80,7 +80,7 @@ namespace MobileWorld.Core.Services
                     .AdRepository
                     .GetAdById(adSpResources.Item1, adSpResources.Item2);
 
-                IAdViewModel adViewModel = MapToAdViewModel(dbAdModel);
+                AdViewModel adViewModel = MapToAdViewModel(dbAdModel);
 
                 var featuresSpResources = _storedProdecuresCollection
                     .GetAdFeatures(adId);
@@ -100,7 +100,7 @@ namespace MobileWorld.Core.Services
             }
         }
 
-        public async Task<AdInputModel> GetAdForUpdate(string adId)
+        public async Task<IAdInputModel> GetAdForUpdate(string adId)
         {
             try
             {
@@ -111,7 +111,7 @@ namespace MobileWorld.Core.Services
                     .AdRepository
                     .GetAdById(adSpResources.Item1, adSpResources.Item2);
 
-                AdInputModel adViewModel = MapToAdInputModel(dbAdModel);
+                IAdInputModel adViewModel = MapToAdInputModel(dbAdModel);
 
                 var featuresSpResources = _storedProdecuresCollection
                     .GetAdFeatures(adId);
@@ -151,7 +151,7 @@ namespace MobileWorld.Core.Services
             return null;
         }
 
-        public bool CreateAd(AdInputModel model, string ownerId, List<Image> images)
+        public bool CreateAd(IAdInputModel model, string ownerId, List<Image> images)
         {
             //TODO : Add seed to Db all Towns
             try
@@ -176,7 +176,7 @@ namespace MobileWorld.Core.Services
 
                 Car car = CreateCarEntity(model.Car);
 
-                MatchFeatures(car.Feature, model.Features);
+                MatchFeatures(car.Feature, model.Car.Features);
 
                 Region region = CreateRegionEntity(model.Region, 1);
 
@@ -285,10 +285,10 @@ namespace MobileWorld.Core.Services
             return false;
         }
 
-        private IAdViewModel MapToAdViewModel(AdSpModel soursce)
+        private AdViewModel MapToAdViewModel(AdSpModel soursce)
         {
-            IAdViewModel adResult = _mapper.Map<IAdViewModel>(soursce.AdInfo);
-            adResult.Car = _mapper.Map<ICarViewModel>(soursce.Car);
+            AdViewModel adResult = _mapper.Map<AdViewModel>(soursce.AdInfo);
+            adResult.Car = _mapper.Map<CarViewModel>(soursce.Car);
             adResult.Car.Engine = _mapper.Map<EngineViewModel>(soursce.Engine);
             adResult.Region = _mapper.Map<RegionViewModel>(soursce.AdInfo);
             adResult.Images = soursce.Images;
@@ -372,7 +372,7 @@ namespace MobileWorld.Core.Services
             return queryString;
         }
 
-        private Car CreateCarEntity(CarInputModel car)
+        private Car CreateCarEntity(ICarViewModel car)
         => new Car()
         {
             Color = car.Color,
@@ -385,7 +385,7 @@ namespace MobileWorld.Core.Services
             Year = car.Year,
         };
 
-        private Region CreateRegionEntity(RegionInputModel region, int townId)
+        private Region CreateRegionEntity(IRegionViewModel region, int townId)
             => new Region()
             {
                 TownId = townId,
@@ -393,7 +393,7 @@ namespace MobileWorld.Core.Services
                 Neiborhood = region.Neiborhood,
             };
 
-        private Engine CreateEngineEntity(EngineInputModel model)
+        private Engine CreateEngineEntity(IEngineViewModel model)
         => new Engine()
         {
             FuelConsuption = model.FuelConsuption,
@@ -430,7 +430,7 @@ namespace MobileWorld.Core.Services
             }
         }
 
-        private void MatchFeatures(Feature dbFeature, FeatureViewModel model)
+        private void MatchFeatures(Feature dbFeature, IFeatureViewModel model)
         {
             MatchInputFeaturesToFeatureDbModel(model.SafetyDetails, dbFeature.SafetyDetails);
             MatchInputFeaturesToFeatureDbModel(model.ComfortDetails, dbFeature.ComfortDetails);
@@ -440,7 +440,7 @@ namespace MobileWorld.Core.Services
             MatchInputFeaturesToFeatureDbModel(model.ProtectionDetails, dbFeature.ProtectionDetails);
         }
 
-        private Ad CreaAdEntity(AdInputModel model, List<Image> images, string ownerId, Car car, Region region)
+        private Ad CreaAdEntity(IAdInputModel model, List<Image> images, string ownerId, Car car, Region region)
              => new Ad()
              {
                  Id = Guid.NewGuid().ToString(),
@@ -455,7 +455,7 @@ namespace MobileWorld.Core.Services
                  OwnerId = ownerId,
              };
 
-        private void UpdateEngine(EngineInputModel updatedModel, Engine dbModel)
+        private void UpdateEngine(IEngineViewModel updatedModel, Engine dbModel)
         {
             dbModel.EcoLevel = updatedModel.EcoLevel;
             dbModel.CubicCapacity = updatedModel.CubicCapacity;
