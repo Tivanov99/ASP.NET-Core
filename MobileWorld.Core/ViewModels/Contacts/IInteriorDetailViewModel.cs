@@ -1,8 +1,6 @@
-﻿using MobileWorld.Core.ViewModels.Contacts;
-
-namespace MobileWorld.Core.ViewModels.FeatureDetailModels
+﻿namespace MobileWorld.Core.ViewModels.Contacts
 {
-    public class InteriorDetailViewModel : IInteriorDetailViewModel
+    public interface IInteriorDetailViewModel
     {
         public bool SuedeSaloon { get; set; }
 
