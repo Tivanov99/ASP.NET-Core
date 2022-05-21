@@ -1,8 +1,6 @@
-﻿using MobileWorld.Core.ViewModels.Contacts;
-
-namespace MobileWorld.Core.ViewModels.FeatureDetailModels
+﻿namespace MobileWorld.Core.ViewModels.Contacts
 {
-    public class ExteriorDetailViewModel : IExteriorDetailViewModel
+    public interface IExteriorDetailViewModel
     {
         public bool HalogenHeadlights { get; set; }
 
