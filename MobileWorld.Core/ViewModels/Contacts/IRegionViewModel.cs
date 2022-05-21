@@ -1,8 +1,6 @@
-﻿using MobileWorld.Core.ViewModels.Contacts;
-
-namespace MobileWorld.Core.ViewModels
+﻿namespace MobileWorld.Core.ViewModels.Contacts
 {
-    public class RegionViewModel : IRegionViewModel
+    public interface IRegionViewModel
     {
         public string RegionName { get; set; }
 

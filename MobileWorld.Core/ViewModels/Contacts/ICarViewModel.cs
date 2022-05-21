@@ -2,7 +2,7 @@
 
 namespace MobileWorld.Core.ViewModels.Contacts
 {
-    internal interface ICarViewModel
+    public interface ICarViewModel
     {
         public string Make { get; set; }
 
@@ -16,8 +16,8 @@ namespace MobileWorld.Core.ViewModels.Contacts
 
         public GearType GearType { get; set; }
 
-        public IEngineViewModel Engine { get; set; }
+        IEngineViewModel Engine { get; set; }
 
-        public FeatureViewModel Features { get; set; }
+        IFeatureViewModel Features { get; set; }
     }
 }
