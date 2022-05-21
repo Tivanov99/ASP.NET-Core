@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MobileWorld.Core.Models
 {
-    public class EngineModel : IEngineViewModel 
+    public class EngineModel : IEngineViewModel
     {
         [Required]
         public FuelType FuelType { get; set; }
@@ -19,7 +19,7 @@ namespace MobileWorld.Core.Models
         public bool Hybrid { get; set; }
 
         [Required]
-        [Range(1, 7,ErrorMessage = "Полето 'Евро' трябва да са в диапазона от 1 до 7")]
+        [Range(1, 7, ErrorMessage = "Полето 'Евро' трябва да са в диапазона от 1 до 7")]
         public int EcoLevel { get; set; }
 
         public bool AutoGas { get; set; }

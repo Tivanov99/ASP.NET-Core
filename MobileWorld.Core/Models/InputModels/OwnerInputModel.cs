@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MobileWorld.Core.ViewModels.Contacts;
+using System.ComponentModel.DataAnnotations;
 
 namespace MobileWorld.Core.Models.InputModels
 {
-    public class OwnerInputModel
+    public class OwnerInputModel : IOwnerViewModel
     {
         [Required(ErrorMessage ="Полето 'Име' е задължително!")]
         [StringLength(maximumLength:50,MinimumLength =4,ErrorMessage ="Името трява е с дължина в диапазона от 4 до 50 символа!")]

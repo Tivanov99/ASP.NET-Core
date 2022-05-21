@@ -1,8 +1,10 @@
-﻿namespace MobileWorld.Core.ViewModels.Contacts
+﻿using MobileWorld.Infrastructure.Data.Enums;
+
+namespace MobileWorld.Core.ViewModels.Contacts
 {
     public interface IEngineViewModel
     {
-        public int FuelType { get; set; }
+        public FuelType FuelType { get; set; }
 
         public int HorsePower { get; set; }
 

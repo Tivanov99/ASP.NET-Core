@@ -6,6 +6,10 @@ namespace MobileWorld.Core.Models.InputModels
 {
     public class CarInputModel : ICarViewModel
     {
+        public CarInputModel()
+        {
+
+        }
         [Required(ErrorMessage = "Полето 'Марка' е задължително!")]
         public string Make { get; set; }
 
@@ -19,7 +23,7 @@ namespace MobileWorld.Core.Models.InputModels
         [Required(ErrorMessage = "Полето 'Скоростна кутия' е задължително!")]
         public GearType GearType { get; set; }
 
-        public EngineModel Engine { get; set; }
+        public IEngineViewModel Engine { get; set; }
 
         [Required(ErrorMessage = "Полето 'Цвят' е задължително!")]
         [StringLength(35,MinimumLength =3, ErrorMessage ="Цветът трябва е с дължина от 3 до 35 символа!")]
@@ -34,7 +38,5 @@ namespace MobileWorld.Core.Models.InputModels
         public decimal Mileage { get; set; }
 
         public IFeatureViewModel Features { get; set; }
-
-        IEngineViewModel ICarViewModel.Engine { get; set ; }
     }
 }

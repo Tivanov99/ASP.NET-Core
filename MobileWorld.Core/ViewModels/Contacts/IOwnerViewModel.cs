@@ -1,13 +1,9 @@
-﻿namespace MobileWorld.Core.Models.Contracts
+﻿namespace MobileWorld.Core.ViewModels.Contacts
 {
     public interface IOwnerViewModel
     {
-        public string OwnerId { get; set; }
-
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
-
-        public bool IsFavoriteAd { get; set; }
     }
 }

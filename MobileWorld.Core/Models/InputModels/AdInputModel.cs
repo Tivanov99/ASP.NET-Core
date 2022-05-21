@@ -1,4 +1,4 @@
-﻿using MobileWorld.Core.Dto;
+﻿using MobileWorld.Core.Models.Contracts;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Core.ViewModels.Contacts;
 using System.ComponentModel.DataAnnotations;
@@ -10,10 +10,10 @@ namespace MobileWorld.Core.Models.InputModels
     {
         public AdInputModel()
         {
-            Car = new();
-            Region = new();
-            Owner = new();
-            Features = new();
+            Car = new CarInputModel();
+            Region = new RegionInputModel ();
+            Owner = new OwnerInputModel ();
+            Features = new FeatureViewModel();
             Images = new();
         }
 
@@ -34,14 +34,14 @@ namespace MobileWorld.Core.Models.InputModels
         [StringLength(700,MinimumLength = 30, ErrorMessage = "Описанието трябва да е в диапазона между 30 и 700 символа!")]
         public string Description { get; set; }
 
-        public CarInputModel Car { get; set; } 
+        public ICarViewModel Car { get; set; } 
 
-        public RegionInputModel Region { get; set; } 
+        public IRegionViewModel Region { get; set; } 
 
-        public OwnerInputModel Owner { get; set; } 
+        public IOwnerViewModel Owner { get; set; } 
 
-        public FeatureViewModel Features { get; set; }
+        public IFeatureViewModel Features { get; set; }
 
-        public List<ImageDTO> Images { get; set; }
+        public List<string> Images { get; set; }
     }
 }
