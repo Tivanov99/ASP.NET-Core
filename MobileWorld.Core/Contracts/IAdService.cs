@@ -15,9 +15,9 @@ namespace MobileWorld.Core.Contracts
 
         AdInputModel GetAdForUpdate(string adId);
 
-        List<AdCardViewModel> GetAdsByAdvancedCriteria(AdvancedSearchCarModel model);
+        List<AdCardSpViewModel> GetAdsByAdvancedCriteria(AdvancedSearchCarModel model);
 
-        List<AdCardViewModel> GetAdsByBaseCriteria(BaseSearchCarModel model);
+        List<AdCardSpViewModel> GetAdsByBaseCriteria(BaseSearchAdModel model);
 
         Task<List<AdCardSpViewModel>> GetIndexAds();
 

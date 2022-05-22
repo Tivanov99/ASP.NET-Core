@@ -33,7 +33,7 @@ namespace MobileWorld.Controllers
             List<AdCardSpViewModel> cars = this._service
                 .GetAllAds();
 
-            if(cars == null)
+            if (cars == null)
             {
                 return View("Error", new { ErrorMessage = "Нещо се обърка! Опитайте отново." });
             }
@@ -81,16 +81,27 @@ namespace MobileWorld.Controllers
 
         public IActionResult AdsByCriteria(AdvancedSearchCarModel searchModel)
         {
-            List<AdCardViewModel> cars = this._service
+            List<AdCardSpViewModel> cars = this._service
                 .GetAdsByAdvancedCriteria(searchModel);
 
             return View(cars);
         }
 
-        public IActionResult AdsByBaseCriteria(BaseSearchCarModel searchModel)
+        public IActionResult AdsByBaseCriteria(BaseSearchAdModel searchModel)
         {
-            var result = this._service
-                .GetAdsByBaseCriteria(searchModel);
+            if (ModelState.IsValid)
+            {
+                var result = this._service
+                                .GetAdsByBaseCriteria(searchModel);
+            }
+            else
+            {
+                var message = string.Join(" | ", ModelState.Values
+            .SelectMany(v => v.Errors)
+            .Select(e => e.ErrorMessage));
+                return View("Error", new { ErrorMessage = message });
+
+            }
 
             return View();
         }
@@ -136,7 +147,7 @@ namespace MobileWorld.Controllers
         }
         public ActionResult Edit(string adId)
         {
-            var ad =  this._service
+            var ad = this._service
                 .GetAdForUpdate(adId);
 
             return View(ad);

@@ -129,12 +129,23 @@ namespace MobileWorld.Core.Services
                 return null;
             }
         }
-        public List<AdCardViewModel> GetAdsByBaseCriteria(BaseSearchCarModel model)
+        public List<AdCardSpViewModel> GetAdsByBaseCriteria(BaseSearchAdModel model)
         {
+            Type modelType = model.GetType();
+            var selected = modelType
+                .GetProperties()
+                .Select(x => new { Name = x.Name, Value = x.GetValue(model) })
+                 .Where(x => x.Value != null)
+                .ToList();
+
+            if (selected.Count == 0)
+            {
+
+            }
             throw new NotImplementedException();
         }
 
-        public List<AdCardViewModel> GetAdsByAdvancedCriteria(AdvancedSearchCarModel model)
+        public List<AdCardSpViewModel> GetAdsByAdvancedCriteria(AdvancedSearchCarModel model)
         {
             List<PropertyDto> defaultSearchCriteria = GetBaseSearchCriteria(model);
 

@@ -3,7 +3,7 @@ using MobileWorld.Core.ViewModels;
 
 namespace MobileWorld.Core.Models
 {
-    public class AdvancedSearchCarModel : BaseSearchCarModel
+    public class AdvancedSearchCarModel : BaseSearchAdModel
     {
         public FeatureViewModel Features { get; set; } = new();
 
