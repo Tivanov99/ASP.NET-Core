@@ -11,12 +11,19 @@
         <div class="product-text">
             <h1>@Model.Title</h1>
             <hr class="split-line">
-            <h2>@Model.Description</h2>
+            <label style="margin-left:10px">Дата на производство - 2021</label>
+            <br />
+            <label style="margin-left:10px">Тип двигател - Дизел</label>
+            <br />
+            <label style="margin-left:10px">Мощност - 333 к.с.</label>
+            <br />
+            <label style="margin-left:10px">Пробег - 6000.00 км</label>
             <hr class="split-line">
-            <h3 class="product-price">Price : @Model.Price</h3>
+            <h3 class="product-price">Цена : @Model.Price</h3>
             <div class="button-holder info-button">
                 <a href="/Ad/Ad?adId=@Model.AdId" class="btn btn-info text-uppercase">Разгледай</a>
             </div>
+            <p style="margin-top: 40px; margin-left: 85px;">Добавена на: @Model.CreatedOn</p>
         </div>
     </div>
 </div>

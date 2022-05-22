@@ -239,8 +239,6 @@ namespace MobileWorld.Core.Services
             .Include(a => a.Car.Engine)
             .FirstOrDefault();
 
-            
-
             if (ad != null)
             {
                 try
@@ -254,9 +252,9 @@ namespace MobileWorld.Core.Services
                             .ToInt32(Convert.ToString(result.Item2[1].Value));
 
                     MatchFeatures(ad.Car.Feature, model.Features);
-                    await UpdateEngine(model.Car.Engine, ad.Car.Engine);
-                    await UpdateAdModel(ad,model,townId);
-                    await UpdateCar(ad.Car, model.Car);
+                    UpdateEngine(model.Car.Engine, ad.Car.Engine);
+                    UpdateAdModel(ad, model, townId);
+                    UpdateCar(ad.Car, model.Car);
 
                     //TODO: Check Images
                     //ad.Images.ForEach(i=>i.ImageData=updatedModel.Car.Images[i]);
@@ -274,8 +272,8 @@ namespace MobileWorld.Core.Services
             return false;
         }
 
-        
-       
+
+
 
         private AdViewModel MapToAdViewModel(AdSpModel soursce)
         {
@@ -439,7 +437,7 @@ namespace MobileWorld.Core.Services
                  OwnerId = ownerId,
              };
 
-        private async Task UpdateEngine(IEngineViewModel updatedModel, Engine dbModel)
+        private void UpdateEngine(IEngineViewModel updatedModel, Engine dbModel)
         {
             dbModel.EcoLevel = updatedModel.EcoLevel;
             dbModel.CubicCapacity = updatedModel.CubicCapacity;
@@ -448,7 +446,7 @@ namespace MobileWorld.Core.Services
             dbModel.FuelType = updatedModel.FuelType;
         }
 
-        private async Task UpdateAdModel(Ad ad, AdInputModel model, int townId)
+        private void UpdateAdModel(Ad ad, AdInputModel model, int townId)
         {
             ad.Title = model.Title;
             ad.Price = model.Price;
@@ -458,7 +456,7 @@ namespace MobileWorld.Core.Services
             ad.Region.Neiborhood = model.Region.Neiborhood;
         }
 
-        private async Task UpdateCar(Car car, ICarViewModel model)
+        private void UpdateCar(Car car, ICarViewModel model)
         {
             car.SeatsCount = model.SeatsCount;
             car.GearType = model.GearType;
