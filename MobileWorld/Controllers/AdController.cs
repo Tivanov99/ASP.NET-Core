@@ -42,7 +42,7 @@ namespace MobileWorld.Controllers
 
         public async Task<IActionResult> Ad(string adId)
         {
-            var ad = await this._service
+            var ad = this._service
                 .GetAdById(adId);
 
             return View(ad);
@@ -134,10 +134,10 @@ namespace MobileWorld.Controllers
             }
             return View("Error", new { ErrorMessage = "Нещо се обърка! Опитайте отново." });
         }
-        public async Task<ActionResult> Edit(string adId)
+        public ActionResult Edit(string adId)
         {
-            var ad = await this._service
-                .GetAdById(adId);
+            var ad =  this._service
+                .GetAdForUpdate(adId);
 
             return View(ad);
         }

@@ -41,7 +41,6 @@ namespace MobileWorld.Core.Services
                                 .AsNoTracking()
                                 .ToListAsync();
                 return await ads;
-
             }
             catch (Exception)
             {
@@ -69,7 +68,7 @@ namespace MobileWorld.Core.Services
             }
         }
 
-        public async Task<AdViewModel> GetAdById(string adId)
+        public AdViewModel GetAdById(string adId)
         {
             try
             {
@@ -100,7 +99,7 @@ namespace MobileWorld.Core.Services
             }
         }
 
-        public async Task<AdInputModel> GetAdForUpdate(string adId)
+        public AdInputModel GetAdForUpdate(string adId)
         {
             try
             {
@@ -203,7 +202,6 @@ namespace MobileWorld.Core.Services
         {
             var result = _storedProdecuresCollection
                 .DeleteAd(adId);
-
             try
             {
                 _unitOfWork.AdRepository
@@ -220,7 +218,7 @@ namespace MobileWorld.Core.Services
             }
         }
 
-        public async Task<bool> Update(AdInputModel model, string adId)
+        public bool Update(AdInputModel model, string adId)
         {
             Ad? ad = this._unitOfWork
             .AdRepository

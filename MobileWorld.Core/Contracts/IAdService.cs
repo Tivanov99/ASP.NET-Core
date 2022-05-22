@@ -11,9 +11,9 @@ namespace MobileWorld.Core.Contracts
     {
         List<AdCardSpViewModel> GetAllAds();
 
-        Task<AdViewModel> GetAdById(string adId);
+        AdViewModel GetAdById(string adId);
 
-        Task<AdInputModel> GetAdForUpdate(string adId);
+        AdInputModel GetAdForUpdate(string adId);
 
         List<AdCardViewModel> GetAdsByAdvancedCriteria(AdvancedSearchCarModel model);
 
@@ -25,6 +25,6 @@ namespace MobileWorld.Core.Contracts
 
         bool Delete(string adId);
 
-        Task<bool> Update(AdInputModel updatedModel, string adId);
+        bool Update(AdInputModel updatedModel, string adId);
     }
 }
