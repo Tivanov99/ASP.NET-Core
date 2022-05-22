@@ -52,13 +52,6 @@ namespace MobileWorld.Core
             CreateMap<FeatureSpModel, SafetyDetailViewModel>();
 
 
-            CreateMap<ComfortDetailViewModel, ComfortDetail>();
-            CreateMap<ExteriorDetailViewModel, ExteriorDetail>();
-            CreateMap<InteriorDetailViewModel, InteriorDetail>();
-            CreateMap<OthersDetailViewModel, OthersDetail>();
-            CreateMap<ProtectionDetailViewModel, ProtectionDetail>();
-            CreateMap<SafetyDetailViewModel, SafetyDetail>();
-
 
             //CreateMap<AdSpModel, AdViewModel>()
             //    .ForMember(pts => pts.Car, opt => opt.MapFrom(ps => ps.Car))

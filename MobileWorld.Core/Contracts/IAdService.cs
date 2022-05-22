@@ -25,6 +25,6 @@ namespace MobileWorld.Core.Contracts
 
         bool Delete(string adId);
 
-        bool Update(AdInputModel updatedModel, string adId);
+        Task<bool> Update(AdInputModel updatedModel, string adId);
     }
 }

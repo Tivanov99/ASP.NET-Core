@@ -220,7 +220,7 @@ namespace MobileWorld.Core.Services
             }
         }
 
-        public bool Update(AdInputModel model, string adId)
+        public async Task<bool> Update(AdInputModel model, string adId)
         {
             Ad? ad = this._unitOfWork
             .AdRepository
@@ -239,53 +239,28 @@ namespace MobileWorld.Core.Services
             .Include(a => a.Car.Engine)
             .FirstOrDefault();
 
-            ad.Car.Feature.SafetyDetails = _mapper.Map<SafetyDetailViewModel, SafetyDetail>((SafetyDetailViewModel)model.Features.SafetyDetails);
-            ad.Car.Feature.OthersDetails = _mapper.Map<OthersDetailViewModel, OthersDetail>((OthersDetailViewModel)model.Features.OthersDetails);
-            ad.Car.Feature.ProtectionDetails = _mapper.Map<ProtectionDetailViewModel, ProtectionDetail>((ProtectionDetailViewModel)model.Features.ProtectionDetails);
-            ad.Car.Feature.ExteriorDetails = _mapper.Map<ExteriorDetailViewModel, ExteriorDetail>((ExteriorDetailViewModel)model.Features.ExteriorDetails);
-            ad.Car.Feature.InteriorDetails = _mapper.Map<InteriorDetailViewModel, InteriorDetail>((InteriorDetailViewModel)model.Features.InteriorDetails);
-            ad.Car.Feature.ComfortDetails = _mapper.Map<ComfortDetailViewModel, ComfortDetail>((ComfortDetailViewModel)model.Features.ComfortDetails);
-
             var result = _storedProdecuresCollection
                  .GetTownIdByTownName(model.Region.TownName);
 
-            _unitOfWork.TownRepository.UserStoredProdecude(result.Item1, result.Item2);
+          _unitOfWork.TownRepository.UserStoredProdecude(result.Item1, result.Item2);
 
             int townId = Convert
-                    .ToInt32(Convert
-                                    .ToString(result.Item2[1].Value)
-                            );
+                    .ToInt32(Convert.ToString(result.Item2[1].Value));
 
             if (ad != null)
             {
                 try
                 {
-                    MatchFeatures(ad.Car.Feature, model.Features);
-
-                    UpdateEngine(model.Car.Engine, ad.Car.Engine);
-
-                    ad.Car.SeatsCount = model.Car.SeatsCount;
-                    ad.Car.GearType = model.Car.GearType;
-                    ad.Car.Year = model.Car.Year;
-                    //TODO: Check model
-                    //ad.Car.Model = updatedModel.Car.Model;
-                    ad.Car.Color = model.Car.Color;
-                    ad.Car.Make = model.Car.Make;
-                    ad.Car.Mileage = model.Car.Mileage;
-
+                     MatchFeatures(ad.Car.Feature, model.Features);
+                    await UpdateEngine(model.Car.Engine, ad.Car.Engine);
+                    await UpdateAdModel(ad,model,townId);
+                    await UpdateCar(ad.Car, model.Car);
 
                     //TODO: Check Images
                     //ad.Images.ForEach(i=>i.ImageData=updatedModel.Car.Images[i]);
-                    ad.Title = model.Title;
-                    ad.Price = model.Price;
-                    ad.PhoneNumber = model.PhoneNumber;
-                    ad.Region.TownId = townId;
-                    ad.Region.RegionName = model.Region.RegionName;
-                    ad.Region.Neiborhood = model.Region.Neiborhood;
 
-                    this._unitOfWork
-                .AdRepository
-                .Update(ad);
+                    this._unitOfWork.AdRepository.Update(ad);
+
                     this._unitOfWork.Save();
                     return true;
                 }
@@ -296,6 +271,9 @@ namespace MobileWorld.Core.Services
             }
             return false;
         }
+
+        
+       
 
         private AdViewModel MapToAdViewModel(AdSpModel soursce)
         {
@@ -467,13 +445,35 @@ namespace MobileWorld.Core.Services
                  OwnerId = ownerId,
              };
 
-        private void UpdateEngine(IEngineViewModel updatedModel, Engine dbModel)
+        private async Task UpdateEngine(IEngineViewModel updatedModel, Engine dbModel)
         {
             dbModel.EcoLevel = updatedModel.EcoLevel;
             dbModel.CubicCapacity = updatedModel.CubicCapacity;
             dbModel.HorsePower = updatedModel.HorsePower;
             dbModel.NewtonMeter = updatedModel.NewtonMeter;
             dbModel.FuelType = updatedModel.FuelType;
+        }
+
+        private async Task UpdateAdModel(Ad ad, AdInputModel model, int townId)
+        {
+            ad.Title = model.Title;
+            ad.Price = model.Price;
+            ad.PhoneNumber = model.PhoneNumber;
+            ad.Region.TownId = townId;
+            ad.Region.RegionName = model.Region.RegionName;
+            ad.Region.Neiborhood = model.Region.Neiborhood;
+        }
+
+        private async Task UpdateCar(Car car, ICarViewModel model)
+        {
+            car.SeatsCount = model.SeatsCount;
+            car.GearType = model.GearType;
+            car.Year = model.Year;
+            //TODO: Check model
+            //ad.Car.Model = updatedModel.Car.Model;
+            car.Color = model.Color;
+            car.Make = model.Make;
+            car.Mileage = model.Mileage;
         }
     }
 }
