@@ -2,6 +2,8 @@
 using MobileWorld.Core.Models.InputModels;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Core.ViewModels.FeatureDetailModels;
+using MobileWorld.Infrastructure.Data.Identity;
+using MobileWorld.Infrastructure.Data.Models;
 using MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels;
 
 namespace MobileWorld.Core
@@ -10,6 +12,10 @@ namespace MobileWorld.Core
     {
         public ApplicationProfile()
         {
+            CreateMap<OwnerInputModel, ApplicationUser>()
+                
+
+            CreateMap<EngineViewModel, Engine>();
             CreateMap<EngineSpModel , EngineViewModel>();
             CreateMap<EngineSpModel, EngineInputModel>();
 
@@ -19,10 +25,13 @@ namespace MobileWorld.Core
             CreateMap<CarSpModel, CarInputModel>()
              .ForMember(pts => pts.GearType, opt => opt.MapFrom(ps => ps.GearType));
 
+            CreateMap<CarInputModel, Car>();
+
             CreateMap<AdInfoSpModel, AdViewModel>();
             CreateMap<AdInfoSpModel, AdInputModel>();
             CreateMap<AdInfoSpModel, OwnerViewModel>();
             CreateMap<AdInfoSpModel, OwnerInputModel>();
+            CreateMap<AdInputModel, Ad>();
 
 
             CreateMap<AdInfoSpModel, RegionViewModel>()
@@ -35,6 +44,9 @@ namespace MobileWorld.Core
                 .ForMember(pts => pts.TownName, opt => opt.MapFrom(ps => ps.TownName))
                 .ForMember(pts => pts.RegionName, opt => opt.MapFrom(ps => ps.RegionName));
 
+            CreateMap<RegionInputModel, Region>()
+                .ForMember(pts => pts.Town.TownName, opt => opt.MapFrom(ps => ps.TownName));
+
             CreateMap<FeatureSpModel, ComfortDetailViewModel>();
             CreateMap<FeatureSpModel, ExteriorDetailViewModel>();
             CreateMap<FeatureSpModel, InteriorDetailViewModel>();
@@ -42,6 +54,13 @@ namespace MobileWorld.Core
             CreateMap<FeatureSpModel, ProtectionDetailViewModel>();
             CreateMap<FeatureSpModel, SafetyDetailViewModel>();
 
+
+            CreateMap<ComfortDetailViewModel, ComfortDetail>();
+            CreateMap<ExteriorDetailViewModel, ExteriorDetail>();
+            CreateMap<InteriorDetailViewModel, InteriorDetail>();
+            CreateMap<OthersDetailViewModel, OthersDetail>();
+            CreateMap<ProtectionDetailViewModel, ProtectionDetail>();
+            CreateMap<SafetyDetailViewModel, SafetyDetail>();
 
 
             //CreateMap<AdSpModel, AdViewModel>()

@@ -22,7 +22,6 @@ namespace MobileWorld.Infrastructure.Data.Repositories
         public AdSpModel GetAdById(string sql, SqlParameter[] parameters)
         {
             AdSpModel resultModel = new();
-
             try
             {
                 DbCommand command;
@@ -100,9 +99,8 @@ namespace MobileWorld.Infrastructure.Data.Repositories
             }
             catch (Exception)
             {
-
+                return null;
             }
-            return null;
         }
     }
 }

@@ -25,7 +25,6 @@ namespace MobileWorld.Infrastructure.Data.Common
             context.Database.ExecuteSqlRaw(sqlCommand, parameters);
         }
 
-
         public virtual IEnumerable<TEntity> Get(
             Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,

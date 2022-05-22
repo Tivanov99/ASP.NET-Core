@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Linq.Expressions;
 
 namespace MobileWorld.Infrastructure.Data.Common
 {
@@ -20,10 +19,5 @@ namespace MobileWorld.Infrastructure.Data.Common
         void Delete(object id);
 
         void Insert(TEntity entity);
-
-        IEnumerable<TEntity> Get(
-            Expression<Func<TEntity, bool>> filter = null,
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
-            string includeProperties = "");
     }
 }

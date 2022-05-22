@@ -76,11 +76,11 @@ namespace MobileWorld.Core.Services
                 var adSpResources = _storedProdecuresCollection
                     .GetAdById(adId);
 
-                var dbAdModel = _unitOfWork
+                var adDbModel = _unitOfWork
                     .AdRepository
                     .GetAdById(adSpResources.Item1, adSpResources.Item2);
 
-                AdViewModel adViewModel = MapToAdViewModel(dbAdModel);
+                AdViewModel adViewModel = MapToAdViewModel(adDbModel);
 
                 var featuresSpResources = _storedProdecuresCollection
                     .GetAdFeatures(adId);
@@ -127,9 +127,8 @@ namespace MobileWorld.Core.Services
             }
             catch (Exception)
             {
-
+                return null;
             }
-            return null;
         }
 
         public List<AdCardViewModel> GetAdsByAdvancedCriteria(AdvancedSearchCarModel model)
@@ -223,6 +222,8 @@ namespace MobileWorld.Core.Services
 
         public bool Update(AdInputModel model, string adId)
         {
+            _unitOfWork.AdRepository.Update(model);
+
             Ad? ad = this._unitOfWork
             .AdRepository
             .GetAsQueryable()
