@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "zfB4ZbMy/a7VZAjztP+JQhAlJVq4nB5EmaXrqAIVR6w=",
+  "Hash": "Dtp8mmNCC9Rl9dZ8U2RfiBXHduldAjXM1NUSAhK2xgw=",
   "Source": "MobileWorld",
   "BasePath": "_content/MobileWorld",
   "Mode": "Default",
@@ -1103,23 +1103,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\CarCard.css"
-    },
-    {
-      "Identity": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld\\wwwroot\\css\\CarCardPartial.css",
-      "SourceId": "MobileWorld",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld\\wwwroot\\",
-      "BasePath": "_content/MobileWorld",
-      "RelativePath": "css/CarCardPartial.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\CarCardPartial.css"
     },
     {
       "Identity": "C:\\Users\\Trifon\\Desktop\\ASP.NET-Core\\MobileWorld\\wwwroot\\css\\CarDetails.css",

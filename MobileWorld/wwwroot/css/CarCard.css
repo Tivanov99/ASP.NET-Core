@@ -154,3 +154,11 @@ span {
     font-weight: bold;
     font-size: 20px;
 }
+.car-data {
+    margin-left: 10px;
+}
+
+.created-date {
+    margin-top: 40px;
+    margin-left: 65px;
+}
