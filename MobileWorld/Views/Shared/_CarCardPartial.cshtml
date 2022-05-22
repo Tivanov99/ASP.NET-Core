@@ -12,16 +12,16 @@
             <h1>@Model.Title</h1>
             <hr class="split-line">
             <label class="car-data">Дата на производство - </label>
-            <label class="bold-text">2021</label>
+            <label class="bold-text">@Model.Year</label>
             <br />
             <label class="car-data">Тип двигател - </label>
-            <label class="bold-text">Дизел</label>
+            <label class="bold-text">@Model.FuelType</label>
             <br />
             <label class="car-data">Мощност - </label>
-            <label class="bold-text">333 к.с.</label>
+            <label class="bold-text">@Model.HorsePower к.с.</label>
             <br />
             <label class="car-data">Пробег - </label>
-            <label class="bold-text">6000.00 км</label>
+            <label class="bold-text">@Model.Mileage км</label>
             <hr class="split-line">
             <h3 class="product-price">Цена : @Model.Price</h3>
             <div class="button-holder info-button">
