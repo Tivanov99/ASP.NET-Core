@@ -270,9 +270,6 @@ namespace MobileWorld.Core.Services
             return false;
         }
 
-
-
-
         private AdViewModel MapToAdViewModel(AdSpModel soursce)
         {
             AdViewModel adResult = _mapper.Map<AdViewModel>(soursce.AdInfo);
@@ -384,29 +381,29 @@ namespace MobileWorld.Core.Services
             EcoLevel = model.EcoLevel,
         };
 
-        private void MatchInputFeaturesToFeatureDbModel(object inputData, object modelToBind)
+        private void MatchInputFeaturesToFeatureDbModel(object inputModel, object dbModel)
         {
-            Type inputModelType = inputData
+            Type inputModelType = inputModel
                 .GetType();
 
-            string categoryName = inputData.GetType().Name;
+            string categoryName = inputModel.GetType().Name;
 
             var inputDataPoperties = inputModelType
                 .GetProperties()
-                .Where(x => x.PropertyType == typeof(bool) && (bool)x.GetValue(inputData) == true)
+                .Where(x => x.PropertyType == typeof(bool))
                 .Select(x => x.Name)
                 .ToList();
 
-            Type bindingModelType = modelToBind
+            Type bindingModelType = dbModel
                .GetType();
 
-            var test = bindingModelType.GetProperties()
+            var dbProperties = bindingModelType.GetProperties()
                 .Where(p => inputDataPoperties.Contains(p.Name))
                 .ToList();
 
-            foreach (var item in test)
+            foreach (var item in dbProperties)
             {
-                item.SetValue(modelToBind, true);
+                item.SetValue(dbModel, true);
             }
         }
 
