@@ -222,18 +222,29 @@ namespace MobileWorld.Core.Services
 
         public bool Update(AdInputModel model, string adId)
         {
-            _unitOfWork.AdRepository.Update(model);
-
             Ad? ad = this._unitOfWork
             .AdRepository
             .GetAsQueryable()
             .Where(a => a.Id == adId)
             .Include(a => a.Region)
+            .Include(a => a.Owner)
             .Include(a => a.Car)
-                .ThenInclude(c => c.Feature)
+            .Include(a => a.Car.Feature)
+            .Include(a => a.Car.Feature.SafetyDetails)
+            .Include(a => a.Car.Feature.ComfortDetails)
+            .Include(a => a.Car.Feature.ProtectionDetails)
+            .Include(a => a.Car.Feature.InteriorDetails)
+            .Include(a => a.Car.Feature.ExteriorDetails)
+            .Include(a => a.Car.Feature.OthersDetails)
             .Include(a => a.Car.Engine)
             .FirstOrDefault();
 
+            ad.Car.Feature.SafetyDetails = _mapper.Map<SafetyDetailViewModel, SafetyDetail>((SafetyDetailViewModel)model.Features.SafetyDetails);
+            ad.Car.Feature.OthersDetails = _mapper.Map<OthersDetailViewModel, OthersDetail>((OthersDetailViewModel)model.Features.OthersDetails);
+            ad.Car.Feature.ProtectionDetails = _mapper.Map<ProtectionDetailViewModel, ProtectionDetail>((ProtectionDetailViewModel)model.Features.ProtectionDetails);
+            ad.Car.Feature.ExteriorDetails = _mapper.Map<ExteriorDetailViewModel, ExteriorDetail>((ExteriorDetailViewModel)model.Features.ExteriorDetails);
+            ad.Car.Feature.InteriorDetails = _mapper.Map<InteriorDetailViewModel, InteriorDetail>((InteriorDetailViewModel)model.Features.InteriorDetails);
+            ad.Car.Feature.ComfortDetails = _mapper.Map<ComfortDetailViewModel, ComfortDetail>((ComfortDetailViewModel)model.Features.ComfortDetails);
 
             var result = _storedProdecuresCollection
                  .GetTownIdByTownName(model.Region.TownName);

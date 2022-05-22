@@ -15,7 +15,8 @@ namespace MobileWorld.Core.Models.InputModels
             Features = new FeatureViewModel();
             Images = new();
         }
-        public string Id { get; set; }
+        public string? Id { get; set; }
+
         public DateTime CreatedOn { get; set; }
 
         [Required(ErrorMessage = "Полето 'Заглавие' е задължително!")]

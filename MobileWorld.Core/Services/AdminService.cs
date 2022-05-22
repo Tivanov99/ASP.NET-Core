@@ -54,7 +54,7 @@ namespace MobileWorld.Core.Services
         public IEnumerable<UserViewModel> Users()
         => this._unitOfWork
                 .UserRepository
-                .Get()
+                .GetAsQueryable()
                 .Select(u => new UserViewModel()
                 {
                     Id = u.Id,

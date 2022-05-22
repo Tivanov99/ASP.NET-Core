@@ -12,11 +12,11 @@ namespace MobileWorld.Core
     {
         public ApplicationProfile()
         {
-            CreateMap<OwnerInputModel, ApplicationUser>()
-                
+            CreateMap<OwnerInputModel, ApplicationUser>();
+
 
             CreateMap<EngineViewModel, Engine>();
-            CreateMap<EngineSpModel , EngineViewModel>();
+            CreateMap<EngineSpModel, EngineViewModel>();
             CreateMap<EngineSpModel, EngineInputModel>();
 
             CreateMap<CarSpModel, CarViewModel>()
@@ -31,7 +31,6 @@ namespace MobileWorld.Core
             CreateMap<AdInfoSpModel, AdInputModel>();
             CreateMap<AdInfoSpModel, OwnerViewModel>();
             CreateMap<AdInfoSpModel, OwnerInputModel>();
-            CreateMap<AdInputModel, Ad>();
 
 
             CreateMap<AdInfoSpModel, RegionViewModel>()
@@ -44,8 +43,6 @@ namespace MobileWorld.Core
                 .ForMember(pts => pts.TownName, opt => opt.MapFrom(ps => ps.TownName))
                 .ForMember(pts => pts.RegionName, opt => opt.MapFrom(ps => ps.RegionName));
 
-            CreateMap<RegionInputModel, Region>()
-                .ForMember(pts => pts.Town.TownName, opt => opt.MapFrom(ps => ps.TownName));
 
             CreateMap<FeatureSpModel, ComfortDetailViewModel>();
             CreateMap<FeatureSpModel, ExteriorDetailViewModel>();
