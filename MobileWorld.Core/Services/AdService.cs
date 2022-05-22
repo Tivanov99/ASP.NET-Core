@@ -162,9 +162,7 @@ namespace MobileWorld.Core.Services
                     .UserStoredProdecude(result.Item1, result.Item2);
 
                 int townId = Convert
-                    .ToInt32(Convert
-                                    .ToString(result.Item2[1].Value)
-                            );
+                    .ToInt32(Convert.ToString(result.Item2[1].Value));
 
                 if (townId == 0)
                 {
@@ -386,24 +384,26 @@ namespace MobileWorld.Core.Services
             Type inputModelType = inputModel
                 .GetType();
 
-            string categoryName = inputModel.GetType().Name;
+            string categoryName = inputModel.GetType()
+                .Name;
 
             var inputDataPoperties = inputModelType
                 .GetProperties()
                 .Where(x => x.PropertyType == typeof(bool))
-                .Select(x => x.Name)
+                .Select(x => new { Name = x.Name, Value = x.GetValue(inputModel) })
                 .ToList();
 
             Type bindingModelType = dbModel
                .GetType();
 
             var dbProperties = bindingModelType.GetProperties()
-                .Where(p => inputDataPoperties.Contains(p.Name))
+                .Where(x => x.PropertyType == typeof(bool))
+                .Select(x => x)
                 .ToList();
-
+            int count = 0;
             foreach (var item in dbProperties)
             {
-                item.SetValue(dbModel, true);
+                item.SetValue(dbModel, inputDataPoperties[count++].Value);
             }
         }
 
