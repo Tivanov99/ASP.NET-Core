@@ -140,9 +140,9 @@ namespace MobileWorld.Core.Services
 
             if (selected.Count == 0)
             {
-
+                return GetAllAds();
             }
-            throw new NotImplementedException();
+            return null;
         }
 
         public List<AdCardSpViewModel> GetAdsByAdvancedCriteria(AdvancedSearchCarModel model)

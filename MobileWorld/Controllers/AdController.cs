@@ -89,21 +89,23 @@ namespace MobileWorld.Controllers
 
         public IActionResult AdsByBaseCriteria(BaseSearchAdModel searchModel)
         {
+            List<AdCardSpViewModel> result = null;
+
             if (ModelState.IsValid)
             {
-                var result = this._service
-                                .GetAdsByBaseCriteria(searchModel);
+                result = this._service
+                               .GetAdsByBaseCriteria(searchModel);
             }
             else
             {
                 var message = string.Join(" | ", ModelState.Values
-            .SelectMany(v => v.Errors)
-            .Select(e => e.ErrorMessage));
+               .SelectMany(v => v.Errors)
+               .Select(e => e.ErrorMessage));
                 return View("Error", new { ErrorMessage = message });
 
             }
 
-            return View();
+            return View("AllAds", result);
         }
 
         public IActionResult AdvancedSearch()
