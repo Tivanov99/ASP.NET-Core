@@ -144,8 +144,8 @@ namespace MobileWorld.Core.Services
             GetSelectedFeatures(model.Features.ProtectionDetails, featuresSearchCriteria);
             GetSelectedFeatures(model.Features.InteriorDetails, featuresSearchCriteria);
 
-            string queryString = ConfigurateSqlCommand
-                (defaultSearchCriteria, featuresSearchCriteria);
+            //string queryString = ConfigurateSqlCommand
+            //    (defaultSearchCriteria, featuresSearchCriteria);
 
             return null;
         }
@@ -239,19 +239,21 @@ namespace MobileWorld.Core.Services
             .Include(a => a.Car.Engine)
             .FirstOrDefault();
 
-            var result = _storedProdecuresCollection
-                 .GetTownIdByTownName(model.Region.TownName);
-
-          _unitOfWork.TownRepository.UserStoredProdecude(result.Item1, result.Item2);
-
-            int townId = Convert
-                    .ToInt32(Convert.ToString(result.Item2[1].Value));
+            
 
             if (ad != null)
             {
                 try
                 {
-                     MatchFeatures(ad.Car.Feature, model.Features);
+                    var result = _storedProdecuresCollection
+                 .GetTownIdByTownName(model.Region.TownName);
+
+                    _unitOfWork.TownRepository.UserStoredProdecude(result.Item1, result.Item2);
+
+                    int townId = Convert
+                            .ToInt32(Convert.ToString(result.Item2[1].Value));
+
+                    MatchFeatures(ad.Car.Feature, model.Features);
                     await UpdateEngine(model.Car.Engine, ad.Car.Engine);
                     await UpdateAdModel(ad,model,townId);
                     await UpdateCar(ad.Car, model.Car);
@@ -352,14 +354,6 @@ namespace MobileWorld.Core.Services
             {
                 currentCriteria.Add(categoryName, features);
             }
-        }
-
-        private string ConfigurateSqlCommand
-            (List<PropertyDto> defaultSearchCriteria, Dictionary<string, List<string>> featuresSearchCriteria)
-        {
-            string queryString = "Select * From";
-
-            return queryString;
         }
 
         private Car CreateCarEntity(ICarViewModel car)
