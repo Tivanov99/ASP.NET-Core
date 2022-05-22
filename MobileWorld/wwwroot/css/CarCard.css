@@ -148,18 +148,18 @@ span {
     margin-top: -58px;
     margin-right: 160px;
     position: relative;
-    top: 75px;
+    top: 63px;
     left: 15px;
     color: black;
     font-weight: bold;
     font-size: 20px;
 }
 .car-data {
-    margin-left: 10px;
+    margin-left: 15px;
 }
 
 .created-date {
-    margin-top: 40px;
+    margin-top: 38px;
     margin-left: 65px;
 }
 .bold-text{

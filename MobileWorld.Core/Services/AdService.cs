@@ -49,7 +49,7 @@ namespace MobileWorld.Core.Services
             }
         }
 
-        public async Task<List<AdCardSpViewModel>> GetAllAds()
+        public List<AdCardSpViewModel> GetAllAds()
         {
             try
             {
@@ -58,9 +58,9 @@ namespace MobileWorld.Core.Services
                                .Set<AdCardSpViewModel>()
                                .FromSqlRaw(_storedProdecuresCollection.AllAds())
                                .AsNoTracking()
-                               .ToListAsync();
+                               .ToList();
 
-                return await ads;
+                return ads;
             }
             catch (Exception)
             {

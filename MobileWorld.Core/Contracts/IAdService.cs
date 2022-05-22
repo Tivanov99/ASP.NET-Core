@@ -9,7 +9,7 @@ namespace MobileWorld.Core.Contracts
 {
     public interface IAdService
     {
-        Task<List<AdCardSpViewModel>> GetAllAds();
+        List<AdCardSpViewModel> GetAllAds();
 
         Task<AdViewModel> GetAdById(string adId);
 

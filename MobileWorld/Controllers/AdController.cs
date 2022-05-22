@@ -28,9 +28,9 @@ namespace MobileWorld.Controllers
             _imageBinding = imageBinding;
         }
 
-        public async Task<IActionResult> AllAds()
+        public IActionResult AllAds()
         {
-            List<AdCardSpViewModel> cars = await this._service
+            List<AdCardSpViewModel> cars = this._service
                 .GetAllAds();
 
             if(cars == null)
