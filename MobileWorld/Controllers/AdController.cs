@@ -89,8 +89,8 @@ namespace MobileWorld.Controllers
 
         public IActionResult AdsByBaseCriteria(BaseSearchCarModel searchModel)
         {
-            //var result = this.service
-            //    .GetAdsByBaseCriteria(searchModel);
+            var result = this._service
+                .GetAdsByBaseCriteria(searchModel);
 
             return View();
         }

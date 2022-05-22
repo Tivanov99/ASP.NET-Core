@@ -129,6 +129,10 @@ namespace MobileWorld.Core.Services
                 return null;
             }
         }
+        public List<AdCardViewModel> GetAdsByBaseCriteria(BaseSearchCarModel model)
+        {
+            throw new NotImplementedException();
+        }
 
         public List<AdCardViewModel> GetAdsByAdvancedCriteria(AdvancedSearchCarModel model)
         {
