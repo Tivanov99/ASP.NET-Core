@@ -96,7 +96,7 @@ namespace MobileWorld.Controllers
                 result = this._service
                                .GetAdsByBaseCriteria(searchModel);
             }
-            else
+            else 
             {
                 var message = string.Join(" | ", ModelState.Values
                .SelectMany(v => v.Errors)

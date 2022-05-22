@@ -132,6 +132,7 @@ namespace MobileWorld.Core.Services
         public List<AdCardSpViewModel> GetAdsByBaseCriteria(BaseSearchAdModel model)
         {
             Type modelType = model.GetType();
+
             var selected = modelType
                 .GetProperties()
                 .Select(x => new { Name = x.Name, Value = x.GetValue(model) })
