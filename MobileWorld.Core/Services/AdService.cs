@@ -163,27 +163,25 @@ namespace MobileWorld.Core.Services
             {
                 string paramName = selected[i].Name;
 
-
                 parameters[i]
                     =new SqlParameter(paramName.ToLower(), selected[i].Value);
-                if (i < selected.Count - 1 && paramName=="price")
+
+                if (paramName=="MaxPrice")
                 {
-                    whereClauseSb.Append($"{paramName} <= @{paramName.ToLower()}");
-                    whereClauseSb.Append(" and ");
+                    whereClauseSb.Append($"Price <= @{paramName.ToLower()}");
                 }
-                else if(paramName == "year")
+                else if(paramName == "Year")
                 {
                     whereClauseSb.Append($"{paramName} > @{paramName.ToLower()}");
-                    whereClauseSb.Append(" and ");
-                }
-                else if (i < selected.Count - 1)
-                {
-                    whereClauseSb.Append($"{paramName} = @{paramName.ToLower()}");
-                    whereClauseSb.Append(" and ");
                 }
                 else
                 {
                     whereClauseSb.Append($"{paramName} = @{paramName.ToLower()}");
+                }
+
+                if(i < selected.Count - 1)
+                {
+                    whereClauseSb.Append(" and ");
                 }
             }
             sqlSb.Append(whereClauseSb.ToString());
