@@ -156,7 +156,9 @@ namespace MobileWorld.Core.Services
 
             var parameters = new object[selected.Count];
 
-            string whereClause = " Where ";
+            StringBuilder whereClauseSb = new ();
+            whereClauseSb.Append(" Where ");
+
             for (int i = 0; i < selected.Count; i++)
             {
                 string paramName = selected[i].Name;
@@ -166,27 +168,38 @@ namespace MobileWorld.Core.Services
                     =new SqlParameter(paramName.ToLower(), selected[i].Value);
                 if (i < selected.Count - 1 && paramName=="price")
                 {
-                    whereClause += $"{paramName} <= @{paramName.ToLower()}";
-
-                    whereClause += $" and ";
+                    whereClauseSb.Append($"{paramName} <= @{paramName.ToLower()}");
+                    whereClauseSb.Append(" and ");
                 }
                 else if(paramName == "year")
                 {
-                    whereClause += $"{paramName} > @{paramName.ToLower()}";
-
-                    whereClause += $" and ";
+                    whereClauseSb.Append($"{paramName} > @{paramName.ToLower()}");
+                    whereClauseSb.Append(" and ");
                 }
                 else if (i < selected.Count - 1)
                 {
-                    whereClause += $"{paramName} = @{paramName.ToLower()}";
+                    whereClauseSb.Append($"{paramName} = @{paramName.ToLower()}");
+                    whereClauseSb.Append(" and ");
+                }
+                else
+                {
+                    whereClauseSb.Append($"{paramName} = @{paramName.ToLower()}");
                 }
             }
-            sqlSb.Append($"{whereClause}");
+            sqlSb.Append(whereClauseSb.ToString());
 
-
-            var res = _unitOfWork.AdRepository.Set<AdCardSpViewModel>()
+            try
+            {
+                var res = _unitOfWork.AdRepository.Set<AdCardSpViewModel>()
                    .FromSqlRaw(sqlSb.ToString(), parameters)
                    .ToList();
+                return res;
+            }
+            catch (Exception)
+            {
+
+            }
+            
 
             return null;
         }
