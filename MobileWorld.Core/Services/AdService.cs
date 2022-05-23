@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Dto;
@@ -12,6 +13,7 @@ using MobileWorld.Infrastructure.Data.Models;
 using MobileWorld.Infrastructure.Data.QueriesAndSP.Sp.Contracts;
 using MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels;
 using System.Data;
+using System.Text;
 
 namespace MobileWorld.Core.Services
 {
@@ -139,10 +141,53 @@ namespace MobileWorld.Core.Services
                  .Where(x => x.Value != null)
                 .ToList();
 
+            StringBuilder sqlSb = new ();
+            sqlSb.Append("SELECT A.Id AS [AdId], A.CreatedOn, A.Price, A.Title," +
+                " (SELECT TOP(1) i.ImageTitle FROM [Images] AS I WHERE I.AdId = A.Id) AS [ImageTitle]," +
+                " C.Mileage, C.[Year], E.HorsePower, E.FuelType" +
+                " FROM [Ads] AS A " +
+                "LEFT JOIN[Cars] AS C ON C.AdId = A.Id" +
+                " LEFT JOIN [Engines] AS E ON E.CarId = C.Id");
+
             if (selected.Count == 0)
             {
                 return GetAllAds();
             }
+
+            var parameters = new object[selected.Count];
+
+            string whereClause = " Where ";
+            for (int i = 0; i < selected.Count; i++)
+            {
+                string paramName = selected[i].Name;
+
+
+                parameters[i]
+                    =new SqlParameter(paramName.ToLower(), selected[i].Value);
+                if (i < selected.Count - 1 && paramName=="price")
+                {
+                    whereClause += $"{paramName} <= @{paramName.ToLower()}";
+
+                    whereClause += $" and ";
+                }
+                else if(paramName == "year")
+                {
+                    whereClause += $"{paramName} > @{paramName.ToLower()}";
+
+                    whereClause += $" and ";
+                }
+                else if (i < selected.Count - 1)
+                {
+                    whereClause += $"{paramName} = @{paramName.ToLower()}";
+                }
+            }
+            sqlSb.Append($"{whereClause}");
+
+
+            var res = _unitOfWork.AdRepository.Set<AdCardSpViewModel>()
+                   .FromSqlRaw(sqlSb.ToString(), parameters)
+                   .ToList();
+
             return null;
         }
 
