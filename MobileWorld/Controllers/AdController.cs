@@ -102,7 +102,6 @@ namespace MobileWorld.Controllers
                .SelectMany(v => v.Errors)
                .Select(e => e.ErrorMessage));
                 return View("Error", new { ErrorMessage = message });
-
             }
 
             return View("AllAds", result);
