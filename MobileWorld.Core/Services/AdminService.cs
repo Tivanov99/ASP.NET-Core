@@ -40,10 +40,7 @@ namespace MobileWorld.Core.Services
                     LastName = u.LastName,
                     Email = u.Email,
                     AdsCount = u.Ads.Count,
-                    UserAds = (List<AdViewModel>)u.Ads.Select(a => new AdViewModel()
-                    {
-                        Id = a.Id,
-                    })
+                    UserAdsIds = u.Ads.Select(x=>x.Id).ToList()
                 })
                 .FirstOrDefault();
 

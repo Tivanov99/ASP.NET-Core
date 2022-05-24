@@ -1,7 +1,7 @@
-﻿@    using MobileWorld.Core.Models
-@    using MobileWorld.Infrastructure.Data.Identity
-@    using Microsoft.AspNetCore.Identity
-@    using MobileWorld.Infrastructure.Data.Common
+﻿@using MobileWorld.Core.Models.ViewModels
+@using MobileWorld.Infrastructure.Data.Identity
+@using Microsoft.AspNetCore.Identity
+@using MobileWorld.Infrastructure.Data.Common
 @model UserViewModel
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
@@ -58,7 +58,7 @@
         <strong>Брой на обяви</strong>
         <label>@Model.AdsCount</label>
         <div>
-            @foreach (var ad in Model.UserAds)
+            @foreach (var ad in Model.UserAdsIds)
             {
                 <label>@ad.Id</label>
                 <a class="delete-border" asp-controller="Ad" asp-action="Delete" asp-route-adId="@ad.Id">Изтрий</a>

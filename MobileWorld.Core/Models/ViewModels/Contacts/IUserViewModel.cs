@@ -1,14 +1,7 @@
-﻿using MobileWorld.Core.Models.ViewModels.Contacts;
-
-namespace MobileWorld.Core.Models.ViewModels
+﻿namespace MobileWorld.Core.Models.ViewModels.Contacts
 {
-    public class UserViewModel : IUserViewModel
+    public interface IUserViewModel
     {
-        public UserViewModel()
-        {
-            UserAdsIds = new();
-        }
-
         public string Id { get; set; }
 
         public string UserName { get; set; }

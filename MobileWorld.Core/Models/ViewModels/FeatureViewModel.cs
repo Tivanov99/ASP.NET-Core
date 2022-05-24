@@ -1,4 +1,5 @@
-﻿using MobileWorld.Core.Models.ViewModels.FeatureDetailModels.FeatureContracts;
+﻿using MobileWorld.Core.Models.ViewModels.FeatureDetailModels;
+using MobileWorld.Core.Models.ViewModels.FeatureDetailModels.FeatureContracts;
 using MobileWorld.Core.ViewModels.FeatureDetailModels;
 using MobileWorld.Core.ViewModels.FeatureDetailModels.FeatureContracts;
 
