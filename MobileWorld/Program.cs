@@ -11,7 +11,6 @@ using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.Identity;
 using MobileWorld.Infrastructure.Data.Models;
 using MobileWorld.Infrastructure.Data.QueriesAndSP.Sp;
-using MobileWorld.Infrastructure.Data.QueriesAndSP.Sp.Contracts;
 using MobileWorld.Infrastructure.Data.Repositories;
 using MobileWorld.Infrastructure.Data.Repositories.Contracts;
 using MobileWorld.ModelBinders;

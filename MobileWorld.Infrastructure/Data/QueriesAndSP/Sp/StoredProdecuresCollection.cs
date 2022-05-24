@@ -1,5 +1,4 @@
 ﻿using Microsoft.Data.SqlClient;
-using MobileWorld.Infrastructure.Data.QueriesAndSP.Sp.Contracts;
 using System.Data;
 
 namespace MobileWorld.Infrastructure.Data.QueriesAndSP.Sp

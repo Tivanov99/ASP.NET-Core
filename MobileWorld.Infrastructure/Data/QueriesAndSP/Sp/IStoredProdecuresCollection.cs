@@ -1,10 +1,10 @@
 ﻿using Microsoft.Data.SqlClient;
 
-namespace MobileWorld.Infrastructure.Data.QueriesAndSP.Sp.Contracts
+namespace MobileWorld.Infrastructure.Data.QueriesAndSP.Sp
 {
     public interface IStoredProdecuresCollection
     {
-         (string, SqlParameter[]) GetTownIdByTownName(string townName);
+        (string, SqlParameter[]) GetTownIdByTownName(string townName);
 
         (string, SqlParameter[]) DeleteAd(string adId);
 
@@ -15,5 +15,6 @@ namespace MobileWorld.Infrastructure.Data.QueriesAndSP.Sp.Contracts
         string AllAds();
 
         (string, SqlParameter[]) GetAdFeatures(string adId);
+
     }
 }

@@ -10,7 +10,7 @@ using MobileWorld.Core.ViewModels.Contacts;
 using MobileWorld.Core.ViewModels.FeatureDetailModels;
 using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.Models;
-using MobileWorld.Infrastructure.Data.QueriesAndSP.Sp.Contracts;
+using MobileWorld.Infrastructure.Data.QueriesAndSP.Sp;
 using MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels;
 using System.Data;
 using System.Text;
