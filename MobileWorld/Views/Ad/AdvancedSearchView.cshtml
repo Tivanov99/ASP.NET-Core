@@ -14,11 +14,11 @@
             </div>
 
             <div class="labels">
-                <label style="margin-left: -20px;">Цена от</label>
+                <label style="margin-left: -20px;">От Цена</label>
             </div>
 
             <div class="labels">
-                <label style="margin-left: -20px;">Цена до</label>
+                <label style="margin-left: -14px;">До Цена</label>
             </div>
 
         </div>
@@ -587,16 +587,17 @@
 
 
         <br />
+
         <div class="div-labels" style="margin-top:20px">
             <div>
-                <label>Година от</label>
+                <label>От Година</label>
             </div>
 
-            <div>
-                <label>Година до</label>
+            <div style="margin-left:-25px" class="labels">
+                <label>До Година</label>
             </div>
 
-            <div class="labels">
+            <div style="margin-left: -34px;" class="labels">
                 <label>Двигател</label>
             </div>
 
@@ -608,7 +609,7 @@
         <br />
         <div class="div-labels">
             <div>
-                <select name="Year" class="form-control">
+                <select name="YearFrom" class="form-control">
                     <option value="">
                         всички
                     </option>
@@ -894,8 +895,8 @@
                 </select>
             </div>
 
-            <div>
-                <select name="Year" class="form-control">
+            <div class ="selects">
+                <select name="YearTo" class="form-control">
                     <option value="">
                         всички
                     </option>
@@ -1223,7 +1224,7 @@
         <br />
         <button id="searchBtn" type="submit" class="btn btn-block btn-primary">Т Ъ Р С И</button>
     </div>
-    @await Html.PartialAsync("_AdvancedSearchPartial")
+    @*@await Html.PartialAsync("_AdvancedSearchPartial")*@
     @await Html.PartialAsync("_FeaturesPartial")
 </form>
 
