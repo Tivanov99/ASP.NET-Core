@@ -10,6 +10,7 @@ using MobileWorld.Core.ViewModels.Contacts;
 using MobileWorld.Core.ViewModels.FeatureDetailModels;
 using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.Models;
+using MobileWorld.Infrastructure.Data.QueriesAndSP.Queries;
 using MobileWorld.Infrastructure.Data.QueriesAndSP.Sp;
 using MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels;
 using System.Data;
@@ -22,14 +23,17 @@ namespace MobileWorld.Core.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly IStoredProdecuresCollection _storedProdecuresCollection;
         private readonly IMapper _mapper;
+        private readonly IQueriesCollection _queriesCollection;
 
         public AdService(IUnitOfWork unit,
             IStoredProdecuresCollection storedProdecuresCollection,
-            IMapper mapper)
+            IMapper mapper,
+            IQueriesCollection queriesCollection)
         {
             _unitOfWork = unit;
             _storedProdecuresCollection = storedProdecuresCollection;
             _mapper = mapper;
+            _queriesCollection = queriesCollection;
         }
 
         public async Task<List<AdCardSpViewModel>> GetIndexAds()
@@ -141,18 +145,15 @@ namespace MobileWorld.Core.Services
                  .Where(x => x.Value != null)
                 .ToList();
 
-            StringBuilder sqlSb = new ();
-            sqlSb.Append("SELECT A.Id AS [AdId], A.CreatedOn, A.Price, A.Title," +
-                " (SELECT TOP(1) i.ImageTitle FROM [Images] AS I WHERE I.AdId = A.Id) AS [ImageTitle]," +
-                " C.Mileage, C.[Year], E.HorsePower, E.FuelType" +
-                " FROM [Ads] AS A " +
-                "LEFT JOIN[Cars] AS C ON C.AdId = A.Id" +
-                " LEFT JOIN [Engines] AS E ON E.CarId = C.Id");
-
             if (selected.Count == 0)
             {
                 return GetAllAds();
             }
+
+
+            StringBuilder sqlSb = new ();
+            sqlSb.Append(_queriesCollection.GetAdsByBaseCriteria());
+
 
             var parameters = new object[selected.Count];
 
