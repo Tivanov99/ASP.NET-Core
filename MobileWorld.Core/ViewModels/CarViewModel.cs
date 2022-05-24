@@ -1,6 +1,5 @@
 ﻿using MobileWorld.Core.Models.Contracts;
 using MobileWorld.Infrastructure.Data.Enums;
-using MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels;
 
 namespace MobileWorld.Core.ViewModels
 {

@@ -1,4 +1,5 @@
-﻿using MobileWorld.Core.ViewModels;
+﻿using MobileWorld.Core.Models.InputModels.Contracts;
+using MobileWorld.Core.ViewModels;
 using MobileWorld.Core.ViewModels.Contacts;
 using System.ComponentModel.DataAnnotations;
 

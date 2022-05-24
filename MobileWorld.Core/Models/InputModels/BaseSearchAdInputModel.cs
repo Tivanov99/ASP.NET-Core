@@ -1,9 +1,8 @@
-﻿using MobileWorld.Infrastructure.Data.Enums;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace MobileWorld.Core.Models
+namespace MobileWorld.Core.Models.InputModels
 {
-    public class BaseSearchAdModel
+    public class BaseSearchAdInputModel
     {
         public string? Make { get; set; }
 

@@ -1,7 +1,7 @@
 ﻿using MobileWorld.Core.Models;
 using MobileWorld.Infrastructure.Data.Identity;
 
-namespace MobileWorld.Core.Contracts
+namespace MobileWorld.Core.Services.Contracts
 {
     public interface IAdminService
     {

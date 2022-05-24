@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Dto;
-using MobileWorld.Core.Models;
 using MobileWorld.Core.Models.InputModels;
+using MobileWorld.Core.Models.InputModels.Contracts;
+using MobileWorld.Core.Services.Contracts;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Core.ViewModels.Contacts;
 using MobileWorld.Core.ViewModels.FeatureDetailModels;
@@ -135,7 +135,7 @@ namespace MobileWorld.Core.Services
                 return null;
             }
         }
-        public List<AdCardSpViewModel> GetAdsByBaseCriteria(BaseSearchAdModel model)
+        public List<AdCardSpViewModel> GetAdsByBaseCriteria(BaseSearchAdInputModel model)
         {
             Type modelType = model.GetType();
 
@@ -203,7 +203,7 @@ namespace MobileWorld.Core.Services
             return null;
         }
 
-        public List<AdCardSpViewModel> GetAdsByAdvancedCriteria(AdvancedSearchCarModel model)
+        public List<AdCardSpViewModel> GetAdsByAdvancedCriteria(AdvancedSearchAdInputModel model)
         {
             List<PropertyDto> defaultSearchCriteria = GetBaseSearchCriteria(model);
 

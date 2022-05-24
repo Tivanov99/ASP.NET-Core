@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MobileWorld.Core.Contracts;
+using MobileWorld.Core.Services.Contracts;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels;
 

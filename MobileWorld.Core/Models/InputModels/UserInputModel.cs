@@ -1,12 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MobileWorld.Core.Models
+namespace MobileWorld.Core.Models.InputModels
 {
-    public class UserUpdateModel
+    public class UserInputModel
     {
-       
+
         [Required(ErrorMessage = "Полето 'Потребителско име' не е разрешено да бъде празно!")]
-        [StringLength(30,MinimumLength =3, ErrorMessage = "Полето '{0}' трябва да бъде най-малко {2} и най-много {1} знака.")]
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "Полето '{0}' трябва да бъде най-малко {2} и най-много {1} знака.")]
         public string UserName { get; set; }
 
 

@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MobileWorld.ControllerHelper.Contracts;
-using MobileWorld.Core.Contracts;
-using MobileWorld.Core.Models;
 using MobileWorld.Core.Models.InputModels;
+using MobileWorld.Core.Services.Contracts;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Infrastructure.Data.Models;
 using MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels;
@@ -79,7 +78,7 @@ namespace MobileWorld.Controllers
             return View("Error", new { ErrorMessage = message });
         }
 
-        public IActionResult AdsByCriteria(AdvancedSearchCarModel searchModel)
+        public IActionResult AdsByCriteria(AdvancedSearchAdInputModel searchModel)
         {
             List<AdCardSpViewModel> cars = this._service
                 .GetAdsByAdvancedCriteria(searchModel);
@@ -87,7 +86,7 @@ namespace MobileWorld.Controllers
             return View(cars);
         }
 
-        public IActionResult AdsByBaseCriteria(BaseSearchAdModel searchModel)
+        public IActionResult AdsByBaseCriteria(BaseSearchAdInputModel searchModel)
         {
             List<AdCardSpViewModel> result = null;
 

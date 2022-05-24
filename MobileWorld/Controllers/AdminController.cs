@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using MobileWorld.Core.Contracts;
-using MobileWorld.Core.Models;
+using MobileWorld.Core.Models.InputModels;
+using MobileWorld.Core.Services.Contracts;
 using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.Identity;
 using System.Data;
@@ -60,7 +60,7 @@ namespace MobileWorld.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateUser(UserUpdateModel model, string userId)
+        public async Task<IActionResult> UpdateUser(UserInputModel model, string userId)
         {
             if (ModelState.IsValid)
             {

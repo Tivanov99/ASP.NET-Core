@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MobileWorld.Core.Contracts;
 using MobileWorld.Core.Models;
+using MobileWorld.Core.Services.Contracts;
 using MobileWorld.Core.ViewModels;
 using MobileWorld.Infrastructure.Data.Common;
 using MobileWorld.Infrastructure.Data.Identity;

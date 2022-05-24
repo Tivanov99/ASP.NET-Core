@@ -1,11 +1,10 @@
-﻿using MobileWorld.Core.Models;
-using MobileWorld.Core.Models.InputModels;
+﻿using MobileWorld.Core.Models.InputModels;
+using MobileWorld.Core.Models.InputModels.Contracts;
 using MobileWorld.Core.ViewModels;
-using MobileWorld.Core.ViewModels.Contacts;
 using MobileWorld.Infrastructure.Data.Models;
 using MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels;
 
-namespace MobileWorld.Core.Contracts
+namespace MobileWorld.Core.Services.Contracts
 {
     public interface IAdService
     {
@@ -15,9 +14,9 @@ namespace MobileWorld.Core.Contracts
 
         AdInputModel GetAdForUpdate(string adId);
 
-        List<AdCardSpViewModel> GetAdsByAdvancedCriteria(AdvancedSearchCarModel model);
+        List<AdCardSpViewModel> GetAdsByAdvancedCriteria(AdvancedSearchAdInputModel model);
 
-        List<AdCardSpViewModel> GetAdsByBaseCriteria(BaseSearchAdModel model);
+        List<AdCardSpViewModel> GetAdsByBaseCriteria(BaseSearchAdInputModel model);
 
         Task<List<AdCardSpViewModel>> GetIndexAds();
 
