@@ -1,6 +1,4 @@
-﻿using MobileWorld.Infrastructure.Data.Models;
-
-namespace MobileWorld.Core.ViewModels
+﻿namespace MobileWorld.Core.ViewModels
 {
     public class AdCardViewModel
     {

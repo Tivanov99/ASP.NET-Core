@@ -1,6 +1,4 @@
-﻿using MobileWorld.Core.Models.Contracts;
-
-namespace MobileWorld.Core.ViewModels.Contacts
+﻿namespace MobileWorld.Core.ViewModels.Contacts
 {
     public interface IAdViewModel
     {

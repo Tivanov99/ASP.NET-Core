@@ -1,4 +1,6 @@
-﻿namespace MobileWorld.Core.ViewModels.Contacts
+﻿using MobileWorld.Core.ViewModels.FeatureDetailModels.FeatureContracts;
+
+namespace MobileWorld.Core.ViewModels.Contacts
 {
     public interface IFeatureViewModel
     {

@@ -1,4 +1,4 @@
-﻿namespace MobileWorld.Core.ViewModels.Contacts
+﻿namespace MobileWorld.Core.ViewModels.FeatureDetailModels.FeatureContracts
 {
     public interface ISafetyDetailViewModel
     {

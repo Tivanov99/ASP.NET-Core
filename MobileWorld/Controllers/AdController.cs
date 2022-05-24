@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using MobileWorld.ControllerHelper.Contracts;
 using MobileWorld.Core.Models.InputModels;
 using MobileWorld.Core.Services.Contracts;
-using MobileWorld.Core.ViewModels;
 using MobileWorld.Infrastructure.Data.Models;
 using MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels;
 using MobileWorld.Models;

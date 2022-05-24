@@ -16,8 +16,8 @@ namespace MobileWorld.Core.ViewModels.Contacts
 
         public GearType GearType { get; set; }
 
-        IEngineViewModel Engine { get; set; }
+       public IEngineViewModel Engine { get; set; }
 
-        IFeatureViewModel Features { get; set; }
+        public IFeatureViewModel Features { get; set; }
     }
 }

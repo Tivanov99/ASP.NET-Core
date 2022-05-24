@@ -52,7 +52,6 @@ IMapper mapper = mapperConfig.CreateMapper();
 builder.Services
 .AddSingleton(mapper)
 .AddScoped<IUserService, UserService>()
-.AddScoped<ICarService, CarService>()
 .AddScoped<IAdminService, AdminService>()
 .AddScoped<IAdService, AdService>()
 .AddScoped<IImageBinding, ImageBinding>()
