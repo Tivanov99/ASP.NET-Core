@@ -16,7 +16,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Редактиране на потребител</title>
-    <link asp-append-version="true" rel="stylesheet" href="~/css/Users.css">
     <link asp-append-version="true" rel="stylesheet" href="~/css/EditUser.css">
 </head>
 <body>
@@ -45,11 +44,11 @@
                 @Model.Role
             </option>
             <option value="@otherRole">
-               @otherRole
+                @otherRole
             </option>
         </select>
 
-            <button type="submit" class="btn btn-block btn-primary">Запази промените</button>
+        <button type="submit" class="btn btn-block btn-primary">Запази промените</button>
 
     </form>
 
@@ -60,9 +59,12 @@
         <div>
             @foreach (var ad in Model.UserAdsIds)
             {
-                <label>@ad.Id</label>
-                <a class="delete-border" asp-controller="Ad" asp-action="Delete" asp-route-adId="@ad.Id">Изтрий</a>
-                <a class="edit-border" asp-controller="Ad" asp-action="Edit" asp-route-adId="@ad.Id">Редактирай</a>
+                <div class="ad-editor">
+                    <label>@ad</label>
+                    <a class="delete-border" asp-controller="Ad" asp-action="Delete" asp-route-adId="@ad">Изтрий</a>
+                    <a class="edit-border" asp-controller="Ad" asp-action="Edit" asp-route-adId="@ad">Редактирай</a>
+                </div>
+                <br />
             }
         </div>
     </div>

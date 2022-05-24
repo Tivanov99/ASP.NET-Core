@@ -13,3 +13,8 @@
     color: white;
     padding: 5px;
 }
+.formatting {
+    margin-top: 25px;
+    margin-bottom: 15px;
+    border-color: grey;
+}
