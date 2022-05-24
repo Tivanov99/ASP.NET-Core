@@ -136,77 +136,38 @@ namespace MobileWorld.Core.Services
                 return null;
             }
         }
+
         public List<AdCardSpViewModel> GetAdsByBaseCriteria(BaseSearchAdInputModel model)
         {
-            Type modelType = model.GetType();
-
-            var selected = modelType
-                .GetProperties()
-                .Select(x => new { Name = x.Name, Value = x.GetValue(model) })
-                 .Where(x => x.Value != null)
-                .ToList();
+            var selected = GetSelected(model);
 
             if (selected.Count == 0)
             {
                 return GetAllAds();
             }
 
-
-            StringBuilder sqlSb = new ();
+            StringBuilder sqlSb = new();
             sqlSb.Append(_queriesCollection.GetAdsByBaseCriteria());
-
-
-            var parameters = new object[selected.Count];
-
-            StringBuilder whereClauseSb = new ();
-            whereClauseSb.Append(" Where ");
-
-            for (int i = 0; i < selected.Count; i++)
-            {
-                string paramName = selected[i].Name;
-
-                parameters[i]
-                    =new SqlParameter(paramName.ToLower(), selected[i].Value);
-
-                if (paramName=="MaxPrice")
-                {
-                    whereClauseSb.Append($"Price <= @{paramName.ToLower()}");
-                }
-                else if(paramName == "Year")
-                {
-                    whereClauseSb.Append($"{paramName} > @{paramName.ToLower()}");
-                }
-                else
-                {
-                    whereClauseSb.Append($"{paramName} = @{paramName.ToLower()}");
-                }
-
-                if(i < selected.Count - 1)
-                {
-                    whereClauseSb.Append(" and ");
-                }
-            }
-            sqlSb.Append(whereClauseSb.ToString());
 
             try
             {
+                var result = BuildSearchFilter(selected);
+                sqlSb.Append(result.Item1);
+
                 var res = _unitOfWork.AdRepository.Set<AdCardSpViewModel>()
-                   .FromSqlRaw(sqlSb.ToString(), parameters)
+                   .FromSqlRaw(sqlSb.ToString(), result.Item2)
                    .ToList();
                 return res;
             }
             catch (Exception)
             {
-
+                return null;
             }
-            
-
-            return null;
         }
 
         public List<AdCardSpViewModel> GetAdsByAdvancedCriteria(AdvancedSearchAdInputModel model)
         {
-            List<PropertyDto> defaultSearchCriteria = GetBaseSearchCriteria(model);
+            //List<PropertyDto> defaultSearchCriteria = GetBaseSearchCriteria(model);
 
             Dictionary<string, List<string>> featuresSearchCriteria = new();
 
@@ -246,7 +207,7 @@ namespace MobileWorld.Core.Services
 
                 Car car = CreateCarEntity(model.Car);
 
-                MatchFeatures(car.Feature, model.Car.Features);
+                MapFeatures(car.Feature, model.Car.Features);
 
                 Region region = CreateRegionEntity(model.Region, 1);
 
@@ -321,7 +282,7 @@ namespace MobileWorld.Core.Services
                     int townId = Convert
                             .ToInt32(Convert.ToString(result.Item2[1].Value));
 
-                    MatchFeatures(ad.Car.Feature, model.Features);
+                    MapFeatures(ad.Car.Feature, model.Features);
                     UpdateEngine(model.Car.Engine, ad.Car.Engine);
                     UpdateAdModel(ad, model, townId);
                     UpdateCar(ad.Car, model.Car);
@@ -377,20 +338,25 @@ namespace MobileWorld.Core.Services
                 SafetyDetails = _mapper.Map<SafetyDetailViewModel>(source),
             };
 
-        private List<PropertyDto> GetBaseSearchCriteria(object model)
+        private List<PropertyDto> GetSelected(object model)
         {
-            Type type = model.GetType();
+            try
+            {
+                Type modelType = model.GetType();
 
-            //string featuresType = typeof(FeaturesModel).Name;
+                var selected = modelType
+                    .GetProperties()
+                    .Select(x => new PropertyDto(x.Name, x.GetValue(model)))
+                    .Where(x => x.Value != null)
+                    .ToList();
+                return selected;
 
-            var propertyInfos = type
-                .GetProperties()
-                .Where(x => x.GetValue(model) != null &&
-                       x.GetValue(model).ToString() != "Всички")
-                .Select(x => new PropertyDto(x.Name, x.GetValue(model)))
-                .ToList();
+            }
+            catch (Exception)
+            {
 
-            return propertyInfos;
+            }
+            return null;
         }
 
         private void GetSelectedFeatures(object model, Dictionary<string, List<string>> currentCriteria)
@@ -419,6 +385,40 @@ namespace MobileWorld.Core.Services
             {
                 currentCriteria.Add(categoryName, features);
             }
+        }
+        private (string, object[]) BuildSearchFilter(List<PropertyDto> properties)
+        {
+            var parameters = new object[properties.Count];
+
+            StringBuilder whereClauseSb = new();
+            whereClauseSb.Append(" Where ");
+
+            for (int i = 0; i < properties.Count; i++)
+            {
+                string paramName = properties[i].Name;
+
+                parameters[i]
+                    = new SqlParameter(paramName.ToLower(), properties[i].Value);
+
+                if (paramName == "MaxPrice")
+                {
+                    whereClauseSb.Append($"Price <= @{paramName.ToLower()}");
+                }
+                else if (paramName == "Year")
+                {
+                    whereClauseSb.Append($"{paramName} > @{paramName.ToLower()}");
+                }
+                else
+                {
+                    whereClauseSb.Append($"{paramName} = @{paramName.ToLower()}");
+                }
+
+                if (i < properties.Count - 1)
+                {
+                    whereClauseSb.Append(" and ");
+                }
+            }
+            return (whereClauseSb.ToString(), parameters);
         }
 
         private Car CreateCarEntity(ICarViewModel car)
@@ -453,18 +453,15 @@ namespace MobileWorld.Core.Services
             EcoLevel = model.EcoLevel,
         };
 
-        private void MatchInputFeaturesToFeatureDbModel(object inputModel, object dbModel)
+        private void MapInputFeatureToDbFeatureModel(object inputModel, object dbModel)
         {
             Type inputModelType = inputModel
                 .GetType();
 
-            string categoryName = inputModel.GetType()
-                .Name;
-
             var inputDataPoperties = inputModelType
                 .GetProperties()
                 .Where(x => x.PropertyType == typeof(bool))
-                .Select(x => new { Name = x.Name, Value = x.GetValue(inputModel) })
+                .Select(x => new PropertyDto(x.Name,x.GetValue(inputModel)))
                 .ToList();
 
             Type bindingModelType = dbModel
@@ -474,21 +471,22 @@ namespace MobileWorld.Core.Services
                 .Where(x => x.PropertyType == typeof(bool))
                 .Select(x => x)
                 .ToList();
+
             int count = 0;
-            foreach (var item in dbProperties)
+            foreach (var prop in dbProperties)
             {
-                item.SetValue(dbModel, inputDataPoperties[count++].Value);
+                prop.SetValue(dbModel, inputDataPoperties[count++].Value);
             }
         }
 
-        private void MatchFeatures(Feature dbFeature, IFeatureViewModel model)
+        private void MapFeatures(Feature dbFeature, IFeatureViewModel model)
         {
-            MatchInputFeaturesToFeatureDbModel(model.SafetyDetails, dbFeature.SafetyDetails);
-            MatchInputFeaturesToFeatureDbModel(model.ComfortDetails, dbFeature.ComfortDetails);
-            MatchInputFeaturesToFeatureDbModel(model.InteriorDetails, dbFeature.InteriorDetails);
-            MatchInputFeaturesToFeatureDbModel(model.ExteriorDetails, dbFeature.ExteriorDetails);
-            MatchInputFeaturesToFeatureDbModel(model.OthersDetails, dbFeature.OthersDetails);
-            MatchInputFeaturesToFeatureDbModel(model.ProtectionDetails, dbFeature.ProtectionDetails);
+            MapInputFeatureToDbFeatureModel(model.SafetyDetails, dbFeature.SafetyDetails);
+            MapInputFeatureToDbFeatureModel(model.ComfortDetails, dbFeature.ComfortDetails);
+            MapInputFeatureToDbFeatureModel(model.InteriorDetails, dbFeature.InteriorDetails);
+            MapInputFeatureToDbFeatureModel(model.ExteriorDetails, dbFeature.ExteriorDetails);
+            MapInputFeatureToDbFeatureModel(model.OthersDetails, dbFeature.OthersDetails);
+            MapInputFeatureToDbFeatureModel(model.ProtectionDetails, dbFeature.ProtectionDetails);
         }
 
         private Ad CreaAdEntity(IAdInputModel model, List<Image> images, string ownerId, Car car, Region region)
