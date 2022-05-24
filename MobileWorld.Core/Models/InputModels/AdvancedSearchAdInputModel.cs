@@ -1,4 +1,5 @@
 ﻿using MobileWorld.Core.Models.ViewModels;
+using System.ComponentModel.DataAnnotations;
 
 namespace MobileWorld.Core.Models.InputModels
 {
@@ -8,6 +9,7 @@ namespace MobileWorld.Core.Models.InputModels
 
         public int? ToYear { get; set; }
 
+        [Range(0, (double)decimal.MaxValue, ErrorMessage = "Невалидна максимална цена")]
         public decimal? MinPrice { get; set; }
     }
 }
