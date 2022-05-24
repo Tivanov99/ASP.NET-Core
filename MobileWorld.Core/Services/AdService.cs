@@ -167,7 +167,30 @@ namespace MobileWorld.Core.Services
 
         public List<AdCardSpViewModel> GetAdsByAdvancedCriteria(AdvancedSearchAdInputModel model)
         {
-            //List<PropertyDto> defaultSearchCriteria = GetBaseSearchCriteria(model);
+            var selected = GetSelected(model);
+
+            if (selected.Count == 0)
+            {
+                return GetAllAds();
+            }
+
+            StringBuilder sqlSb = new();
+            sqlSb.Append(_queriesCollection.GetAdsByBaseCriteria());
+
+            try
+            {
+                var result = BuildSearchFilter(selected);
+                sqlSb.Append(result.Item1);
+
+                var res = _unitOfWork.AdRepository.Set<AdCardSpViewModel>()
+                   .FromSqlRaw(sqlSb.ToString(), result.Item2)
+                   .ToList();
+                return res;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
 
             Dictionary<string, List<string>> featuresSearchCriteria = new();
 
