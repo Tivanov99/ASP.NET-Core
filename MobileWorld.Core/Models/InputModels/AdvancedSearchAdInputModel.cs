@@ -9,7 +9,7 @@ namespace MobileWorld.Core.Models.InputModels
 
         public int? ToYear { get; set; }
 
-        [Range(0, (double)decimal.MaxValue, ErrorMessage = "Невалидна максимална цена")]
+        [Range(0, (double)decimal.MaxValue, ErrorMessage = "Невалидна минимална цена")]
         public decimal? MinPrice { get; set; }
     }
 }

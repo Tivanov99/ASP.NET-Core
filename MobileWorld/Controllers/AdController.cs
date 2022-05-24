@@ -38,7 +38,7 @@ namespace MobileWorld.Controllers
             return View(cars);
         }
 
-        public async Task<IActionResult> Ad(string adId)
+        public IActionResult Ad(string adId)
         {
             var ad = this._service
                 .GetAdById(adId);
@@ -79,10 +79,18 @@ namespace MobileWorld.Controllers
 
         public IActionResult AdsByCriteria(AdvancedSearchAdInputModel searchModel)
         {
-            List<AdCardSpViewModel> cars = this._service
-                .GetAdsByAdvancedCriteria(searchModel);
+            if (ModelState.IsValid)
+            {
+                List<AdCardSpViewModel> result = this._service
+                               .GetAdsByAdvancedCriteria(searchModel);
 
-            return View(cars);
+                return View("AllAds", result);
+            }
+
+            var message = string.Join(" | ", ModelState.Values
+             .SelectMany(v => v.Errors)
+             .Select(e => e.ErrorMessage));
+            return View("Error", new { ErrorMessage = message });
         }
 
         public IActionResult AdsByBaseCriteria(BaseSearchAdInputModel searchModel)
