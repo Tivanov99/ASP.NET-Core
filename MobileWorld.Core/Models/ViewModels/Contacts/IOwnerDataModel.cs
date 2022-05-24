@@ -1,4 +1,4 @@
-﻿namespace MobileWorld.Core.ViewModels.Contacts
+﻿namespace MobileWorld.Core.Models.ViewModels.Contacts
 {
     public interface IOwnerDataModel
     {

@@ -1,4 +1,4 @@
-﻿namespace MobileWorld.Core.ViewModels.FeatureDetailModels.FeatureContracts
+﻿namespace MobileWorld.Core.Models.ViewModels.FeatureDetailModels.FeatureContracts
 {
     public interface IProtectionDetailViewModel
     {

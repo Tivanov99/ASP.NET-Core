@@ -1,6 +1,8 @@
-﻿namespace MobileWorld.Core.ViewModels.FeatureDetailModels.FeatureContracts
+﻿using MobileWorld.Core.Models.ViewModels.FeatureDetailModels.FeatureContracts;
+
+namespace MobileWorld.Core.Models.ViewModels.FeatureDetailModels
 {
-    public interface IInteriorDetailViewModel
+    public class InteriorDetailViewModel : IInteriorDetailViewModel
     {
         public bool SuedeSaloon { get; set; }
 

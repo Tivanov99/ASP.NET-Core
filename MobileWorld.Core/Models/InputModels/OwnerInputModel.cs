@@ -1,4 +1,4 @@
-﻿using MobileWorld.Core.ViewModels.Contacts;
+﻿using MobileWorld.Core.Models.ViewModels.Contacts;
 using System.ComponentModel.DataAnnotations;
 
 namespace MobileWorld.Core.Models.InputModels

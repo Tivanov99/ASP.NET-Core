@@ -1,11 +1,11 @@
 ﻿using MobileWorld.Infrastructure.Data.Common;
-using MobileWorld.Core.ViewModels;
 using MobileWorld.Core.Models;
 using Microsoft.EntityFrameworkCore;
 using MobileWorld.Infrastructure.Data.Models;
 using MobileWorld.Infrastructure.Data.Repositories;
 using MobileWorld.Infrastructure.Data.Identity;
 using MobileWorld.Core.Services.Contracts;
+using MobileWorld.Core.Models.ViewModels;
 
 namespace MobileWorld.Core.Services
 {

@@ -1,5 +1,5 @@
 ﻿using MobileWorld.Core.Models;
-using MobileWorld.Core.ViewModels;
+using MobileWorld.Core.Models.ViewModels;
 
 namespace MobileWorld.Core.Services.Contracts
 {

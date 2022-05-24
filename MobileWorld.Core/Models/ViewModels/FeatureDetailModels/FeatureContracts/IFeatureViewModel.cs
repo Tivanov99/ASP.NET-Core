@@ -1,6 +1,6 @@
 ﻿using MobileWorld.Core.ViewModels.FeatureDetailModels.FeatureContracts;
 
-namespace MobileWorld.Core.ViewModels.Contacts
+namespace MobileWorld.Core.Models.ViewModels.FeatureDetailModels.FeatureContracts
 {
     public interface IFeatureViewModel
     {

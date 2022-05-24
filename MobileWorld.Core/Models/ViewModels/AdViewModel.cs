@@ -1,4 +1,4 @@
-﻿namespace MobileWorld.Core.ViewModels
+﻿namespace MobileWorld.Core.Models.ViewModels
 {
     public class AdViewModel
     {

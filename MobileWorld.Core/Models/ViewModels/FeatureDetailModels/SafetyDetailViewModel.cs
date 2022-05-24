@@ -1,6 +1,8 @@
-﻿namespace MobileWorld.Core.ViewModels.FeatureDetailModels.FeatureContracts
+﻿using MobileWorld.Core.Models.ViewModels.FeatureDetailModels.FeatureContracts;
+
+namespace MobileWorld.Core.Models.ViewModels.FeatureDetailModels
 {
-    public interface ISafetyDetailViewModel
+    public class SafetyDetailViewModel : ISafetyDetailViewModel
     {
         public bool Gps { get; set; }
 

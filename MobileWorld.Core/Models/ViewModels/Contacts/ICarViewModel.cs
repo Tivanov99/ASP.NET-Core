@@ -1,16 +1,12 @@
-﻿using MobileWorld.Core.ViewModels.Contacts;
+﻿
+using MobileWorld.Core.Models.ViewModels.FeatureDetailModels.FeatureContracts;
 using MobileWorld.Infrastructure.Data.Enums;
 
-namespace MobileWorld.Core.ViewModels
-{
-    public class CarViewModel : ICarViewModel
-    {
-        public CarViewModel()
-        {
-            Engine = new EngineViewModel();
-            Features = new FeatureViewModel();
-        }
+namespace MobileWorld.Core.Models.ViewModels.Contacts
 
+{
+    public interface ICarViewModel
+    {
         public string Make { get; set; }
 
         public string Color { get; set; }
@@ -23,7 +19,7 @@ namespace MobileWorld.Core.ViewModels
 
         public GearType GearType { get; set; }
 
-         public  IEngineViewModel Engine { get; set; }
+        public IEngineViewModel Engine { get; set; }
 
         public IFeatureViewModel Features { get; set; }
     }

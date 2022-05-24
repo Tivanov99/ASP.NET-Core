@@ -1,4 +1,4 @@
-﻿using MobileWorld.Core.Models;
+﻿using MobileWorld.Core.Models.ViewModels;
 using MobileWorld.Infrastructure.Data.Identity;
 
 namespace MobileWorld.Core.Services.Contracts

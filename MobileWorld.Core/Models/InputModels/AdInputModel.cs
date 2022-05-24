@@ -1,6 +1,8 @@
 ﻿using MobileWorld.Core.Models.InputModels.Contracts;
+using MobileWorld.Core.Models.ViewModels;
+using MobileWorld.Core.Models.ViewModels.Contacts;
+using MobileWorld.Core.Models.ViewModels.FeatureDetailModels.FeatureContracts;
 using MobileWorld.Core.ViewModels;
-using MobileWorld.Core.ViewModels.Contacts;
 using System.ComponentModel.DataAnnotations;
 
 namespace MobileWorld.Core.Models.InputModels

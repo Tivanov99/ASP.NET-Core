@@ -1,6 +1,6 @@
 ﻿using MobileWorld.Core.ViewModels.FeatureDetailModels.FeatureContracts;
 
-namespace MobileWorld.Core.ViewModels.FeatureDetailModels
+namespace MobileWorld.Core.Models.ViewModels.FeatureDetailModels
 
 {
     public class ComfortDetailViewModel : IComfortDetailViewModel

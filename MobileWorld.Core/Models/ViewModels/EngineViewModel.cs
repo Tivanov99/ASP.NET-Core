@@ -1,7 +1,7 @@
-﻿using MobileWorld.Core.ViewModels.Contacts;
+﻿using MobileWorld.Core.Models.ViewModels.Contacts;
 using MobileWorld.Infrastructure.Data.Enums;
 
-namespace MobileWorld.Core.ViewModels;
+namespace MobileWorld.Core.Models.ViewModels;
 
 public class EngineViewModel : IEngineViewModel
 {

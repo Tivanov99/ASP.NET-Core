@@ -1,6 +1,4 @@
-﻿using MobileWorld.Core.ViewModels;
-
-namespace MobileWorld.Core.Models
+﻿namespace MobileWorld.Core.Models.ViewModels
 {
     public class UserViewModel
     {
@@ -18,7 +16,7 @@ namespace MobileWorld.Core.Models
 
         public string Email { get; set; }
 
-        public List<AdViewModel> UserAds { get; set; } 
+        public List<AdViewModel> UserAds { get; set; }
 
         public string Role { get; set; }
 

@@ -1,6 +1,6 @@
-﻿using MobileWorld.Core.ViewModels.Contacts;
+﻿using MobileWorld.Core.Models.ViewModels.Contacts;
 
-namespace MobileWorld.Core.ViewModels
+namespace MobileWorld.Core.Models.ViewModels
 {
     public class OwnerViewModel : IOwnerViewModel, IOwnerDataModel
     {

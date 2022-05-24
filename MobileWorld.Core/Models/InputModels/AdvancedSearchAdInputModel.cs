@@ -1,4 +1,4 @@
-﻿using MobileWorld.Core.ViewModels;
+﻿using MobileWorld.Core.Models.ViewModels;
 
 namespace MobileWorld.Core.Models.InputModels
 {

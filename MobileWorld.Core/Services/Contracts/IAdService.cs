@@ -1,6 +1,6 @@
 ﻿using MobileWorld.Core.Models.InputModels;
 using MobileWorld.Core.Models.InputModels.Contracts;
-using MobileWorld.Core.ViewModels;
+using MobileWorld.Core.Models.ViewModels;
 using MobileWorld.Infrastructure.Data.Models;
 using MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels;
 

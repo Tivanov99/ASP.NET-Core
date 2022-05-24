@@ -1,5 +1,6 @@
-﻿using MobileWorld.Core.ViewModels;
-using MobileWorld.Core.ViewModels.Contacts;
+﻿using MobileWorld.Core.Models.ViewModels;
+using MobileWorld.Core.Models.ViewModels.Contacts;
+using MobileWorld.Core.Models.ViewModels.FeatureDetailModels.FeatureContracts;
 using MobileWorld.Infrastructure.Data.Enums;
 using System.ComponentModel.DataAnnotations;
 

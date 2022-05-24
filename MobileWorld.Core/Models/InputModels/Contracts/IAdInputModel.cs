@@ -1,4 +1,4 @@
-﻿using MobileWorld.Core.ViewModels.Contacts;
+﻿using MobileWorld.Core.Models.ViewModels.Contacts;
 
 namespace MobileWorld.Core.Models.InputModels.Contracts
 {

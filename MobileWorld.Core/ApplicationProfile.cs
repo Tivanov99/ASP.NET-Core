@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MobileWorld.Core.Models.InputModels;
-using MobileWorld.Core.ViewModels;
-using MobileWorld.Core.ViewModels.FeatureDetailModels;
+using MobileWorld.Core.Models.ViewModels;
+using MobileWorld.Core.Models.ViewModels.FeatureDetailModels;
 using MobileWorld.Infrastructure.Data.Identity;
 using MobileWorld.Infrastructure.Data.Models;
 using MobileWorld.Infrastructure.Data.QueriesAndSPDtoModels;

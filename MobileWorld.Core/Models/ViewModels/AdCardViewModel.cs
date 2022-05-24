@@ -1,4 +1,4 @@
-﻿namespace MobileWorld.Core.ViewModels
+﻿namespace MobileWorld.Core.Models.ViewModels
 {
     public class AdCardViewModel
     {
@@ -10,7 +10,7 @@
 
         public decimal Price { get; set; }
 
-        public string  ImageTitle { get; set; }
+        public string ImageTitle { get; set; }
 
         public string ImagePath { get; set; }
 

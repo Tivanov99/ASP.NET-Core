@@ -1,8 +1,8 @@
-﻿using MobileWorld.Core.ViewModels.Contacts;
+﻿using MobileWorld.Core.Models.ViewModels.FeatureDetailModels.FeatureContracts;
 using MobileWorld.Core.ViewModels.FeatureDetailModels;
 using MobileWorld.Core.ViewModels.FeatureDetailModels.FeatureContracts;
 
-namespace MobileWorld.Core.ViewModels
+namespace MobileWorld.Core.Models.ViewModels
 {
     public class FeatureViewModel : IFeatureViewModel
     {
