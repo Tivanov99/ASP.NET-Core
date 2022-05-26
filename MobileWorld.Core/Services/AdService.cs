@@ -167,9 +167,18 @@ namespace MobileWorld.Core.Services
 
         public List<AdCardSpViewModel> GetAdsByAdvancedCriteria(AdvancedSearchAdInputModel model)
         {
+            List<PropertyDto> featuresPropertyList = new List<PropertyDto>();
+            GetSelectedFeatures(model.Features.SafetyDetails);
+            GetSelectedFeatures(model.Features.ComfortDetails);
+            GetSelectedFeatures(model.Features.OthersDetails);
+            GetSelectedFeatures(model.Features.ExteriorDetails);
+            GetSelectedFeatures(model.Features.ProtectionDetails);
+            GetSelectedFeatures(model.Features.InteriorDetails);
+
             List<PropertyDto> filledInputs = GetFilledInputFields(model);
 
-            if (filledInputs.Count == 0)
+
+            if (filledInputs.Count == 0 && featuresPropertyList.Count==0)
             {
                 return GetAllAds();
             }
@@ -179,12 +188,12 @@ namespace MobileWorld.Core.Services
 
             try
             {
-                var whereClausePlusParams = BuildSearchFilter(filledInputs);
+                var searchFilterByInputs = BuildSearchFilter(filledInputs);
 
-                spCommand.Append(whereClausePlusParams.Item1);
+                spCommand.Append(searchFilterByInputs.whereClause);
 
                 var res = _unitOfWork.AdRepository.Set<AdCardSpViewModel>()
-                   .FromSqlRaw(spCommand.ToString(), whereClausePlusParams.Item2)
+                   .FromSqlRaw(spCommand.ToString(), searchFilterByInputs.sqlParameters)
                    .ToList();
 
                 return res;
@@ -194,14 +203,7 @@ namespace MobileWorld.Core.Services
                 return null;
             }
 
-            List<PropertyDto> propertyList = new List<PropertyDto>();
-
-            GetSelectedFeatures(model.Features.SafetyDetails,propertyList);
-            GetSelectedFeatures(model.Features.ComfortDetails, propertyList);
-            GetSelectedFeatures(model.Features.OthersDetails, propertyList);
-            GetSelectedFeatures(model.Features.ExteriorDetails, propertyList);
-            GetSelectedFeatures(model.Features.ProtectionDetails, propertyList);
-            GetSelectedFeatures(model.Features.InteriorDetails, propertyList);
+           
 
             return null;
         }
@@ -381,7 +383,7 @@ namespace MobileWorld.Core.Services
             return null;
         }
 
-        private List<PropertyDto> GetSelectedFeatures(object model, List<PropertyDto> propertyList)
+        private List<PropertyDto> GetSelectedFeatures(object model)
         {
             Type type = model
                 .GetType();
@@ -392,7 +394,6 @@ namespace MobileWorld.Core.Services
                 .Select(x => new PropertyDto(x.Name, x.GetValue(model)))
                 .ToList();
 
-            propertyList.AddRange(selectedFeatures);
             return selectedFeatures;
         }
         private (string whereClause, object[] sqlParameters) BuildSearchFilter(List<PropertyDto> properties)
