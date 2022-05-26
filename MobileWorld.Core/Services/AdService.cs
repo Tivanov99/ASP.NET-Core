@@ -167,38 +167,28 @@ namespace MobileWorld.Core.Services
 
         public List<AdCardSpViewModel> GetAdsByAdvancedCriteria(AdvancedSearchAdInputModel model)
         {
-            List<PropertyDto> featuresPropertyList = new List<PropertyDto>();
+            List<PropertyDto> featuresPropertyList = ListOfAllSelectedFeatures(model.Features);
 
-            featuresPropertyList.AddRange(GetSelectedFeatures(model.Features.SafetyDetails));
-            featuresPropertyList.AddRange(GetSelectedFeatures(model.Features.ComfortDetails));
-            featuresPropertyList.AddRange(GetSelectedFeatures(model.Features.OthersDetails));
-            featuresPropertyList.AddRange(GetSelectedFeatures(model.Features.ExteriorDetails));
-            featuresPropertyList.AddRange(GetSelectedFeatures(model.Features.ProtectionDetails));
-            featuresPropertyList.AddRange(GetSelectedFeatures(model.Features.InteriorDetails));
+            List<PropertyDto> filledInputsPropertyList = GetFilledInputFields(model);
 
-            List<PropertyDto> filledInputs = GetFilledInputFields(model);
-
-            if (filledInputs.Count == 0 && featuresPropertyList.Count==0)
+            if (filledInputsPropertyList.Count == 0 && featuresPropertyList.Count==0)
             {
                 return GetAllAds();
             }
 
-            StringBuilder spCommand = new();
-            spCommand.Append(_queriesCollection.GetAdsByAdvancedCriteria());
-
             try
             {
-                var searchFilterByInputs = BuildSearchFilter(filledInputs);
-
-
+                var searchFilterByInputs = BuildSearchFilter(filledInputsPropertyList);
                 var searchFilterByFeatures = BuildSearchFilterByFeatures(featuresPropertyList);
 
-                spCommand.Append(searchFilterByInputs.InputWhereClause);
-                spCommand.Append(searchFilterByFeatures.FeaturesWhereClause);
+                string query = BuildAdvancedSearchQuery(
+                    searchFilterByInputs.InputWhereClause,
+                    searchFilterByFeatures.FeaturesWhereClause);
 
-
+                var test = new object[] { searchFilterByInputs.SqlInputParameters, searchFilterByFeatures.FeaturesSqlParameters };
+                
                 var res = _unitOfWork.AdRepository.Set<AdCardSpViewModel>()
-                   .FromSqlRaw(spCommand.ToString(), searchFilterByInputs.SqlInputParameters)
+                   .FromSqlRaw(query, new object[] { searchFilterByInputs.SqlInputParameters, searchFilterByFeatures .FeaturesSqlParameters})
                    .ToList();
 
                 return res;
@@ -207,12 +197,24 @@ namespace MobileWorld.Core.Services
             {
                 return null;
             }
-
-           
-
-            return null;
         }
+        private string BuildAdvancedSearchQuery(string inputWhereClause,string featuresWhereClause)
+        {
+            try
+            {
+                StringBuilder spCommand = new(_queriesCollection.GetAdsByAdvancedCriteria());
 
+                spCommand.Append(inputWhereClause);
+                spCommand.Append(featuresWhereClause);
+
+                return spCommand.ToString();
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+        }
         public bool CreateAd(IAdInputModel model, string ownerId, List<Image> images)
         {
             //TODO : Add seed to Db all Towns
@@ -400,6 +402,21 @@ namespace MobileWorld.Core.Services
                 .ToList();
 
             return selectedFeatures;
+        }
+
+
+        private List<PropertyDto> ListOfAllSelectedFeatures(FeatureViewModel Features)
+        {
+            List<PropertyDto> featuresPropertyList = new List<PropertyDto>();
+
+            featuresPropertyList.AddRange(GetSelectedFeatures(Features.SafetyDetails));
+            featuresPropertyList.AddRange(GetSelectedFeatures(Features.ComfortDetails));
+            featuresPropertyList.AddRange(GetSelectedFeatures(Features.OthersDetails));
+            featuresPropertyList.AddRange(GetSelectedFeatures(Features.ExteriorDetails));
+            featuresPropertyList.AddRange(GetSelectedFeatures(Features.ProtectionDetails));
+            featuresPropertyList.AddRange(GetSelectedFeatures(Features.InteriorDetails));
+
+            return featuresPropertyList;
         }
         private (string FeaturesWhereClause, object[] FeaturesSqlParameters) BuildSearchFilterByFeatures(List<PropertyDto> properties)
         {
