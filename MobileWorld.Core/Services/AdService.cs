@@ -139,7 +139,7 @@ namespace MobileWorld.Core.Services
 
         public List<AdCardSpViewModel> GetAdsByBaseCriteria(BaseSearchAdInputModel model)
         {
-            var selected = GetSelected(model);
+            var selected = GetFilledInputFields(model);
 
             if (selected.Count == 0)
             {
@@ -167,7 +167,7 @@ namespace MobileWorld.Core.Services
 
         public List<AdCardSpViewModel> GetAdsByAdvancedCriteria(AdvancedSearchAdInputModel model)
         {
-            var selected = GetSelected(model);
+            var selected = GetFilledInputFields(model);
 
             if (selected.Count == 0)
             {
@@ -361,7 +361,7 @@ namespace MobileWorld.Core.Services
                 SafetyDetails = _mapper.Map<SafetyDetailViewModel>(source),
             };
 
-        private List<PropertyDto> GetSelected(object model)
+        private List<PropertyDto> GetFilledInputFields(object model)
         {
             try
             {
