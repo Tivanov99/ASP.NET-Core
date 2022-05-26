@@ -2,7 +2,7 @@
 {
     public interface IQueriesCollection
     {
-        string GetAdsByBaseCriteria();
+        string GetAdsByBaseCriteriaSp();
 
 
         string GetAdsByAdvancedCriteria();

@@ -6,7 +6,7 @@ namespace MobileWorld.Infrastructure.Data.QueriesAndSP.Queries
     {
         public string GetAdsByAdvancedCriteria()
         {
-            StringBuilder sb = new StringBuilder(GetAdsByBaseCriteria());
+            StringBuilder sb = new StringBuilder(GetAdsByBaseCriteriaSp());
 
             sb.Append("LEFT JOIN [Features] AS FE ON FE.CarId=C.Id " +
                       "LEFT JOIN[ComfortDetails] AS CD ON CD.FeatureId = FE.Id " +
@@ -18,7 +18,7 @@ namespace MobileWorld.Infrastructure.Data.QueriesAndSP.Queries
             return sb.ToString();
         }
 
-        public string GetAdsByBaseCriteria()
+        public string GetAdsByBaseCriteriaSp()
         {
             return "SELECT A.Id AS [AdId], A.CreatedOn, A.Price, A.Title, " +
                 "(SELECT TOP(1) i.ImageTitle FROM [Images] AS I WHERE I.AdId = A.Id) AS [ImageTitle], " +

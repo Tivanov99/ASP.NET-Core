@@ -147,7 +147,7 @@ namespace MobileWorld.Core.Services
             }
 
             StringBuilder sqlSb = new();
-            sqlSb.Append(_queriesCollection.GetAdsByBaseCriteria());
+            sqlSb.Append(_queriesCollection.GetAdsByBaseCriteriaSp());
 
             try
             {
@@ -167,23 +167,24 @@ namespace MobileWorld.Core.Services
 
         public List<AdCardSpViewModel> GetAdsByAdvancedCriteria(AdvancedSearchAdInputModel model)
         {
-            var selected = GetFilledInputFields(model);
+            List<PropertyDto> filledInputs = GetFilledInputFields(model);
 
-            if (selected.Count == 0)
+            if (filledInputs.Count == 0)
             {
                 return GetAllAds();
             }
 
-            StringBuilder sqlSb = new();
-            sqlSb.Append(_queriesCollection.GetAdsByBaseCriteria());
+            StringBuilder spCommand = new();
+            spCommand.Append(_queriesCollection.GetAdsByBaseCriteriaSp());
 
             try
             {
-                var result = BuildSearchFilter(selected);
-                sqlSb.Append(result.Item1);
+                var whereClausePlusParams = BuildSearchFilter(filledInputs);
+
+                spCommand.Append(whereClausePlusParams.Item1);
 
                 var res = _unitOfWork.AdRepository.Set<AdCardSpViewModel>()
-                   .FromSqlRaw(sqlSb.ToString(), result.Item2)
+                   .FromSqlRaw(spCommand.ToString(), whereClausePlusParams.Item2)
                    .ToList();
 
                 return res;
@@ -394,7 +395,7 @@ namespace MobileWorld.Core.Services
             propertyList.AddRange(selectedFeatures);
             return selectedFeatures;
         }
-        private (string, object[]) BuildSearchFilter(List<PropertyDto> properties)
+        private (string whereClause, object[] sqlParameters) BuildSearchFilter(List<PropertyDto> properties)
         {
             var parameters = new object[properties.Count];
 
