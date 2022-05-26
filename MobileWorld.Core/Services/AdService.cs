@@ -165,6 +165,8 @@ namespace MobileWorld.Core.Services
             }
         }
 
+        //TODO Check from year to year when build query
+
         public List<AdCardSpViewModel> GetAdsByAdvancedCriteria(AdvancedSearchAdInputModel model)
         {
             List<PropertyDto> featuresPropertyList = ListOfAllSelectedFeatures(model.Features);
@@ -179,16 +181,25 @@ namespace MobileWorld.Core.Services
             try
             {
                 var searchFilterByInputs = BuildSearchFilter(filledInputsPropertyList);
+
+                if(searchFilterByInputs.SqlInputParameters.Count > 0)
+                {
+                    searchFilterByInputs.InputWhereClause += " and ";
+                }
+
                 var searchFilterByFeatures = BuildSearchFilterByFeatures(featuresPropertyList);
 
                 string query = BuildAdvancedSearchQuery(
                     searchFilterByInputs.InputWhereClause,
                     searchFilterByFeatures.FeaturesWhereClause);
 
-                var test = new object[] { searchFilterByInputs.SqlInputParameters, searchFilterByFeatures.FeaturesSqlParameters };
-                
+                List<object> parameters = new();
+
+                parameters.AddRange(searchFilterByInputs.SqlInputParameters.ToList());
+                parameters.AddRange(searchFilterByFeatures.FeaturesSqlParameters.ToList());
+               
                 var res = _unitOfWork.AdRepository.Set<AdCardSpViewModel>()
-                   .FromSqlRaw(query, new object[] { searchFilterByInputs.SqlInputParameters, searchFilterByFeatures .FeaturesSqlParameters})
+                   .FromSqlRaw(query, parameters.ToArray())
                    .ToList();
 
                 return res;
@@ -198,23 +209,7 @@ namespace MobileWorld.Core.Services
                 return null;
             }
         }
-        private string BuildAdvancedSearchQuery(string inputWhereClause,string featuresWhereClause)
-        {
-            try
-            {
-                StringBuilder spCommand = new(_queriesCollection.GetAdsByAdvancedCriteria());
-
-                spCommand.Append(inputWhereClause);
-                spCommand.Append(featuresWhereClause);
-
-                return spCommand.ToString();
-            }
-            catch (Exception)
-            {
-
-                return null;
-            }
-        }
+        
         public bool CreateAd(IAdInputModel model, string ownerId, List<Image> images)
         {
             //TODO : Add seed to Db all Towns
@@ -378,7 +373,7 @@ namespace MobileWorld.Core.Services
                 var selected = modelType
                     .GetProperties()
                     .Select(x => new PropertyDto(x.Name, x.GetValue(model)))
-                    .Where(x => x.Value != null)
+                    .Where(x => x.Value != null && x.Name!="Features")
                     .ToList();
                 return selected;
 
@@ -418,9 +413,26 @@ namespace MobileWorld.Core.Services
 
             return featuresPropertyList;
         }
-        private (string FeaturesWhereClause, object[] FeaturesSqlParameters) BuildSearchFilterByFeatures(List<PropertyDto> properties)
+        private string BuildAdvancedSearchQuery(string inputWhereClause, string featuresWhereClause)
         {
-            var parameters = new object[properties.Count];
+            try
+            {
+                StringBuilder spCommand = new(_queriesCollection.GetAdsByAdvancedCriteria());
+
+                spCommand.Append(inputWhereClause);
+                spCommand.Append(featuresWhereClause);
+
+                return spCommand.ToString();
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+        }
+        private (string FeaturesWhereClause, List<object> FeaturesSqlParameters) BuildSearchFilterByFeatures(List<PropertyDto> properties)
+        {
+            List<object> parameters = new ();
 
             StringBuilder featuresWhereClause = new();
 
@@ -428,8 +440,8 @@ namespace MobileWorld.Core.Services
             {
                 string paramName = properties[i].Name;
 
-                parameters[i]
-                    = new SqlParameter(paramName.ToLower(), properties[i].Value);
+                parameters.Add(
+                    new SqlParameter(paramName.ToLower(), properties[i].Value));
 
                 featuresWhereClause.Append($"{paramName} = @{paramName.ToLower()}");
 
@@ -441,9 +453,9 @@ namespace MobileWorld.Core.Services
 
             return (featuresWhereClause.ToString(), parameters);
         }
-        private (string InputWhereClause, object[] SqlInputParameters) BuildSearchFilter(List<PropertyDto> properties)
+        private (string InputWhereClause, List<object> SqlInputParameters) BuildSearchFilter(List<PropertyDto> properties)
         {
-            var parameters = new object[properties.Count];
+            var parameters = new List<object>();
 
             StringBuilder whereClauseSb = new();
 
@@ -451,16 +463,24 @@ namespace MobileWorld.Core.Services
             {
                 string paramName = properties[i].Name;
 
-                parameters[i]
-                    = new SqlParameter(paramName.ToLower(), properties[i].Value);
+                parameters.Add(
+                    new SqlParameter(paramName.ToLower(), properties[i].Value));
 
                 if (paramName == "MaxPrice")
                 {
                     whereClauseSb.Append($"Price <= @{paramName.ToLower()}");
                 }
+                else if (paramName == "MinPrice")
+                {
+                    whereClauseSb.Append($"Price > @{paramName.ToLower()}");
+                }
                 else if (paramName == "Year")
                 {
                     whereClauseSb.Append($"{paramName} > @{paramName.ToLower()}");
+                }
+                else if(paramName== "ToYear")
+                {
+                    whereClauseSb.Append($"Year <= @{paramName.ToLower()}");
                 }
                 else
                 {
