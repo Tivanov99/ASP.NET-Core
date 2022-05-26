@@ -165,8 +165,6 @@ namespace MobileWorld.Core.Services
             }
         }
 
-        //TODO Check from year to year when build query
-
         public List<AdCardSpViewModel> GetAdsByAdvancedCriteria(AdvancedSearchAdInputModel model)
         {
             List<PropertyDto> featuresPropertyList = ListOfAllSelectedFeatures(model.Features);
