@@ -396,6 +396,29 @@ namespace MobileWorld.Core.Services
 
             return selectedFeatures;
         }
+        private (string featuresWhereClause, object[] featuresSqlParameters) BuildSearchFilterForFeatures(List<PropertyDto> properties)
+        {
+            var parameters = new object[properties.Count];
+
+            StringBuilder featuresWhereClause = new();
+
+            for (int i = 0; i < properties.Count; i++)
+            {
+                string paramName = properties[i].Name;
+
+                parameters[i]
+                    = new SqlParameter(paramName.ToLower(), properties[i].Value);
+
+                featuresWhereClause.Append($"{paramName} = @{paramName.ToLower()}");
+
+                if (i < properties.Count - 1)
+                {
+                    featuresWhereClause.Append(" and ");
+                }
+            }
+
+            return (featuresWhereClause.ToString(), parameters);
+        }
         private (string whereClause, object[] sqlParameters) BuildSearchFilter(List<PropertyDto> properties)
         {
             var parameters = new object[properties.Count];
