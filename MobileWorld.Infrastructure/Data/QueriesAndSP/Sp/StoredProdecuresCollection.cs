@@ -83,9 +83,18 @@ namespace MobileWorld.Infrastructure.Data.QueriesAndSP.Sp
             return (sql, new SqlParameter[] { idParam });
         }
 
-        public (string, SqlParameter[]) GetUserAds(string userId)
+        public (string, SqlParameter) GetUserAds(string userId)
         {
-            throw new NotImplementedException();
+            string sql = "Exec UserAds @UserId";
+
+            SqlParameter idParam = new SqlParameter()
+            {
+                ParameterName = "@AdId",
+                Value = userId,
+                Direction = ParameterDirection.Input,
+            };
+
+            return (sql, idParam);
         }
     }
 }
