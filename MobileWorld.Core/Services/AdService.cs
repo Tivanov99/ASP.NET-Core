@@ -190,10 +190,15 @@ namespace MobileWorld.Core.Services
             {
                 var searchFilterByInputs = BuildSearchFilter(filledInputs);
 
-                spCommand.Append(searchFilterByInputs.whereClause);
+
+                var searchFilterByFeatures = BuildSearchFilterByFeatures(featuresPropertyList);
+
+                spCommand.Append(searchFilterByInputs.InputWhereClause);
+                spCommand.Append(searchFilterByFeatures.FeaturesWhereClause);
+
 
                 var res = _unitOfWork.AdRepository.Set<AdCardSpViewModel>()
-                   .FromSqlRaw(spCommand.ToString(), searchFilterByInputs.sqlParameters)
+                   .FromSqlRaw(spCommand.ToString(), searchFilterByInputs.SqlInputParameters)
                    .ToList();
 
                 return res;
@@ -396,7 +401,7 @@ namespace MobileWorld.Core.Services
 
             return selectedFeatures;
         }
-        private (string featuresWhereClause, object[] featuresSqlParameters) BuildSearchFilterForFeatures(List<PropertyDto> properties)
+        private (string FeaturesWhereClause, object[] FeaturesSqlParameters) BuildSearchFilterByFeatures(List<PropertyDto> properties)
         {
             var parameters = new object[properties.Count];
 
@@ -419,7 +424,7 @@ namespace MobileWorld.Core.Services
 
             return (featuresWhereClause.ToString(), parameters);
         }
-        private (string whereClause, object[] sqlParameters) BuildSearchFilter(List<PropertyDto> properties)
+        private (string InputWhereClause, object[] SqlInputParameters) BuildSearchFilter(List<PropertyDto> properties)
         {
             var parameters = new object[properties.Count];
 
