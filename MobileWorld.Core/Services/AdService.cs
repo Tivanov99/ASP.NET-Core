@@ -168,15 +168,15 @@ namespace MobileWorld.Core.Services
         public List<AdCardSpViewModel> GetAdsByAdvancedCriteria(AdvancedSearchAdInputModel model)
         {
             List<PropertyDto> featuresPropertyList = new List<PropertyDto>();
-            GetSelectedFeatures(model.Features.SafetyDetails);
-            GetSelectedFeatures(model.Features.ComfortDetails);
-            GetSelectedFeatures(model.Features.OthersDetails);
-            GetSelectedFeatures(model.Features.ExteriorDetails);
-            GetSelectedFeatures(model.Features.ProtectionDetails);
-            GetSelectedFeatures(model.Features.InteriorDetails);
+
+            featuresPropertyList.AddRange(GetSelectedFeatures(model.Features.SafetyDetails));
+            featuresPropertyList.AddRange(GetSelectedFeatures(model.Features.ComfortDetails));
+            featuresPropertyList.AddRange(GetSelectedFeatures(model.Features.OthersDetails));
+            featuresPropertyList.AddRange(GetSelectedFeatures(model.Features.ExteriorDetails));
+            featuresPropertyList.AddRange(GetSelectedFeatures(model.Features.ProtectionDetails));
+            featuresPropertyList.AddRange(GetSelectedFeatures(model.Features.InteriorDetails));
 
             List<PropertyDto> filledInputs = GetFilledInputFields(model);
-
 
             if (filledInputs.Count == 0 && featuresPropertyList.Count==0)
             {
@@ -184,7 +184,7 @@ namespace MobileWorld.Core.Services
             }
 
             StringBuilder spCommand = new();
-            spCommand.Append(_queriesCollection.GetAdsByBaseCriteriaSp());
+            spCommand.Append(_queriesCollection.GetAdsByAdvancedCriteria());
 
             try
             {
@@ -401,7 +401,6 @@ namespace MobileWorld.Core.Services
             var parameters = new object[properties.Count];
 
             StringBuilder whereClauseSb = new();
-            whereClauseSb.Append(" Where ");
 
             for (int i = 0; i < properties.Count; i++)
             {
