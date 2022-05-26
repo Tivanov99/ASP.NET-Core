@@ -82,5 +82,10 @@ namespace MobileWorld.Infrastructure.Data.QueriesAndSP.Sp
 
             return (sql, new SqlParameter[] { idParam });
         }
+
+        public (string, SqlParameter[]) GetUserAds(string userId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -16,5 +16,6 @@ namespace MobileWorld.Infrastructure.Data.QueriesAndSP.Sp
 
         (string, SqlParameter[]) GetAdFeatures(string adId);
 
+        (string, SqlParameter[]) GetUserAds(string userId);
     }
 }
