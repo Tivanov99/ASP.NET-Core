@@ -21,6 +21,8 @@ namespace MobileWorld.Infrastructure.Data.QueriesAndSP.Queries
                       "LEFT JOIN[InteriorDetails] AS INTDETAILS ON INTDETAILS.Id = FE.Id " +
                       "LEFT JOIN[OthersDetails] AS OTD ON OTD.Id = FE.Id " +
                       "LEFT JOIN[ProtectionDetails]  AS PD ON PD.Id = FE.Id " +
+                      "LEFT JOIN[Regions] AS R ON R.Id = A.RegionId " +
+                      "LEFT JOIN[Towns] AS T ON T.Id = R.TownId "+
                       "LEFT JOIN[SafetyDetails] AS SD ON SD.Id = FE.Id Where ");
             return sb.ToString();
         }
