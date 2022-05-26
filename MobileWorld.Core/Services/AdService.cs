@@ -185,6 +185,7 @@ namespace MobileWorld.Core.Services
                 var res = _unitOfWork.AdRepository.Set<AdCardSpViewModel>()
                    .FromSqlRaw(sqlSb.ToString(), result.Item2)
                    .ToList();
+
                 return res;
             }
             catch (Exception)
@@ -192,17 +193,14 @@ namespace MobileWorld.Core.Services
                 return null;
             }
 
-            Dictionary<string, List<string>> featuresSearchCriteria = new();
+            List<PropertyDto> propertyList = new List<PropertyDto>();
 
-            GetSelectedFeatures(model.Features.SafetyDetails, featuresSearchCriteria);
-            GetSelectedFeatures(model.Features.ComfortDetails, featuresSearchCriteria);
-            GetSelectedFeatures(model.Features.OthersDetails, featuresSearchCriteria);
-            GetSelectedFeatures(model.Features.ExteriorDetails, featuresSearchCriteria);
-            GetSelectedFeatures(model.Features.ProtectionDetails, featuresSearchCriteria);
-            GetSelectedFeatures(model.Features.InteriorDetails, featuresSearchCriteria);
-
-            //string queryString = ConfigurateSqlCommand
-            //    (defaultSearchCriteria, featuresSearchCriteria);
+            GetSelectedFeatures(model.Features.SafetyDetails,propertyList);
+            GetSelectedFeatures(model.Features.ComfortDetails, propertyList);
+            GetSelectedFeatures(model.Features.OthersDetails, propertyList);
+            GetSelectedFeatures(model.Features.ExteriorDetails, propertyList);
+            GetSelectedFeatures(model.Features.ProtectionDetails, propertyList);
+            GetSelectedFeatures(model.Features.InteriorDetails, propertyList);
 
             return null;
         }
@@ -382,32 +380,19 @@ namespace MobileWorld.Core.Services
             return null;
         }
 
-        private void GetSelectedFeatures(object model, Dictionary<string, List<string>> currentCriteria)
+        private List<PropertyDto> GetSelectedFeatures(object model, List<PropertyDto> propertyList)
         {
             Type type = model
                 .GetType();
 
-            string categoryName = model.GetType().Name;
-
-            var features = type
+            var selectedFeatures = type
                 .GetProperties()
-                .Where(x => x.Name != "Id" && (bool)x.GetValue(model) == true)
-                .Select(x => x.Name)
+                .Where(x => (bool)x.GetValue(model) == true)
+                .Select(x => new PropertyDto(x.Name, x.GetValue(model)))
                 .ToList();
 
-            var test = type.GetProperties()
-                .Where(p => features.Contains(p.Name))
-                .ToList();
-
-            foreach (var item in test)
-            {
-                item.SetValue(null, true);
-            }
-
-            if (features.Any())
-            {
-                currentCriteria.Add(categoryName, features);
-            }
+            propertyList.AddRange(selectedFeatures);
+            return selectedFeatures;
         }
         private (string, object[]) BuildSearchFilter(List<PropertyDto> properties)
         {

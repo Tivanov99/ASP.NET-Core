@@ -4,5 +4,8 @@
     {
         string GetAdsByBaseCriteria();
 
+
+        string GetAdsByAdvancedCriteria();
+
     }
 }
